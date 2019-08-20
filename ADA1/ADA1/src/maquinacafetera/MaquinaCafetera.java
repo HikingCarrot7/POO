@@ -27,7 +27,6 @@ public class MaquinaCafetera
 
     public void DespacharCafe()
     {
-
         if (!sinDinero())
         {
 
@@ -41,6 +40,7 @@ public class MaquinaCafetera
         {
             System.out.println("Disculpe, la cafetera se quedó sin dinero!");
         }
+
     }
 
     private void pedirDinero()
@@ -49,8 +49,10 @@ public class MaquinaCafetera
 
         do
         {
+
             try
             {
+
                 System.out.println("\nInserte su dinero (billetes de 50, billetes de 20, monedas de 10) ");
                 int entrada = in.nextInt();
 
@@ -65,16 +67,16 @@ public class MaquinaCafetera
 
                 in.nextLine();
 
-                System.out.println("\n¿Insertará más dinero? (Si o No)");
-
-                if (in.next().equalsIgnoreCase("no"))
-                {
-                    terminar = true;
-                }
-
             } catch (InputMismatchException e)
             {
                 System.out.println("\nMoneda no válida. Inténtalo de nuevo");
+            }
+
+            System.out.println("\n¿Insertará más dinero? (Si o No)");
+
+            if (in.next().equalsIgnoreCase("no"))
+            {
+                terminar = true;
             }
 
             in.nextLine();
@@ -114,23 +116,22 @@ public class MaquinaCafetera
         {
             try
             {
-
                 System.out.println("\n\nInserte una opción: (Presione 4 para cancelar la operación)");
                 entrada = in.nextInt();
-                
-                if(entrada == 4)
+
+                if (entrada == 4)
                 {
                     DespacharCafe();
                 }
 
                 valido = TiposCafe.values()[entrada - 1].getPrecio() <= obtenerSaldoCafetera();
 
+                in.nextLine();
+
             } catch (InputMismatchException e)
             {
-                System.out.println("No introdujiste un número");
+                System.out.println("No introdujiste un número válido");
             }
-
-            in.nextLine();
 
         } while (entrada <= 1 || entrada >= TiposCafe.values().length + 1 || !valido);
 
