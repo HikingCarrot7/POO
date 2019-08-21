@@ -37,7 +37,7 @@ public class Cafetera
         imprimirListaCafes();
 
         int indexCafe = cliente.obtenerOpcionProducto();
-        
+
         if (validarIngredientesNecesarios(indexCafe))
         {
             float azucarActual = contenedores.get(3).getContenidoActual();
@@ -71,7 +71,7 @@ public class Cafetera
                     actualizarContenedores(nivelAzucar, indexCafe);
 
                     System.out.println("\n" + TiposCafe.values()[indexCafe].getDescripcion());
-                    
+
                     retirarDinero(50);
 
                     azucarValida = true;
@@ -171,7 +171,7 @@ public class Cafetera
 
     private void retirarDinero(int dinero)
     {
-        
+
     }
 
     public void setSaldoCliente(int saldoCliente)

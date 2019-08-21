@@ -12,7 +12,7 @@ public class UsoImpresora
         Impresora impresora1 = new Impresora();
 
         impresora1.imprimir("Hello World!");
-        
+
     }
 
 }

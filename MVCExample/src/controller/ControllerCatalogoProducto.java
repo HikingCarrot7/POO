@@ -14,38 +14,45 @@ import view.ViewCatalogoProductos;
  *
  * @author edgar.cambranes
  */
-public class ControllerCatalogoProducto {
-   private ViewCatalogoProductos viewCatalogoProductos;
-   private ArrayList <Producto> listaDeProductos;
+public class ControllerCatalogoProducto
+{
 
-    public ControllerCatalogoProducto(ViewCatalogoProductos viewCatalogoProductos,ArrayList<Producto> listaDeProductos) {
+    private ViewCatalogoProductos viewCatalogoProductos;
+    private ArrayList<Producto> listaDeProductos;
+
+    public ControllerCatalogoProducto(ViewCatalogoProductos viewCatalogoProductos, ArrayList<Producto> listaDeProductos)
+    {
         this.viewCatalogoProductos = viewCatalogoProductos;
         this.listaDeProductos = listaDeProductos;
-     
+
     }
-    
-    public ControllerCatalogoProducto(ViewCatalogoProductos viewCatalogoProductos) {
+
+    public ControllerCatalogoProducto(ViewCatalogoProductos viewCatalogoProductos)
+    {
         this.viewCatalogoProductos = viewCatalogoProductos;
-     
+
     }
-    
-    public void inicializarLista(){
+
+    public void inicializarLista()
+    {
         CatalogoProductos catalogoProductos = new CatalogoProductos();
         listaDeProductos = catalogoProductos.getListProduct();
-        
-    }
-    
-    public void showFirst(){
-        Producto producto = listaDeProductos.get(0);
-        viewCatalogoProductos.setjTextFieldAllValues(producto.getNombre(), 
-                                                    producto.getCategoria(),
-                                                    "$"+ producto.getPrecio());
-    }
-    
-    public void showNext(){
-     }
-    
-    public void showPrevious(){
-     }
-     }
 
+    }
+
+    public void showFirst()
+    {
+        Producto producto = listaDeProductos.get(0);
+        viewCatalogoProductos.setjTextFieldAllValues(producto.getNombre(),
+                producto.getCategoria(),
+                "$" + producto.getPrecio());
+    }
+
+    public void showNext()
+    {
+    }
+
+    public void showPrevious()
+    {
+    }
+}

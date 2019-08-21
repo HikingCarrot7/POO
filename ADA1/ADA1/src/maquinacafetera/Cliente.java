@@ -9,17 +9,18 @@ import java.util.Scanner;
  */
 public class Cliente
 {
+
     private final Scanner in;
     private final Cafetera cafetera;
     private int dineroCliente;
-    
+
     public Cliente(Cafetera cafetera)
     {
         in = new Scanner(System.in);
-        
+
         this.cafetera = cafetera;
     }
-    
+
     public void InsertarDinero()
     {
         boolean terminar = false;
@@ -59,13 +60,13 @@ public class Cliente
             in.nextLine();
 
         } while (!terminar);
-        
+
         cafetera.setSaldoCliente(dineroCliente);
-        
+
         cafetera.despacharCafe();
-        
+
     }
-    
+
     public int obtenerOpcionProducto()
     {
         int entrada = 0;
@@ -96,7 +97,7 @@ public class Cliente
 
         return entrada - 1;
     }
-    
+
     public int obtenerNivelAzucar()
     {
         return 1;

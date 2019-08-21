@@ -41,14 +41,14 @@ public class CatalogoProductos
                 listProduct.add(stringToProduct(line));
 
             }
-            
+
             sc.close();
-            
+
         } catch (FileNotFoundException e)
         {
             e.printStackTrace();
         }
-        
+
         return listProduct;
     }
 

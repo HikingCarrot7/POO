@@ -20,7 +20,7 @@ public enum TiposCafe
         this.tipo = tipo;
         this.descripcion = descripcion;
         this.precio = precio;
-        
+
         this.aguaNecesaria = aguaNecesaria;
         this.lecheNecesaria = lecheNecesaria;
         this.cafeNecesario = cafeNecesario;

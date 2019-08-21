@@ -13,7 +13,6 @@ public class Producto
 {
 
     //Atributos
-
     private String nombre;
     private String categoria;
     private float precio;

@@ -193,7 +193,7 @@ public class ViewProducto extends javax.swing.JFrame
     public void mostrarMensajeErrorPrecio(String mensaje)
     {
 
-      //  JOptionPane.showInternalMessageDialog(this, mensaje, "Precio invalido",
+        //  JOptionPane.showInternalMessageDialog(this, mensaje, "Precio invalido",
         //                                       JOptionPane.ERROR_MESSAGE);
         JOptionPane.showMessageDialog(this, mensaje, "Precio Inválido", JOptionPane.ERROR_MESSAGE);
 

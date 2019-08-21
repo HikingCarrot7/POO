@@ -11,7 +11,7 @@ public class FileProduct
 
     public static void AgregarProducto(Producto product)
     {
-        
+
         File fProduct = new File("producto.txt");
 
         try
