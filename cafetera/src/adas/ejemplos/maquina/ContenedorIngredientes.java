@@ -1,4 +1,4 @@
-package maquinacafetera;
+package adas.ejemplos.maquina;
 
 /**
  *

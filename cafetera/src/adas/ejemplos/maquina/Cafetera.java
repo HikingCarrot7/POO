@@ -1,5 +1,7 @@
-package maquinacafetera;
+package adas.ejemplos.maquina;
 
+import adas.ejemplos.productos.TiposCafe;
+import adas.ejemplos.usuario.Cliente;
 import java.util.ArrayList;
 
 /**

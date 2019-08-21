@@ -1,5 +1,7 @@
-package maquinacafetera;
+package adas.ejemplos.usuario;
 
+import adas.ejemplos.maquina.Cafetera;
+import adas.ejemplos.productos.TiposCafe;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 

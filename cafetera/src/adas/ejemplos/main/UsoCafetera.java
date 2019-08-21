@@ -1,4 +1,6 @@
-package maquinacafetera;
+package adas.ejemplos.main;
+
+import adas.ejemplos.maquina.Cafetera;
 
 /**
  *
