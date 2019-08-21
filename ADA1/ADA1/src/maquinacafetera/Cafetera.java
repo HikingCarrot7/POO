@@ -78,7 +78,7 @@ public class Cafetera
 
                 } else
                 {
-                    System.out.println("\nNo hay azúcar sufieciente, elija otra opción o presione 0 para continuar");
+                    System.out.println("\nNo hay azúcar suficiente, elija otra opción o presione 0 para continuar");
                 }
 
             } while (!azucarValida);
