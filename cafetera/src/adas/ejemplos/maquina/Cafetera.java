@@ -3,6 +3,7 @@ package adas.ejemplos.maquina;
 import adas.ejemplos.productos.TiposCafe;
 import adas.ejemplos.usuario.Cliente;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -30,6 +31,19 @@ public class Cafetera
         contenedores.add(new ContenedorIngredientes("Leche", 25f));
         contenedores.add(new ContenedorIngredientes("Café", 30f));
         contenedores.add(new ContenedorIngredientes("Azúcar", 30f));
+
+    }
+
+    public void despacharCliente()
+    {
+        if (!sinDinero())
+        {
+            cliente.InsertarDinero();
+
+        } else
+        {
+            System.out.println("Disculpe, la cafetera se quedó sin dinero!");
+        }
 
     }
 
@@ -74,7 +88,7 @@ public class Cafetera
 
                     System.out.println("\n" + TiposCafe.values()[indexCafe].getDescripcion());
 
-                    retirarDinero(50);
+                    retirarDinero(saldoCliente - TiposCafe.values()[indexCafe].getPrecio());
 
                     azucarValida = true;
 
@@ -137,19 +151,6 @@ public class Cafetera
         return precio;
     }
 
-    public void despacharCliente()
-    {
-        if (!sinDinero())
-        {
-            cliente.InsertarDinero();
-
-        } else
-        {
-            System.out.println("Disculpe, la cafetera se quedó sin dinero!");
-        }
-
-    }
-
     private boolean validarIngredientesNecesarios(int index)
     {
         TiposCafe cafe = TiposCafe.values()[index];
@@ -190,4 +191,10 @@ public class Cafetera
     {
         return n_billetes50 == 0 && n_billetes20 == 0 && n_monedas10 == 0;
     }
+
+    private boolean cafeteraDescompuesta()
+    {
+        return new Random().nextInt(10) == 5;
+    }
+
 }
