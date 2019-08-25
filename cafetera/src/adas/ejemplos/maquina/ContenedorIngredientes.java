@@ -48,7 +48,7 @@ public class ContenedorIngredientes
 
         public ExcesoLimiteCapacidad()
         {
-            super("\nLímite del contenedor excedido");
+            this("\nLímite del contenedor excedido");
         }
 
         public ExcesoLimiteCapacidad(String mensaje)

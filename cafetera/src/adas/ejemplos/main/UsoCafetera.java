@@ -11,6 +11,6 @@ public class UsoCafetera
 
     public static void main(String[] args)
     {
-        new Cafetera(5, 0, 1).despacharCliente();
+        new Cafetera(15, 15, 15).despacharCliente();
     }
 }

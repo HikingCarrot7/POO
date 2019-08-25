@@ -1,6 +1,7 @@
 package adas.ejemplos.usuario;
 
 import adas.ejemplos.maquina.Cafetera;
+import adas.ejemplos.maquina.ContenedorMonedas;
 import adas.ejemplos.productos.TiposCafe;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -9,18 +10,20 @@ import java.util.Scanner;
  *
  * @author HikingCarrot7
  */
-public class Cliente
+public class Usuario
 {
 
+    private int saldoCliente = 0;
     private final Scanner in;
     private final Cafetera cafetera;
-    private int dineroCliente;
+    private final ContenedorMonedas contenedorGanancias;
 
-    public Cliente(Cafetera cafetera)
+    public Usuario(Cafetera cafetera, ContenedorMonedas contenedorGanancias)
     {
         in = new Scanner(System.in);
 
         this.cafetera = cafetera;
+        this.contenedorGanancias = contenedorGanancias;
     }
 
     public void InsertarDinero()
@@ -36,13 +39,33 @@ public class Cliente
                 System.out.println("\nInserte su dinero (billetes de 50, billetes de 20, monedas de 10) ");
                 int entrada = in.nextInt();
 
-                if (entrada == 10 || entrada == 20 || entrada == 50)
+                switch (entrada)
                 {
-                    dineroCliente += entrada;
+                    case 10:
 
-                } else
-                {
-                    throw new InputMismatchException();
+                        contenedorGanancias.setN_monedas10(contenedorGanancias.getN_monedas10() + 1);
+                        saldoCliente += 10;
+
+                        break;
+
+                    case 20:
+
+                        contenedorGanancias.setN_monedas20(contenedorGanancias.getN_monedas20() + 1);
+                        saldoCliente += 20;
+
+                        break;
+
+                    case 50:
+
+                        contenedorGanancias.setN_monedas50(contenedorGanancias.getN_monedas50() + 1);
+                        saldoCliente += 50;
+
+                        break;
+
+                    default:
+
+                        throw new InputMismatchException();
+
                 }
 
                 in.nextLine();
@@ -63,8 +86,6 @@ public class Cliente
 
         } while (!terminar);
 
-        cafetera.setSaldoCliente(dineroCliente);
-
         cafetera.despacharCafe();
 
     }
@@ -83,7 +104,10 @@ public class Cliente
 
                 if (entrada == 4)
                 {
-                    //maquinaCafetera.despacharCafe();
+                    cafetera.retirarDinero(contenedorGanancias, saldoCliente);
+
+                    return 4;
+
                 }
 
                 valido = TiposCafe.values()[entrada - 1].getPrecio() <= cafetera.obtenerSaldoCafetera();
@@ -103,5 +127,15 @@ public class Cliente
     public int obtenerNivelAzucar()
     {
         return 1;
+    }
+
+    public int getSaldoCliente()
+    {
+        return saldoCliente;
+    }
+
+    public void setSaldoCliente(int saldoCliente)
+    {
+        this.saldoCliente = saldoCliente;
     }
 }

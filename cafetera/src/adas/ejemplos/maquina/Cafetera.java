@@ -1,7 +1,7 @@
 package adas.ejemplos.maquina;
 
 import adas.ejemplos.productos.TiposCafe;
-import adas.ejemplos.usuario.Cliente;
+import adas.ejemplos.usuario.Usuario;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -12,18 +12,17 @@ import java.util.Random;
 public class Cafetera
 {
 
-    private final Cliente cliente;
+    private final Usuario usuario;
+    private final ContenedorMonedas saldoCafetera, saldoGanancias;
     private final ArrayList<ContenedorIngredientes> contenedores;
-    private final int n_billetes50, n_billetes20, n_monedas10;
-    private int saldoCliente, totalVendido;
 
-    public Cafetera(int n_billetes50, int n_billetes20, int n_monedas10)
+    public Cafetera(int n_monedas50, int n_monedas20, int n_monedas10)
     {
-        this.n_billetes50 = n_billetes50;
-        this.n_billetes20 = n_billetes20;
-        this.n_monedas10 = n_monedas10;
 
-        cliente = new Cliente(this);
+        saldoCafetera = new ContenedorMonedas(n_monedas50, n_monedas20, n_monedas10);
+        saldoGanancias = new ContenedorMonedas();
+
+        usuario = new Usuario(this, saldoGanancias);
 
         contenedores = new ArrayList<>();
 
@@ -36,13 +35,19 @@ public class Cafetera
 
     public void despacharCliente()
     {
-        if (!sinDinero())
+        while (true)
         {
-            cliente.InsertarDinero();
+            if (!sinDinero() && !cafeteraDescompuesta())
+            {
+                usuario.InsertarDinero();
 
-        } else
-        {
-            System.out.println("Disculpe, la cafetera se quedó sin dinero!");
+            } else
+            {
+                System.out.println("Disculpe, la cafetera se quedó sin dinero o  está descompuesta");
+
+                break;
+            }
+
         }
 
     }
@@ -52,7 +57,12 @@ public class Cafetera
 
         imprimirListaCafes();
 
-        int indexCafe = cliente.obtenerOpcionProducto();
+        int indexCafe = usuario.obtenerOpcionProducto();
+
+        if (indexCafe == 4)
+        {
+            despacharCliente();
+        }
 
         if (validarIngredientesNecesarios(indexCafe))
         {
@@ -80,7 +90,7 @@ public class Cafetera
             do
             {
 
-                nivelAzucar = cliente.obtenerNivelAzucar();
+                nivelAzucar = usuario.obtenerNivelAzucar();
 
                 if (nivelAzucar * 0.1f <= azucarActual)
                 {
@@ -88,7 +98,9 @@ public class Cafetera
 
                     System.out.println("\n" + TiposCafe.values()[indexCafe].getDescripcion());
 
-                    retirarDinero(saldoCliente - TiposCafe.values()[indexCafe].getPrecio());
+                    retirarDinero(saldoCafetera, usuario.getSaldoCliente() - TiposCafe.values()[indexCafe].getPrecio());
+
+                    usuario.setSaldoCliente(0);
 
                     azucarValida = true;
 
@@ -114,32 +126,32 @@ public class Cafetera
 
         for (int i = 0; i < TiposCafe.values().length; i++)
         {
-            if (TiposCafe.values()[i].getPrecio() > saldoCliente)
+            if (TiposCafe.values()[i].getPrecio() > usuario.getSaldoCliente())
             {
                 continue;
             }
 
-            puedoDarteCambio = validarCambio(saldoCliente - TiposCafe.values()[i].getPrecio()) ? "" : "<No podré darte cambio>";
+            puedoDarteCambio = validarCambio(saldoCafetera, usuario.getSaldoCliente() - TiposCafe.values()[i].getPrecio()) ? "" : "<No podré darte cambio>";
 
             System.out.printf("\n%-5s%-20sPrecio: $%-10s%s", String.valueOf(i + 1) + ".-", TiposCafe.values()[i].getTipo(), TiposCafe.values()[i].getPrecio(), puedoDarteCambio);
         }
 
-        System.out.printf("\n\nSu saldo: $%d\nSaldo disponible en la cafetera: $%d\nGanancias de la cafetera: $%d", saldoCliente, obtenerSaldoCafetera(), totalVendido);
+        System.out.printf("\n\nSu saldo: $%d\nSaldo disponible en la cafetera: $%d\n", usuario.getSaldoCliente(), obtenerSaldoCafetera());
     }
 
-    private boolean validarCambio(int precio)
+    private boolean validarCambio(ContenedorMonedas contenedor, int precio)
     {
 
-        precio = comprobarPrecio(precio, n_billetes50, 50);
+        precio = restarPrecio(precio, contenedor.getN_monedas50(), 50);
 
-        precio = comprobarPrecio(precio, n_billetes20, 20);
+        precio = restarPrecio(precio, contenedor.getN_monedas20(), 20);
 
-        precio = comprobarPrecio(precio, n_monedas10, 10);
+        precio = restarPrecio(precio, contenedor.getN_monedas10(), 10);
 
         return precio == 0;
     }
 
-    private int comprobarPrecio(int precio, int moneda, int valor)
+    private int restarPrecio(int precio, int moneda, int valor)
     {
         if (precio >= valor && moneda != 0)
         {
@@ -172,29 +184,53 @@ public class Cafetera
 
     }
 
-    private void retirarDinero(int dinero)
+    public void retirarDinero(ContenedorMonedas contenedor, int dinero)
     {
+        System.out.println("\n----------Retire su dinero----------");
+        
+        int aux = restarPrecio(dinero, contenedor.getN_monedas50(), 50);
+        contenedor.setN_monedas50(contenedor.getN_monedas50() - (dinero - aux) / 50);
+        System.out.println("\nMonedas de 50: " + (dinero - aux) / 50);
+        dinero = aux;
+        
+        aux = restarPrecio(dinero, contenedor.getN_monedas20(), 20);
+        contenedor.setN_monedas20(contenedor.getN_monedas20() - (dinero - aux) / 20);
+        System.out.println("Monedas de 20: " + (dinero - aux) / 20);
+        dinero = aux;
+        
+        aux = restarPrecio(dinero, contenedor.getN_monedas10(), 10);
+        contenedor.setN_monedas10(contenedor.getN_monedas10() - (dinero - aux) / 10);
+        System.out.println("Monedas de 10: " + (dinero - aux) / 10);
+
+        dineroDisponibleOrdenadoNomina("\n----------Monedas en la cafetara para dar cambio----------", saldoCafetera);
+        dineroDisponibleOrdenadoNomina("\n----------Ganancias de la cafetera----------", saldoGanancias);
 
     }
 
-    public void setSaldoCliente(int saldoCliente)
+    private void dineroDisponibleOrdenadoNomina(String text, ContenedorMonedas contenedor)
     {
-        this.saldoCliente = saldoCliente;
+        System.out.println(text);
+
+        System.out.printf("\n%s\n%s\n%s\n",
+                "Monedas de 50: " + contenedor.getN_monedas50(),
+                "Monedas de 20: " + contenedor.getN_monedas20(),
+                "Monedas de 10: " + contenedor.getN_monedas10());
+
     }
 
     public int obtenerSaldoCafetera()
     {
-        return n_billetes50 * 50 + n_billetes20 * 20 + n_monedas10 * 10;
+        return saldoCafetera.getTotal();
     }
 
     private boolean sinDinero()
     {
-        return n_billetes50 == 0 && n_billetes20 == 0 && n_monedas10 == 0;
+        return saldoCafetera.getN_monedas50() == 0 && saldoCafetera.getN_monedas20() == 0 && saldoCafetera.getN_monedas10() == 0;
     }
 
     private boolean cafeteraDescompuesta()
     {
-        return new Random().nextInt(10) == 5;
+        return new Random().nextInt(40) == 5;
     }
 
 }
