@@ -2,14 +2,14 @@ package adas.ejemplos.productos;
 
 /**
  *
- * @author HikingCarrot7
+ * @author GrajalesMag
  */
 public enum TiposCafe
 {
 
-    CafeNegro("Café negro", "Disfrute de su buen café negro!", 30, 0.0f, 0.5f, 0.2f),
-    CafeCapuccino("Café capuccino", "Disfrute de su buen café capuccino!", 40, 0.4f, 0.0f, 0.3f),
-    CafeDescafeinado("Café descafeinado", "Disfrute de su buen café descafeinado!", 50, 0.2f, 0.1f, 0.4f);
+    CafeNegro("Café negro", "Disfrute de su café negro", 30, 0.0f, 0.5f, 0.2f),
+    CafeCapuccino("Café capuccino", "Disfrute de su café capuccino", 40, 0.4f, 0.0f, 0.3f),
+    CafeDescafeinado("Café descafeinado", "Disfrute de su café descafeinado", 50, 0.2f, 0.1f, 0.4f);
 
     private final String tipo, descripcion;
     private final float aguaNecesaria, lecheNecesaria, cafeNecesario;

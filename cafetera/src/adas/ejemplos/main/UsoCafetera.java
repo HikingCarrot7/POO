@@ -4,7 +4,7 @@ import adas.ejemplos.maquina.Cafetera;
 
 /**
  *
- * @author HikingCarrot7
+ * @author GrajalesMag
  */
 public class UsoCafetera
 {

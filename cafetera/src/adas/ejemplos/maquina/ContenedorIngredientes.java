@@ -2,7 +2,7 @@ package adas.ejemplos.maquina;
 
 /**
  *
- * @author HikingCarrot7
+ * @author GrajalesMag
  */
 public class ContenedorIngredientes
 {

@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author HikingCarrot7
+ * @author GrajalesMag
  */
 public class Usuario
 {
@@ -126,7 +126,31 @@ public class Usuario
 
     public int obtenerNivelAzucar()
     {
-        return 1;
+        int entrada = 0;
+        boolean azucarValida = false;
+
+        do
+        {
+            try
+            {
+                System.out.println("\nInserte un nivel de azúcar o presione 0 para un café sin azúcar");
+                entrada = in.nextInt();
+
+                if (entrada < 0 || entrada > 3)
+                {
+                    throw new InputMismatchException();
+                }
+
+                azucarValida = true;
+
+            } catch (InputMismatchException e)
+            {
+                System.out.println("\nNivel de azúcar o entrada no válida");
+            }
+
+        } while (!azucarValida);
+
+        return entrada;
     }
 
     public int getSaldoCliente()

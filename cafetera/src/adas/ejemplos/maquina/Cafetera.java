@@ -7,7 +7,7 @@ import java.util.Random;
 
 /**
  *
- * @author HikingCarrot7
+ * @author GrajalesMag
  */
 public class Cafetera
 {
@@ -96,7 +96,7 @@ public class Cafetera
                 {
                     actualizarContenedores(nivelAzucar, indexCafe);
 
-                    System.out.println("\n" + TiposCafe.values()[indexCafe].getDescripcion());
+                    System.out.println("\n" + TiposCafe.values()[indexCafe].getDescripcion() + ((nivelAzucar == 0) ? " sin azúcar" : " con " + nivelAzucar + " nivel(es) de azúcar"));
 
                     retirarDinero(saldoCafetera, usuario.getSaldoCliente() - TiposCafe.values()[indexCafe].getPrecio());
 
@@ -187,17 +187,17 @@ public class Cafetera
     public void retirarDinero(ContenedorMonedas contenedor, int dinero)
     {
         System.out.println("\n----------Retire su dinero----------");
-        
+
         int aux = restarPrecio(dinero, contenedor.getN_monedas50(), 50);
         contenedor.setN_monedas50(contenedor.getN_monedas50() - (dinero - aux) / 50);
         System.out.println("\nMonedas de 50: " + (dinero - aux) / 50);
         dinero = aux;
-        
+
         aux = restarPrecio(dinero, contenedor.getN_monedas20(), 20);
         contenedor.setN_monedas20(contenedor.getN_monedas20() - (dinero - aux) / 20);
         System.out.println("Monedas de 20: " + (dinero - aux) / 20);
         dinero = aux;
-        
+
         aux = restarPrecio(dinero, contenedor.getN_monedas10(), 10);
         contenedor.setN_monedas10(contenedor.getN_monedas10() - (dinero - aux) / 10);
         System.out.println("Monedas de 10: " + (dinero - aux) / 10);
@@ -211,10 +211,7 @@ public class Cafetera
     {
         System.out.println(text);
 
-        System.out.printf("\n%s\n%s\n%s\n",
-                "Monedas de 50: " + contenedor.getN_monedas50(),
-                "Monedas de 20: " + contenedor.getN_monedas20(),
-                "Monedas de 10: " + contenedor.getN_monedas10());
+        System.out.println(contenedor);
 
     }
 
