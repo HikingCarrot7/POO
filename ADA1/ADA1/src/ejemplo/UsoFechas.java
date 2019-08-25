@@ -18,7 +18,7 @@ public class UsoFechas
 
         for (int i = 0; i < 10; i++)
         {
-            fechas[i] = new Fecha(5 + rand.nextInt(20), 1 + rand.nextInt(20), 2000 + rand.nextInt(30));
+            fechas[i] = new Fecha(5 + rand.nextInt(20), 1 + rand.nextInt(12), 2000 + rand.nextInt(30));
 
             System.out.println(fechas[i]);
         }
