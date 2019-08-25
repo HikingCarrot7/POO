@@ -75,7 +75,7 @@ public class Usuario
                 System.out.println("\nMoneda no válida. Inténtalo de nuevo");
             }
 
-            System.out.println("\n¿Insertará más dinero? (Si o No)");
+            System.out.println("\n¿Insertará más dinero? (Sí o No)");
 
             if (in.next().equalsIgnoreCase("no"))
             {

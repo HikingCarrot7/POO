@@ -79,7 +79,9 @@ public class ContenedorMonedas
     @Override
     public String toString()
     {
-        return String.format("\n%s\n%s\n%s\n", "Monedas de 50: " + n_monedas50, "Monedas de 20: " + n_monedas20, "Monedas de 10: " + n_monedas10);
+        String lineSeparator = System.getProperty("line.separator");
+        
+        return String.format("%4$s%s%4$s%s%4$s%s%4$s", "Monedas de 50: " + n_monedas50, "Monedas de 20: " + n_monedas20, "Monedas de 10: " + n_monedas10, lineSeparator);
     }
 
     private class MonedaInvalida extends RuntimeException

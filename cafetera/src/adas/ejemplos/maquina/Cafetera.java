@@ -2,7 +2,12 @@ package adas.ejemplos.maquina;
 
 import adas.ejemplos.productos.TiposCafe;
 import adas.ejemplos.usuario.Usuario;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Formatter;
 import java.util.Random;
 
 /**
@@ -12,11 +17,12 @@ import java.util.Random;
 public class Cafetera
 {
 
+    private final File file;
     private final Usuario usuario;
     private final ContenedorMonedas saldoCafetera, saldoGanancias;
     private final ArrayList<ContenedorIngredientes> contenedores;
 
-    public Cafetera(int n_monedas50, int n_monedas20, int n_monedas10)
+    public Cafetera(int n_monedas50, int n_monedas20, int n_monedas10) throws IOException
     {
 
         saldoCafetera = new ContenedorMonedas(n_monedas50, n_monedas20, n_monedas10);
@@ -30,6 +36,13 @@ public class Cafetera
         contenedores.add(new ContenedorIngredientes("Leche", 25f));
         contenedores.add(new ContenedorIngredientes("Café", 30f));
         contenedores.add(new ContenedorIngredientes("Azúcar", 30f));
+
+        file = new File("res/RegistrosDeVentas.txt");
+
+        if (!file.exists())
+        {
+            file.createNewFile();
+        }
 
     }
 
@@ -52,7 +65,7 @@ public class Cafetera
 
     }
 
-    public void despacharCafe()
+    public void despacharCafe() throws IOException
     {
 
         imprimirListaCafes();
@@ -101,6 +114,8 @@ public class Cafetera
                     retirarDinero(saldoCafetera, usuario.getSaldoCliente() - TiposCafe.values()[indexCafe].getPrecio());
 
                     usuario.setSaldoCliente(0);
+
+                    generarRegistros(TiposCafe.values()[indexCafe]);
 
                     azucarValida = true;
 
@@ -212,6 +227,23 @@ public class Cafetera
         System.out.println(text);
 
         System.out.println(contenedor);
+
+    }
+
+    private void generarRegistros(TiposCafe cafe) throws IOException
+    {
+        String lineSeparator = System.getProperty("line.separator");
+
+        try (Formatter out = new Formatter(new FileWriter(file, true)))
+        {
+            out.format("%s%4$s%-30s%s%s", "Fecha: " + String.format("%tF %1$tr", Calendar.getInstance()), "Tipo: " + cafe.getTipo(), "Precio: $" + cafe.getPrecio(), lineSeparator);
+            out.format("%s%s%3$s%3$s", "Dinero en la cefetera $" + saldoCafetera.getTotal(), saldoCafetera, lineSeparator);
+        }
+
+        try (Formatter out = new Formatter(new FileWriter(new File("res/DineroCafetera.txt"))))
+        {
+            out.format("%s;%s;%s", saldoCafetera.getN_monedas50(), saldoCafetera.getN_monedas20(), saldoCafetera.getN_monedas10());
+        }
 
     }
 

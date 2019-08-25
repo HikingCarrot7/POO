@@ -1,0 +1,16 @@
+Fecha: 2019-08-25 01:39:28 PM
+Tipo: Café negro              Precio: $30
+Dinero en la cefetera $780
+Monedas de 50: 10
+Monedas de 20: 9
+Monedas de 10: 10
+
+
+Fecha: 2019-08-25 01:40:48 PM
+Tipo: Café capuccino          Precio: $40
+Dinero en la cefetera $770
+Monedas de 50: 10
+Monedas de 20: 9
+Monedas de 10: 9
+
+
