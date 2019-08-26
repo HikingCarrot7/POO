@@ -1,2 +1,8 @@
 Santitos,Churros,15.0
-Santitos,Bebidas,20.0
+Santitos,Bebidas,20.0Doritos,Churros,15.0
+Doritos,Churros,15.0
+Doritos,Churros,15.0
+Doritos,Churros,15.0
+Doritos,Churros,15.0
+Doritos,Churros,15.0
+Doritos,Churros,15.0

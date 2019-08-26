@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import inventario.CatalogoProductos;
@@ -17,7 +12,7 @@ import view.ViewCatalogoProductos;
 public class ControllerCatalogoProducto
 {
 
-    private ViewCatalogoProductos viewCatalogoProductos;
+    private final ViewCatalogoProductos viewCatalogoProductos;
     private ArrayList<Producto> listaDeProductos;
 
     public ControllerCatalogoProducto(ViewCatalogoProductos viewCatalogoProductos, ArrayList<Producto> listaDeProductos)

@@ -22,10 +22,11 @@ public class FileProduct
             }
 
             FileWriter fwProduct = new FileWriter(fProduct, true);
-            BufferedWriter bwProduct = new BufferedWriter(fwProduct);
-
-            bwProduct.write(product + "\n");
-            bwProduct.close();
+            
+            try (BufferedWriter bwProduct = new BufferedWriter(fwProduct))
+            {
+                bwProduct.write(product + "\n");
+            }
 
         } catch (IOException ioe)
         {

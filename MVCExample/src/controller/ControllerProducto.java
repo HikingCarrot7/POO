@@ -51,16 +51,15 @@ public class ControllerProducto
         String nombre = view.getjTextFieldNombre().getText();
         String categoria = (String) view.getjComboBoxCategoria().getSelectedItem();
         String precio = view.getjTextFieldPrecio().getText();
-        float precionum = 0;
+        float precionum;
         Producto producto;
-        FileProduct file;
+
         try
         {
 
             precionum = Float.parseFloat(precio);
             producto = new Producto(nombre, categoria, precionum);
-            file = new FileProduct();
-            file.AgregarProducto(producto);
+            FileProduct.AgregarProducto(producto);
 
         } catch (NumberFormatException e)
         {

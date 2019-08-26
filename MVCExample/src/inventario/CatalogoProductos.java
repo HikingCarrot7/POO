@@ -33,16 +33,15 @@ public class CatalogoProductos
         try
         {
 
-            Scanner sc = new Scanner(file);
-
-            while (sc.hasNextLine())
+            try (Scanner sc = new Scanner(file))
             {
-                String line = sc.nextLine();
-                listProduct.add(stringToProduct(line));
-
+                while (sc.hasNextLine())
+                {
+                    String line = sc.nextLine();
+                    listProduct.add(stringToProduct(line));
+                    
+                }
             }
-
-            sc.close();
 
         } catch (FileNotFoundException e)
         {

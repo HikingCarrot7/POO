@@ -6,7 +6,6 @@
 package view;
 
 import controller.ControllerCatalogoProducto;
-import inventario.CatalogoProductos;
 import javax.swing.JTextField;
 
 /**
