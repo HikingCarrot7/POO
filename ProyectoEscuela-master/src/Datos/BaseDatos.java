@@ -21,13 +21,13 @@ import java.util.ArrayList;
 public class BaseDatos
 {
 
-    static String bd = "bd_escuela";
-    static String login = "root";
-    static String password = "";
-    static String url = "jdbc:mysql://localhost/" + bd;
-    Connection conn = null;
-    PreparedStatement prepSt = null;
-    ResultSet rs = null;
+    private String bd = "bd_escuela";
+    private String login = "root";
+    private String password = "";
+    private String url = "jdbc:mysql://localhost/" + bd;
+    private Connection conn = null;
+    private PreparedStatement prepSt = null;
+    private ResultSet rs = null;
 
     public BaseDatos()
     {
@@ -39,12 +39,13 @@ public class BaseDatos
         {
             ex.printStackTrace();
         }
+        
     }
 
     public ArrayList<Alumno> obtenerAlumnos()
     {
         ArrayList<Alumno> listaAlumnos = new ArrayList<>();
-        
+
         try
         {
 
@@ -69,28 +70,26 @@ public class BaseDatos
                 double mensualidad = rs.getDouble("Mensualidad");
                 double inscripcion = rs.getDouble("Inscripcion");
 
-                Alumno alum = new Alumno(nombre, apellidoPaterno, apellidoMaterno, edad, telefono, id, fecha, foto, mensualidad, inscripcion);
-
-                listaAlumnos.add(alum);
+                listaAlumnos.add(new Alumno(nombre, apellidoPaterno, apellidoMaterno, edad, telefono, id, fecha, foto, mensualidad, inscripcion));
             }
 
         } catch (SQLException ex)
         {
             ex.printStackTrace();
-            
+
         } finally
         {
             try
             {
                 prepSt.close();
                 conn.close();
-                
+
             } catch (SQLException ex)
             {
                 ex.printStackTrace();
             }
         }
-        
+
         return listaAlumnos;
     }
 
@@ -101,6 +100,7 @@ public class BaseDatos
             conn = DriverManager.getConnection(url, login, password);
             String sql = "INSERT INTO pagoarticulos (IDArticulo, Articulo, Cantidad, Precio, Pago, IDAlumnoArticulos) "
                     + "values(?,?,?,?,?,?)";
+
             prepSt = conn.prepareStatement(sql);
             prepSt.setInt(1, articulo.getIDArticulo());
             prepSt.setString(2, articulo.getNombreArticulo());
@@ -110,18 +110,18 @@ public class BaseDatos
             prepSt.setInt(6, articulo.getIDAlumnoPago());
 
             prepSt.executeUpdate();
-            
+
         } catch (SQLException ex)
         {
             ex.printStackTrace();
-            
+
         } finally
         {
             try
             {
                 prepSt.close();
                 conn.close();
-                
+
             } catch (SQLException ex)
             {
                 ex.printStackTrace();
@@ -157,24 +157,28 @@ public class BaseDatos
         } catch (SQLException ex)
         {
             ex.printStackTrace();
-            
+
         } finally
         {
             try
             {
                 prepSt.close();
                 conn.close();
+
             } catch (SQLException ex)
             {
                 ex.printStackTrace();
             }
+
         }
+
         return listaHorarios;
     }
 
     public ArrayList<PagoArticulo> obtenerPagoArticulos()
     {
         ArrayList<PagoArticulo> listaPagoArticulos = new ArrayList<>();
+
         try
         {
 
@@ -195,26 +199,27 @@ public class BaseDatos
                 double pago = rs.getDouble("Pago");
                 int idalumno = rs.getInt("IDAlumnoArticulos");
 
-                PagoArticulo pagoArticulo = new PagoArticulo(id, articulo, cantidad, precio, pago, idalumno);
-                listaPagoArticulos.add(pagoArticulo);
+                listaPagoArticulos.add(new PagoArticulo(id, articulo, cantidad, precio, pago, idalumno));
+                
             }
 
         } catch (SQLException ex)
         {
             ex.printStackTrace();
-            
+
         } finally
         {
             try
             {
                 prepSt.close();
                 conn.close();
-                
+
             } catch (SQLException ex)
             {
                 ex.printStackTrace();
             }
         }
+
         return listaPagoArticulos;
     }
 
@@ -244,33 +249,33 @@ public class BaseDatos
                 byte[] foto = rs.getBytes("Foto");
                 int experiencia = rs.getInt("Experiencia");
 
-                Maestro maestro = new Maestro(nombre, apellidoPaterno, apellidoMaterno, edad, telefono, id, fecha, foto, experiencia);
-
-                listaMaestros.add(maestro);
+                listaMaestros.add(new Maestro(nombre, apellidoPaterno, apellidoMaterno, edad, telefono, id, fecha, foto, experiencia));
             }
 
         } catch (SQLException ex)
         {
             ex.printStackTrace();
-            
+
         } finally
         {
             try
             {
                 prepSt.close();
                 conn.close();
-                
+
             } catch (SQLException ex)
             {
                 ex.printStackTrace();
             }
         }
+
         return listaMaestros;
     }
 
     public ArrayList<Usuario> obtenerUsuarios()
     {
         ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+
         try
         {
 
@@ -297,20 +302,20 @@ public class BaseDatos
         } catch (SQLException ex)
         {
             ex.printStackTrace();
-            
+
         } finally
         {
             try
             {
                 prepSt.close();
                 conn.close();
-                
+
             } catch (SQLException ex)
             {
                 ex.printStackTrace();
             }
         }
-        
+
         return listaUsuarios;
     }
 

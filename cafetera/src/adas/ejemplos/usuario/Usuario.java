@@ -3,6 +3,7 @@ package adas.ejemplos.usuario;
 import adas.ejemplos.maquina.Cafetera;
 import adas.ejemplos.maquina.ContenedorMonedas;
 import adas.ejemplos.productos.TiposCafe;
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -26,9 +27,9 @@ public class Usuario
         this.contenedorGanancias = contenedorGanancias;
     }
 
-    public void InsertarDinero()
+    public void InsertarDinero() throws IOException
     {
-        boolean terminar = false;
+        boolean terminar = false, insertarMasDinero = true;
 
         do
         {
@@ -73,16 +74,25 @@ public class Usuario
             } catch (InputMismatchException e)
             {
                 System.out.println("\nMoneda no válida. Inténtalo de nuevo");
+
+                insertarMasDinero = false;
+
             }
 
-            System.out.println("\n¿Insertará más dinero? (Sí o No)");
-
-            if (in.next().equalsIgnoreCase("no"))
+            if (insertarMasDinero)
             {
-                terminar = true;
+                System.out.println("\n¿Insertará más dinero? (Sí o No)");
+
+                if (in.next().equalsIgnoreCase("no"))
+                {
+                    terminar = true;
+                }
+
             }
 
             in.nextLine();
+            
+            insertarMasDinero = true;
 
         } while (!terminar);
 
@@ -110,7 +120,7 @@ public class Usuario
 
                 }
 
-                valido = TiposCafe.values()[entrada - 1].getPrecio() <= cafetera.obtenerSaldoCafetera();
+                valido = (saldoCliente - TiposCafe.values()[entrada - 1].getPrecio()) <= cafetera.obtenerSaldoCafetera();
 
                 in.nextLine();
 

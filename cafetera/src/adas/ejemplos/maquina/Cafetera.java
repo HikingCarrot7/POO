@@ -46,7 +46,7 @@ public class Cafetera
 
     }
 
-    public void despacharCliente()
+    public void despacharCliente() throws IOException
     {
         while (true)
         {
@@ -213,9 +213,8 @@ public class Cafetera
         System.out.println("Monedas de 20: " + (dinero - aux) / 20);
         dinero = aux;
 
-        aux = restarPrecio(dinero, contenedor.getN_monedas10(), 10);
-        contenedor.setN_monedas10(contenedor.getN_monedas10() - (dinero - aux) / 10);
-        System.out.println("Monedas de 10: " + (dinero - aux) / 10);
+        contenedor.setN_monedas10(contenedor.getN_monedas10() - dinero / 10);
+        System.out.println("Monedas de 10: " + dinero / 10);
 
         dineroDisponibleOrdenadoNomina("\n----------Monedas en la cafetara para dar cambio----------", saldoCafetera);
         dineroDisponibleOrdenadoNomina("\n----------Ganancias de la cafetera----------", saldoGanancias);
