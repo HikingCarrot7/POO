@@ -1,0 +1,12 @@
+
+
+Factura:                 1
+
+Número de producto:      4
+Descripción:             Pinza de punta
+Cantidad:                5
+Precio por pieza:        $50.00
+Vendedor:                Nicolás Canul Ibarra
+Fecha de la venta:       jue ago 29 15:10:41 CDT 2019
+
+	Importe total: $250.00
