@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author GrajalesMag
+ * @author Mohammed
  */
 public class UsoCafetera
 {

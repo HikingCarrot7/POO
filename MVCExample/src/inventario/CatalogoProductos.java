@@ -39,7 +39,7 @@ public class CatalogoProductos
                 {
                     String line = sc.nextLine();
                     listProduct.add(stringToProduct(line));
-                    
+
                 }
             }
 

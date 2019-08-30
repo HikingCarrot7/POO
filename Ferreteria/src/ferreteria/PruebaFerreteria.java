@@ -30,9 +30,7 @@ public class PruebaFerreteria
         file = new File("res/Facturas.txt");
 
         if (!file.exists())
-        {
             file.createNewFile();
-        }
 
         misEmpleados[0] = new Empleado("Nicolás", "Canul", "Ibarra", new GregorianCalendar(2000, 0, 6));
         misEmpleados[1] = new Empleado("Eusebio", "Ajas", "Santos", new GregorianCalendar(1999, 5, 25));

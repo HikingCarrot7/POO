@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author GrajalesMag
+ * @author Mohammed
  */
 public class Usuario
 {
@@ -83,15 +83,12 @@ public class Usuario
             {
                 System.out.println("\n¿Insertará más dinero? (Sí o No)");
 
-                if (in.next().equalsIgnoreCase("no"))
-                {
-                    terminar = true;
-                }
+                terminar = in.next().equalsIgnoreCase("no");
 
             }
 
             in.nextLine();
-            
+
             insertarMasDinero = true;
 
         } while (!terminar);
@@ -106,7 +103,6 @@ public class Usuario
         boolean valido = true;
 
         do
-        {
             try
             {
                 System.out.println("\n\nInserte una opción: (Presione 4 para cancelar la operación)");
@@ -128,8 +124,7 @@ public class Usuario
             {
                 System.out.println("No introdujiste un número válido");
             }
-
-        } while (entrada < 1 || entrada > TiposCafe.values().length || !valido);
+        while (entrada < 1 || entrada > TiposCafe.values().length || !valido);
 
         return entrada - 1;
     }
@@ -140,16 +135,13 @@ public class Usuario
         boolean azucarValida = false;
 
         do
-        {
             try
             {
                 System.out.println("\nInserte un nivel de azúcar o presione 0 para un café sin azúcar");
                 entrada = in.nextInt();
 
                 if (entrada < 0 || entrada > 3)
-                {
                     throw new InputMismatchException();
-                }
 
                 azucarValida = true;
 
@@ -157,8 +149,7 @@ public class Usuario
             {
                 System.out.println("\nNivel de azúcar o entrada no válida");
             }
-
-        } while (!azucarValida);
+        while (!azucarValida);
 
         return entrada;
     }

@@ -2,7 +2,7 @@ package adas.ejemplos.maquina;
 
 /**
  *
- * @author GrajalesMag
+ * @author Mohammed
  */
 public class ContenedorIngredientes
 {
@@ -16,9 +16,7 @@ public class ContenedorIngredientes
         this.tipoIngrediente = tipoIngrediente;
 
         if (contenidoActual > MAX_CAPACIDAD)
-        {
             throw new ExcesoLimiteCapacidad();
-        }
 
         this.contenidoActual = contenidoActual;
     }

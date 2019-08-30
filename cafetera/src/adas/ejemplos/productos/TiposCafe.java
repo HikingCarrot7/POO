@@ -2,7 +2,7 @@ package adas.ejemplos.productos;
 
 /**
  *
- * @author GrajalesMag
+ * @author Mohammed
  */
 public enum TiposCafe
 {
@@ -24,6 +24,7 @@ public enum TiposCafe
         this.aguaNecesaria = aguaNecesaria;
         this.lecheNecesaria = lecheNecesaria;
         this.cafeNecesario = cafeNecesario;
+
     }
 
     public float getAguaNecesaria()

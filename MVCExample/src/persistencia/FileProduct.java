@@ -17,12 +17,10 @@ public class FileProduct
         try
         {
             if (!fProduct.exists())
-            {
                 fProduct.createNewFile();
-            }
 
             FileWriter fwProduct = new FileWriter(fProduct, true);
-            
+
             try (BufferedWriter bwProduct = new BufferedWriter(fwProduct))
             {
                 bwProduct.write(product + "\n");

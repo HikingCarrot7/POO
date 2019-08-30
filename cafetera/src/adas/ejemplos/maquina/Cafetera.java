@@ -12,7 +12,7 @@ import java.util.Random;
 
 /**
  *
- * @author GrajalesMag
+ * @author Mohammed
  */
 public class Cafetera
 {
@@ -40,28 +40,21 @@ public class Cafetera
         file = new File("res/RegistrosDeVentas.txt");
 
         if (!file.exists())
-        {
             file.createNewFile();
-        }
 
     }
 
     public void despacharCliente() throws IOException
     {
         while (true)
-        {
             if (!sinDinero() && !cafeteraDescompuesta())
-            {
                 usuario.InsertarDinero();
-
-            } else
+            else
             {
                 System.out.println("Disculpe, la cafetera se quedó sin dinero o  está descompuesta");
 
                 break;
             }
-
-        }
 
     }
 
@@ -73,9 +66,7 @@ public class Cafetera
         int indexCafe = usuario.obtenerOpcionProducto();
 
         if (indexCafe == 4)
-        {
             despacharCliente();
-        }
 
         if (validarIngredientesNecesarios(indexCafe))
         {
@@ -88,17 +79,11 @@ public class Cafetera
                 System.out.println("\nNiveles de azúcar disponibles ");
 
                 for (int i = 0; i < 3; i++)
-                {
                     if ((i + 1) * 0.1f <= azucarActual)
-                    {
                         System.out.print((i + 1) + ". ");
-                    }
-                }
 
             } else
-            {
                 System.out.println("\nNo hay azúcar, presione 0 para continuar");
-            }
 
             do
             {
@@ -120,16 +105,12 @@ public class Cafetera
                     azucarValida = true;
 
                 } else
-                {
                     System.out.println("\nNo hay azúcar suficiente, elija otra opción o presione 0 para continuar");
-                }
 
             } while (!azucarValida);
 
         } else
-        {
             System.out.println("\nNo hay ingredientes disponibles para el café que quiere");
-        }
 
     }
 
@@ -142,9 +123,7 @@ public class Cafetera
         for (int i = 0; i < TiposCafe.values().length; i++)
         {
             if (TiposCafe.values()[i].getPrecio() > usuario.getSaldoCliente())
-            {
                 continue;
-            }
 
             puedoDarteCambio = validarCambio(saldoCafetera, usuario.getSaldoCliente() - TiposCafe.values()[i].getPrecio()) ? "" : "<No podré darte cambio>";
 
