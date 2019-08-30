@@ -10,3 +10,15 @@ Vendedor:                Nicolás Canul Ibarra
 Fecha de la venta:       jue ago 29 15:10:41 CDT 2019
 
 	Importe total: $250.00
+
+
+Factura:                 1
+
+Número de producto:      9
+Descripción:             Cinta aislante
+Cantidad:                2
+Precio por pieza:        $150.00
+Vendedor:                Emmanuel Chable Collí
+Fecha de la venta:       jue ago 29 17:14:08 CDT 2019
+
+	Importe total: $300.00
