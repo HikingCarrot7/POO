@@ -3,6 +3,7 @@ package Vista;
 import Clases.Conectar;
 import Login.Usuario;
 import Clases.Render;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -24,7 +25,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
@@ -59,7 +59,7 @@ public class ModicarAlumno extends javax.swing.JFrame
         BTModFecha.setVisible(false);
         ModFoto.setVisible(false);
         this.setLocationRelativeTo(null);
-        
+
         TabladeAlumnos.getSelectionModel().addListSelectionListener((ListSelectionEvent e) ->
         {
             if (TabladeAlumnos.getSelectedRow() != -1)
@@ -95,29 +95,26 @@ public class ModicarAlumno extends javax.swing.JFrame
         btnModificar.setVisible(false);
         BTModFecha.setVisible(false);
         ModFoto.setVisible(false);
-        TabladeAlumnos.getSelectionModel().addListSelectionListener(new ListSelectionListener()
+        TabladeAlumnos.getSelectionModel().addListSelectionListener((ListSelectionEvent e) ->
         {
-            @Override
-            public void valueChanged(ListSelectionEvent e)
+            if (TabladeAlumnos.getSelectedRow() != -1)
             {
-                if (TabladeAlumnos.getSelectedRow() != -1)
-                {
-                    int fila = TabladeAlumnos.getSelectedRow();//To change body of generated methods, choose Tools | Templates
-                    txID_alumno.setText(TabladeAlumnos.getValueAt(fila, 0).toString());
-                    txnombre.setText(TabladeAlumnos.getValueAt(fila, 1).toString());
-                    txApellidoP.setText(TabladeAlumnos.getValueAt(fila, 2).toString());
-                    txApellidoM.setText(TabladeAlumnos.getValueAt(fila, 3).toString());
-                    txEdad.setText(TabladeAlumnos.getValueAt(fila, 4).toString());
-                    txTelCel.setText(TabladeAlumnos.getValueAt(fila, 6).toString());
-                    txFechaIng.setText(TabladeAlumnos.getValueAt(fila, 5).toString());
-                    txGrupo.setText(TabladeAlumnos.getValueAt(fila, 7).toString());
-                    txPagoIns.setText(TabladeAlumnos.getValueAt(fila, 8).toString());
-                    txPagoMens.setText(TabladeAlumnos.getValueAt(fila, 9).toString());
-                }
-                btnModificar.setVisible(true);
-                BTModFecha.setVisible(true);
-                ModFoto.setVisible(true);
+                int fila = TabladeAlumnos.getSelectedRow();//To change body of generated methods, choose Tools | Templates
+                txID_alumno.setText(TabladeAlumnos.getValueAt(fila, 0).toString());
+                txnombre.setText(TabladeAlumnos.getValueAt(fila, 1).toString());
+                txApellidoP.setText(TabladeAlumnos.getValueAt(fila, 2).toString());
+                txApellidoM.setText(TabladeAlumnos.getValueAt(fila, 3).toString());
+                txEdad.setText(TabladeAlumnos.getValueAt(fila, 4).toString());
+                txTelCel.setText(TabladeAlumnos.getValueAt(fila, 6).toString());
+                txFechaIng.setText(TabladeAlumnos.getValueAt(fila, 5).toString());
+                txGrupo.setText(TabladeAlumnos.getValueAt(fila, 7).toString());
+                txPagoIns.setText(TabladeAlumnos.getValueAt(fila, 8).toString());
+                txPagoMens.setText(TabladeAlumnos.getValueAt(fila, 9).toString());
             }
+            
+            btnModificar.setVisible(true);
+            BTModFecha.setVisible(true);
+            ModFoto.setVisible(true);
         });
     }
 
@@ -126,6 +123,7 @@ public class ModicarAlumno extends javax.swing.JFrame
         TabladeAlumnos.setDefaultRenderer(Object.class, new Render());
         DefaultTableModel modelo = new DefaultTableModel()
         {
+            @Override
             public boolean isCellEditable(int row, int column)
             {
                 return false;
@@ -544,7 +542,6 @@ public class ModicarAlumno extends javax.swing.JFrame
         }
 
         if (ImgBt != false)
-        {
             try
             {
                 File Ruta1 = new File(Ruta.getText());
@@ -555,7 +552,6 @@ public class ModicarAlumno extends javax.swing.JFrame
             {
                 Logger.getLogger(ModicarAlumno.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
 
         try
         {
@@ -566,20 +562,14 @@ public class ModicarAlumno extends javax.swing.JFrame
             Pst.setString(3, txApellidoM.getText());
             Pst.setInt(4, Edad);
             if (FechaBt == true)
-            {
                 Pst.setDate(5, FechaA);
-            } else
-            {
+            else
                 Pst.setDate(5, Fecha);
-            }
             Pst.setLong(6, TelCel);
             if (ImgBt == true)
-            {
                 Pst.setBytes(7, Imagen2);
-            } else
-            {
+            else
                 Pst.setBytes(7, Imagen1);
-            }
             Pst.setDouble(8, Mensualidad);
             Pst.setDouble(9, Inscripcion);
             Pst.setInt(10, Grupo);
@@ -600,7 +590,7 @@ public class ModicarAlumno extends javax.swing.JFrame
                 Limpiarcajas();
             }
 
-        } catch (Exception e)
+        } catch (SQLException | HeadlessException e)
         {
             System.err.println(e);
         }
@@ -700,13 +690,11 @@ public class ModicarAlumno extends javax.swing.JFrame
         try
         {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-            {
                 if ("Windows".equals(info.getName()))
                 {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
-            }
         } catch (ClassNotFoundException ex)
         {
             java.util.logging.Logger.getLogger(ModicarAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -723,12 +711,9 @@ public class ModicarAlumno extends javax.swing.JFrame
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
+        java.awt.EventQueue.invokeLater(() ->
         {
-            public void run()
-            {
-                new ModicarAlumno().setVisible(true);
-            }
+            new ModicarAlumno().setVisible(true);
         });
     }
 

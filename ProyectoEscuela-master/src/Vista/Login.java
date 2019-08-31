@@ -197,9 +197,7 @@ public class Login extends javax.swing.JFrame
                 Limpiar();
             }
         } else
-        {
             JOptionPane.showMessageDialog(null, "Debe ingresar sus datos");
-        }
         this.dispose();
     }//GEN-LAST:event_BtIngresarLoginActionPerformed
 
@@ -229,13 +227,11 @@ public class Login extends javax.swing.JFrame
         try
         {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-            {
                 if ("Nimbus".equals(info.getName()))
                 {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
-            }
         } catch (ClassNotFoundException ex)
         {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);

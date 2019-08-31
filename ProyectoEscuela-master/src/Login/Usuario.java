@@ -42,7 +42,7 @@ public class Usuario
     {
     }
 
-    public Usuario(int ID, String Usuario, String Pasword, int IDTipo)
+    public Usuario(int ID, String Usuario, String Password, int IDTipo)
     {
         this.ID = ID;
         this.Usuario = Usuario;
@@ -56,7 +56,7 @@ public class Usuario
         return ID;
     }
 
-    public void setID(int id)
+    public void setID(int ID)
     {
         this.ID = ID;
     }
@@ -117,10 +117,10 @@ public class Usuario
         {
             Conectar ConexionUsuario = new Conectar();
             ResultSet Res = ConexionUsuario.consulta("Select IDTipoUsuarioU,TipoDeUsuario FROM usuario U,tipousuario T WHERE U.IDTipoUsuarioU=T.IDTipoUsuario");
+            
             while (Res.next())
-            {
                 ComboUsuarioRU.addItem(new Usuario(Res.getInt("IDTipoUsuarioU"), Res.getString("TipoDeUsuario")));
-            }
+            
         } catch (Exception Ex)
         {
             System.err.println(Ex.getMessage());

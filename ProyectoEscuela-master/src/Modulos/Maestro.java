@@ -91,10 +91,10 @@ public class Maestro extends Persona
         {
             Conectar ConexionMaestro = new Conectar();
             ResultSet Res = ConexionMaestro.consulta("Select * FROM maestros  ");
+            
             while (Res.next())
-            {
                 ComboMaestroRG.addItem(new Maestro(Res.getDate("FechaIngreso"), Res.getInt("Experiencia"), Res.getString("Nombre"), Res.getString("ApellidoPaterno"), Res.getString("ApellidoMaterno"), Res.getInt("Edad"), Res.getLong("Telefono"), Res.getInt("IDMaestro")));
-            }
+            
         } catch (SQLException Ex)
         {
             System.err.println(Ex.getMessage());

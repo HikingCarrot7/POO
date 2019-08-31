@@ -582,7 +582,6 @@ public class ModificarMaestro extends javax.swing.JFrame
         }
 
         if (ImgBt != false)
-        {
             try
             {
                 File Ruta1 = new File(Ruta.getText());
@@ -593,7 +592,6 @@ public class ModificarMaestro extends javax.swing.JFrame
             {
                 Logger.getLogger(ModificarMaestro.class.getName()).log(Level.SEVERE, null, ex);
             }
-        }
 
         try
         {
@@ -604,20 +602,14 @@ public class ModificarMaestro extends javax.swing.JFrame
             Pst.setString(3, txApellidoM.getText());
             Pst.setInt(4, Edad);
             if (FechaBt == true)
-            {
                 Pst.setDate(5, FechaA);
-            } else
-            {
+            else
                 Pst.setDate(5, Fecha);
-            }
             Pst.setLong(6, TelCel);
             if (ImgBt == true)
-            {
                 Pst.setBytes(7, Imagen2);
-            } else
-            {
+            else
                 Pst.setBytes(7, Imagen1);
-            }
             Pst.setInt(8, AñosE);
             Pst.setString(9, txID_Maestro.getText());
 
@@ -668,13 +660,11 @@ public class ModificarMaestro extends javax.swing.JFrame
         try
         {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-            {
                 if ("Nimbus".equals(info.getName()))
                 {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
-            }
         } catch (ClassNotFoundException ex)
         {
             java.util.logging.Logger.getLogger(ModificarMaestro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);

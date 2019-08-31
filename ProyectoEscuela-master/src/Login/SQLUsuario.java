@@ -29,14 +29,14 @@ public class SQLUsuario extends Conectar
             PsR.setString(2, usr.getPassword());
             PsR.setInt(3, usr.getIDTipo());
             PsR.execute();
-            
+
             return true;
-            
+
         } catch (SQLException e)
         {
             JOptionPane.showMessageDialog(null, e.toString());
             return false;
-            
+
         } finally
         {
             ConexionRegistrar.Desconectar();
@@ -58,7 +58,6 @@ public class SQLUsuario extends Conectar
             Rs = PsL.executeQuery();
 
             if (Rs.next())
-            {
                 if (usr.getPassword().equals(Rs.getString(3)))
                 {
 
@@ -67,20 +66,18 @@ public class SQLUsuario extends Conectar
                     usr.setTipoUsuario(Rs.getString(5));
 
                     return true;
-                    
+
                 } else
-                {
                     return false;
-                }
-            }
 
             return false;
-            
+
         } catch (SQLException e)
         {
             JOptionPane.showMessageDialog(null, e.toString());
-            return false;
             
+            return false;
+
         } finally
         {
             ConexionLogin.Desconectar();
@@ -102,17 +99,16 @@ public class SQLUsuario extends Conectar
             RsEU = PsEU.executeQuery();
 
             if (RsEU.next())
-            {
                 return RsEU.getInt(1);
-            }
 
             return 1;
 
         } catch (SQLException e)
         {
             JOptionPane.showMessageDialog(null, e.toString());
-            return 1;
             
+            return 1;
+
         } finally
         {
             ConexionEusuario.Desconectar();

@@ -37,9 +37,7 @@ public class Eliminar extends javax.swing.JFrame
         {
 
         } else if (Mod.getIDTipo() == 2)
-        {
             BtEliminarUsuario.setVisible(false);
-        }
     }
 
     /**
@@ -230,13 +228,11 @@ public class Eliminar extends javax.swing.JFrame
         try
         {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
-            {
                 if ("Nimbus".equals(info.getName()))
                 {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
-            }
         } catch (ClassNotFoundException ex)
         {
             java.util.logging.Logger.getLogger(Eliminar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);

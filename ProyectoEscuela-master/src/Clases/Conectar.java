@@ -18,10 +18,10 @@ public class Conectar
         {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(url, login, password);
+            
             if (connection != null)
-            {
                 System.out.println("Conexión a base de datos " + bd + " OK\n");
-            }
+            
         } catch (SQLException | ClassNotFoundException ex)
         {
             System.out.println(ex.getMessage());
@@ -39,7 +39,7 @@ public class Conectar
         {
             System.out.println("Cerrando conexion");
             connection.close();
-            
+
         } catch (Exception ex)
         {
             System.out.println(ex.getMessage());
@@ -70,21 +70,19 @@ public class Conectar
         DefaultComboBoxModel IngreGrupoRA = new DefaultComboBoxModel();
         IngreGrupoRA.addElement("Seleccione un grupo");
         ResultSet Res = this.consulta("Select * FROM Grupos order by Grupo");
-        
+
         try
         {
             while (Res.next())
-            {
                 IngreGrupoRA.addElement(Res.getString("Grupo"));
-            }
-            
+
             Res.close();
-            
+
         } catch (SQLException ex)
         {
             System.err.println(ex.getMessage());
         }
-        
+
         return IngreGrupoRA;
     }
 

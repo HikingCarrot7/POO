@@ -16,14 +16,22 @@ import java.util.Scanner;
 public class PruebaFerreteria
 {
 
-    private final Empleado[] misEmpleados;
+    private final Empleado[] misEmpleados =
+    {
+        new Empleado("Nicolás", "Canul", "Ibarra", new GregorianCalendar(2000, 0, 6)),
+        new Empleado("Eusebio", "Ajas", "Santos", new GregorianCalendar(1999, 5, 25)),
+        new Empleado("Carlos", "Álvarez", "Trejo", new GregorianCalendar(1998, 9, 14)),
+        new Empleado("Emmanuel", "Chable", "Collí", new GregorianCalendar(2001, 11, 30)),
+        new Empleado("Guillermo", "Canto", "Dzul", new GregorianCalendar(2000, 3, 2))
+
+    };
+
     private final Random rand;
     private final File file;
     private final Scanner in;
 
     public PruebaFerreteria() throws IOException
     {
-        misEmpleados = new Empleado[5];
         rand = new Random();
         in = new Scanner(System.in);
 
@@ -31,12 +39,6 @@ public class PruebaFerreteria
 
         if (!file.exists())
             file.createNewFile();
-
-        misEmpleados[0] = new Empleado("Nicolás", "Canul", "Ibarra", new GregorianCalendar(2000, 0, 6));
-        misEmpleados[1] = new Empleado("Eusebio", "Ajas", "Santos", new GregorianCalendar(1999, 5, 25));
-        misEmpleados[2] = new Empleado("Carlos", "Álvarez", "Trejo", new GregorianCalendar(1998, 9, 14));
-        misEmpleados[3] = new Empleado("Emmanuel", "Chable", "Collí", new GregorianCalendar(2001, 11, 30));
-        misEmpleados[4] = new Empleado("Guillermo", "Canto", "Dzul", new GregorianCalendar(2000, 3, 2));
 
     }
 

@@ -143,10 +143,10 @@ public class Alumno extends Persona
         {
             Conectar ConexionHorarios = new Conectar();
             ResultSet Res = ConexionHorarios.consulta("Select * FROM ingresoalumnos ");
+            
             while (Res.next())
-            {
                 ComboAlumnosRA.addItem(new Alumno(Res.getString("Nombre"), Res.getString("ApellidoPaterno"), Res.getString("ApellidoMaterno"), Res.getInt("IDAlumno")));
-            }
+            
         } catch (Exception Ex)
         {
             System.err.println(Ex.getMessage());

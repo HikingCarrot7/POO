@@ -39,7 +39,7 @@ public class BaseDatos
         {
             ex.printStackTrace();
         }
-        
+
     }
 
     public ArrayList<Alumno> obtenerAlumnos()
@@ -200,7 +200,7 @@ public class BaseDatos
                 int idalumno = rs.getInt("IDAlumnoArticulos");
 
                 listaPagoArticulos.add(new PagoArticulo(id, articulo, cantidad, precio, pago, idalumno));
-                
+
             }
 
         } catch (SQLException ex)

@@ -21,13 +21,13 @@ public class Render extends DefaultTableCellRenderer
             {
                 btn.setForeground(table.getSelectionForeground());
                 btn.setBackground(table.getSelectionBackground());
-                
+
             } else
             {
                 btn.setForeground(table.getForeground());
                 btn.setBackground(UIManager.getColor("Button.background"));
             }
-            
+
             return btn;
         }
 

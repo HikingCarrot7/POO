@@ -49,6 +49,7 @@ public class Cafetera
         while (true)
             if (!sinDinero() && !cafeteraDescompuesta())
                 usuario.InsertarDinero();
+            
             else
             {
                 System.out.println("Disculpe, la cafetera se quedó sin dinero o  está descompuesta");

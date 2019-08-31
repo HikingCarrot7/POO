@@ -82,12 +82,10 @@ public class Horario
         {
             Conectar ConexionHorarios = new Conectar();
             ResultSet Res = ConexionHorarios.consulta("Select * FROM horario ");
-            
+
             while (Res.next())
-            {
                 ComboHorarioRG.addItem(new Horario(Res.getInt("IDHorario"), Res.getString("Dia"), Res.getTime("HoraEntrada"), Res.getTime("HoraSalida")));
-            }
-            
+
         } catch (Exception Ex)
         {
             System.err.println(Ex.getMessage());
