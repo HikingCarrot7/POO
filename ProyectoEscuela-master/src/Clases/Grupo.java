@@ -147,7 +147,7 @@ public class Grupo extends Horario
         {
             Conectar ConexionHorarios = new Conectar();
             ResultSet Res = ConexionHorarios.consulta("Select Grupo,IDHorario,Dia,HoraEntrada,HoraSalida,IDMaestro,Nombre,ApellidoPaterno,ApellidoMaterno FROM grupos g, horario h, maestros m WHERE g.IDHorarioGrupo=h.IDHorario AND g.IDMaestroGrupo=m.IDMaestro");
-            
+
             while (Res.next())
                 ComboGrupoRA.addItem(new Grupo(Res.getString("Grupo"), Res.getInt("IDHorario"), Res.getString("Dia"), Res.getTime("HoraEntrada"), Res.getTime("HoraSalida"), Res.getInt("IDMaestro"), Res.getString("Nombre"), Res.getString("ApellidoPaterno"), Res.getString("ApellidoMaterno")));
 

@@ -111,7 +111,7 @@ public class ModicarAlumno extends javax.swing.JFrame
                 txPagoIns.setText(TabladeAlumnos.getValueAt(fila, 8).toString());
                 txPagoMens.setText(TabladeAlumnos.getValueAt(fila, 9).toString());
             }
-            
+
             btnModificar.setVisible(true);
             BTModFecha.setVisible(true);
             ModFoto.setVisible(true);

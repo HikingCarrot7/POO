@@ -18,10 +18,10 @@ public class Conectar
         {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(url, login, password);
-            
+
             if (connection != null)
                 System.out.println("Conexión a base de datos " + bd + " OK\n");
-            
+
         } catch (SQLException | ClassNotFoundException ex)
         {
             System.out.println(ex.getMessage());

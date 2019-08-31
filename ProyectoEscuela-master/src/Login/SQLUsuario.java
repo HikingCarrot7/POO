@@ -75,7 +75,7 @@ public class SQLUsuario extends Conectar
         } catch (SQLException e)
         {
             JOptionPane.showMessageDialog(null, e.toString());
-            
+
             return false;
 
         } finally
@@ -106,7 +106,7 @@ public class SQLUsuario extends Conectar
         } catch (SQLException e)
         {
             JOptionPane.showMessageDialog(null, e.toString());
-            
+
             return 1;
 
         } finally

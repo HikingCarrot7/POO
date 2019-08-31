@@ -86,10 +86,10 @@ public class Asistencia
         {
             Conectar ConexionHorarios = new Conectar();
             ResultSet Res = ConexionHorarios.consulta("Select * FROM tipoasistencia ");
-            
+
             while (Res.next())
                 ComboAsistenciaRA.addItem(new Asistencia(Res.getInt("IDTipoAsistencia"), Res.getString("TipoAsistencia")));
-            
+
         } catch (SQLException Ex)
         {
             System.err.println(Ex.getMessage());

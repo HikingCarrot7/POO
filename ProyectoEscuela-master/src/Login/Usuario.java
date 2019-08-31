@@ -117,10 +117,10 @@ public class Usuario
         {
             Conectar ConexionUsuario = new Conectar();
             ResultSet Res = ConexionUsuario.consulta("Select IDTipoUsuarioU,TipoDeUsuario FROM usuario U,tipousuario T WHERE U.IDTipoUsuarioU=T.IDTipoUsuario");
-            
+
             while (Res.next())
                 ComboUsuarioRU.addItem(new Usuario(Res.getInt("IDTipoUsuarioU"), Res.getString("TipoDeUsuario")));
-            
+
         } catch (Exception Ex)
         {
             System.err.println(Ex.getMessage());
