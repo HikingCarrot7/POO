@@ -1,5 +1,11 @@
 package com.sw.view;
 
+import com.sw.controller.DataManager;
+import com.sw.controller.DataUpdater;
+import com.sw.model.Maestro;
+import java.util.ArrayList;
+import javax.swing.JTable;
+
 /**
  *
  * @author HikingCarrot7
@@ -7,12 +13,26 @@ package com.sw.view;
 public class MaestrosGUI extends javax.swing.JFrame
 {
 
-    /**
-     * Creates new form MaestrosGUI
-     */
-    public MaestrosGUI()
+    private final int indexCurrentMaestro;
+    private final ArrayList<Maestro> maestros;
+    private final DataManager dataManager;
+    private final DataUpdater dataUpdater;
+    private final Login login;
+
+    public MaestrosGUI(int indexCurrentMaestro, ArrayList<Maestro> maestros, Login login)
     {
         initComponents();
+
+        dataUpdater = new DataUpdater();
+        dataManager = new DataManager();
+        this.login = login;
+
+        if (maestros.get(indexCurrentMaestro).obtenerEntidades().size() > 0)
+            dataUpdater.updateTableAlumnos(jTable1, maestros, indexCurrentMaestro);
+
+        this.indexCurrentMaestro = indexCurrentMaestro;
+        this.maestros = maestros;
+
     }
 
     /**
@@ -28,12 +48,19 @@ public class MaestrosGUI extends javax.swing.JFrame
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        agregarAlumno = new javax.swing.JButton();
+        removerAlumno = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        cerrarSesion = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            public void windowClosing(java.awt.event.WindowEvent evt)
+            {
+                formWindowClosing(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
@@ -91,18 +118,35 @@ public class MaestrosGUI extends javax.swing.JFrame
         jComboBox1.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ordenar por:", "NA", "NA", "NA" }));
 
-        jButton1.setText("Agregar alumno");
-        jButton1.addActionListener(new java.awt.event.ActionListener()
+        agregarAlumno.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        agregarAlumno.setText("Agregar alumno");
+        agregarAlumno.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
             {
-                jButton1ActionPerformed(evt);
+                agregarAlumnoActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Remover alumno");
+        removerAlumno.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        removerAlumno.setText("Remover alumno");
+        removerAlumno.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                removerAlumnoActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Cerrar sesión");
+        cerrarSesion.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        cerrarSesion.setText("Cerrar sesión");
+        cerrarSesion.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                cerrarSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,11 +167,11 @@ public class MaestrosGUI extends javax.swing.JFrame
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(removerAlumno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(agregarAlumno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -145,27 +189,64 @@ public class MaestrosGUI extends javax.swing.JFrame
                         .addContainerGap()
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)
+                        .addComponent(agregarAlumno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
+                        .addComponent(removerAlumno)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton1ActionPerformed
-    {//GEN-HEADEREND:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void agregarAlumnoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_agregarAlumnoActionPerformed
+    {//GEN-HEADEREND:event_agregarAlumnoActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[])
+        AgregarAlumno.iniciarAgregarAlumno(maestros, indexCurrentMaestro, this);
+
+    }//GEN-LAST:event_agregarAlumnoActionPerformed
+
+    private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cerrarSesionActionPerformed
+    {//GEN-HEADEREND:event_cerrarSesionActionPerformed
+        reiniciarLogin();
+    }//GEN-LAST:event_cerrarSesionActionPerformed
+
+    private void removerAlumnoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_removerAlumnoActionPerformed
+    {//GEN-HEADEREND:event_removerAlumnoActionPerformed
+
+        if (jTable1.getSelectedRow() >= 0 && jTable1.getSelectedRow() < maestros.get(indexCurrentMaestro).obtenerEntidades().size())
+        {
+            maestros.get(indexCurrentMaestro).obtenerEntidades().remove(jTable1.getSelectedRow());
+            dataUpdater.updateTableAlumnos(jTable1, maestros, indexCurrentMaestro);
+
+        }
+
+    }//GEN-LAST:event_removerAlumnoActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
+    {//GEN-HEADEREND:event_formWindowClosing
+        reiniciarLogin();
+    }//GEN-LAST:event_formWindowClosing
+
+    public JTable getjTable1()
+    {
+        return jTable1;
+    }
+
+    public void reiniciarLogin()
+    {
+        dataManager.writeMaestros(maestros);
+
+        dispose();
+
+        login.setVisible(true);
+        login.getUsuario().setText("");
+        login.getContrasena().setText("");
+    }
+
+    public static void IniciarMaestrosGUI(int indexCurrentMaestro, ArrayList<Maestro> maestros, Login login)
     {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -196,25 +277,26 @@ public class MaestrosGUI extends javax.swing.JFrame
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
+        java.awt.EventQueue.invokeLater(() ->
         {
-            public void run()
-            {
-                new MaestrosGUI().setVisible(true);
-            }
+            MaestrosGUI maestrosGui = new MaestrosGUI(indexCurrentMaestro, maestros, login);
+
+            maestrosGui.setVisible(true);
+            maestrosGui.setLocationRelativeTo(null);
+
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton agregarAlumno;
+    private javax.swing.JButton cerrarSesion;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton removerAlumno;
     // End of variables declaration//GEN-END:variables
 
 }

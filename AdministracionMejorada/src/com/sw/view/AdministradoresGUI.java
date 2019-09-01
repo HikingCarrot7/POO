@@ -12,24 +12,24 @@ import javax.swing.JTable;
  */
 public class AdministradoresGUI extends javax.swing.JFrame
 {
-
+    
     private final DataManager dataManager;
     private final DataUpdater dataUpdater;
+    private final Login login;
     private final ArrayList<Maestro> maestros;
-
-    public AdministradoresGUI()
+    
+    public AdministradoresGUI(ArrayList<Maestro> maestros, DataManager dataManager, DataUpdater dataUpdater, Login login)
     {
         initComponents();
-
-        dataManager = new DataManager();
-
-        maestros = dataManager.getMaestros();
-
-        dataUpdater = new DataUpdater();
-
+        
+        this.dataManager = dataManager;
+        this.dataUpdater = dataUpdater;
+        this.maestros = maestros;
+        this.login = login;
+        
         if (maestros.size() > 0)
             dataUpdater.updateTableMaestros(jTable1, maestros);
-
+        
     }
 
     /**
@@ -48,17 +48,13 @@ public class AdministradoresGUI extends javax.swing.JFrame
         agregarMaestro = new javax.swing.JButton();
         remover = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        cerrarSesion = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar maestros");
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter()
         {
-            public void windowClosed(java.awt.event.WindowEvent evt)
-            {
-                formWindowClosed(evt);
-            }
             public void windowClosing(java.awt.event.WindowEvent evt)
             {
                 formWindowClosing(evt);
@@ -139,7 +135,14 @@ public class AdministradoresGUI extends javax.swing.JFrame
             }
         });
 
-        jButton3.setText("Cerrar sesión");
+        cerrarSesion.setText("Cerrar sesión");
+        cerrarSesion.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                cerrarSesionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,7 +153,7 @@ public class AdministradoresGUI extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +191,7 @@ public class AdministradoresGUI extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
 
@@ -197,46 +200,52 @@ public class AdministradoresGUI extends javax.swing.JFrame
 
     private void agregarMaestroActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_agregarMaestroActionPerformed
     {//GEN-HEADEREND:event_agregarMaestroActionPerformed
-
+        
         AgregarMaestro.iniciarAgregarMaestro(maestros, dataUpdater, this);
-
+        
     }//GEN-LAST:event_agregarMaestroActionPerformed
-
+    
     private void removerActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_removerActionPerformed
     {//GEN-HEADEREND:event_removerActionPerformed
-
+        
         if (jTable1.getSelectedRow() >= 0 && jTable1.getSelectedRow() < maestros.size())
         {
-
             maestros.remove(jTable1.getSelectedRow());
-
-            System.out.println(maestros.size());
-
             dataUpdater.updateTableMaestros(jTable1, maestros);
-
+            
         }
-
+        
     }//GEN-LAST:event_removerActionPerformed
-
-    private void formWindowClosed(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosed
-    {//GEN-HEADEREND:event_formWindowClosed
-        dataManager.writeMaestros(maestros);
-    }//GEN-LAST:event_formWindowClosed
-
+    
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
     {//GEN-HEADEREND:event_formWindowClosing
-        dataManager.writeMaestros(maestros);
+        actualizarMaestros();
+        
+        login.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
-
+    
+    private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cerrarSesionActionPerformed
+    {//GEN-HEADEREND:event_cerrarSesionActionPerformed
+        actualizarMaestros();
+        
+        dispose();
+        
+        login.getUsuario().setText("");
+        login.getContrasena().setText("");
+        login.setVisible(true);
+    }//GEN-LAST:event_cerrarSesionActionPerformed
+    
     public JTable getjTable1()
     {
         return jTable1;
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[])
+    
+    private void actualizarMaestros()
+    {
+        dataManager.writeMaestros(maestros);
+    }
+    
+    public static void IniciarAdministradoresGui(ArrayList<Maestro> maestros, DataManager dataManager, DataUpdater dataUpdater, Login login)
     {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -270,17 +279,17 @@ public class AdministradoresGUI extends javax.swing.JFrame
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() ->
         {
-            AdministradoresGUI administradoresgui = new AdministradoresGUI();
-
+            AdministradoresGUI administradoresgui = new AdministradoresGUI(maestros, dataManager, dataUpdater, login);
+            
             administradoresgui.setVisible(true);
             administradoresgui.setLocationRelativeTo(null);
-
+            
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregarMaestro;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton cerrarSesion;
     private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

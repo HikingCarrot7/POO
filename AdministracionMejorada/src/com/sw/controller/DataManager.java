@@ -51,7 +51,7 @@ public final class DataManager
 
         } catch (IOException | ClassNotFoundException ex)
         {
-            ex.printStackTrace();
+            System.out.println(ex.getMessage());
 
         }
 

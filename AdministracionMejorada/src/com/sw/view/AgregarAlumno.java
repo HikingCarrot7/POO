@@ -1,5 +1,6 @@
 package com.sw.view;
 
+import com.sw.controller.DataUpdater;
 import com.sw.model.Alumno;
 import com.sw.model.Maestro;
 import java.util.ArrayList;
@@ -11,13 +12,18 @@ import java.util.ArrayList;
 public class AgregarAlumno extends javax.swing.JFrame
 {
 
+    private final MaestrosGUI maestrosGui;
+    private final DataUpdater dataUpdater;
     private final int indexCurrentMaestro;
     private final ArrayList<Maestro> maestros;
 
-    public AgregarAlumno(ArrayList<Maestro> maestros, int indexCurrentMaestro)
+    public AgregarAlumno(ArrayList<Maestro> maestros, int indexCurrentMaestro, MaestrosGUI maestrosGui)
     {
         initComponents();
 
+        dataUpdater = new DataUpdater();
+
+        this.maestrosGui = maestrosGui;
         this.maestros = maestros;
         this.indexCurrentMaestro = indexCurrentMaestro;
 
@@ -44,7 +50,7 @@ public class AgregarAlumno extends javax.swing.JFrame
         calificacion = new javax.swing.JTextField();
         registrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -214,6 +220,8 @@ public class AgregarAlumno extends javax.swing.JFrame
 
         maestros.get(indexCurrentMaestro).anadirEntidad(new Alumno(matricula.getText(), nombre.getText(), Integer.parseInt(edad.getText()), licenciatura.getText(), Double.parseDouble(calificacion.getText())));
 
+        dataUpdater.updateTableAlumnos(maestrosGui.getjTable1(), maestros, indexCurrentMaestro);
+
         dispose();
 
     }//GEN-LAST:event_registrarActionPerformed
@@ -268,7 +276,7 @@ public class AgregarAlumno extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_calificacionFocusLost
 
-    public static void iniciarAgregarAlumno(ArrayList<Maestro> maestros, int indexCurrentMaestro)
+    public static void iniciarAgregarAlumno(ArrayList<Maestro> maestros, int indexCurrentMaestro, MaestrosGUI maestrosGui)
     {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -296,7 +304,11 @@ public class AgregarAlumno extends javax.swing.JFrame
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() ->
         {
-            new AgregarAlumno(maestros, indexCurrentMaestro).setVisible(true);
+            AgregarAlumno agregarAlumno = new AgregarAlumno(maestros, indexCurrentMaestro, maestrosGui);
+
+            agregarAlumno.setVisible(true);
+            agregarAlumno.setLocationRelativeTo(null);
+
         });
     }
 

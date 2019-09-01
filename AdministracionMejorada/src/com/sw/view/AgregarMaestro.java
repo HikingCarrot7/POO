@@ -371,7 +371,11 @@ public class AgregarMaestro extends javax.swing.JFrame
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() ->
         {
-            new AgregarMaestro(maestros, dataUpdater, administradoresGui).setVisible(true);
+            AgregarMaestro agregarMaestro = new AgregarMaestro(maestros, dataUpdater, administradoresGui);
+
+            agregarMaestro.setVisible(true);
+            agregarMaestro.setLocationRelativeTo(null);
+
         });
     }
 
