@@ -68,7 +68,7 @@ public class PruebaCompanero
             }
 
         }
-
+        
         System.out.println(new B().obtenerLongitud("Nicolás"));
 
     }
