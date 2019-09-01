@@ -28,9 +28,7 @@ public class UsoFechas
         fechas = Fecha.ordenarFechas(fechas);
 
         for (int i = 0; i < 10; i++)
-        {
             System.out.println(fechas[i]);
-        }
 
     }
 
