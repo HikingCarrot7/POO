@@ -204,7 +204,18 @@ public class AdministradoresGUI extends javax.swing.JFrame
 
     private void removerActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_removerActionPerformed
     {//GEN-HEADEREND:event_removerActionPerformed
-        // TODO add your handling code here:
+
+        if (jTable1.getSelectedRow() >= 0 && jTable1.getSelectedRow() < maestros.size())
+        {
+
+            maestros.remove(jTable1.getSelectedRow());
+
+            System.out.println(maestros.size());
+
+            dataUpdater.updateTableMaestros(jTable1, maestros);
+
+        }
+
     }//GEN-LAST:event_removerActionPerformed
 
     private void formWindowClosed(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosed
@@ -260,10 +271,10 @@ public class AdministradoresGUI extends javax.swing.JFrame
         java.awt.EventQueue.invokeLater(() ->
         {
             AdministradoresGUI administradoresgui = new AdministradoresGUI();
-            
+
             administradoresgui.setVisible(true);
             administradoresgui.setLocationRelativeTo(null);
-            
+
         });
     }
 

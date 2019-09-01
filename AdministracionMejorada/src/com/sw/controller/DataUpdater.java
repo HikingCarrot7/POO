@@ -4,6 +4,7 @@ import com.sw.model.Alumno;
 import com.sw.model.Maestro;
 import java.util.ArrayList;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -14,7 +15,11 @@ public class DataUpdater
 
     public void updateTableMaestros(JTable table, ArrayList<? extends Maestro> maestros)
     {
-        table.removeAll();
+
+        DefaultTableModel dm = (DefaultTableModel) table.getModel();
+
+        if (dm.getRowCount() > 0)
+            dm.removeRow(0);
 
         for (int i = 0; i < maestros.size(); i++)
         {
@@ -30,7 +35,10 @@ public class DataUpdater
 
     public void updateTableAlumnos(JTable table, ArrayList<? extends Maestro> maestros, int indexCurrentMaestro)
     {
-        table.removeAll();
+        DefaultTableModel dm = (DefaultTableModel) table.getModel();
+
+        if (dm.getRowCount() > 0)
+            dm.removeRow(0);
 
         for (int i = 0; i < maestros.get(indexCurrentMaestro).obtenerEntidades().size(); i++)
         {
