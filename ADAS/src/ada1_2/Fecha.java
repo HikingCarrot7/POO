@@ -3,7 +3,7 @@ package ada1_2;
 /**
  * Se crean fechas con los parámetros especificados en el constructor.
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class Fecha
 {

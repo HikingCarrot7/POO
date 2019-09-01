@@ -1,8 +1,8 @@
-package ejemploFechas;
+package ejemplofechas;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class Fecha
 {

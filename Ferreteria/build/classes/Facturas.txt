@@ -22,3 +22,15 @@ Vendedor:                Emmanuel Chable Collí
 Fecha de la venta:       jue ago 29 17:14:08 CDT 2019
 
 	Importe total: $300.00
+
+
+Factura:                 1
+
+Número de producto:      8
+Descripción:             Desarmador
+Cantidad:                3
+Precio por pieza:        $40.00
+Vendedor:                Guillermo Canto Dzul
+Fecha de la venta:       dom sep 01 17:39:52 CDT 2019
+
+	Importe total: $120.00

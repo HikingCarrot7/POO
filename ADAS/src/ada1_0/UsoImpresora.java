@@ -2,7 +2,7 @@ package ada1_0;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class UsoImpresora
 {

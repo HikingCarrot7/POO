@@ -2,7 +2,7 @@ package ada1_2;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class PruebaFecha
 {

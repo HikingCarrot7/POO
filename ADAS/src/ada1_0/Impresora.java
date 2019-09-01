@@ -3,7 +3,7 @@ package ada1_0;
 /**
  * Esta clase hace una pequeña analogía de una impresora que nos muestra en consola un mensaje que le pasamos como parámetro.
  *
- * @author HikingCarrot7
+ * @author Mohammed
  *
  * @since 1.0
  */
