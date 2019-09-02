@@ -4,7 +4,7 @@ package ada1_3;
  *
  * @author HikingCarrot7
  */
-public class PruebaFecha
+public class PruebaFraccion
 {
 
     public static void main(String[] args)
