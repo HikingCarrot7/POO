@@ -108,7 +108,7 @@ public final class Fraccion
         return denominador;
     }
 
-    public void setDenomimador(int demonnimador)
+    public void setDenomimador(int denominador)
     {
         if (denominador == 0)
         {
@@ -116,7 +116,7 @@ public final class Fraccion
             System.exit(1);
         }
 
-        this.denominador = demonnimador;
+        this.denominador = denominador;
     }
 
     @Override
