@@ -75,7 +75,7 @@ public final class Fraccion
 
     public Fraccion multiplica(int numero)
     {
-        return new Fraccion(getNumerador() * numero, getDenominador() * numero);
+        return new Fraccion(getNumerador() * numero, getDenominador());
     }
 
     public Fraccion divide(Fraccion otraFraccion)
