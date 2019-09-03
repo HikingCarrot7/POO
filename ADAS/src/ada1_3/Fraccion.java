@@ -9,6 +9,7 @@ public final class Fraccion
 
     private int numerador, denominador;
 
+    //Constructores por omisión.
     public Fraccion()
     {
         this(0);
