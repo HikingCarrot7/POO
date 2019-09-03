@@ -10,7 +10,7 @@ public class PruebaFraccion
     public static void main(String[] args)
     {
         Fraccion fraccion1 = new Fraccion(1, 2);
-        Fraccion fraccion2 = new Fraccion(1, 3);
+        Fraccion fraccion2 = new Fraccion(1, 2);
 
         System.out.println("Suma: ");
         System.out.println(fraccion1.suma(fraccion2).simplifica());

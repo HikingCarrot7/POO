@@ -90,7 +90,10 @@ public final class Fraccion
 
     public Fraccion simplifica()
     {
-        int mcd = mcd(getNumerador(), getDenominador());
+        int mcd = 1;
+
+        if (getDenominador() != 0 && getNumerador() != 0)
+            mcd = mcd(getNumerador(), getDenominador());
 
         return new Fraccion(getNumerador() / mcd, getDenominador() / mcd);
     }
