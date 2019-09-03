@@ -4,10 +4,12 @@ import java.io.Serializable;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public abstract class Persona implements Serializable
 {
+
+    private static final long serialVersionUID = 962586902261291984L;
 
     private String matricula, nombre;
     private int edad;

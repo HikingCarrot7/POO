@@ -4,10 +4,12 @@ import java.io.Serializable;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class Alumno extends Persona implements Serializable
 {
+
+    private static final long serialVersionUID = 1726646740249056652L;
 
     private String licenciatura;
     private double calificacion;
@@ -19,6 +21,11 @@ public class Alumno extends Persona implements Serializable
         this.licenciatura = licenciatura;
         this.calificacion = calificacion;
 
+    }
+
+    public Alumno()
+    {
+        this(null, null, 0, null, 0);
     }
 
     public String getLicenciatura()

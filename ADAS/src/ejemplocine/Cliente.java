@@ -2,7 +2,7 @@ package ejemplocine;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class Cliente
 {

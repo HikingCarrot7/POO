@@ -16,7 +16,7 @@ public class PruebaFecha
     public static void main(String[] args)
     {
         //Imprimimos en pantalla la representación String para esta fecha.
-        System.out.println(new Fecha(6, 1, 2000).mostrarFecha());
+        System.out.println(new Fecha(6, 1, 2000).mostrarFechaTexto());
 
     }//Fin de main.
 

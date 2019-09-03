@@ -2,13 +2,14 @@ package com.sw.view;
 
 import com.sw.controller.DataManager;
 import com.sw.controller.DataUpdater;
+import com.sw.model.Alumno;
 import com.sw.model.Maestro;
 import java.util.ArrayList;
 import javax.swing.JTable;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class MaestrosGUI extends javax.swing.JFrame
 {
@@ -52,6 +53,7 @@ public class MaestrosGUI extends javax.swing.JFrame
         removerAlumno = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         cerrarSesion = new javax.swing.JButton();
+        modificarAlumno = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter()
@@ -148,6 +150,16 @@ public class MaestrosGUI extends javax.swing.JFrame
             }
         });
 
+        modificarAlumno.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        modificarAlumno.setText("Modificar alumno");
+        modificarAlumno.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                modificarAlumnoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -158,17 +170,19 @@ public class MaestrosGUI extends javax.swing.JFrame
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 268, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(removerAlumno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(agregarAlumno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(removerAlumno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(agregarAlumno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(modificarAlumno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -187,11 +201,14 @@ public class MaestrosGUI extends javax.swing.JFrame
                         .addGap(11, 11, 11))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(agregarAlumno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(removerAlumno)))
+                        .addComponent(removerAlumno)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(modificarAlumno)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -204,7 +221,7 @@ public class MaestrosGUI extends javax.swing.JFrame
     private void agregarAlumnoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_agregarAlumnoActionPerformed
     {//GEN-HEADEREND:event_agregarAlumnoActionPerformed
 
-        AgregarAlumno.iniciarAgregarAlumno(maestros, indexCurrentMaestro, this);
+        AgregarAlumno.iniciarAgregarAlumno(maestros, indexCurrentMaestro, this, new Alumno());
 
     }//GEN-LAST:event_agregarAlumnoActionPerformed
 
@@ -216,7 +233,7 @@ public class MaestrosGUI extends javax.swing.JFrame
     private void removerAlumnoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_removerAlumnoActionPerformed
     {//GEN-HEADEREND:event_removerAlumnoActionPerformed
 
-        if (jTable1.getSelectedRow() >= 0 && jTable1.getSelectedRow() < maestros.get(indexCurrentMaestro).obtenerEntidades().size())
+        if (validarPosicionSeleccionado())
         {
             maestros.get(indexCurrentMaestro).obtenerEntidades().remove(jTable1.getSelectedRow());
             dataUpdater.updateTableAlumnos(jTable1, maestros, indexCurrentMaestro);
@@ -229,6 +246,19 @@ public class MaestrosGUI extends javax.swing.JFrame
     {//GEN-HEADEREND:event_formWindowClosing
         reiniciarLogin();
     }//GEN-LAST:event_formWindowClosing
+
+    private void modificarAlumnoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_modificarAlumnoActionPerformed
+    {//GEN-HEADEREND:event_modificarAlumnoActionPerformed
+
+        if (validarPosicionSeleccionado())
+            AgregarAlumno.iniciarAgregarAlumno(maestros, indexCurrentMaestro, this, (Alumno) maestros.get(indexCurrentMaestro).obtenerEntidades().get(jTable1.getSelectedRow()));
+
+    }//GEN-LAST:event_modificarAlumnoActionPerformed
+
+    private boolean validarPosicionSeleccionado()
+    {
+        return jTable1.getSelectedRow() >= 0 && jTable1.getSelectedRow() < maestros.get(indexCurrentMaestro).obtenerEntidades().size();
+    }
 
     public JTable getjTable1()
     {
@@ -251,7 +281,7 @@ public class MaestrosGUI extends javax.swing.JFrame
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try
         {
@@ -296,6 +326,7 @@ public class MaestrosGUI extends javax.swing.JFrame
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton modificarAlumno;
     private javax.swing.JButton removerAlumno;
     // End of variables declaration//GEN-END:variables
 

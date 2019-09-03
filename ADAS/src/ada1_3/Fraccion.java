@@ -2,7 +2,7 @@ package ada1_3;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public final class Fraccion
 {
@@ -23,7 +23,7 @@ public final class Fraccion
     public Fraccion(Fraccion fraccion)
     {
         setNumerador(fraccion.getNumerador());
-        setDenomimador(fraccion.getDemonnimador());
+        setDenomimador(fraccion.getDenominador());
     }
 
     public Fraccion(int numerador, int denominador)
@@ -46,21 +46,51 @@ public final class Fraccion
         return m;
     }
 
-    public Fraccion simplifica()
-    {
-        int mcd = mcd(getNumerador(), getDemonnimador());
-
-        return new Fraccion(getNumerador() / mcd, getDemonnimador() / mcd);
-    }
-
     public Fraccion suma(Fraccion otraFraccion)
     {
-        return new Fraccion(getNumerador() * otraFraccion.getDemonnimador() + getDemonnimador() * otraFraccion.getNumerador(), getDemonnimador() * otraFraccion.getDemonnimador());
+        return new Fraccion(getNumerador() * otraFraccion.getDenominador() + getDenominador() * otraFraccion.getNumerador(), getDenominador() * otraFraccion.getDenominador());
     }
 
     public Fraccion suma(int numero)
     {
-        return new Fraccion(getNumerador() + numero * getDemonnimador(), getDemonnimador());
+        return new Fraccion(getNumerador() + numero * getDenominador(), getDenominador());
+    }
+
+    public Fraccion resta(Fraccion otraFraccion)
+    {
+        return new Fraccion(getNumerador() * otraFraccion.getDenominador() - getDenominador() * otraFraccion.getNumerador(), getDenominador() * otraFraccion.getDenominador());
+    }
+
+    public Fraccion resta(int numero)
+    {
+        return new Fraccion(getNumerador() - numero * getDenominador(), getDenominador());
+    }
+
+    public Fraccion multiplica(Fraccion otraFraccion)
+    {
+        return new Fraccion(getNumerador() * otraFraccion.getNumerador(), getDenominador() * otraFraccion.getDenominador());
+    }
+
+    public Fraccion multiplica(int numero)
+    {
+        return new Fraccion(getNumerador() * numero, getDenominador() * numero);
+    }
+
+    public Fraccion divide(Fraccion otraFraccion)
+    {
+        return new Fraccion(getNumerador() * otraFraccion.getDenominador(), getDenominador() * otraFraccion.getNumerador());
+    }
+
+    public Fraccion divide(int numero)
+    {
+        return new Fraccion(getNumerador(), getDenominador() * numero);
+    }
+
+    public Fraccion simplifica()
+    {
+        int mcd = mcd(getNumerador(), getDenominador());
+
+        return new Fraccion(getNumerador() / mcd, getDenominador() / mcd);
     }
 
     public int getNumerador()
@@ -73,20 +103,26 @@ public final class Fraccion
         this.numerador = numerador;
     }
 
-    public int getDemonnimador()
+    public int getDenominador()
     {
         return denominador;
     }
 
-    public void setDenomimador(int demonnimador)
+    public void setDenomimador(int denominador)
     {
-        this.denominador = demonnimador;
+        if (denominador == 0)
+        {
+            System.err.println("Error, el denominador no puede ser 0");
+            System.exit(1);
+        }
+
+        this.denominador = denominador;
     }
 
     @Override
     public String toString()
     {
-        return String.format("%d / %d", getNumerador(), getDemonnimador());
+        return String.format("%d / %d", getNumerador(), getDenominador());
     }
 
 }

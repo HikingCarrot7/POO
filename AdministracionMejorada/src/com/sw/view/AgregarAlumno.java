@@ -7,17 +7,19 @@ import java.util.ArrayList;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class AgregarAlumno extends javax.swing.JFrame
 {
 
     private final MaestrosGUI maestrosGui;
     private final DataUpdater dataUpdater;
-    private final int indexCurrentMaestro;
+    private final Alumno alumno;
     private final ArrayList<Maestro> maestros;
+    private final int indexCurrentMaestro;
+    private boolean alumnoNuevo;
 
-    public AgregarAlumno(ArrayList<Maestro> maestros, int indexCurrentMaestro, MaestrosGUI maestrosGui)
+    public AgregarAlumno(ArrayList<Maestro> maestros, int indexCurrentMaestro, MaestrosGUI maestrosGui, Alumno alumno)
     {
         initComponents();
 
@@ -25,6 +27,7 @@ public class AgregarAlumno extends javax.swing.JFrame
 
         this.maestrosGui = maestrosGui;
         this.maestros = maestros;
+        this.alumno = alumno;
         this.indexCurrentMaestro = indexCurrentMaestro;
 
     }
@@ -218,7 +221,14 @@ public class AgregarAlumno extends javax.swing.JFrame
     private void registrarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_registrarActionPerformed
     {//GEN-HEADEREND:event_registrarActionPerformed
 
-        maestros.get(indexCurrentMaestro).anadirEntidad(new Alumno(matricula.getText(), nombre.getText(), Integer.parseInt(edad.getText()), licenciatura.getText(), Double.parseDouble(calificacion.getText())));
+        alumno.setMatricula(matricula.getText());
+        alumno.setNombre(nombre.getText());
+        alumno.setEdad(Integer.parseInt(edad.getText()));
+        alumno.setLicenciatura(licenciatura.getText());
+        alumno.setCalificacion(Double.parseDouble(calificacion.getText()));
+
+        if (alumnoNuevo)
+            maestros.get(indexCurrentMaestro).anadirEntidad(alumno);
 
         dataUpdater.updateTableAlumnos(maestrosGui.getjTable1(), maestros, indexCurrentMaestro);
 
@@ -276,12 +286,30 @@ public class AgregarAlumno extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_calificacionFocusLost
 
-    public static void iniciarAgregarAlumno(ArrayList<Maestro> maestros, int indexCurrentMaestro, MaestrosGUI maestrosGui)
+    private void actualizarCamposRelleno()
+    {
+        alumnoNuevo = true;
+
+        if (alumno.getEdad() != 0)
+        {
+            matricula.setText(alumno.getMatricula());
+            nombre.setText(alumno.getNombre());
+            edad.setText(alumno.getEdad() + "");
+            licenciatura.setText(alumno.getLicenciatura());
+            calificacion.setText(alumno.getCalificacion() + "");
+
+            alumnoNuevo = false;
+
+        }
+
+    }
+
+    public static void iniciarAgregarAlumno(ArrayList<Maestro> maestros, int indexCurrentMaestro, MaestrosGUI maestrosGui, Alumno alumno)
     {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try
         {
@@ -304,10 +332,11 @@ public class AgregarAlumno extends javax.swing.JFrame
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() ->
         {
-            AgregarAlumno agregarAlumno = new AgregarAlumno(maestros, indexCurrentMaestro, maestrosGui);
+            AgregarAlumno agregarAlumno = new AgregarAlumno(maestros, indexCurrentMaestro, maestrosGui, alumno);
 
             agregarAlumno.setVisible(true);
             agregarAlumno.setLocationRelativeTo(null);
+            agregarAlumno.actualizarCamposRelleno();
 
         });
     }

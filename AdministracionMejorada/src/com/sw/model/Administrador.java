@@ -5,10 +5,12 @@ import java.util.ArrayList;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class Administrador extends Autoridad implements Serializable
 {
+
+    private static final long serialVersionUID = -2728562641800399588L;
 
     private final ArrayList<Maestro> misMaestros;
 

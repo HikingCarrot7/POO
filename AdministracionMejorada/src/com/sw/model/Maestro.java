@@ -5,10 +5,12 @@ import java.util.ArrayList;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class Maestro extends Autoridad implements Serializable
 {
+
+    private static final long serialVersionUID = 536444884480044090L;
 
     private String especialidad;
     private final ArrayList<Alumno> misAlumnos;

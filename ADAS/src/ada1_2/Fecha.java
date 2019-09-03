@@ -43,14 +43,27 @@ public class Fecha
     }
 
     /**
-     * Regresa la representación String de esta fecha.
+     * Regresa la representación String de esta fecha en formato numérico.
      *
-     * @return La representación String de esta fecha.
+     * @return La representación String de esta fecha en formato numérico.
      *
      * @since 1.0
      *
      */
-    public String mostrarFecha()
+    public String mostrarFechaNumero()
+    {
+        return String.format("%d/%d/%d", dia, mes, anio);
+    }
+
+    /**
+     * Regresa la representación String de esta fecha en formato texto.
+     *
+     * @return La representación String de esta fecha en formato texto.
+     *
+     * @since 1.0
+     *
+     */
+    public String mostrarFechaTexto()
     {
         return String.format("%d de %s de %d", dia, meses[mes - 1].toLowerCase(), anio);
     }

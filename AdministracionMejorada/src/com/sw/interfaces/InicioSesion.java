@@ -2,7 +2,7 @@ package com.sw.interfaces;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public interface InicioSesion
 {

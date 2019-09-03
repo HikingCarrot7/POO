@@ -6,10 +6,12 @@ import java.util.ArrayList;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public abstract class Autoridad extends Persona implements InicioSesion, Serializable
 {
+
+    private static final long serialVersionUID = -2987264484371790143L;
 
     private final String usuario, password;
     private double sueldo;

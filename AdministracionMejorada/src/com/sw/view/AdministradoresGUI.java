@@ -8,28 +8,28 @@ import javax.swing.JTable;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class AdministradoresGUI extends javax.swing.JFrame
 {
-    
+
     private final DataManager dataManager;
     private final DataUpdater dataUpdater;
     private final Login login;
     private final ArrayList<Maestro> maestros;
-    
+
     public AdministradoresGUI(ArrayList<Maestro> maestros, DataManager dataManager, DataUpdater dataUpdater, Login login)
     {
         initComponents();
-        
+
         this.dataManager = dataManager;
         this.dataUpdater = dataUpdater;
         this.maestros = maestros;
         this.login = login;
-        
+
         if (maestros.size() > 0)
             dataUpdater.updateTableMaestros(jTable1, maestros);
-        
+
     }
 
     /**
@@ -200,51 +200,51 @@ public class AdministradoresGUI extends javax.swing.JFrame
 
     private void agregarMaestroActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_agregarMaestroActionPerformed
     {//GEN-HEADEREND:event_agregarMaestroActionPerformed
-        
+
         AgregarMaestro.iniciarAgregarMaestro(maestros, dataUpdater, this);
-        
+
     }//GEN-LAST:event_agregarMaestroActionPerformed
-    
+
     private void removerActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_removerActionPerformed
     {//GEN-HEADEREND:event_removerActionPerformed
-        
+
         if (jTable1.getSelectedRow() >= 0 && jTable1.getSelectedRow() < maestros.size())
         {
             maestros.remove(jTable1.getSelectedRow());
             dataUpdater.updateTableMaestros(jTable1, maestros);
-            
+
         }
-        
+
     }//GEN-LAST:event_removerActionPerformed
-    
+
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
     {//GEN-HEADEREND:event_formWindowClosing
         actualizarMaestros();
-        
+
         login.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
-    
+
     private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cerrarSesionActionPerformed
     {//GEN-HEADEREND:event_cerrarSesionActionPerformed
         actualizarMaestros();
-        
+
         dispose();
-        
+
         login.getUsuario().setText("");
         login.getContrasena().setText("");
         login.setVisible(true);
     }//GEN-LAST:event_cerrarSesionActionPerformed
-    
+
     public JTable getjTable1()
     {
         return jTable1;
     }
-    
+
     private void actualizarMaestros()
     {
         dataManager.writeMaestros(maestros);
     }
-    
+
     public static void IniciarAdministradoresGui(ArrayList<Maestro> maestros, DataManager dataManager, DataUpdater dataUpdater, Login login)
     {
         /* Set the Nimbus look and feel */
@@ -280,10 +280,10 @@ public class AdministradoresGUI extends javax.swing.JFrame
         java.awt.EventQueue.invokeLater(() ->
         {
             AdministradoresGUI administradoresgui = new AdministradoresGUI(maestros, dataManager, dataUpdater, login);
-            
+
             administradoresgui.setVisible(true);
             administradoresgui.setLocationRelativeTo(null);
-            
+
         });
     }
 
