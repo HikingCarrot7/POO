@@ -15,7 +15,7 @@ public class PruebaBicicleta
 
     };
 
-    private void registrarBicicleta()
+    public void registrarBicicleta()
     {
 
         for (Bicicleta bicicleta : bicicletas)

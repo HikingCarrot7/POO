@@ -26,7 +26,7 @@ public class PruebaCine
         "Shrek", "Shrek 2", "Shrek 3", "Shrek 4", "Shrek 5"
     };
 
-    public PruebaCine()
+    private PruebaCine()
     {
         rand = new Random();
         cine = new Cine(peliculas[rand.nextInt(peliculas.length)], rand.nextDouble() * 70 + 30);
