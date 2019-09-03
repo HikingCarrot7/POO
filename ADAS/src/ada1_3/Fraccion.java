@@ -31,6 +31,7 @@ public final class Fraccion
     {
         setDenomimador(denominador);
         setNumerador(numerador);
+
     }
 
     public int mcd(int m, int n)
