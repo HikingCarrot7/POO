@@ -92,7 +92,7 @@ public final class Fraccion
     {
         int mcd = 1;
 
-        if (getDenominador() != 0 && getNumerador() != 0)
+        if (getNumerador() != 0 && getDenominador() != 0)
             mcd = mcd(getNumerador(), getDenominador());
 
         return new Fraccion(getNumerador() / mcd, getDenominador() / mcd);
