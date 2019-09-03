@@ -9,9 +9,9 @@ public class Bicicleta
 
     private String identificacion;
     private String nombre;
-    private int telefono;
+    private String telefono;
 
-    public Bicicleta(String identificacion, String nombre, int telefono)
+    public Bicicleta(String identificacion, String nombre, String telefono)
     {
         this.identificacion = identificacion;
         this.nombre = nombre;
@@ -38,19 +38,19 @@ public class Bicicleta
         this.nombre = nombre;
     }
 
-    public int getTelefono()
+    public String getTelefono()
     {
         return telefono;
     }
 
-    public void setTelefono(int telefono)
+    public void setTelefono(String telefono)
     {
         this.telefono = telefono;
     }
 
     public String mostrarDatos()
     {
-        return String.format("Nombre del propietario: %s\nIdentificación: %s Teléfono: %d", getNombre(), getIdentificacion(), getTelefono());
+        return String.format("Nombre del propietario: %s\nIdentificación: %s\nTeléfono: %s\n", getNombre(), getIdentificacion(), getTelefono());
     }
 
 }
