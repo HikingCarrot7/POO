@@ -4,7 +4,7 @@ import com.sw.view.Login;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class Inicio
 {

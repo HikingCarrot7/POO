@@ -8,7 +8,7 @@ import javax.swing.JTable;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class AdministradoresGUI extends javax.swing.JFrame
 {

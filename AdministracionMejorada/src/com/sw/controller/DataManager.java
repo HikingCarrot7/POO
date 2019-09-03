@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public final class DataManager
 {
@@ -47,6 +47,7 @@ public final class DataManager
             try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file)))
             {
                 maestros = (ArrayList<Maestro>) in.readObject();
+
             }
 
         } catch (IOException | ClassNotFoundException ex)
@@ -64,12 +65,14 @@ public final class DataManager
             try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file)))
             {
                 out.writeObject(maestros);
+
             }
 
         } catch (IOException ex)
         {
             System.out.println(ex.getMessage());
         }
+
     }
 
     public ArrayList<Maestro> getMaestros()

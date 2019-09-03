@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class AgregarMaestro extends javax.swing.JFrame
 {

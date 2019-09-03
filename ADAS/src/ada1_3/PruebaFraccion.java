@@ -2,7 +2,7 @@ package ada1_3;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class PruebaFraccion
 {

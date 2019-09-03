@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Mohammed
  */
 public class DataUpdater
 {
