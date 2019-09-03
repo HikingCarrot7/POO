@@ -15,7 +15,7 @@ public class PruebaBicicleta
 
     };
 
-    private void RegistrarBicicleta()
+    private void registrarBicicleta()
     {
 
         for (Bicicleta bicicleta : bicicletas)
@@ -25,7 +25,7 @@ public class PruebaBicicleta
 
     public static void main(String[] args)
     {
-        new PruebaBicicleta().RegistrarBicicleta();
+        new PruebaBicicleta().registrarBicicleta();
     }
 
 }
