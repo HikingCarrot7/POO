@@ -9,10 +9,11 @@ import java.util.Calendar;
 public final class Empleado
 {
 
-    private String clave, nombre, apellidoPaterno, apellidoMaterno, departamento, horarioTrabajo;
+    private String clave, nombre, apellidoPaterno, apellidoMaterno, departamento;
+    private Horario horarioTrabajo;
     private Calendar fechaNacimiento, fechaIngreso;
 
-    public Empleado(String clave, String nombre, String apellidoPaterno, String apellidoMaterno, String departamento, String horarioTrabajo, Calendar fechaNacimiento, Calendar fechaIngreso)
+    public Empleado(String clave, String nombre, String apellidoPaterno, String apellidoMaterno, String departamento, Horario horarioTrabajo, Calendar fechaNacimiento, Calendar fechaIngreso)
     {
         this.clave = clave;
         this.nombre = nombre;
@@ -74,12 +75,12 @@ public final class Empleado
         this.departamento = departamento;
     }
 
-    public String getHorarioTrabajo()
+    public Horario getHorarioTrabajo()
     {
         return horarioTrabajo;
     }
 
-    public void setHorarioTrabajo(String horarioTrabajo)
+    public void setHorarioTrabajo(Horario horarioTrabajo)
     {
         this.horarioTrabajo = horarioTrabajo;
     }

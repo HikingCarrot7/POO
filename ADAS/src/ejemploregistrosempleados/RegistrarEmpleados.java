@@ -47,7 +47,9 @@ public class RegistrarEmpleados
 
             String departamento = pedirDepartamento();
 
-            misEmpleados.add(new Empleado(clave, nombre, apellidoPaterno, apellidoMaterno, departamento, "", fechaNacimiento, fechaIngreso));
+            Horario horarioEmpleado = pedirHorario();
+
+            misEmpleados.add(new Empleado(clave, nombre, apellidoPaterno, apellidoMaterno, departamento, horarioEmpleado, fechaNacimiento, fechaIngreso));
 
             break;
 
@@ -127,6 +129,83 @@ public class RegistrarEmpleados
         } while (!valido);
 
         return departamento;
+    }
+
+    public Horario pedirHorario()
+    {
+        in.nextLine();
+
+        Horario horario = new Horario();
+        String siguiente;
+        boolean valido;
+        int horaInicio, minutosInicio, horaSalida, minutosSalida;
+
+        System.out.println("\n---------Horario de lunes a viernes---------");
+
+        do
+        {
+            valido = true;
+
+            try
+            {
+                System.out.println("\nHora de inicio: (En formato 24 horas)");
+                horaInicio = in.nextInt();
+
+                if (horaInicio < 0 || horaInicio > 23)
+                    throw new InputMismatchException();
+
+                System.out.println("\nMinutos de inicio: ");
+                minutosInicio = in.nextInt();
+
+                if (minutosInicio < 0 || minutosInicio > 59)
+                    throw new InputMismatchException();
+
+                System.out.println("\nHora de salida: (En formato 24 horas)");
+                horaSalida = in.nextInt();
+
+                if (horaSalida < 0 || horaSalida > 23)
+                    throw new InputMismatchException();
+
+                System.out.println("\nMinutos de salida: ");
+                minutosSalida = in.nextInt();
+
+                if (minutosSalida < 0 || minutosSalida > 59)
+                    throw new InputMismatchException();
+
+                in.nextLine();
+
+                System.out.println("\n¿Desea guardar otro horario? \"No\" para cancelar");
+                String respuesta = in.nextLine();
+
+                if (respuesta.trim().toLowerCase().equals("no"))
+                {
+                    horario.setHorarioLunesAViernes(horaInicio, minutosInicio, horaSalida, minutosSalida);
+                    return horario;
+
+                } else
+                {
+                    do
+                    {
+                        System.out.println("\n¿Cuál horario desea guardar? (S - sábado, D - domingo)");
+                        siguiente = in.nextLine();
+
+                    } while (!validarEntrada(siguiente, "S|D|s|d"));
+
+                    valido = true;
+
+                }
+
+            } catch (InputMismatchException e)
+            {
+                System.out.println("\nDatos incorrectos, insértelos de nuevo");
+
+                valido = false;
+            }
+
+        } while (!valido);
+
+        return horario;
+
     }
 
     public boolean isFechaValida(GregorianCalendar fecha)
