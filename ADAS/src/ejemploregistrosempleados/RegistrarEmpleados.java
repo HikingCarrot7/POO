@@ -136,7 +136,6 @@ public class RegistrarEmpleados
             departamento = in.nextLine();
 
             valido = validarEntrada(departamento, "CO|AL|FI|RH");
-
             if (!valido)
                 System.out.println("\nEntrada no válida, inténtelo de nuevo.");
 
