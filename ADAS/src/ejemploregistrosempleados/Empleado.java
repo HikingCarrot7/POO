@@ -108,13 +108,16 @@ public final class Empleado
     @Override
     public String toString()
     {
-        return String.format("Clave: %s\nNombre: %s\nDepartamento: %s\nHorario de trabajo: %s\nFecha de nacimiento: %s\nFecha de ingreso: %s\n\n",
+        String lineSeparator = System.getProperty("line.separator");
+
+        return String.format("%7$sClave: %s%7$sNombre: %s%7$sDepartamento: %s%7$sHorario de trabajo: %s%7$sFecha de nacimiento: %s%7$sFecha de ingreso: %s%7$s%7$s",
                 getClave(),
                 String.format("%s %s %s", getNombre(), getApellidoPaterno(), getApellidoMaterno()),
                 getDepartamento(),
                 getHorarioTrabajo(),
                 String.format("%1$tA, %1$tB %1$td, %1$tY", getFechaNacimiento()),
-                String.format("%1$tA, %1$tB %1$td, %1$tY", getFechaIngreso()));
+                String.format("%1$tA, %1$tB %1$td, %1$tY", getFechaIngreso()),
+                lineSeparator);
     }
 
 }

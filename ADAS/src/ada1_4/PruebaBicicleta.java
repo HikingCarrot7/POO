@@ -17,7 +17,6 @@ public class PruebaBicicleta
 
     public void registrarBicicleta()
     {
-
         for (Bicicleta bicicleta : bicicletas)
             System.out.println(bicicleta.mostrarDatos());
 

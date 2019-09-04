@@ -1,7 +1,11 @@
 package ejemploregistrosempleados;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Formatter;
 import java.util.GregorianCalendar;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -14,18 +18,23 @@ public class RegistrarEmpleados
 {
 
     private Scanner in;
+    private File file;
     private ArrayList<Empleado> misEmpleados;
 
-    public RegistrarEmpleados()
+    public RegistrarEmpleados() throws IOException
     {
         in = new Scanner(System.in);
         misEmpleados = new ArrayList<>();
+        file = new File("res/Registros.txt");
+
+        if (!file.exists())
+            file.createNewFile();
 
     }
 
-    public void registrarEmpleados()
+    public void registrarEmpleados() throws IOException
     {
-        String terminar = "1";
+        String terminar;
 
         do
         {
@@ -49,11 +58,16 @@ public class RegistrarEmpleados
 
             Horario horarioEmpleado = pedirHorario();
 
-            misEmpleados.add(new Empleado(clave, nombre, apellidoPaterno, apellidoMaterno, departamento, horarioEmpleado, fechaNacimiento, fechaIngreso));
+            Empleado empleado = new Empleado(clave, nombre, apellidoPaterno, apellidoMaterno, departamento, horarioEmpleado, fechaNacimiento, fechaIngreso);
 
-            break;
+            misEmpleados.add(empleado);
 
-        } while (!terminar.equals("0"));
+            writeEmpleados(empleado);
+
+            System.out.println("\n¿Desea agragar a más empleados? (Sí o No)");
+            terminar = in.nextLine();
+
+        } while (!terminar.trim().toLowerCase().equals("no"));
 
         misEmpleados.stream().forEach(System.out::println);
 
@@ -133,8 +147,6 @@ public class RegistrarEmpleados
 
     public Horario pedirHorario()
     {
-        in.nextLine();
-
         Horario horario = new Horario();
         String siguiente;
         boolean valido;
@@ -261,9 +273,24 @@ public class RegistrarEmpleados
         return text.matches(regex);
     }
 
+    private void writeEmpleados(Empleado empleado) throws IOException
+    {
+        try (Formatter out = new Formatter(new FileWriter(file, true)))
+        {
+            out.format("%s", empleado);
+        }
+    }
+
     public static void main(String[] args)
     {
-        new RegistrarEmpleados().registrarEmpleados();
+        try
+        {
+            new RegistrarEmpleados().registrarEmpleados();
+
+        } catch (IOException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
     }
 
 }
