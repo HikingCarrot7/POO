@@ -19,71 +19,71 @@ public class VentaCafe
     public void venderCafe()
     {
 
-        String kilos;
-        boolean kilosValidos;
+        String bolsas;
+        boolean bolsasValidas;
 
         do
         {
 
-            kilosValidos = false;
+            bolsasValidas = false;
 
             System.out.println("Inserte las bolsas de café que desea comprar: ");
-            kilos = in.nextLine();
+            bolsas = in.nextLine();
 
-            if (validarEntrada(kilos, "[0-9]+"))
-                if (Integer.parseInt(kilos) % 2 == 0)
-                    kilosValidos = true;
+            if (validarEntrada(bolsas, "[0-9]+"))
+                if (Integer.parseInt(bolsas) % 2 == 0)
+                    bolsasValidas = true;
 
                 else
-                    System.out.println("\nLos kilos deben ser una cantidad par\n");
+                    System.out.println("\nLas bolsas deben ser una cantidad par\n");
             else
                 System.out.println("\nCantidad inválida\n");
 
-        } while (!kilosValidos);
+        } while (!bolsasValidas);
 
-        menorNumeroCajas(Integer.parseInt(kilos));
-        menorNumeroEspaciosDesperdiciados(Integer.parseInt(kilos));
+        menorNumeroCajas(Integer.parseInt(bolsas));
+        menorNumeroEspaciosDesperdiciados(Integer.parseInt(bolsas));
 
     }
 
-    private void menorNumeroCajas(int kilos)
+    private void menorNumeroCajas(int bolsas)
     {
-        int nCajasGrandes = kilos % 20 == 0 ? kilos / 20 : kilos / 20 + 1;
+        int nCajasGrandes = bolsas % 20 == 0 ? bolsas / 20 : bolsas / 20 + 1;
 
         System.out.println("---------------Menor número de cajas---------------");
-        System.out.println(String.format("\n\tNúmero de bolsas ordenadas: %d - $%d", kilos, kilos * 250));
+        System.out.println(String.format("\n\tNúmero de bolsas ordenadas: %d - $%d", bolsas, bolsas * 250));
         System.out.println(String.format("\nCajas grandes necesarias: %-10dEspacios remanentes: %d\n\n\t\tSu costo total es: $%d\n",
                 nCajasGrandes,
-                20 * nCajasGrandes - kilos,
-                kilos * 250 + nCajasGrandes * 10));
+                20 * nCajasGrandes - bolsas,
+                bolsas * 250 + nCajasGrandes * 10));
 
     }
 
-    private void menorNumeroEspaciosDesperdiciados(int kilos)
+    private void menorNumeroEspaciosDesperdiciados(int bolsas)
     {
-        int temp = kilos;
+        int tempBolsas = bolsas;
         int cajasGrandes;
         int cajasMedianas;
         int cajasPequenas = 0;
 
-        cajasGrandes = (temp - temp % 20) / 20;
-        temp -= cajasGrandes * 20;
+        cajasGrandes = (tempBolsas - tempBolsas % 20) / 20;
+        tempBolsas -= cajasGrandes * 20;
 
-        cajasMedianas = (temp - temp % 10) / 10;
-        temp -= cajasMedianas * 10;
+        cajasMedianas = (tempBolsas - tempBolsas % 10) / 10;
+        tempBolsas -= cajasMedianas * 10;
 
-        if (temp != 0)
-            cajasPequenas = (float) temp / 5 > 1 ? 2 : 1;
+        if (tempBolsas != 0)
+            cajasPequenas = (float) tempBolsas / 5 > 1 ? 2 : 1;
 
         System.out.println("------Menor número de espacios desperdiciados------");
-        System.out.println(String.format("\n\tNúmero de cajas ordenadas: %d - $%d", kilos, kilos * 250));
+        System.out.println(String.format("\n\tNúmero de cajas ordenadas: %d - $%d", bolsas, bolsas * 250));
         System.out.println(String.format("\n%-25s %d\n%-25s %d\n%-25s %d\n%-25s %d\n\n\t\tSu costo total es: $%d\n",
                 "Cajas grandes: ",
                 cajasGrandes,
                 "Cajas medianas: ", cajasMedianas,
                 "Cajas pequeñas: ", cajasPequenas,
                 "Espacios remanentes: ",
-                cajasPequenas * 5 - temp, kilos * 250 + cajasGrandes * 10 + cajasMedianas * 5 + cajasPequenas * 3));
+                cajasPequenas * 5 - tempBolsas, bolsas * 250 + cajasGrandes * 10 + cajasMedianas * 5 + cajasPequenas * 3));
     }
 
     private boolean validarEntrada(String text, String regex)
