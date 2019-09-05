@@ -19,7 +19,6 @@ public class Horario
     public void setHorarioLunesAViernes(int horasInicio, int minutosInicio, int horasTermina, int minutosTermina)
     {
         this.intervaloLV = new IntervaloTiempo(horasInicio, minutosInicio, horasTermina, minutosTermina);
-
     }
 
     public void setHorarioSabado(int horasInicio, int minutosInicio, int horasTermina, int minutosTermina)
