@@ -1,5 +1,9 @@
 package com.sw.view;
 
+import com.sw.controller.GestorCalculos;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Mohammed
@@ -7,12 +11,14 @@ package com.sw.view;
 public class Interfaz extends javax.swing.JFrame
 {
 
-    /**
-     * Creates new form Interfaz
-     */
+    private GestorCalculos gestorCalculos;
+
     public Interfaz()
     {
         initComponents();
+
+        gestorCalculos = new GestorCalculos();
+
     }
 
     /**
@@ -23,26 +29,260 @@ public class Interfaz extends javax.swing.JFrame
     private void initComponents()
     {
 
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        entradaOpcion = new javax.swing.JComboBox<String>();
+        jLabel3 = new javax.swing.JLabel();
+        salidaOpcion = new javax.swing.JComboBox<String>();
+        entrada = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        salida = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        decimalDef = new javax.swing.JTextField();
+        binarioDef = new javax.swing.JTextField();
+        octalDef = new javax.swing.JTextField();
+        hexadecimalDef = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        calcular = new javax.swing.JButton();
+        advertenciaEntrada = new javax.swing.JLabel();
+
+        jLabel4.setText("jLabel4");
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Conversor");
+
+        jLabel1.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
+        jLabel1.setText("Conversor");
+
+        jLabel2.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        jLabel2.setText("De:");
+
+        entradaOpcion.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        entradaOpcion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Decimal", "Binario", "Octal", "Hexadecimal" }));
+        entradaOpcion.setToolTipText("Seleccione una opción");
+
+        jLabel3.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        jLabel3.setText("A:");
+
+        salidaOpcion.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        salidaOpcion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Decimal", "Binario", "Octal", "Hexadecimal" }));
+        salidaOpcion.setToolTipText("Seleccione una opción");
+
+        entrada.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        entrada.addFocusListener(new java.awt.event.FocusAdapter()
+        {
+            public void focusGained(java.awt.event.FocusEvent evt)
+            {
+                entradaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt)
+            {
+                entradaFocusLost(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        jLabel5.setText("Valor:");
+
+        salida.setEditable(false);
+        salida.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+
+        jLabel6.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        jLabel6.setText("Valor:");
+
+        decimalDef.setEditable(false);
+        decimalDef.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        decimalDef.setFocusable(false);
+
+        binarioDef.setEditable(false);
+        binarioDef.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        binarioDef.setFocusable(false);
+
+        octalDef.setEditable(false);
+        octalDef.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        octalDef.setFocusable(false);
+
+        hexadecimalDef.setEditable(false);
+        hexadecimalDef.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        hexadecimalDef.setFocusable(false);
+
+        jLabel7.setText("Decimal");
+
+        jLabel8.setText("Binario");
+
+        jLabel9.setText("Octal");
+
+        jLabel10.setText("Hexadecimal");
+
+        calcular.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        calcular.setText("Calcular");
+        calcular.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                calcularActionPerformed(evt);
+            }
+        });
+
+        advertenciaEntrada.setFont(new java.awt.Font("Consolas", 0, 10)); // NOI18N
+        advertenciaEntrada.setForeground(new java.awt.Color(255, 0, 0));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(decimalDef, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel7)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(binarioDef, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel8)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(octalDef, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel9)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hexadecimalDef, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel10)))
+                        .addContainerGap(17, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jLabel1)
+                        .addGap(110, 110, 110))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(entrada)
+                                    .addComponent(entradaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(salidaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(salida))
+                                .addGap(26, 26, 26))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(advertenciaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(160, 160, 160)
+                .addComponent(calcular)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(entradaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salidaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(advertenciaEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(entrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(calcular)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(decimalDef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(binarioDef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(octalDef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hexadecimalDef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addGap(13, 13, 13))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[])
+    private void entradaFocusGained(java.awt.event.FocusEvent evt)//GEN-FIRST:event_entradaFocusGained
+    {//GEN-HEADEREND:event_entradaFocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_entradaFocusGained
+
+    private void entradaFocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_entradaFocusLost
+    {//GEN-HEADEREND:event_entradaFocusLost
+
+        switch ((String) entradaOpcion.getSelectedItem())
+        {
+            case "Decimal":
+
+                validarEntrada(entrada.getText(), "^[0-9]+$");
+
+                break;
+
+            case "Binario":
+
+                validarEntrada(entrada.getText(), "^[0-1]+$");
+
+                break;
+
+            case "Octal":
+
+                validarEntrada(entrada.getText(), "^[0-8]+$");
+
+                break;
+
+            case "Hexadecimal":
+
+                validarEntrada(entrada.getText(), "^[0-9A-F]+$");
+
+                break;
+
+        }
+
+    }//GEN-LAST:event_entradaFocusLost
+
+    private void calcularActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_calcularActionPerformed
+    {//GEN-HEADEREND:event_calcularActionPerformed
+        gestorCalculos.mostrarResultados(this);
+    }//GEN-LAST:event_calcularActionPerformed
+
+    private void validarEntrada(String text, String regex)
+    {
+        advertenciaEntrada.setText(!text.matches(regex) ? "Dato inválido!" : "");
+    }
+
+    public static void inicioInterfaz()
     {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -73,15 +313,76 @@ public class Interfaz extends javax.swing.JFrame
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
+        java.awt.EventQueue.invokeLater(() ->
         {
-            public void run()
-            {
-                new Interfaz().setVisible(true);
-            }
+            Interfaz interfaz = new Interfaz();
+
+            interfaz.setVisible(true);
+            interfaz.setLocationRelativeTo(null);
+
         });
     }
 
+    public JTextField getBinarioDef()
+    {
+        return binarioDef;
+    }
+
+    public JTextField getDecimalDef()
+    {
+        return decimalDef;
+    }
+
+    public JTextField getEntrada()
+    {
+        return entrada;
+    }
+
+    public JComboBox<String> getEntradaOpcion()
+    {
+        return entradaOpcion;
+    }
+
+    public JTextField getHexadecimalDef()
+    {
+        return hexadecimalDef;
+    }
+
+    public JTextField getOctalDef()
+    {
+        return octalDef;
+    }
+
+    public JTextField getSalida()
+    {
+        return salida;
+    }
+
+    public JComboBox<String> getSalidaOpcion()
+    {
+        return salidaOpcion;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel advertenciaEntrada;
+    private javax.swing.JTextField binarioDef;
+    private javax.swing.JButton calcular;
+    private javax.swing.JTextField decimalDef;
+    private javax.swing.JTextField entrada;
+    private javax.swing.JComboBox<String> entradaOpcion;
+    private javax.swing.JTextField hexadecimalDef;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JTextField octalDef;
+    private javax.swing.JTextField salida;
+    private javax.swing.JComboBox<String> salidaOpcion;
     // End of variables declaration//GEN-END:variables
 }
