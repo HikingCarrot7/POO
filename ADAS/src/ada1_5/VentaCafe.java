@@ -75,7 +75,7 @@ public class VentaCafe
         if (tempBolsas != 0)
             cajasPequenas = (float) tempBolsas / 5 > 1 ? 2 : 1;
 
-        System.out.println("------Menor número de espacios desperdiciados------");
+        System.out.println("------Menor número de espacios desaprovechados------");
         System.out.println(String.format("\n\tNúmero de cajas ordenadas: %d - $%d", bolsas, bolsas * 250));
         System.out.println(String.format("\n%-25s %d\n%-25s %d\n%-25s %d\n%-25s %d\n\n\t\tSu costo total es: $%d\n",
                 "Cajas grandes: ",
