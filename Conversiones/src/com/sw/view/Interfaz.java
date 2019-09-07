@@ -1,6 +1,10 @@
 package com.sw.view;
 
 import com.sw.controller.GestorCalculos;
+import com.sw.model.ConversionBin;
+import com.sw.model.ConversionDec;
+import com.sw.model.ConversionHex;
+import com.sw.model.ConversionOct;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
@@ -12,12 +16,13 @@ public class Interfaz extends javax.swing.JFrame
 {
 
     private GestorCalculos gestorCalculos;
+    private boolean datoValido;
 
-    public Interfaz()
+    public Interfaz(ConversionBin conversionBin, ConversionDec conversionDec, ConversionHex conversionHex, ConversionOct conversionOct)
     {
         initComponents();
 
-        gestorCalculos = new GestorCalculos();
+        gestorCalculos = new GestorCalculos(conversionBin, conversionDec, conversionHex, conversionOct);
 
     }
 
@@ -70,6 +75,7 @@ public class Interfaz extends javax.swing.JFrame
 
         salidaOpcion.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         salidaOpcion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Decimal", "Binario", "Octal", "Hexadecimal" }));
+        salidaOpcion.setSelectedIndex(1);
         salidaOpcion.setToolTipText("Seleccione una opción");
 
         entrada.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
@@ -274,15 +280,29 @@ public class Interfaz extends javax.swing.JFrame
 
     private void calcularActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_calcularActionPerformed
     {//GEN-HEADEREND:event_calcularActionPerformed
-        gestorCalculos.mostrarResultados(this);
+
+        entradaFocusLost(null);
+
+        if (datoValido)
+            gestorCalculos.mostrarResultados(this);
     }//GEN-LAST:event_calcularActionPerformed
 
     private void validarEntrada(String text, String regex)
     {
-        advertenciaEntrada.setText(!text.matches(regex) ? "Dato inválido!" : "");
+        if (!text.matches(regex))
+        {
+            advertenciaEntrada.setText("Dato inválido!");
+            datoValido = false;
+
+        } else
+        {
+            advertenciaEntrada.setText("");
+            datoValido = true;
+        }
+
     }
 
-    public static void inicioInterfaz()
+    public static void inicioInterfaz(ConversionBin conversionBin, ConversionDec conversionDec, ConversionHex conversionHex, ConversionOct conversionOct)
     {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -315,7 +335,7 @@ public class Interfaz extends javax.swing.JFrame
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() ->
         {
-            Interfaz interfaz = new Interfaz();
+            Interfaz interfaz = new Interfaz(conversionBin, conversionDec, conversionHex, conversionOct);
 
             interfaz.setVisible(true);
             interfaz.setLocationRelativeTo(null);
