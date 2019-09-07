@@ -259,6 +259,15 @@ public class Login extends javax.swing.JFrame
 
     }//GEN-LAST:event_usuarioFocusLost
 
+    public void reiniciarLogin()
+    {
+        dataPersistenceManager.writeMaestros(maestros);
+
+        setVisible(true);
+        getUsuario().setText("");
+        getContrasena().setText("");
+    }
+
     public JTextField getContrasena()
     {
         return contrasena;

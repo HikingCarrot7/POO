@@ -1,8 +1,9 @@
 package com.sw.view;
 
-import com.sw.controller.DataTableUpdater;
+import com.sw.controller.AddEntity;
 import com.sw.model.Maestro;
 import java.util.ArrayList;
+import javax.swing.JTextField;
 
 /**
  *
@@ -11,17 +12,22 @@ import java.util.ArrayList;
 public class AgregarMaestro extends javax.swing.JFrame
 {
 
-    private final ArrayList<Maestro> maestros;
-    private final DataTableUpdater dataUpdater;
     private final AdministradoresGUI administradoresGui;
+    private final AddEntity addEntity;
+    private final Maestro maestro;
+    private final ArrayList<Maestro> maestros;
 
-    public AgregarMaestro(ArrayList<Maestro> maestros, DataTableUpdater dataUpdater, AdministradoresGUI administradoresGui)
+    public AgregarMaestro(ArrayList<Maestro> maestros, AdministradoresGUI administradoresGui, Maestro maestro)
     {
         initComponents();
 
+        this.maestro = maestro;
         this.maestros = maestros;
-        this.dataUpdater = dataUpdater;
         this.administradoresGui = administradoresGui;
+
+        addEntity = administradoresGui.getAddEntity();
+        addEntity.actualizarCamposRelleno(this);
+
     }
 
     /**
@@ -264,10 +270,7 @@ public class AgregarMaestro extends javax.swing.JFrame
 
     private void registrarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_registrarActionPerformed
     {//GEN-HEADEREND:event_registrarActionPerformed
-
-        maestros.add(new Maestro(matricula.getText(), nombre.getText(), Integer.parseInt(edad.getText()), Double.parseDouble(sueldoBase.getText()), usuario.getText(), contrasena.getText(), especialidad.getText()));
-
-        dataUpdater.updateTableMaestros(administradoresGui.getjTable1(), maestros);
+        addEntity.anadirMaestro(this);
 
         dispose();
 
@@ -343,12 +346,62 @@ public class AgregarMaestro extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_contrasenaFocusLost
 
-    public static void iniciarAgregarMaestro(ArrayList<Maestro> maestros, DataTableUpdater dataUpdater, AdministradoresGUI administradoresGui)
+    public Maestro getMaestro()
+    {
+        return maestro;
+    }
+
+    public JTextField getContrasena()
+    {
+        return contrasena;
+    }
+
+    public JTextField getEdad()
+    {
+        return edad;
+    }
+
+    public JTextField getEspecialidad()
+    {
+        return especialidad;
+    }
+
+    public JTextField getMatricula()
+    {
+        return matricula;
+    }
+
+    public JTextField getNombre()
+    {
+        return nombre;
+    }
+
+    public JTextField getSueldoBase()
+    {
+        return sueldoBase;
+    }
+
+    public JTextField getUsuario()
+    {
+        return usuario;
+    }
+
+    public ArrayList<Maestro> getMaestros()
+    {
+        return maestros;
+    }
+
+    public AdministradoresGUI getAdministradoresGui()
+    {
+        return administradoresGui;
+    }
+
+    public static void iniciarAgregarMaestro(ArrayList<Maestro> maestros, AdministradoresGUI administradoresGui, Maestro maestro)
     {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try
         {
@@ -371,7 +424,7 @@ public class AgregarMaestro extends javax.swing.JFrame
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() ->
         {
-            AgregarMaestro agregarMaestro = new AgregarMaestro(maestros, dataUpdater, administradoresGui);
+            AgregarMaestro agregarMaestro = new AgregarMaestro(maestros, administradoresGui, maestro);
 
             agregarMaestro.setVisible(true);
             agregarMaestro.setLocationRelativeTo(null);

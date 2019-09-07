@@ -1,7 +1,6 @@
 package com.sw.view;
 
 import com.sw.controller.AddEntity;
-import com.sw.controller.DataTableUpdater;
 import com.sw.model.Alumno;
 import com.sw.model.Maestro;
 import java.util.ArrayList;
@@ -15,7 +14,6 @@ public class AgregarAlumno extends javax.swing.JFrame
 {
 
     private final MaestrosGUI maestrosGui;
-    private final DataTableUpdater dataUpdater;
     private final Alumno alumno;
     private final ArrayList<Maestro> maestros;
     private final AddEntity addEntity;
@@ -30,8 +28,7 @@ public class AgregarAlumno extends javax.swing.JFrame
         this.alumno = alumno;
         this.indexCurrentMaestro = indexCurrentMaestro;
 
-        dataUpdater = new DataTableUpdater();
-        addEntity = new AddEntity(dataUpdater);
+        addEntity = maestrosGui.getAddEntity();
         addEntity.actualizarCamposRelleno(this);
     }
 

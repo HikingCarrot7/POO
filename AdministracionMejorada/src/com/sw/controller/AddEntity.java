@@ -1,7 +1,9 @@
 package com.sw.controller;
 
 import com.sw.model.Alumno;
+import com.sw.model.Maestro;
 import com.sw.view.AgregarAlumno;
+import com.sw.view.AgregarMaestro;
 
 /**
  *
@@ -11,7 +13,7 @@ public class AddEntity
 {
 
     private final DataTableUpdater dataTableUpdater;
-    private boolean alumnoNuevo;
+    private boolean alumnoNuevo, maestroNuevo;
 
     public AddEntity(DataTableUpdater dataTableUpdater)
     {
@@ -48,6 +50,46 @@ public class AddEntity
             agregarAlumno.getCalificacion().setText(alumno.getCalificacion() + "");
 
             alumnoNuevo = false;
+
+        }
+
+    }
+
+    public void anadirMaestro(AgregarMaestro agregarMaestro)
+    {
+        Maestro maestro = agregarMaestro.getMaestro();
+
+        maestro.setMatricula(agregarMaestro.getNombre().getText());
+        maestro.setNombre(agregarMaestro.getNombre().getText());
+        maestro.setEdad(Integer.parseInt(agregarMaestro.getEdad().getText()));
+        maestro.setSueldo(Double.parseDouble(agregarMaestro.getSueldoBase().getText()));
+        maestro.setEspecialidad(agregarMaestro.getEspecialidad().getText());
+        maestro.setUsario(agregarMaestro.getUsuario().getText());
+        maestro.setPassword(agregarMaestro.getContrasena().getText());
+
+        if (maestroNuevo)
+            agregarMaestro.getMaestros().add(maestro);
+
+        dataTableUpdater.updateTableMaestros(agregarMaestro.getAdministradoresGui().getTablaAdministradores(), agregarMaestro.getMaestros());
+
+    }
+
+    public void actualizarCamposRelleno(AgregarMaestro agregarMaestro)
+    {
+        Maestro maestro = agregarMaestro.getMaestro();
+        maestroNuevo = true;
+
+        if (maestro.getEdad() != 0)
+        {
+            agregarMaestro.getMatricula().setText(maestro.getMatricula());
+            agregarMaestro.getNombre().setText(maestro.getNombre());
+            agregarMaestro.getEdad().setText(maestro.getEdad() + "");
+            agregarMaestro.getSueldoBase().setText(maestro.getSueldo() + "");
+            agregarMaestro.getEspecialidad().setText(maestro.getEspecialidad());
+            agregarMaestro.getUsuario().setText(maestro.getUsuario());
+            agregarMaestro.getContrasena().setText(maestro.getPassword());
+
+            maestroNuevo = false;
 
         }
 

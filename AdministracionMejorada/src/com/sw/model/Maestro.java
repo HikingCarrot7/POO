@@ -24,6 +24,11 @@ public class Maestro extends Autoridad implements Serializable
         misAlumnos = new ArrayList<>();
     }
 
+    public Maestro()
+    {
+        this(null, null, 0, 0, null, null, null);
+    }
+
     public String getEspecialidad()
     {
         return especialidad;

@@ -1,6 +1,6 @@
 package com.sw.view;
 
-import com.sw.controller.DataPersistenceManager;
+import com.sw.controller.AddEntity;
 import com.sw.controller.DataTableUpdater;
 import com.sw.model.Alumno;
 import com.sw.model.Maestro;
@@ -16,20 +16,20 @@ public class MaestrosGUI extends javax.swing.JFrame
 
     private final int indexCurrentMaestro;
     private final ArrayList<Maestro> maestros;
-    private final DataPersistenceManager dataManager;
-    private final DataTableUpdater dataUpdater;
+    private final DataTableUpdater dataTableUpdater;
     private final Login login;
+    private final AddEntity addEntity;
 
-    public MaestrosGUI(int indexCurrentMaestro, ArrayList<Maestro> maestros, Login login)
+    public MaestrosGUI(int indexCurrentMaestro, ArrayList<Maestro> maestros, Login login, AddEntity addEntity)
     {
         initComponents();
 
-        dataUpdater = new DataTableUpdater();
-        dataManager = new DataPersistenceManager();
+        dataTableUpdater = new DataTableUpdater();
         this.login = login;
+        this.addEntity = addEntity;
 
         if (maestros.get(indexCurrentMaestro).obtenerEntidades().size() > 0)
-            dataUpdater.updateTableAlumnos(tablaMaestros, maestros, indexCurrentMaestro);
+            dataTableUpdater.updateTableAlumnos(tablaMaestros, maestros, indexCurrentMaestro);
 
         this.indexCurrentMaestro = indexCurrentMaestro;
         this.maestros = maestros;
@@ -229,7 +229,10 @@ public class MaestrosGUI extends javax.swing.JFrame
 
     private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cerrarSesionActionPerformed
     {//GEN-HEADEREND:event_cerrarSesionActionPerformed
-        reiniciarLogin();
+        dispose();
+
+        login.reiniciarLogin();
+
     }//GEN-LAST:event_cerrarSesionActionPerformed
 
     private void removerAlumnoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_removerAlumnoActionPerformed
@@ -238,7 +241,7 @@ public class MaestrosGUI extends javax.swing.JFrame
         if (validarPosicionSeleccionado())
         {
             maestros.get(indexCurrentMaestro).obtenerEntidades().remove(tablaMaestros.getSelectedRow());
-            dataUpdater.updateTableAlumnos(tablaMaestros, maestros, indexCurrentMaestro);
+            dataTableUpdater.updateTableAlumnos(tablaMaestros, maestros, indexCurrentMaestro);
 
         }
 
@@ -246,7 +249,7 @@ public class MaestrosGUI extends javax.swing.JFrame
 
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
     {//GEN-HEADEREND:event_formWindowClosing
-        reiniciarLogin();
+        login.reiniciarLogin();
     }//GEN-LAST:event_formWindowClosing
 
     private void modificarAlumnoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_modificarAlumnoActionPerformed
@@ -267,18 +270,12 @@ public class MaestrosGUI extends javax.swing.JFrame
         return tablaMaestros;
     }
 
-    public void reiniciarLogin()
+    public AddEntity getAddEntity()
     {
-        dataManager.writeMaestros(maestros);
-
-        dispose();
-
-        login.setVisible(true);
-        login.getUsuario().setText("");
-        login.getContrasena().setText("");
+        return addEntity;
     }
 
-    public static void IniciarMaestrosGUI(int indexCurrentMaestro, ArrayList<Maestro> maestros, Login login)
+    public static void IniciarMaestrosGUI(int indexCurrentMaestro, ArrayList<Maestro> maestros, Login login, AddEntity addEntity)
     {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -311,7 +308,7 @@ public class MaestrosGUI extends javax.swing.JFrame
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() ->
         {
-            MaestrosGUI maestrosGui = new MaestrosGUI(indexCurrentMaestro, maestros, login);
+            MaestrosGUI maestrosGui = new MaestrosGUI(indexCurrentMaestro, maestros, login, addEntity);
 
             maestrosGui.setVisible(true);
             maestrosGui.setLocationRelativeTo(null);

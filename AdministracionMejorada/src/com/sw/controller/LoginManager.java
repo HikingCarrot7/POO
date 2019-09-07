@@ -15,24 +15,26 @@ public class LoginManager
 {
 
     private final Login login;
+    private final AddEntity addEntity;
     private int indexCurrentMaestro;
 
     public LoginManager(Login login)
     {
         this.login = login;
+        addEntity = new AddEntity(login.getDataTableUpdater());
     }
 
     public void gestionarLogin()
     {
         if (!login.getSoyunmaestro().isEnabled() && validarLogin(login.getMaestros(), login.getUsuario().getText().trim(), login.getContrasena().getText().trim()))
         {
-            MaestrosGUI.IniciarMaestrosGUI(indexCurrentMaestro, login.getMaestros(), login);
+            MaestrosGUI.IniciarMaestrosGUI(indexCurrentMaestro, login.getMaestros(), login, addEntity);
 
             login.setVisible(false);
 
         } else if (validarLogin(login.getAdministradores(), login.getUsuario().getText().trim(), login.getContrasena().getText().trim()))
         {
-            AdministradoresGUI.IniciarAdministradoresGui(login.getMaestros(), login.getDataPersistenceManager(), login.getDataTableUpdater(), login);
+            AdministradoresGUI.IniciarAdministradoresGui(login.getMaestros(), login.getDataTableUpdater(), login, addEntity);
 
             login.setVisible(false);
 
