@@ -81,10 +81,6 @@ public class Interfaz extends javax.swing.JFrame
         entrada.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
         entrada.addFocusListener(new java.awt.event.FocusAdapter()
         {
-            public void focusGained(java.awt.event.FocusEvent evt)
-            {
-                entradaFocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt)
             {
                 entradaFocusLost(evt);
@@ -239,11 +235,6 @@ public class Interfaz extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void entradaFocusGained(java.awt.event.FocusEvent evt)//GEN-FIRST:event_entradaFocusGained
-    {//GEN-HEADEREND:event_entradaFocusGained
-        // TODO add your handling code here:
-    }//GEN-LAST:event_entradaFocusGained
 
     private void entradaFocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_entradaFocusLost
     {//GEN-HEADEREND:event_entradaFocusLost
