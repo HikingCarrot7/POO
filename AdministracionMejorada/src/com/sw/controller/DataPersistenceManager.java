@@ -13,14 +13,14 @@ import java.util.ArrayList;
  *
  * @author Mohammed
  */
-public final class DataManager
+public final class DataPersistenceManager
 {
 
     private final String rutaMaestros = "res/Maestros.txt";
     private final File file;
     private ArrayList<Maestro> maestros;
 
-    public DataManager()
+    public DataPersistenceManager()
     {
 
         file = new File(rutaMaestros);

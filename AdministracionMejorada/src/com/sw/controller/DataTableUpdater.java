@@ -10,7 +10,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Mohammed
  */
-public class DataUpdater
+public class DataTableUpdater
 {
 
     public void updateTableMaestros(JTable table, ArrayList<? extends Maestro> maestros)

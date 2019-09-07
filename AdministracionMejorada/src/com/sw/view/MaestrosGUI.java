@@ -1,7 +1,7 @@
 package com.sw.view;
 
-import com.sw.controller.DataManager;
-import com.sw.controller.DataUpdater;
+import com.sw.controller.DataPersistenceManager;
+import com.sw.controller.DataTableUpdater;
 import com.sw.model.Alumno;
 import com.sw.model.Maestro;
 import java.util.ArrayList;
@@ -16,20 +16,20 @@ public class MaestrosGUI extends javax.swing.JFrame
 
     private final int indexCurrentMaestro;
     private final ArrayList<Maestro> maestros;
-    private final DataManager dataManager;
-    private final DataUpdater dataUpdater;
+    private final DataPersistenceManager dataManager;
+    private final DataTableUpdater dataUpdater;
     private final Login login;
 
     public MaestrosGUI(int indexCurrentMaestro, ArrayList<Maestro> maestros, Login login)
     {
         initComponents();
 
-        dataUpdater = new DataUpdater();
-        dataManager = new DataManager();
+        dataUpdater = new DataTableUpdater();
+        dataManager = new DataPersistenceManager();
         this.login = login;
 
         if (maestros.get(indexCurrentMaestro).obtenerEntidades().size() > 0)
-            dataUpdater.updateTableAlumnos(jTable1, maestros, indexCurrentMaestro);
+            dataUpdater.updateTableAlumnos(tablaMaestros, maestros, indexCurrentMaestro);
 
         this.indexCurrentMaestro = indexCurrentMaestro;
         this.maestros = maestros;
@@ -45,7 +45,7 @@ public class MaestrosGUI extends javax.swing.JFrame
     {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaMaestros = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
@@ -64,7 +64,8 @@ public class MaestrosGUI extends javax.swing.JFrame
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaMaestros.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        tablaMaestros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
                 {null, null, null, null},
@@ -109,7 +110,8 @@ public class MaestrosGUI extends javax.swing.JFrame
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        tablaMaestros.setToolTipText("Registros de sus alumnos");
+        jScrollPane1.setViewportView(tablaMaestros);
 
         jLabel1.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         jLabel1.setText("Sus alumnos:");
@@ -235,8 +237,8 @@ public class MaestrosGUI extends javax.swing.JFrame
 
         if (validarPosicionSeleccionado())
         {
-            maestros.get(indexCurrentMaestro).obtenerEntidades().remove(jTable1.getSelectedRow());
-            dataUpdater.updateTableAlumnos(jTable1, maestros, indexCurrentMaestro);
+            maestros.get(indexCurrentMaestro).obtenerEntidades().remove(tablaMaestros.getSelectedRow());
+            dataUpdater.updateTableAlumnos(tablaMaestros, maestros, indexCurrentMaestro);
 
         }
 
@@ -251,18 +253,18 @@ public class MaestrosGUI extends javax.swing.JFrame
     {//GEN-HEADEREND:event_modificarAlumnoActionPerformed
 
         if (validarPosicionSeleccionado())
-            AgregarAlumno.iniciarAgregarAlumno(maestros, indexCurrentMaestro, this, (Alumno) maestros.get(indexCurrentMaestro).obtenerEntidades().get(jTable1.getSelectedRow()));
+            AgregarAlumno.iniciarAgregarAlumno(maestros, indexCurrentMaestro, this, (Alumno) maestros.get(indexCurrentMaestro).obtenerEntidades().get(tablaMaestros.getSelectedRow()));
 
     }//GEN-LAST:event_modificarAlumnoActionPerformed
 
     private boolean validarPosicionSeleccionado()
     {
-        return jTable1.getSelectedRow() >= 0 && jTable1.getSelectedRow() < maestros.get(indexCurrentMaestro).obtenerEntidades().size();
+        return tablaMaestros.getSelectedRow() >= 0 && tablaMaestros.getSelectedRow() < maestros.get(indexCurrentMaestro).obtenerEntidades().size();
     }
 
-    public JTable getjTable1()
+    public JTable getTablaMaestros()
     {
-        return jTable1;
+        return tablaMaestros;
     }
 
     public void reiniciarLogin()
@@ -325,9 +327,9 @@ public class MaestrosGUI extends javax.swing.JFrame
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton modificarAlumno;
     private javax.swing.JButton removerAlumno;
+    private javax.swing.JTable tablaMaestros;
     // End of variables declaration//GEN-END:variables
 
 }

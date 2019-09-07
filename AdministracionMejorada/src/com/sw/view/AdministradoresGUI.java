@@ -1,7 +1,7 @@
 package com.sw.view;
 
-import com.sw.controller.DataManager;
-import com.sw.controller.DataUpdater;
+import com.sw.controller.DataPersistenceManager;
+import com.sw.controller.DataTableUpdater;
 import com.sw.model.Maestro;
 import java.util.ArrayList;
 import javax.swing.JTable;
@@ -13,12 +13,12 @@ import javax.swing.JTable;
 public class AdministradoresGUI extends javax.swing.JFrame
 {
 
-    private final DataManager dataManager;
-    private final DataUpdater dataUpdater;
+    private final DataPersistenceManager dataManager;
+    private final DataTableUpdater dataUpdater;
     private final Login login;
     private final ArrayList<Maestro> maestros;
 
-    public AdministradoresGUI(ArrayList<Maestro> maestros, DataManager dataManager, DataUpdater dataUpdater, Login login)
+    public AdministradoresGUI(ArrayList<Maestro> maestros, DataPersistenceManager dataManager, DataTableUpdater dataUpdater, Login login)
     {
         initComponents();
 
@@ -28,7 +28,7 @@ public class AdministradoresGUI extends javax.swing.JFrame
         this.login = login;
 
         if (maestros.size() > 0)
-            dataUpdater.updateTableMaestros(jTable1, maestros);
+            dataUpdater.updateTableMaestros(tablaAdmisnistradores, maestros);
 
     }
 
@@ -41,7 +41,7 @@ public class AdministradoresGUI extends javax.swing.JFrame
     {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaAdmisnistradores = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox();
@@ -61,7 +61,8 @@ public class AdministradoresGUI extends javax.swing.JFrame
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaAdmisnistradores.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        tablaAdmisnistradores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
                 {null, null, null, null, null, null},
@@ -106,7 +107,8 @@ public class AdministradoresGUI extends javax.swing.JFrame
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        tablaAdmisnistradores.setToolTipText("Registros de maestros");
+        jScrollPane1.setViewportView(tablaAdmisnistradores);
 
         jLabel1.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         jLabel1.setText("Maestros registrados:");
@@ -208,10 +210,10 @@ public class AdministradoresGUI extends javax.swing.JFrame
     private void removerActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_removerActionPerformed
     {//GEN-HEADEREND:event_removerActionPerformed
 
-        if (jTable1.getSelectedRow() >= 0 && jTable1.getSelectedRow() < maestros.size())
+        if (tablaAdmisnistradores.getSelectedRow() >= 0 && tablaAdmisnistradores.getSelectedRow() < maestros.size())
         {
-            maestros.remove(jTable1.getSelectedRow());
-            dataUpdater.updateTableMaestros(jTable1, maestros);
+            maestros.remove(tablaAdmisnistradores.getSelectedRow());
+            dataUpdater.updateTableMaestros(tablaAdmisnistradores, maestros);
 
         }
 
@@ -237,7 +239,7 @@ public class AdministradoresGUI extends javax.swing.JFrame
 
     public JTable getjTable1()
     {
-        return jTable1;
+        return tablaAdmisnistradores;
     }
 
     private void actualizarMaestros()
@@ -245,12 +247,12 @@ public class AdministradoresGUI extends javax.swing.JFrame
         dataManager.writeMaestros(maestros);
     }
 
-    public static void IniciarAdministradoresGui(ArrayList<Maestro> maestros, DataManager dataManager, DataUpdater dataUpdater, Login login)
+    public static void IniciarAdministradoresGui(ArrayList<Maestro> maestros, DataPersistenceManager dataManager, DataTableUpdater dataUpdater, Login login)
     {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try
         {
@@ -295,8 +297,8 @@ public class AdministradoresGUI extends javax.swing.JFrame
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton remover;
+    private javax.swing.JTable tablaAdmisnistradores;
     // End of variables declaration//GEN-END:variables
 
 }

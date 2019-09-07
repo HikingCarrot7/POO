@@ -1,6 +1,6 @@
 package com.sw.view;
 
-import com.sw.controller.DataUpdater;
+import com.sw.controller.DataTableUpdater;
 import com.sw.model.Maestro;
 import java.util.ArrayList;
 
@@ -12,10 +12,10 @@ public class AgregarMaestro extends javax.swing.JFrame
 {
 
     private final ArrayList<Maestro> maestros;
-    private final DataUpdater dataUpdater;
+    private final DataTableUpdater dataUpdater;
     private final AdministradoresGUI administradoresGui;
 
-    public AgregarMaestro(ArrayList<Maestro> maestros, DataUpdater dataUpdater, AdministradoresGUI administradoresGui)
+    public AgregarMaestro(ArrayList<Maestro> maestros, DataTableUpdater dataUpdater, AdministradoresGUI administradoresGui)
     {
         initComponents();
 
@@ -343,7 +343,7 @@ public class AgregarMaestro extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_contrasenaFocusLost
 
-    public static void iniciarAgregarMaestro(ArrayList<Maestro> maestros, DataUpdater dataUpdater, AdministradoresGUI administradoresGui)
+    public static void iniciarAgregarMaestro(ArrayList<Maestro> maestros, DataTableUpdater dataUpdater, AdministradoresGUI administradoresGui)
     {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
