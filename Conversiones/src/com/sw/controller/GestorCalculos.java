@@ -9,7 +9,7 @@ import javax.swing.JComboBox;
 
 /**
  *
- * @author Mohammed
+ * @author CarlosÁlvarez
  */
 public class GestorCalculos
 {

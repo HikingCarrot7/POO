@@ -2,7 +2,7 @@ package com.sw.model;
 
 /**
  *
- * @author Mohammed
+ * @author CarlosÁlvarez
  */
 public class ConversionHex
 {

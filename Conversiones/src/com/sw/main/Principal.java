@@ -8,7 +8,7 @@ import com.sw.view.Interfaz;
 
 /**
  *
- * @author Mohammed
+ * @author CarlosÁlvarez
  */
 public class Principal
 {

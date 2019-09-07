@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 
 /**
  *
- * @author Mohammed
+ * @author CarlosÁlvarez
  */
 public class Interfaz extends javax.swing.JFrame
 {
@@ -264,7 +264,7 @@ public class Interfaz extends javax.swing.JFrame
 
             case "Octal":
 
-                validarEntrada(entrada.getText(), "^[0-8]+$");
+                validarEntrada(entrada.getText(), "^[0-7]+$");
 
                 break;
 
