@@ -34,6 +34,7 @@ public class AddEntity
             agregarAlumno.getMaestros().get(agregarAlumno.getIndexCurrentMaestro()).anadirEntidad(alumno);
 
         dataTableUpdater.updateTableAlumnos(agregarAlumno.getMaestrosGui().getTablaMaestros(), agregarAlumno.getMaestros(), agregarAlumno.getIndexCurrentMaestro());
+
     }
 
     public void actualizarCamposRelleno(AgregarAlumno agregarAlumno)

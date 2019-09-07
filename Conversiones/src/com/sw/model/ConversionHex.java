@@ -7,8 +7,8 @@ package com.sw.model;
 public class ConversionHex
 {
 
-    private ConversionBin conversionBin;
-    private ConversionDec conversionDec;
+    private final ConversionBin conversionBin;
+    private final ConversionDec conversionDec;
 
     public ConversionHex(ConversionBin conversionBin, ConversionDec conversionDec)
     {

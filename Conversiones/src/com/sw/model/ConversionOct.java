@@ -7,8 +7,8 @@ package com.sw.model;
 public class ConversionOct
 {
 
-    private ConversionBin conversionBin;
-    private ConversionDec conversionDec;
+    private final ConversionBin conversionBin;
+    private final ConversionDec conversionDec;
 
     public ConversionOct(ConversionBin conversionBin, ConversionDec conversionDec)
     {
