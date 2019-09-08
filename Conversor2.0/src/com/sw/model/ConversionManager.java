@@ -56,11 +56,11 @@ public class ConversionManager
      */
     public int fromAnyBaseToDec(String anyBase, int base)
     {
-        char[] bits = anyBase.toCharArray();
+        char[] numbers = anyBase.toCharArray();
         int valor = 0, aux = 0;
 
-        for (int i = bits.length - 1; i >= 0; i--)
-            valor += Math.pow(base, aux++) * (Character.isDigit(bits[i]) ? Integer.parseInt(String.valueOf(bits[i])) : ((int) bits[i]) - 55);
+        for (int i = numbers.length - 1; i >= 0; i--)
+            valor += Math.pow(base, aux++) * (Character.isDigit(numbers[i]) ? Integer.parseInt(String.valueOf(numbers[i])) : ((int) numbers[i]) - 55);
 
         return valor;
 
