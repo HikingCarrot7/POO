@@ -45,8 +45,8 @@ public class ConversionManager
      *
      * Convierte un número elevado a cualquier base a decimal.
      *
-     * @param anyBase Un número que esta elevado a cualquier base.
-     * @param base La base a la que está elevada el número.
+     * @param anyBase Un número que esta en cualquier base.
+     * @param base La base a la que está el número.
      *
      * @return El número en su forma decimal.
      *
