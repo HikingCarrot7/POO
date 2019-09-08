@@ -2,11 +2,26 @@ package com.sw.model;
 
 /**
  *
- * @author Mohammed
+ * Conversiones necesarias para el el sistema de numeración.
+ *
+ * @author Emmanuel Chable Collí.
+ * @author Eusebio Ajas Santos.
  */
 public class ConversionManager
 {
 
+    /**
+     * Convierte un número decimal a una base especificada.
+     *
+     * @param number El número a convertir a cualquier base.
+     * @param base La base a la cual se convertirá el número decimal.
+     *
+     * @return El número decimal convertido a la base especificada.
+     *
+     * @author Emmanuel Chable Collí.
+     *
+     * @since 1.0
+     */
     public String fromDecToAnyBase(int number, int base)
     {
         String converted = "";
@@ -26,6 +41,19 @@ public class ConversionManager
 
     }
 
+    /**
+     *
+     * Convierte un número elevado a cualquier base a decimal.
+     *
+     * @param anyBase Un número que esta elevado a cualquier base.
+     * @param base La base a la que está elevada el número.
+     *
+     * @return El número en su forma decimal.
+     *
+     * @author Eusebio Ajas Santos.
+     *
+     * @since 1.0
+     */
     public int fromAnyBaseToDec(String anyBase, int base)
     {
         char[] bits = anyBase.toCharArray();
@@ -38,6 +66,17 @@ public class ConversionManager
 
     }
 
+    /**
+     * Retorna la cadena invertida que especifiquemos.
+     *
+     * @param text La cadena a invertir.
+     *
+     * @return La cadena invertida.
+     *
+     * @author Eusebio Ajas Santos.
+     *
+     * @since 1.0
+     */
     private String reverse(String text)
     {
         String textReversed = "";
