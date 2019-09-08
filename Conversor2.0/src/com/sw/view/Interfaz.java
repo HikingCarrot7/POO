@@ -52,6 +52,7 @@ public class Interfaz extends javax.swing.JFrame
         valorInvalido = new javax.swing.JLabel();
         infoBase = new javax.swing.JLabel();
         salida = new javax.swing.JTextField();
+        infoBaseSalida = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Conversor");
@@ -87,6 +88,13 @@ public class Interfaz extends javax.swing.JFrame
         salidaOpcion.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         salidaOpcion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "16" }));
         salidaOpcion.setToolTipText("Seleccione una base");
+        salidaOpcion.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                salidaOpcionActionPerformed(evt);
+            }
+        });
 
         entrada.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         entrada.setToolTipText("Inserte un valor");
@@ -152,6 +160,9 @@ public class Interfaz extends javax.swing.JFrame
         salida.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         salida.setToolTipText("Inserte un valor");
 
+        infoBaseSalida.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
+        infoBaseSalida.setText("(Binario)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -186,54 +197,54 @@ public class Interfaz extends javax.swing.JFrame
                                 .addComponent(jLabel8)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(salidaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(salida, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(85, 85, 85))
+                                .addComponent(salida, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(60, 60, 60))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(salidaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(infoBaseSalida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(81, 81, 81))))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(decimalDef, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(decimalDef, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(jLabel2)
-                                        .addGap(110, 110, 110)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(10, 10, 10)
-                                                .addComponent(jLabel3))
-                                            .addComponent(binarioDef, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGap(44, 44, 44)
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel2)
+                                .addGap(90, 90, 90)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(10, 10, 10)
-                                        .addComponent(jLabel4))
-                                    .addComponent(octalDef, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(25, 25, 25)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(hexadecimalDef, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(10, 10, 10)
-                                        .addComponent(jLabel5)))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addComponent(jLabel3))
+                                    .addComponent(binarioDef, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel4))
+                            .addComponent(octalDef, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(hexadecimalDef, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel5)))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(infoBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(entradaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(salidaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel6)
-                        .addComponent(jLabel8)))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(entradaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salidaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel8)
+                    .addComponent(infoBaseSalida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(infoBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(entrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -264,7 +275,8 @@ public class Interfaz extends javax.swing.JFrame
 
     private void entradaFocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_entradaFocusLost
     {//GEN-HEADEREND:event_entradaFocusLost
-        dataManager.validarEntrada();
+        if (!getEntrada().getText().equals(""))
+            dataManager.validarEntrada();
     }//GEN-LAST:event_entradaFocusLost
 
     private void entradaFocusGained(java.awt.event.FocusEvent evt)//GEN-FIRST:event_entradaFocusGained
@@ -277,34 +289,7 @@ public class Interfaz extends javax.swing.JFrame
         if (!getEntrada().getText().equals(""))
             dataManager.validarEntrada();
 
-        switch (Integer.parseInt((String) getEntradaOpcion().getSelectedItem()))
-        {
-            case 2:
-
-                infoBase.setText("(Binario)");
-                break;
-
-            case 8:
-
-                infoBase.setText("(Octal)");
-                break;
-
-            case 10:
-
-                infoBase.setText("(Decimal)");
-                break;
-
-            case 16:
-
-                infoBase.setText("(Hexadecimal)");
-                break;
-
-            default:
-
-                infoBase.setText("");
-                break;
-
-        }
+        infoBase(infoBase, (String) getEntradaOpcion().getSelectedItem());
 
     }//GEN-LAST:event_entradaOpcionActionPerformed
 
@@ -313,6 +298,43 @@ public class Interfaz extends javax.swing.JFrame
         if (dataManager.validarEntrada())
             dataManager.updateCampos();
     }//GEN-LAST:event_calcularActionPerformed
+
+    private void salidaOpcionActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_salidaOpcionActionPerformed
+    {//GEN-HEADEREND:event_salidaOpcionActionPerformed
+        infoBase(infoBaseSalida, (String) getSalidaOpcion().getSelectedItem());
+    }//GEN-LAST:event_salidaOpcionActionPerformed
+
+    private void infoBase(JLabel label, String opcion)
+    {
+        switch (Integer.parseInt(opcion))
+        {
+            case 2:
+
+                label.setText("(Binario)");
+                break;
+
+            case 8:
+
+                label.setText("(Octal)");
+                break;
+
+            case 10:
+
+                label.setText("(Decimal)");
+                break;
+
+            case 16:
+
+                label.setText("(Hexadecimal)");
+                break;
+
+            default:
+
+                label.setText("");
+                break;
+
+        }
+    }
 
     public JComboBox<String> getEntradaOpcion()
     {
@@ -401,6 +423,7 @@ public class Interfaz extends javax.swing.JFrame
     private javax.swing.JComboBox<String> entradaOpcion;
     private javax.swing.JTextField hexadecimalDef;
     private javax.swing.JLabel infoBase;
+    private javax.swing.JLabel infoBaseSalida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
