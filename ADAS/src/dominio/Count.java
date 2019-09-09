@@ -7,7 +7,7 @@ package dominio;
 public class Count
 {
 
-    private final int serialNumber;
+    private int serialNumber;
     private static int counter;
 
     public Count()
