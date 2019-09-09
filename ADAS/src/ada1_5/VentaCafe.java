@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class VentaCafe
 {
 
-    private Scanner in;
+    private final Scanner in;
 
     public VentaCafe()
     {
