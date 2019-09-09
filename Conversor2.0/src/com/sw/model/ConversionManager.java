@@ -33,7 +33,7 @@ public class ConversionManager
         {
             int temp = number % base;
             converted += temp < 10 ? temp : String.valueOf((char) (temp + 55));
-            number = (int) Math.floor((double) number / base);
+            number /= base;
 
         }
 
