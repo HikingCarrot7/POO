@@ -131,6 +131,13 @@ public class DataManager
         }
     }
 
+    /**
+     * Limpia los campos.
+     *
+     * @author Carlos Álvarez Trejo.
+     *
+     * @since 1.0
+     */
     public void limpiarCampos()
     {
         interfaz.getEntrada().setText("");
