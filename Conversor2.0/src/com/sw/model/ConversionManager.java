@@ -43,7 +43,7 @@ public class ConversionManager
 
     /**
      *
-     * Convierte un número elevado a cualquier base a decimal.
+     * Convierte un número en cualquier base a decimal.
      *
      * @param anyBase Un número que esta en cualquier base.
      * @param base La base a la que está el número.
