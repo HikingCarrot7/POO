@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ada1_5">
+  <ClassDiagramComponents>
+    <Class name="PruebaVentaCafe" package="ada1_5" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="VentaCafe" package="ada1_5" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="in" type="Scanner" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="venderCafe" returnType="void" visibility="public"/>
+        <Method name="menorNumeroCajas" returnType="void" visibility="private">
+          <Argument type="int" name="bolsas"/>
+        </Method>
+        <Method name="menorNumeroEspaciosDesperdiciados" returnType="void" visibility="private">
+          <Argument type="int" name="bolsas"/>
+        </Method>
+        <Method name="validarEntrada" returnType="boolean" visibility="private">
+          <Argument type="String" name="text"/>
+          <Argument type="String" name="regex"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>
