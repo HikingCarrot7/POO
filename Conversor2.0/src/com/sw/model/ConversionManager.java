@@ -2,7 +2,7 @@ package com.sw.model;
 
 /**
  *
- * Conversiones necesarias para el el sistema de numeración.
+ * Conversiones necesarias para el sistema de numeración.
  *
  * @author Emmanuel Chable Collí.
  * @author Eusebio Ajas Santos.
