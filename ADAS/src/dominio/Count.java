@@ -7,6 +7,7 @@ package dominio;
 public class Count
 {
 
+    //Crear un estudiante graduado, (datos). estudiante no graduado (datos). imprimir el toString paquete test, estudiantes, asignatura
     private int serialNumber;
     private static int counter;
 

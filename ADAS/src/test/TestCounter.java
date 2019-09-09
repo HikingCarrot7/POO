@@ -6,7 +6,7 @@ import dominio.Count;
  *
  * @author HikingCarrot7
  */
-public class TestCounter
+public class TestCounter extends Count
 {
 
     public static void main(String[] args)
