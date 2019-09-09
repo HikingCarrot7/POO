@@ -84,6 +84,7 @@ public class VentaCafe
                 "Cajas pequeñas: ", cajasPequenas,
                 "Espacios remanentes: ",
                 cajasPequenas * 5 - tempBolsas, bolsas * 250 + cajasGrandes * 10 + cajasMedianas * 5 + cajasPequenas * 3));
+
     }
 
     private boolean validarEntrada(String text, String regex)
