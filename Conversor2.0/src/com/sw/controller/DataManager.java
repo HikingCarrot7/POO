@@ -2,6 +2,7 @@ package com.sw.controller;
 
 import com.sw.model.ConversionManager;
 import com.sw.view.Interfaz;
+import javax.swing.JLabel;
 
 /**
  * Gestor de los cálculos del programa.
@@ -81,10 +82,63 @@ public class DataManager
         } else
         {
             interfaz.getValorInvalido().setText("¡Valor inválido!");
+            interfaz.getLimpiar().setEnabled(true);
             return false;
 
         }
 
+    }
+
+    /**
+     * Muestra en pantalla información sobre el nombre de la base que está seleccionada.
+     *
+     * @param label La etiqueta a actualizar la información.
+     * @param opcion La opción correspondiente a mostrar.
+     *
+     * @author Carlos Álvarez Trejo.
+     *
+     * @since 1.0
+     */
+    public void infoBase(JLabel label, String opcion)
+    {
+        switch (Integer.parseInt(opcion))
+        {
+            case 2:
+
+                label.setText("(Binario)");
+                break;
+
+            case 8:
+
+                label.setText("(Octal)");
+                break;
+
+            case 10:
+
+                label.setText("(Decimal)");
+                break;
+
+            case 16:
+
+                label.setText("(Hexadecimal)");
+                break;
+
+            default:
+
+                label.setText("");
+                break;
+
+        }
+    }
+
+    public void limpiarCampos()
+    {
+        interfaz.getEntrada().setText("");
+        interfaz.getSalida().setText("");
+        interfaz.getDecimalDef().setText("");
+        interfaz.getBinarioDef().setText("");
+        interfaz.getOctalDef().setText("");
+        interfaz.getHexadecimalDef().setText("");
     }
 
     /**

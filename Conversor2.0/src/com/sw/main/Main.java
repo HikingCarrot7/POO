@@ -3,8 +3,9 @@ package com.sw.main;
 import com.sw.view.Interfaz;
 
 /**
+ * Clase Main del programa.
  *
- * @author Mohammed
+ * @author Ricardo Nicolás Canul Ibarra.
  */
 public class Main
 {
