@@ -11,7 +11,8 @@ import javax.swing.JTextField;
  * Interfaz gráfica del programa.
  *
  *
- * @author Naomi García Sanchez
+ * @author Naomi García Sanchez.
+ * @author Carlos Álvarez Trejo.
  *
  */
 public class Interfaz extends javax.swing.JFrame

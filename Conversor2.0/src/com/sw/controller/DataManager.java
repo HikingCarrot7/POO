@@ -8,7 +8,7 @@ import javax.swing.JLabel;
  * Gestor de los cálculos del programa.
  *
  *
- * @author Carlos Álvarez Trejo.
+ * @author Ricardo Nicolás Canul Ibarra.
  */
 public class DataManager
 {
@@ -26,7 +26,7 @@ public class DataManager
     /**
      * Muestra el resultado del cálculo.
      *
-     * @author Carlos Álvarez Trejo.
+     * @author Ricardo Nicolás Canul Ibarra.
      *
      * @since 1.0
      */
@@ -51,7 +51,7 @@ public class DataManager
      * @param baseEntrada La base del número de entrada.
      * @param entrada El número en cualquier base.
      *
-     * @author Carlos Álvarez Trejo.
+     * @author Ricardo Nicolás Canul Ibarra.
      */
     private void rellenarCamposDef(int baseEntrada, String entrada)
     {
@@ -66,7 +66,7 @@ public class DataManager
      *
      * @return <code>true</code> si la entrada es válida con respecto a la base seleccionada o <code>false</code> en caso contrario.
      *
-     * @author Carlos Álvarez Trejo.
+     * @author Ricardo Nicolás Canul Ibarra.
      *
      * @since 1.0
      */
@@ -95,7 +95,7 @@ public class DataManager
      * @param label La etiqueta a actualizar la información.
      * @param opcion La opción correspondiente a mostrar.
      *
-     * @author Carlos Álvarez Trejo.
+     * @author Ricardo Nicolás Canul Ibarra.
      *
      * @since 1.0
      */
@@ -134,7 +134,7 @@ public class DataManager
     /**
      * Limpia los campos.
      *
-     * @author Carlos Álvarez Trejo.
+     * @author Ricardo Nicolás Canul Ibarra.
      *
      * @since 1.0
      */
