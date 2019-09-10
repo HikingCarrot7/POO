@@ -60,6 +60,7 @@ public class DataManager
         interfaz.getBinarioDef().setText(conversionManager.fromDecToAnyBase(conversionManager.fromAnyBaseToDec(entrada, baseEntrada), 2));
         interfaz.getOctalDef().setText(conversionManager.fromDecToAnyBase(conversionManager.fromAnyBaseToDec(entrada, baseEntrada), 8));
         interfaz.getHexadecimalDef().setText(conversionManager.fromDecToAnyBase(conversionManager.fromAnyBaseToDec(entrada, baseEntrada), 16));
+
     }
 
     /**
@@ -130,6 +131,7 @@ public class DataManager
                 break;
 
         }
+
     }
 
     /**
