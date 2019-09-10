@@ -41,6 +41,7 @@ public class DataManager
         {
             interfaz.getSalida().setText(conversionManager.fromDecToAnyBase(conversionManager.fromAnyBaseToDec(entrada, baseEntrada), baseSalida));
             rellenarCamposDef(baseEntrada, entrada);
+
         }
 
     }
@@ -146,6 +147,7 @@ public class DataManager
         interfaz.getBinarioDef().setText("");
         interfaz.getOctalDef().setText("");
         interfaz.getHexadecimalDef().setText("");
+
     }
 
     /**

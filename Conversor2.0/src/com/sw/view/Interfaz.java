@@ -25,6 +25,7 @@ public class Interfaz extends javax.swing.JFrame
         initComponents();
 
         dataManager = new DataManager(this);
+
     }
 
     /**
@@ -230,12 +231,11 @@ public class Interfaz extends javax.swing.JFrame
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(valorInvalido, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addComponent(entradaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(infoBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addComponent(entrada, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(entradaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(infoBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(entrada, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
                                 .addGap(70, 70, 70)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -257,7 +257,7 @@ public class Interfaz extends javax.swing.JFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(entradaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(salidaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,11 +299,13 @@ public class Interfaz extends javax.swing.JFrame
     {//GEN-HEADEREND:event_entradaFocusLost
         if (!getEntrada().getText().equals(""))
             dataManager.validarEntrada();
+
     }//GEN-LAST:event_entradaFocusLost
 
     private void entradaFocusGained(java.awt.event.FocusEvent evt)//GEN-FIRST:event_entradaFocusGained
     {//GEN-HEADEREND:event_entradaFocusGained
         valorInvalido.setText("");
+
     }//GEN-LAST:event_entradaFocusGained
 
     private void entradaOpcionActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_entradaOpcionActionPerformed
@@ -322,11 +324,13 @@ public class Interfaz extends javax.swing.JFrame
             dataManager.updateCampos();
             limpiar.setEnabled(true);
         }
+
     }//GEN-LAST:event_calcularActionPerformed
 
     private void salidaOpcionActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_salidaOpcionActionPerformed
     {//GEN-HEADEREND:event_salidaOpcionActionPerformed
         dataManager.infoBase(infoBaseSalida, (String) getSalidaOpcion().getSelectedItem());
+
     }//GEN-LAST:event_salidaOpcionActionPerformed
 
     private void limpiarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_limpiarActionPerformed
@@ -337,6 +341,7 @@ public class Interfaz extends javax.swing.JFrame
             valorInvalido.setText("");
             limpiar.setEnabled(false);
         }
+
     }//GEN-LAST:event_limpiarActionPerformed
 
     public JComboBox<String> getEntradaOpcion()
@@ -423,6 +428,7 @@ public class Interfaz extends javax.swing.JFrame
             interfaz.setIconImage(Toolkit.getDefaultToolkit().getImage(interfaz.getClass().getResource("/com/res/images/icon.png")));
 
         });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
