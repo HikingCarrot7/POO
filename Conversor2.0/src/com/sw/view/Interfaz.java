@@ -2,6 +2,7 @@ package com.sw.view;
 
 import com.sw.controller.DataManager;
 import java.awt.Toolkit;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -10,7 +11,8 @@ import javax.swing.JTextField;
  * Interfaz gráfica del programa.
  *
  *
- * @author Naomi García Sanchez
+ * @author Naomi García Sanchez.
+ * @author Carlos Álvarez Trejo.
  *
  */
 public class Interfaz extends javax.swing.JFrame
@@ -23,6 +25,7 @@ public class Interfaz extends javax.swing.JFrame
         initComponents();
 
         dataManager = new DataManager(this);
+
     }
 
     /**
@@ -54,6 +57,7 @@ public class Interfaz extends javax.swing.JFrame
         infoBase = new javax.swing.JLabel();
         salida = new javax.swing.JTextField();
         infoBaseSalida = new javax.swing.JLabel();
+        limpiar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Conversor");
@@ -153,6 +157,7 @@ public class Interfaz extends javax.swing.JFrame
 
         valorInvalido.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         valorInvalido.setForeground(new java.awt.Color(255, 0, 0));
+        valorInvalido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         infoBase.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         infoBase.setText("(Decimal)");
@@ -164,6 +169,18 @@ public class Interfaz extends javax.swing.JFrame
         infoBaseSalida.setFont(new java.awt.Font("Consolas", 0, 12)); // NOI18N
         infoBaseSalida.setText("(Binario)");
 
+        limpiar.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        limpiar.setText("Limpiar");
+        limpiar.setToolTipText("Limpiar los campos");
+        limpiar.setEnabled(false);
+        limpiar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                limpiarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -174,34 +191,6 @@ public class Interfaz extends javax.swing.JFrame
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel6)
-                                    .addComponent(jLabel7))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(entradaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(infoBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(valorInvalido, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(entrada, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(salida, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(40, 40, 40))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(salidaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(10, 10, 10)
-                                        .addComponent(infoBaseSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(12, 12, 12))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -230,16 +219,45 @@ public class Interfaz extends javax.swing.JFrame
                                                 .addGap(10, 10, 10)
                                                 .addComponent(jLabel5))))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(calcular, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(210, 210, 210)))))
-                        .addGap(0, 11, Short.MAX_VALUE)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(calcular, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                                            .addComponent(limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(210, 210, 210))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(valorInvalido, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(entradaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(infoBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(entrada, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
+                                .addGap(70, 70, 70)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel9)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(salida, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(40, 40, 40))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(salidaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(10, 10, 10)
+                                        .addComponent(infoBaseSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(12, 12, 12)))))
+                        .addGap(10, 10, 10)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(entradaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(salidaOpcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,17 +265,19 @@ public class Interfaz extends javax.swing.JFrame
                     .addComponent(jLabel8)
                     .addComponent(infoBaseSalida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(infoBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(entrada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel9)
                     .addComponent(salida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addComponent(valorInvalido, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(calcular)
-                .addGap(40, 40, 40)
+                .addGap(5, 5, 5)
+                .addComponent(limpiar)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(decimalDef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(binarioDef, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,7 +289,7 @@ public class Interfaz extends javax.swing.JFrame
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5))
-                .addGap(15, 15, 15))
+                .addGap(10, 10, 10))
         );
 
         pack();
@@ -279,11 +299,13 @@ public class Interfaz extends javax.swing.JFrame
     {//GEN-HEADEREND:event_entradaFocusLost
         if (!getEntrada().getText().equals(""))
             dataManager.validarEntrada();
+
     }//GEN-LAST:event_entradaFocusLost
 
     private void entradaFocusGained(java.awt.event.FocusEvent evt)//GEN-FIRST:event_entradaFocusGained
     {//GEN-HEADEREND:event_entradaFocusGained
         valorInvalido.setText("");
+
     }//GEN-LAST:event_entradaFocusGained
 
     private void entradaOpcionActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_entradaOpcionActionPerformed
@@ -291,52 +313,36 @@ public class Interfaz extends javax.swing.JFrame
         if (!getEntrada().getText().equals(""))
             dataManager.validarEntrada();
 
-        infoBase(infoBase, (String) getEntradaOpcion().getSelectedItem());
+        dataManager.infoBase(infoBase, (String) getEntradaOpcion().getSelectedItem());
 
     }//GEN-LAST:event_entradaOpcionActionPerformed
 
     private void calcularActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_calcularActionPerformed
     {//GEN-HEADEREND:event_calcularActionPerformed
         if (dataManager.validarEntrada())
+        {
             dataManager.updateCampos();
+            limpiar.setEnabled(true);
+        }
+
     }//GEN-LAST:event_calcularActionPerformed
 
     private void salidaOpcionActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_salidaOpcionActionPerformed
     {//GEN-HEADEREND:event_salidaOpcionActionPerformed
-        infoBase(infoBaseSalida, (String) getSalidaOpcion().getSelectedItem());
+        dataManager.infoBase(infoBaseSalida, (String) getSalidaOpcion().getSelectedItem());
+
     }//GEN-LAST:event_salidaOpcionActionPerformed
 
-    private void infoBase(JLabel label, String opcion)
-    {
-        switch (Integer.parseInt(opcion))
+    private void limpiarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_limpiarActionPerformed
+    {//GEN-HEADEREND:event_limpiarActionPerformed
+        if (!salida.getText().equals("") || !dataManager.validarEntrada())
         {
-            case 2:
-
-                label.setText("(Binario)");
-                break;
-
-            case 8:
-
-                label.setText("(Octal)");
-                break;
-
-            case 10:
-
-                label.setText("(Decimal)");
-                break;
-
-            case 16:
-
-                label.setText("(Hexadecimal)");
-                break;
-
-            default:
-
-                label.setText("");
-                break;
-
+            dataManager.limpiarCampos();
+            valorInvalido.setText("");
+            limpiar.setEnabled(false);
         }
-    }
+
+    }//GEN-LAST:event_limpiarActionPerformed
 
     public JComboBox<String> getEntradaOpcion()
     {
@@ -383,6 +389,11 @@ public class Interfaz extends javax.swing.JFrame
         return octalDef;
     }
 
+    public JButton getLimpiar()
+    {
+        return limpiar;
+    }
+
     public static void iniciarInterfaz()
     {
         /* Set the Nimbus look and feel */
@@ -398,6 +409,7 @@ public class Interfaz extends javax.swing.JFrame
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
+
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex)
         {
             java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
@@ -416,6 +428,7 @@ public class Interfaz extends javax.swing.JFrame
             interfaz.setIconImage(Toolkit.getDefaultToolkit().getImage(interfaz.getClass().getResource("/com/res/images/icon.png")));
 
         });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -436,6 +449,7 @@ public class Interfaz extends javax.swing.JFrame
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton limpiar;
     private javax.swing.JTextField octalDef;
     private javax.swing.JTextField salida;
     private javax.swing.JComboBox<String> salidaOpcion;

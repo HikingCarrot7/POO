@@ -2,7 +2,7 @@ package com.sw.model;
 
 /**
  *
- * Conversiones necesarias para el el sistema de numeración.
+ * Conversiones necesarias para el sistema de numeración.
  *
  * @author Emmanuel Chable Collí.
  * @author Eusebio Ajas Santos.
@@ -33,7 +33,7 @@ public class ConversionManager
         {
             int temp = number % base;
             converted += temp < 10 ? temp : String.valueOf((char) (temp + 55));
-            number = (int) Math.floor((double) number / base);
+            number /= base;
 
         }
 

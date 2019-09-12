@@ -2,12 +2,13 @@ package com.sw.controller;
 
 import com.sw.model.ConversionManager;
 import com.sw.view.Interfaz;
+import javax.swing.JLabel;
 
 /**
  * Gestor de los cálculos del programa.
  *
  *
- * @author Carlos Álvarez Trejo.
+ * @author Ricardo Nicolás Canul Ibarra.
  */
 public class DataManager
 {
@@ -25,7 +26,7 @@ public class DataManager
     /**
      * Muestra el resultado del cálculo.
      *
-     * @author Carlos Álvarez Trejo.
+     * @author Ricardo Nicolás Canul Ibarra.
      *
      * @since 1.0
      */
@@ -40,6 +41,7 @@ public class DataManager
         {
             interfaz.getSalida().setText(conversionManager.fromDecToAnyBase(conversionManager.fromAnyBaseToDec(entrada, baseEntrada), baseSalida));
             rellenarCamposDef(baseEntrada, entrada);
+
         }
 
     }
@@ -50,7 +52,7 @@ public class DataManager
      * @param baseEntrada La base del número de entrada.
      * @param entrada El número en cualquier base.
      *
-     * @author Carlos Álvarez Trejo.
+     * @author Ricardo Nicolás Canul Ibarra.
      */
     private void rellenarCamposDef(int baseEntrada, String entrada)
     {
@@ -58,6 +60,7 @@ public class DataManager
         interfaz.getBinarioDef().setText(conversionManager.fromDecToAnyBase(conversionManager.fromAnyBaseToDec(entrada, baseEntrada), 2));
         interfaz.getOctalDef().setText(conversionManager.fromDecToAnyBase(conversionManager.fromAnyBaseToDec(entrada, baseEntrada), 8));
         interfaz.getHexadecimalDef().setText(conversionManager.fromDecToAnyBase(conversionManager.fromAnyBaseToDec(entrada, baseEntrada), 16));
+
     }
 
     /**
@@ -65,7 +68,7 @@ public class DataManager
      *
      * @return <code>true</code> si la entrada es válida con respecto a la base seleccionada o <code>false</code> en caso contrario.
      *
-     * @author Carlos Álvarez Trejo.
+     * @author Ricardo Nicolás Canul Ibarra.
      *
      * @since 1.0
      */
@@ -81,9 +84,71 @@ public class DataManager
         } else
         {
             interfaz.getValorInvalido().setText("¡Valor inválido!");
+            interfaz.getLimpiar().setEnabled(true);
             return false;
 
         }
+
+    }
+
+    /**
+     * Muestra en pantalla información sobre el nombre de la base que está seleccionada.
+     *
+     * @param label La etiqueta a actualizar la información.
+     * @param opcion La opción correspondiente a mostrar.
+     *
+     * @author Ricardo Nicolás Canul Ibarra.
+     *
+     * @since 1.0
+     */
+    public void infoBase(JLabel label, String opcion)
+    {
+        switch (Integer.parseInt(opcion))
+        {
+            case 2:
+
+                label.setText("(Binario)");
+                break;
+
+            case 8:
+
+                label.setText("(Octal)");
+                break;
+
+            case 10:
+
+                label.setText("(Decimal)");
+                break;
+
+            case 16:
+
+                label.setText("(Hexadecimal)");
+                break;
+
+            default:
+
+                label.setText("");
+                break;
+
+        }
+
+    }
+
+    /**
+     * Limpia los campos.
+     *
+     * @author Ricardo Nicolás Canul Ibarra.
+     *
+     * @since 1.0
+     */
+    public void limpiarCampos()
+    {
+        interfaz.getEntrada().setText("");
+        interfaz.getSalida().setText("");
+        interfaz.getDecimalDef().setText("");
+        interfaz.getBinarioDef().setText("");
+        interfaz.getOctalDef().setText("");
+        interfaz.getHexadecimalDef().setText("");
 
     }
 
