@@ -8,10 +8,23 @@ public class TragaMonedas
 {
 
     private double dineroMaquina;
+    private int NMonedasInicial;
 
     public TragaMonedas(double dineroMaquina)
     {
         this.dineroMaquina = dineroMaquina;
+    }
+
+    //Monedas totales por juego (total)
+    public void recibirMonedas()
+    {
+
+    }
+
+    //Monedas por jugadas
+    public void solicitarApuesta()
+    {
+
     }
 
     private void ejecutarJuego()
