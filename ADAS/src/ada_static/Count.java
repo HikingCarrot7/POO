@@ -1,4 +1,4 @@
-package dominio;
+package ada_static;
 
 /**
  *

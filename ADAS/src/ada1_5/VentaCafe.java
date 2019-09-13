@@ -30,7 +30,7 @@ public class VentaCafe
             System.out.println("Inserte las bolsas de café que desea comprar: ");
             bolsas = in.nextLine();
 
-            if (validarEntrada(bolsas, "[0-9]+"))
+            if (validarEntrada(bolsas, "^[0-9]+$"))
                 if (Integer.parseInt(bolsas) % 2 == 0)
                     bolsasValidas = true;
 

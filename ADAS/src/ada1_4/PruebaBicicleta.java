@@ -44,7 +44,7 @@ public class PruebaBicicleta
     public void imprimirRegistrados()
     {
         for (Bicicleta registro : registrados)
-            System.out.println(registro.mostrarDatos());
+            System.out.println(registro);
 
     }
 

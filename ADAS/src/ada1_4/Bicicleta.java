@@ -48,7 +48,8 @@ public class Bicicleta
         this.telefono = telefono;
     }
 
-    public String mostrarDatos()
+    @Override
+    public String toString()
     {
         return String.format("Nombre del propietario: %s\nIdentificación: %s\nTeléfono: %s\n", getNombre(), getIdentificacion(), getTelefono());
     }

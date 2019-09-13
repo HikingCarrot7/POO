@@ -1,6 +1,4 @@
-package test;
-
-import dominio.Count;
+package ada_static;
 
 /**
  *
