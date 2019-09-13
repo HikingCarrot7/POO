@@ -11,14 +11,14 @@ public class TragaMonedas
 
     public static final double VALORMONEDAS = 0.25;
     private final Random RAND;
-    private double dineroMaquina; // Dinero disponible en la máquina.
+    private double MonedasMaquina; // Dinero disponible en la máquina.
     private int nMonedasInicial; // Monedas iniciales del jugador.
     private int nMonedasRestantes; // Monedas restantes del jugador (totales).
     private int nMonedasApuesta; // Monedas por apuesta del jugador.
 
     public TragaMonedas(double dineroMaquina)
     {
-        this.dineroMaquina = dineroMaquina;
+        this.MonedasMaquina = dineroMaquina;
         RAND = new Random();
 
     }
@@ -29,12 +29,7 @@ public class TragaMonedas
         CAMPANA,
         UVA,
         CEREZA
-    }
 
-    public void solicitarApuesta(int monedasApostadas)
-    {
-        if (validarApuesta())
-            ejecutarJuego();
     }
 
     /**
@@ -43,11 +38,8 @@ public class TragaMonedas
      */
     public void ejecutarJuego()
     {
-
         if (!sinDinero())
             realizarJugada();
-        else
-            System.out.println("\nLo sentimos, la máquina se quedó sin dinero!");
     }
 
     /**
@@ -60,7 +52,8 @@ public class TragaMonedas
         Piezas ranura3 = Piezas.values()[RAND.nextInt(3)];
         int monedasGanadas = ganaCantVecesMontoApostado(ranura1, ranura2, ranura3);
 
-        nMonedasRestantes += nMonedasApuesta * monedasGanadas;
+        nMonedasRestantes += nMonedasApuesta * monedasGanadas > getMonedasMaquina() ? getMonedasMaquina() : nMonedasApuesta * monedasGanadas;
+        setMonedasMaquina(getMonedasMaquina() - monedasGanadas);
 
         System.out.println(String.format("\nPiezas:\n%-15s%-15s%s", ranura1, ranura2, ranura3));
         System.out.println(String.format("\nGanas: %d Moneda(s)\nTus monedas restantes: %d", nMonedasApuesta * monedasGanadas, getNMonedasRestantes()));
@@ -100,19 +93,40 @@ public class TragaMonedas
     }
 
     /**
-     * Retorna las ganancias por juego.
+     * Resume las ganancias por juego.
      *
-     * @param NMonedas
-     * @return
      */
-    public double calcularGanancia(int NMonedas)
+    public void calcularGanancia()
     {
-        return 1;
+        int aux = getNMonedasRestantes() - nMonedasInicial;
+        int gananciasMonedas = aux < 0 ? aux * -1 : aux;
+
+        System.out.println(String.format("\nMonedas que quedaron para jugar: %d\nEl jugador %s",
+                getNMonedasRestantes(),
+                String.format("%s %d moneda(s) ($%,.2f dólares)", aux < 0 ? "perdió:" : "ganó:", gananciasMonedas, convertirMonedasADinero(gananciasMonedas))));
+
     }
 
     public boolean validarApuesta()
     {
         return nMonedasApuesta <= nMonedasRestantes;
+    }
+
+    /**
+     * Convierte el dinero del jugador (dólares) a monedas de la máquina.
+     *
+     * @param dineroDolares Los dólares a convertir en monedas virtuales.
+     *
+     * @return El dinero del jugador en monedas virtuales de la máquina.
+     */
+    public int convertirDineroAMonedas(double dineroDolares)
+    {
+        return (int) (dineroDolares / VALORMONEDAS);
+    }
+
+    public double convertirMonedasADinero(int monedas)
+    {
+        return monedas * VALORMONEDAS;
     }
 
     public void setNMonedasApuesta(int NMonedasApuesta)
@@ -135,14 +149,19 @@ public class TragaMonedas
         this.nMonedasInicial = NMonedasInicial;
     }
 
-    public void setDineroMaquina(double dineroMaquina)
+    public void setMonedasMaquina(double MonedasMaquina)
     {
-        this.dineroMaquina = dineroMaquina;
+        this.MonedasMaquina = MonedasMaquina < 0 ? 0 : MonedasMaquina;
     }
 
-    private boolean sinDinero()
+    public double getMonedasMaquina()
     {
-        return dineroMaquina == 0;
+        return MonedasMaquina;
+    }
+
+    public boolean sinDinero()
+    {
+        return MonedasMaquina <= 0;
     }
 
 }

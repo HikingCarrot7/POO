@@ -9,7 +9,7 @@ public class PruebaTragaMonedas
 
     public static void main(String[] args)
     {
-        new Jugador(new TragaMonedas(400)).insertarMonedasJuego();
+        new Jugador(new TragaMonedas(5000)).insertarMonedasJuego();
     }
 
 }

@@ -29,10 +29,10 @@ public class Jugador
 
         do
         {
-            System.out.println("\nInserte la cantidad de dinero para jugar: ");
+            System.out.println("Inserte la cantidad de dinero para jugar: ");
             String dinero = IN.nextLine();
 
-            dineroValido = validarEntrada(dinero, "[0-9]+(.(25|5|75)0*)*");
+            dineroValido = validarEntrada(dinero, "([0-9]+)*(0*.(25|5|75)0*)*");
 
             if (dineroValido)
                 dineroJugador = Double.parseDouble(dinero);
@@ -41,8 +41,8 @@ public class Jugador
 
         } while (!dineroValido);
 
-        tragaMonedas.setNMonedasInicial(convertirDineroAMonedas(dineroJugador));
-        tragaMonedas.setNMonedasRestantes(convertirDineroAMonedas(dineroJugador));
+        tragaMonedas.setNMonedasInicial(tragaMonedas.convertirDineroAMonedas(dineroJugador));
+        tragaMonedas.setNMonedasRestantes(tragaMonedas.convertirDineroAMonedas(dineroJugador));
         insertarMonedasJugada();
 
     }
@@ -52,9 +52,11 @@ public class Jugador
         boolean monedasValidas;
         String monedasPorApostar;
 
+        System.out.print("\nMonedas totales para jugar: " + tragaMonedas.getNMonedasRestantes());
+
         do
         {
-            System.out.println(String.format("\nMonedas totales: %-10s\nInserte las monedas que desea apostar en esta jugada: ", tragaMonedas.getNMonedasRestantes()));
+            System.out.println("\nInserte las monedas que desea apostar en esta jugada (presione \"0\" para salir): ");
             monedasPorApostar = IN.nextLine();
 
             if (monedasPorApostar.equals("0"))
@@ -71,34 +73,25 @@ public class Jugador
                 if (tragaMonedas.validarApuesta())
                 {
                     tragaMonedas.setNMonedasRestantes(tragaMonedas.getNMonedasRestantes() - monedasApostadas);
+                    tragaMonedas.setMonedasMaquina(tragaMonedas.getMonedasMaquina() + monedasApostadas);
                     tragaMonedas.setNMonedasApuesta(monedasApostadas);
                     tragaMonedas.ejecutarJuego();
 
                 } else
-                {
-                    System.out.println("\nSe ha quedado sin monedas!");
+                    System.out.println("\nMonedas insuficientes para hacer apuesta, inténtelo de nuevo");
 
-                    break;
-                }
+            } else
+                System.out.println("\nMonedas inválidas, sólo puede insertar entre 1 - 4 monedas por apuesta");
 
-            }
+        } while (tragaMonedas.getNMonedasRestantes() != 0 && !tragaMonedas.sinDinero());
 
-        } while (tragaMonedas.getNMonedasRestantes() != 0);
+        if (tragaMonedas.sinDinero())
+            System.out.println("\nLo sentimos, la máquina se quedó sin dinero!");
 
-        tragaMonedas.calcularGanancia(1);
+        tragaMonedas.calcularGanancia();
 
-        System.out.println("Gracias por jugar!");
+        System.out.println("\nGracias por jugar!");
 
-    }
-
-    /**
-     * Convierte el dinero del jugador (dólares) a fichas de la máquina.
-     *
-     * @return El dinero del jugador en fichas virtuales de la máquina.
-     */
-    private int convertirDineroAMonedas(double dineroJugador)
-    {
-        return (int) (dineroJugador / TragaMonedas.VALORMONEDAS);
     }
 
     /**
