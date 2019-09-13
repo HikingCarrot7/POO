@@ -60,7 +60,6 @@ public class TragaMonedas
 
         imprimirTablero(ranura1, ranura2, ranura3);
 
-        //System.out.println(String.format("\nPiezas:\n%-15s%-15s%s", ranura1, ranura2, ranura3));
         System.out.println(String.format("\n%-15s%d moneda(s)\n%-15s%d moneda(s)", "Ganas:", nMonedasApuesta * monedasGanadas, "Restantes:", getNMonedasRestantes()));
 
     }

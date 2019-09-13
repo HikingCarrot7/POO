@@ -59,7 +59,7 @@ public class Jugador
 
         do
         {
-            System.out.println("\nInserte las monedas que desea apostar en esta jugada (presione \"0\" para salir): ");
+            System.out.println("\nMonedas a apostar (presione \"0\" para salir): ");
             monedasPorApostar = IN.nextLine();
 
             if (monedasPorApostar.equals("0")) //Si se presiona el "0" el juego termina.
