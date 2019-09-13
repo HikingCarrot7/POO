@@ -63,7 +63,7 @@ public class TragaMonedas
         nMonedasRestantes += nMonedasApuesta * monedasGanadas;
 
         System.out.println(String.format("\nPiezas:\n%-15s%-15s%s", ranura1, ranura2, ranura3));
-        System.out.println(String.format("Ganas: %-10d Monedas\nTus monedas restantes: %d", monedasGanadas, getNMonedasRestantes()));
+        System.out.println(String.format("\nGanas: %d Moneda(s)\nTus monedas restantes: %d", nMonedasApuesta * monedasGanadas, getNMonedasRestantes()));
 
     }
 

@@ -57,10 +57,10 @@ public class Jugador
             System.out.println(String.format("\nMonedas totales: %-10s\nInserte las monedas que desea apostar en esta jugada: ", tragaMonedas.getNMonedasRestantes()));
             monedasPorApostar = IN.nextLine();
 
-            monedasValidas = validarEntrada(monedasPorApostar, "^[0-4]+$");
-
-            if (monedasValidas && monedasPorApostar.equals("0"))
+            if (monedasPorApostar.equals("0"))
                 break;
+
+            monedasValidas = validarEntrada(monedasPorApostar, "^[0-4]+$");
 
             if (monedasValidas)
             {
@@ -83,7 +83,7 @@ public class Jugador
 
             }
 
-        } while (true);
+        } while (tragaMonedas.getNMonedasRestantes() != 0);
 
         tragaMonedas.calcularGanancia(1);
 
