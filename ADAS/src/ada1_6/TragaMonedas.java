@@ -58,8 +58,33 @@ public class TragaMonedas
         nMonedasRestantes += nMonedasApuesta * monedasGanadas > getMonedasMaquina() ? getMonedasMaquina() : nMonedasApuesta * monedasGanadas;
         setMonedasMaquina(getMonedasMaquina() - monedasGanadas);
 
-        System.out.println(String.format("\nPiezas:\n%-15s%-15s%s", ranura1, ranura2, ranura3));
-        System.out.println(String.format("\nGanas: %d Moneda(s)\nTus monedas restantes: %d", nMonedasApuesta * monedasGanadas, getNMonedasRestantes()));
+        imprimirTablero(ranura1, ranura2, ranura3);
+
+        //System.out.println(String.format("\nPiezas:\n%-15s%-15s%s", ranura1, ranura2, ranura3));
+        System.out.println(String.format("\n%-15s%d moneda(s)\n%-15s%d moneda(s)", "Ganas:", nMonedasApuesta * monedasGanadas, "Restantes:", getNMonedasRestantes()));
+
+    }
+
+    /**
+     * Imprime el tablero por consola.
+     *
+     * @param ranura1 La ranura 1 de la salida de la máquina.
+     * @param ranura2 La ranura 2 de la salida de la máquina.
+     * @param ranura3 La ranura 3 de la salida de la máquina.
+     */
+    private void imprimirTablero(Piezas ranura1, Piezas ranura2, Piezas ranura3)
+    {
+        String text = "\t";
+
+        for (int i = 0; i < 52; i++)
+            text += "-";
+
+        text += String.format("\n\t| %-15s| %-15s| %-15s|\n\t", ranura1, ranura2, ranura3);
+
+        for (int i = 0; i < 52; i++)
+            text += "-";
+
+        System.out.println(text);
 
     }
 
@@ -104,9 +129,10 @@ public class TragaMonedas
         int aux = getNMonedasRestantes() - nMonedasInicial;
         int gananciasMonedas = aux < 0 ? aux * -1 : aux;
 
-        System.out.println(String.format("\nMonedas que quedaron para jugar: %d\nEl jugador %s",
+        System.out.println(String.format("\n%-25s%d moneda(s)\n%s",
+                "Quedaron por jugar:",
                 getNMonedasRestantes(),
-                String.format("%s %d moneda(s) ($%,.2f dólares)", aux < 0 ? "perdió:" : "ganó:", gananciasMonedas, convertirMonedasADinero(gananciasMonedas))));
+                String.format("%-25s%d moneda(s) ($%,.2f dólares)", aux < 0 ? "El jugador perdió:" : "El jugador ganó:", gananciasMonedas, convertirMonedasADinero(gananciasMonedas))));
 
     }
 

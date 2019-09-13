@@ -77,7 +77,6 @@ public class Jugador
                 {
                     tragaMonedas.setNMonedasRestantes(tragaMonedas.getNMonedasRestantes() - monedasApostadas); // Se restan las monedas disponibles del jugador.
                     tragaMonedas.setMonedasMaquina(tragaMonedas.getMonedasMaquina() + monedasApostadas); // Se añaden las monedas a la maquina.
-                    //tragaMonedas.setNMonedasApuesta(monedasApostadas);
                     tragaMonedas.ejecutarJuego(); // Se ejecuta la jugada.
 
                 } else
@@ -92,8 +91,6 @@ public class Jugador
             System.out.println("\nLo sentimos, la máquina se quedó sin dinero!");
 
         tragaMonedas.calcularGanancia(); // Se calculan las ganancias.
-
-        System.out.println("\nGracias por jugar!");
 
     }
 
