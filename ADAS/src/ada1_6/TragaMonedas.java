@@ -16,9 +16,9 @@ public class TragaMonedas
     private int nMonedasRestantes; // Monedas restantes del jugador (totales).
     private int nMonedasApuesta; // Monedas por apuesta del jugador.
 
-    public TragaMonedas(double dineroMaquina)
+    public TragaMonedas(double monedasMaquina)
     {
-        this.MonedasMaquina = dineroMaquina;
+        this.MonedasMaquina = monedasMaquina;
         RAND = new Random();
 
     }
