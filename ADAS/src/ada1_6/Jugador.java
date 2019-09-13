@@ -32,7 +32,7 @@ public class Jugador
             System.out.println("Inserte la cantidad de dinero para jugar: ");
             String dinero = IN.nextLine();
 
-            dineroValido = validarEntrada(dinero, "([0-9]+)*(0*.(25|5|75)0*)*");
+            dineroValido = validarEntrada(dinero, "([0-9]+)*(0*.(25|5|75)0*)*"); // Se valida que sea correcta la cantidad de dinero que se inserta.
 
             if (dineroValido)
                 dineroJugador = Double.parseDouble(dinero);
@@ -41,41 +41,44 @@ public class Jugador
 
         } while (!dineroValido);
 
-        tragaMonedas.setNMonedasInicial(tragaMonedas.convertirDineroAMonedas(dineroJugador));
-        tragaMonedas.setNMonedasRestantes(tragaMonedas.convertirDineroAMonedas(dineroJugador));
-        insertarMonedasJugada();
+        tragaMonedas.setNMonedasInicial(tragaMonedas.convertirDineroAMonedas(dineroJugador)); // Valor de monedas inicial.
+        tragaMonedas.setNMonedasRestantes(tragaMonedas.convertirDineroAMonedas(dineroJugador)); // Monedas restantes del jugador.
+        insertarMonedasJugada(); // Insertar monedas POR apuesta.
 
     }
 
+    /**
+     * Pide al jugador que inserte las monedas que apostará por jugada.
+     */
     public void insertarMonedasJugada()
     {
         boolean monedasValidas;
         String monedasPorApostar;
 
-        System.out.print("\nMonedas totales para jugar: " + tragaMonedas.getNMonedasRestantes());
+        System.out.print("\nMonedas totales para jugar: " + tragaMonedas.getNMonedasRestantes()); //Monedas totales del jugador.
 
         do
         {
             System.out.println("\nInserte las monedas que desea apostar en esta jugada (presione \"0\" para salir): ");
             monedasPorApostar = IN.nextLine();
 
-            if (monedasPorApostar.equals("0"))
+            if (monedasPorApostar.equals("0")) //Si se presiona el "0" el juego termina.
                 break;
 
-            monedasValidas = validarEntrada(monedasPorApostar, "^[0-4]+$");
+            monedasValidas = validarEntrada(monedasPorApostar, "^[0-4]+$"); //Validamos por medio de una expresión regular si la cantidad de monedas por apuesta es correcta.
 
             if (monedasValidas)
             {
                 int monedasApostadas = Integer.parseInt(monedasPorApostar);
 
-                tragaMonedas.setNMonedasApuesta(monedasApostadas);
+                tragaMonedas.setNMonedasApuesta(monedasApostadas); // Se establecen las monedas para esta apuesta.
 
-                if (tragaMonedas.validarApuesta())
+                if (tragaMonedas.validarApuesta()) // Se valida que hayan monedas sufiecientes en le saldo del jugador para hacer esta apuesta.
                 {
-                    tragaMonedas.setNMonedasRestantes(tragaMonedas.getNMonedasRestantes() - monedasApostadas);
-                    tragaMonedas.setMonedasMaquina(tragaMonedas.getMonedasMaquina() + monedasApostadas);
-                    tragaMonedas.setNMonedasApuesta(monedasApostadas);
-                    tragaMonedas.ejecutarJuego();
+                    tragaMonedas.setNMonedasRestantes(tragaMonedas.getNMonedasRestantes() - monedasApostadas); // Se restan las monedas disponibles del jugador.
+                    tragaMonedas.setMonedasMaquina(tragaMonedas.getMonedasMaquina() + monedasApostadas); // Se añaden las monedas a la maquina.
+                    //tragaMonedas.setNMonedasApuesta(monedasApostadas);
+                    tragaMonedas.ejecutarJuego(); // Se ejecuta la jugada.
 
                 } else
                     System.out.println("\nMonedas insuficientes para hacer apuesta, inténtelo de nuevo");
@@ -83,12 +86,12 @@ public class Jugador
             } else
                 System.out.println("\nMonedas inválidas, sólo puede insertar entre 1 - 4 monedas por apuesta");
 
-        } while (tragaMonedas.getNMonedasRestantes() != 0 && !tragaMonedas.sinDinero());
+        } while (tragaMonedas.getNMonedasRestantes() != 0 && !tragaMonedas.sinDinero()); // Se repite hasta que se acabe el saldo del jugador o la máquina se quede sin dinero.
 
         if (tragaMonedas.sinDinero())
             System.out.println("\nLo sentimos, la máquina se quedó sin dinero!");
 
-        tragaMonedas.calcularGanancia();
+        tragaMonedas.calcularGanancia(); // Se calculan las ganancias.
 
         System.out.println("\nGracias por jugar!");
 

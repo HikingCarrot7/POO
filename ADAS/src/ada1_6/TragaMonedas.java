@@ -23,6 +23,9 @@ public class TragaMonedas
 
     }
 
+    /**
+     * Valores de las piezas.
+     */
     private enum Piezas
     {
 
@@ -38,7 +41,7 @@ public class TragaMonedas
      */
     public void ejecutarJuego()
     {
-        if (!sinDinero())
+        if (!sinDinero()) // Ejecutamos la jugada si hay dinero.
             realizarJugada();
     }
 
@@ -107,6 +110,11 @@ public class TragaMonedas
 
     }
 
+    /**
+     * Retorna si la cantidad de monedas a apostar es adecuada con respecta a la que le quedan de saldo al jugador.
+     *
+     * @return <code>true</code> si las monedas apostadas son las adecuadas <code>false</code> en caso contrario.
+     */
     public boolean validarApuesta()
     {
         return nMonedasApuesta <= nMonedasRestantes;
@@ -124,6 +132,13 @@ public class TragaMonedas
         return (int) (dineroDolares / VALORMONEDAS);
     }
 
+    /**
+     * Convertimos las monedas a dinero (dólares).
+     *
+     * @param monedas Las monedas a convertir a dólares.
+     *
+     * @return La cantidad de dólares que representan la monedas.
+     */
     public double convertirMonedasADinero(int monedas)
     {
         return monedas * VALORMONEDAS;
