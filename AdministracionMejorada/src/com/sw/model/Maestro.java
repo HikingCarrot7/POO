@@ -13,7 +13,7 @@ public class Maestro extends Autoridad implements Serializable
     private static final long serialVersionUID = 536444884480044090L;
 
     private String especialidad;
-    private final ArrayList<Alumno> misAlumnos;
+    private ArrayList<Alumno> misAlumnos;
 
     public Maestro(String matricula, String nombre, int edad, double sueldo, String usuario, String password, String especialidad)
     {
@@ -55,6 +55,11 @@ public class Maestro extends Autoridad implements Serializable
     public ArrayList<? extends Persona> obtenerEntidades()
     {
         return misAlumnos;
+    }
+
+    public void setEntidades(ArrayList<Alumno> misAlumnos)
+    {
+        this.misAlumnos = misAlumnos;
     }
 
 }

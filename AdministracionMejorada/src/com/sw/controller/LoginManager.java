@@ -40,6 +40,7 @@ public class LoginManager
 
         } else
             JOptionPane.showMessageDialog(login, "Los datos no son válidos", "Datos inválidos", JOptionPane.ERROR_MESSAGE);
+
     }
 
     private <T extends InicioSesion> boolean validarLogin(ArrayList<T> autoridades, String user, String password)
@@ -61,12 +62,14 @@ public class LoginManager
     {
         if (!login.getUsuario().getText().trim().equals(""))
             login.getUservalido().setText(validarFormatoTexto(login.getUsuario().getText(), "^([á-úa-zA-Z._-]( ?)){9,}$") ? "" : "Usuario inválido");
+
     }
 
     public void passwordFieldManager()
     {
         if (!login.getContrasena().getText().trim().equals(""))
             login.getContravalida().setText(validarFormatoTexto(login.getContrasena().getText(), "^[a-zA-Z0-9._-]{8,}$") ? "" : "Contraseña inválida");
+
     }
 
     private boolean validarFormatoTexto(String texto, String regex)

@@ -66,6 +66,7 @@ public class Login extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar sesión como administrador");
+        setResizable(false);
 
         jLabel2.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
         jLabel2.setText("Iniciar sesión");
@@ -316,6 +317,11 @@ public class Login extends javax.swing.JFrame
     public ArrayList<Administrador> getAdministradores()
     {
         return administradores;
+    }
+
+    public LoginManager getLoginManager()
+    {
+        return loginManager;
     }
 
     public static void IniciarLogin()

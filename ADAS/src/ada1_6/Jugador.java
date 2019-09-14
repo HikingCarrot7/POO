@@ -29,7 +29,7 @@ public class Jugador
 
         do
         {
-            System.out.println("Inserte la cantidad de dinero para jugar: ");
+            System.out.println("Cantidad de dinero para jugar (en dólares): ");
             String dinero = IN.nextLine();
 
             dineroValido = validarEntrada(dinero, "([0-9]+)*(0*.(25|5|75)0*)*"); // Se valida que sea correcta la cantidad de dinero que se inserta.
@@ -75,7 +75,7 @@ public class Jugador
 
                 if (tragaMonedas.validarApuesta()) // Se valida que hayan monedas sufiecientes en el saldo del jugador para hacer esta apuesta.
                 {
-                    tragaMonedas.setNMonedasRestantes(tragaMonedas.getNMonedasRestantes() - monedasApostadas); // Se restan las monedas disponibles del jugador. 
+                    tragaMonedas.setNMonedasRestantes(tragaMonedas.getNMonedasRestantes() - monedasApostadas); // Se restan las monedas disponibles del jugador.
                     tragaMonedas.setMonedasMaquina(tragaMonedas.getMonedasMaquina() + monedasApostadas); // Se añaden las monedas a la maquina.
                     tragaMonedas.ejecutarJuego(); // Se ejecuta la jugada.
 
