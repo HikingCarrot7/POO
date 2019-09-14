@@ -73,9 +73,9 @@ public class Jugador
 
                 tragaMonedas.setNMonedasApuesta(monedasApostadas); // Se establecen las monedas para esta apuesta.
 
-                if (tragaMonedas.validarApuesta()) // Se valida que hayan monedas sufiecientes en le saldo del jugador para hacer esta apuesta.
+                if (tragaMonedas.validarApuesta()) // Se valida que hayan monedas sufiecientes en el saldo del jugador para hacer esta apuesta.
                 {
-                    tragaMonedas.setNMonedasRestantes(tragaMonedas.getNMonedasRestantes() - monedasApostadas); // Se restan las monedas disponibles del jugador.
+                    tragaMonedas.setNMonedasRestantes(tragaMonedas.getNMonedasRestantes() - monedasApostadas); // Se restan las monedas disponibles del jugador. 
                     tragaMonedas.setMonedasMaquina(tragaMonedas.getMonedasMaquina() + monedasApostadas); // Se añaden las monedas a la maquina.
                     tragaMonedas.ejecutarJuego(); // Se ejecuta la jugada.
 

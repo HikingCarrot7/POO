@@ -50,9 +50,9 @@ public class TragaMonedas
      */
     public void realizarJugada()
     {
-        Piezas ranura1 = Piezas.values()[RAND.nextInt(3)];
-        Piezas ranura2 = Piezas.values()[RAND.nextInt(3)];
-        Piezas ranura3 = Piezas.values()[RAND.nextInt(3)];
+        Piezas ranura1 = Piezas.values()[RAND.nextInt(Piezas.values().length)];
+        Piezas ranura2 = Piezas.values()[RAND.nextInt(Piezas.values().length)];
+        Piezas ranura3 = Piezas.values()[RAND.nextInt(Piezas.values().length)];
         int monedasGanadas = ganaCantVecesMontoApostado(ranura1, ranura2, ranura3);
 
         nMonedasRestantes += nMonedasApuesta * monedasGanadas > getMonedasMaquina() ? getMonedasMaquina() : nMonedasApuesta * monedasGanadas;
