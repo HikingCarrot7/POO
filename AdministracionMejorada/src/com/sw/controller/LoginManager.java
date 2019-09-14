@@ -34,7 +34,7 @@ public class LoginManager
 
         } else if (validarLogin(login.getAdministradores(), login.getUsuario().getText().trim(), login.getContrasena().getText().trim()))
         {
-            AdministradoresGUI.IniciarAdministradoresGui(login.getMaestros(), login.getDataTableUpdater(), login, addEntity);
+            AdministradoresGUI.IniciarAdministradoresGui(login.getMaestros(), login, addEntity);
 
             login.setVisible(false);
 

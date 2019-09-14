@@ -49,4 +49,40 @@ public class DataSorterManager
 
     }
 
+    public void ordenarMaestros(ArrayList<Maestro> maestros, String ordenarPor)
+    {
+        Comparator<Maestro> orden = null;
+
+        switch (ordenarPor)
+        {
+            case "Especialidad":
+
+                orden = Comparator.comparing(Maestro::getEspecialidad);
+
+                break;
+
+            case "Nombre":
+
+                orden = Comparator.comparing(Maestro::getNombre);
+
+                break;
+
+            case "Sueldo":
+
+                orden = Comparator.comparing(Maestro::getSueldo).reversed();
+
+                break;
+
+        }
+
+        ArrayList<Maestro> maestrosOrdenados = new ArrayList<>();
+
+        for (Iterator<Maestro> maestro = maestros.stream().sorted(orden).iterator(); maestro.hasNext();)
+            maestrosOrdenados.add(maestro.next());
+
+        maestros.clear();
+        maestros.addAll(maestrosOrdenados);
+
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.sw.view;
 
 import com.sw.controller.DataPersistenceManager;
+import com.sw.controller.DataSorterManager;
 import com.sw.controller.DataTableUpdater;
 import com.sw.controller.LoginManager;
 import com.sw.controller.TextFieldsManager;
@@ -20,6 +21,7 @@ public class Login extends javax.swing.JFrame
 
     private final DataPersistenceManager dataPersistenceManager;
     private final DataTableUpdater dataTableUpdater;
+    private final DataSorterManager dataSorterManager;
     private final TextFieldsManager userTextFieldManager, passwordTextFieldManager;
     private final LoginManager loginManager;
     private final ArrayList<Maestro> maestros;
@@ -29,6 +31,7 @@ public class Login extends javax.swing.JFrame
     {
         dataPersistenceManager = new DataPersistenceManager();
         dataTableUpdater = new DataTableUpdater();
+        dataSorterManager = new DataSorterManager();
         loginManager = new LoginManager(this);
         maestros = dataPersistenceManager.getMaestros();
         administradores = new ArrayList<>();
@@ -297,6 +300,11 @@ public class Login extends javax.swing.JFrame
     public DataTableUpdater getDataTableUpdater()
     {
         return dataTableUpdater;
+    }
+
+    public DataSorterManager getDataSorterManager()
+    {
+        return dataSorterManager;
     }
 
     public JLabel getContravalida()
