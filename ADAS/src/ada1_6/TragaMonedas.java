@@ -136,7 +136,7 @@ public class TragaMonedas
     }
 
     /**
-     * Retorna si la cantidad de monedas a apostar es adecuada con respecta a la que le quedan de saldo al jugador.
+     * Retorna si la cantidad de monedas a apostar es adecuada con respecto al saldo del jugador.
      *
      * @return <code>true</code> si las monedas apostadas son las adecuadas <code>false</code> en caso contrario.
      */
