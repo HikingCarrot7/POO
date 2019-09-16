@@ -4,7 +4,7 @@ package cannon;
  *
  * @author Mohammed
  */
-public class PruebaCanon
+public class PruebaCannon
 {
 
     public static void main(String[] args)
