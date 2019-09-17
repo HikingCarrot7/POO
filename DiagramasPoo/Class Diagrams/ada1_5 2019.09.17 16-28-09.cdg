@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ada1_5">
+  <ClassDiagramComponents>
+    <Class name="Caja" package="ada1_5" visibility="public" xPosition="207.0" yPosition="273.0">
+      <Fields>
+        <Field name="TIPO" type="String" visibility="private" isFinal="true"/>
+        <Field name="CAPACIDAD" type="int" visibility="private" isFinal="true"/>
+        <Field name="PRECIO" type="double" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="TIPO"/>
+          <Argument type="int" name="CAPACIDAD"/>
+          <Argument type="double" name="PRECIO"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getTIPO" returnType="String" visibility="public"/>
+        <Method name="getCAPACIDAD" returnType="int" visibility="public"/>
+        <Method name="getPRECIO" returnType="double" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DespachoCajas" package="ada1_5" visibility="public" xPosition="391.0" yPosition="20.0">
+      <Fields>
+        <Field name="PRECIOBOLSAS" type="int" visibility="private" isFinal="true"/>
+        <Field name="cajaGrande" type="Caja" visibility="private"/>
+        <Field name="cajaMediana" type="Caja" visibility="private"/>
+        <Field name="cajaPequena" type="Caja" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="calcularMenorNumeroCajas" returnType="void" visibility="public">
+          <Argument type="int" name="bolsas"/>
+        </Method>
+        <Method name="calcularMenorNumeroEspaciosDesperdiciados" returnType="void" visibility="public">
+          <Argument type="int" name="bolsas"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="VentaCafe" package="ada1_5" visibility="public" xPosition="36.0" yPosition="30.0">
+      <Fields>
+        <Field name="IN" type="Scanner" visibility="private" isFinal="true"/>
+        <Field name="ventaCafe" type="DespachoCajas" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+        <Method name="pedirBolsas" returnType="void" visibility="public"/>
+        <Method name="validarEntrada" returnType="boolean" visibility="private">
+          <Argument type="String" name="text"/>
+          <Argument type="String" name="regex"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>
