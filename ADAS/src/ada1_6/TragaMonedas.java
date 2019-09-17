@@ -16,13 +16,6 @@ public class TragaMonedas
     private int nMonedasRestantes; // Monedas restantes del jugador (totales).
     private int nMonedasApuesta; // Monedas por apuesta del jugador.
 
-    public TragaMonedas(double monedasMaquina)
-    {
-        this.MonedasMaquina = monedasMaquina;
-        RAND = new Random();
-
-    }
-
     /**
      * Valores de las piezas.
      */
@@ -32,6 +25,13 @@ public class TragaMonedas
         CAMPANA,
         UVA,
         CEREZA
+
+    }
+
+    public TragaMonedas(double monedasMaquina)
+    {
+        this.MonedasMaquina = monedasMaquina;
+        RAND = new Random();
 
     }
 

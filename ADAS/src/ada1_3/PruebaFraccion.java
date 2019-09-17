@@ -9,7 +9,8 @@ public class PruebaFraccion
 
     public static void main(String[] args)
     {
-        Fraccion fraccion1 = new Fraccion(1, 2);
+
+        Fraccion fraccion1 = new Fraccion(3, 5);
         Fraccion fraccion2 = new Fraccion(2, 5);
 
         System.out.printf("%36s\n", "<Suma>");
