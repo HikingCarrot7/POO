@@ -1,7 +1,5 @@
 package ada1_5;
 
-import java.util.Scanner;
-
 /**
  *
  * @author Mohammed
@@ -9,87 +7,77 @@ import java.util.Scanner;
 public class VentaCafe
 {
 
-    private final Scanner IN;
+    private final int PRECIOBOLSAS = 250;
+    private Caja cajaGrande; // Caja grande.
+    private Caja cajaMediana; // Caja mediana.
+    private Caja cajaPequena; // Caja pequeña.
 
     public VentaCafe()
     {
-        IN = new Scanner(System.in);
-    }
-
-    public void venderCafe()
-    {
-
-        String bolsas;
-        boolean bolsasValidas;
-
-        do
-        {
-
-            bolsasValidas = false;
-
-            System.out.println("Inserte las bolsas de café que desea comprar: ");
-            bolsas = IN.nextLine();
-
-            if (validarEntrada(bolsas, "^[0-9]+$"))
-                if (Integer.parseInt(bolsas) % 2 == 0)
-                    bolsasValidas = true;
-
-                else
-                    System.out.println("\nLas bolsas deben ser una cantidad par\n");
-            else
-                System.out.println("\nCantidad inválida\n");
-
-        } while (!bolsasValidas);
-
-        calcularMenorNumeroCajas(Integer.parseInt(bolsas));
-        calcularMenorNumeroEspaciosDesperdiciados(Integer.parseInt(bolsas));
+        cajaGrande = new Caja("Grande", 20, 10);
+        cajaMediana = new Caja("Mediana", 10, 5);
+        cajaPequena = new Caja("Pequeña", 5, 3);
 
     }
 
-    private void calcularMenorNumeroCajas(int bolsas)
+    /**
+     * Imprime en consola el menor número de cajas para realizar el envío.
+     *
+     * @param bolsas El número de bolsas para hacer el cálculo.
+     */
+    public void calcularMenorNumeroCajas(int bolsas)
     {
-        int nCajasGrandes = bolsas % 20 == 0 ? bolsas / 20 : bolsas / 20 + 1;
+
+        //Si el número de bolsas que se insertó es un múltiplo de 20, entonces el menor número de cajas que necesitamos son bolsas / 20 cajas grandes.
+        //En caso contrario sería bolsas / 20 + 1 cajas grandes.
+        int nCajasGrandes = bolsas % cajaGrande.getCAPACIDAD() == 0 ? bolsas / cajaGrande.getCAPACIDAD() : bolsas / cajaGrande.getCAPACIDAD() + 1;
 
         System.out.println("---------------Menor número de cajas---------------");
-        System.out.println(String.format("\n\tNúmero de bolsas ordenadas: %d - $%d", bolsas, bolsas * 250));
-        System.out.println(String.format("\nCajas grandes necesarias: %-10dEspacios remanentes: %d\n\n\t\tSu costo total es: $%d\n",
-                nCajasGrandes,
-                20 * nCajasGrandes - bolsas,
-                bolsas * 250 + nCajasGrandes * 10));
+        System.out.println(String.format("\n\tNúmero de bolsas ordenadas: %d - $%d", bolsas, bolsas * PRECIOBOLSAS));
+        System.out.println(String.format("\nCajas grandes necesarias: %-10dEspacios remanentes: %d\n\n\t\tSu costo total es: $%,.2f\n",
+                nCajasGrandes, // Total de cajas grandes.
+                cajaGrande.getCAPACIDAD() * nCajasGrandes - bolsas, // El número de espacios remanentes se calcula multiplicando el número de cajas grandes necesarias por su capacidad y restándole el número de bolsas.
+                bolsas * PRECIOBOLSAS + nCajasGrandes * cajaGrande.getPRECIO())); // Precio total.
 
     }
 
-    private void calcularMenorNumeroEspaciosDesperdiciados(int bolsas)
+    /**
+     * Imprime en consola el menor número de espacios desperdiciados para hacer el envío.
+     *
+     * @param bolsas El número de bolsas para hacer el cálculo.
+     */
+    public void calcularMenorNumeroEspaciosDesperdiciados(int bolsas)
     {
         int tempBolsas = bolsas;
-        int cajasGrandes;
-        int cajasMedianas;
-        int cajasPequenas = 0;
+        int totalCajasGrandes;
+        int totalCajasMedianas;
+        int totalCajasPequenas = 0;
 
-        cajasGrandes = (tempBolsas - tempBolsas % 20) / 20;
-        tempBolsas -= cajasGrandes * 20;
+        // Las cajas grandes es igual al número de bolsas menos el residuo de dividir el número de bolsas por la capacidad de las cajas grandes, todo esto dividido entre la capacidad de las cajas grandes.
+        // Si tenemos 67 bolsas, las cajas grandes se calculan de la siguiente manera:
+        // Cajas Grandes = (67 - 67 % 20) / 20 = (67 - 7) / 20 = 60 / 20 = 3 cajas grandes.
+        totalCajasGrandes = (tempBolsas - tempBolsas % cajaGrande.getCAPACIDAD()) / cajaGrande.getCAPACIDAD();
+        tempBolsas -= totalCajasGrandes * cajaGrande.getCAPACIDAD(); // Restamos el número de cajas grandes por su capacidad al número de bolsas.
 
-        cajasMedianas = (tempBolsas - tempBolsas % 10) / 10;
-        tempBolsas -= cajasMedianas * 10;
+        // Repetimos exactamente lo mismo para las bolsas restantes.
+        totalCajasMedianas = (tempBolsas - tempBolsas % cajaMediana.getCAPACIDAD()) / cajaMediana.getCAPACIDAD();
+        tempBolsas -= totalCajasMedianas * cajaMediana.getCAPACIDAD();
 
+        // Si el número de bolsas que tenemos hasta llegar aquí NO es 0 entoneces procedemos de las siguiente manera:
+        // Si nos quedan más de 5 bolsas para empaquetar entonces necesitamos 2 cajas, en caso contrario sólo necesitamos 1 caja.
         if (tempBolsas != 0)
-            cajasPequenas = (float) tempBolsas / 5 > 1 ? 2 : 1;
+            totalCajasPequenas = (float) tempBolsas / 5 > 1 ? 2 : 1;
 
         System.out.println("-----Menor número de espacios desaprovechados-----");
-        System.out.println(String.format("\n\tNúmero de cajas ordenadas: %d - $%d", bolsas, bolsas * 250));
-        System.out.println(String.format("\n%-25s %d\n%-25s %d\n%-25s %d\n%-25s %d\n\n\t\tSu costo total es: $%d\n",
-                "Cajas grandes: ",
-                cajasGrandes,
-                "Cajas medianas: ", cajasMedianas,
-                "Cajas pequeñas: ", cajasPequenas,
+        System.out.println(String.format("\n\tNúmero de cajas ordenadas: %d - $%d", bolsas, bolsas * PRECIOBOLSAS));
+        System.out.println(String.format("\n%-25s %d\n%-25s %d\n%-25s %d\n%-25s %d\n\n\t\tSu costo total es: $%,.2f\n",
+                "Cajas grandes: ", totalCajasGrandes, // Número de cajas grandes totales.
+                "Cajas medianas: ", totalCajasMedianas, // Número de cajas medianas totales.
+                "Cajas pequeñas: ", totalCajasPequenas, // Número de cajas pequeñas totales.
                 "Espacios remanentes: ",
-                cajasPequenas * 5 - tempBolsas, bolsas * 250 + cajasGrandes * 10 + cajasMedianas * 5 + cajasPequenas * 3));
+                totalCajasPequenas * cajaPequena.getCAPACIDAD() - tempBolsas, // Especios restantes.
+                bolsas * PRECIOBOLSAS + totalCajasGrandes * cajaGrande.getPRECIO() + totalCajasMedianas * cajaMediana.getPRECIO() + totalCajasPequenas * cajaPequena.getPRECIO())); // Total de la venta.
 
-    }
-
-    private boolean validarEntrada(String text, String regex)
-    {
-        return text.matches(regex);
     }
 
 }

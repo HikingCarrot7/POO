@@ -9,8 +9,8 @@ import java.util.Random;
 public class TragaMonedas
 {
 
-    public static final double VALORMONEDAS = 0.25;
-    private final Random RAND;
+    public static final double VALORMONEDAS = 0.25; // Valor de las monedas virtuales de las máquina.
+    private final Random RAND; // Generar número aleatorios.
     private double MonedasMaquina; // Dinero disponible en la máquina.
     private int nMonedasInicial; // Monedas iniciales del jugador.
     private int nMonedasRestantes; // Monedas restantes del jugador (totales).
@@ -28,6 +28,11 @@ public class TragaMonedas
 
     }
 
+    /**
+     * Constructor de la máquina.
+     *
+     * @param monedasMaquina Las monedas iniciales de la máquina.
+     */
     public TragaMonedas(double monedasMaquina)
     {
         this.MonedasMaquina = monedasMaquina;
@@ -53,13 +58,16 @@ public class TragaMonedas
         Piezas ranura1 = Piezas.values()[RAND.nextInt(Piezas.values().length)];
         Piezas ranura2 = Piezas.values()[RAND.nextInt(Piezas.values().length)];
         Piezas ranura3 = Piezas.values()[RAND.nextInt(Piezas.values().length)];
-        int monedasGanadas = ganaCantVecesMontoApostado(ranura1, ranura2, ranura3);
+        int monedasGanadas = ganaCantVecesMontoApostado(ranura1, ranura2, ranura3); // Cantidad de veces que se multiplicará las monedas apostadas del jugador para esta jugada.
 
+        // Actualizamos las monedas restantes del jugador y de la máquina.
         nMonedasRestantes += nMonedasApuesta * monedasGanadas > getMonedasMaquina() ? getMonedasMaquina() : nMonedasApuesta * monedasGanadas;
         setMonedasMaquina(getMonedasMaquina() - monedasGanadas);
 
+        // Imprimimos el tablero.
         imprimirTablero(ranura1, ranura2, ranura3);
 
+        // Resumen de la jugada.
         System.out.println(String.format("\n%-15s%d moneda(s)\n%-15s%d moneda(s)", "Ganas:", nMonedasApuesta * monedasGanadas, "Restantes:", getNMonedasRestantes()));
 
     }
@@ -120,12 +128,12 @@ public class TragaMonedas
     }
 
     /**
-     * Resume las ganancias por juego.
+     * Calcula las ganancias por juego.
      *
      */
     public void calcularGanancia()
     {
-        int aux = getNMonedasRestantes() - nMonedasInicial;
+        int aux = getNMonedasRestantes() - nMonedasInicial; // Si el al hacer esta resta el número queda negativo, entonces el jugador perdió dinero.
         int gananciasMonedas = aux < 0 ? aux * -1 : aux;
 
         System.out.println(String.format("\n%-25s%d moneda(s)\n%s",
@@ -169,36 +177,71 @@ public class TragaMonedas
         return monedas * VALORMONEDAS;
     }
 
+    /**
+     * Establece las monedas por apuesta.
+     *
+     * @param NMonedasApuesta Las monesdas por establecer por apuesta.
+     */
     public void setNMonedasApuesta(int NMonedasApuesta)
     {
         this.nMonedasApuesta = NMonedasApuesta;
     }
 
+    /**
+     * Establece las monedas restantes para el jugador.
+     *
+     * @param NMonedasRestantes Las monedas que le quedan al jugador para jugar.
+     */
     public void setNMonedasRestantes(int NMonedasRestantes)
     {
         this.nMonedasRestantes = NMonedasRestantes;
     }
 
+    /**
+     * Retorna las monedas restantes del jugador.
+     *
+     * @return Las monedas restantes del jugador.
+     */
     public int getNMonedasRestantes()
     {
         return nMonedasRestantes;
     }
 
+    /**
+     * Establece las monedas iniciales del jugador.
+     *
+     * @param NMonedasInicial Las monedas iniciales del jugador.
+     */
     public void setNMonedasInicial(int NMonedasInicial)
     {
         this.nMonedasInicial = NMonedasInicial;
     }
 
+    /**
+     * Establece las monedas de máquina.
+     *
+     * @param MonedasMaquina Las monedas a establecer de la máquina.
+     */
     public void setMonedasMaquina(double MonedasMaquina)
     {
         this.MonedasMaquina = MonedasMaquina < 0 ? 0 : MonedasMaquina;
     }
 
+    /**
+     * Retorna las monedas de las máquina.
+     *
+     * @return Las monedas de las máquina.
+     */
     public double getMonedasMaquina()
     {
         return MonedasMaquina;
     }
 
+    /**
+     * Retorna si la máquina tiene dinero.
+     *
+     * @return Si la máquina tiene dinero.
+     */
     public boolean sinDinero()
     {
         return MonedasMaquina <= 0;
