@@ -12,4 +12,5 @@ public class PruebaFiguras
         System.out.println(new Cuadrado(new Punto(-1, 0), new Punto(0, 0), new Punto(-1, -1), new Punto(0, -1)).obtenerArea());
 
     }
+
 }
