@@ -3,8 +3,9 @@ package ada1_6;
 import java.util.Random;
 
 /**
+ * Clase TragaMonedas.
  *
- * @author HikingCarrot7
+ * @author Ricardo Nicolás Canul Ibarra.
  */
 public class TragaMonedas
 {

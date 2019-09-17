@@ -3,8 +3,9 @@ package ada1_6;
 import java.util.Scanner;
 
 /**
+ * Clase Jugador.
  *
- * @author HikingCarrot7
+ * @author Ricardo Nicolás Canul Ibarra.
  */
 public class Jugador
 {
