@@ -24,8 +24,6 @@ public class PruebaBicicleta
     {
         for (int i = 0; i < 3; i++)
         {
-            System.out.println("\nInserte la clave de su bicicleta:");
-            String clave = in.nextLine();
 
             System.out.println("\nInserte su nombre:");
             String nombre = in.nextLine();
@@ -33,7 +31,7 @@ public class PruebaBicicleta
             System.out.println("\nInserte su número de teléfono:");
             String telefono = in.nextLine();
 
-            registrados.add(new Bicicleta(clave, nombre, telefono));
+            registrados.add(new Bicicleta(nombre, telefono));
 
         }
 
