@@ -3,22 +3,33 @@ package ada1_5;
 import java.util.Scanner;
 
 /**
+ * Clase VentaCafe.
  *
- * @author Mohammed
+ * @author Ricardo Nicolás Canul Ibarra.
  */
 public class VentaCafe
 {
 
-    private final Scanner in;
+    private final Scanner IN;
+    private final DespachoCajas ventaCafe;
+
+    public static void main(String[] args)
+    {
+        new VentaCafe().pedirBolsas();
+    }
 
     public VentaCafe()
     {
-        in = new Scanner(System.in);
+        IN = new Scanner(System.in);
+        ventaCafe = new DespachoCajas();
+
     }
 
-    public void venderCafe()
+    /**
+     * Pide las bolsas para realizar los cálculos correspondientes.
+     */
+    public void pedirBolsas()
     {
-
         String bolsas;
         boolean bolsasValidas;
 
@@ -27,66 +38,30 @@ public class VentaCafe
 
             bolsasValidas = false;
 
-            System.out.println("Inserte las bolsas de café que desea comprar: ");
-            bolsas = in.nextLine();
+            System.out.println("Inserte las bolsas de café que desea comprar: "); // Pedimos las bolsas.
+            bolsas = IN.nextLine();
 
-            if (validarEntrada(bolsas, "^[0-9]+$"))
-                if (Integer.parseInt(bolsas) % 2 == 0)
-                    bolsasValidas = true;
-
-                else
-                    System.out.println("\nLas bolsas deben ser una cantidad par\n");
+            if (validarEntrada(bolsas, "^[0-9]+$")) // Validamos por medio de una expresión regular si el número de bolsas insertado es correcto. (Aún no conocemos las excepciones).
+                bolsasValidas = true;
             else
                 System.out.println("\nCantidad inválida\n");
 
         } while (!bolsasValidas);
 
-        menorNumeroCajas(Integer.parseInt(bolsas));
-        menorNumeroEspaciosDesperdiciados(Integer.parseInt(bolsas));
+        ventaCafe.calcularMenorNumeroCajas(Integer.parseInt(bolsas)); // Calculamos el menor número de cajas para el empaquetado.
+        ventaCafe.calcularMenorNumeroEspaciosDesperdiciados(Integer.parseInt(bolsas)); // Calculamos el menor número de espacios desperdiciados.
 
     }
 
-    private void menorNumeroCajas(int bolsas)
-    {
-        int nCajasGrandes = bolsas % 20 == 0 ? bolsas / 20 : bolsas / 20 + 1;
-
-        System.out.println("---------------Menor número de cajas---------------");
-        System.out.println(String.format("\n\tNúmero de bolsas ordenadas: %d - $%d", bolsas, bolsas * 250));
-        System.out.println(String.format("\nCajas grandes necesarias: %-10dEspacios remanentes: %d\n\n\t\tSu costo total es: $%d\n",
-                nCajasGrandes,
-                20 * nCajasGrandes - bolsas,
-                bolsas * 250 + nCajasGrandes * 10));
-
-    }
-
-    private void menorNumeroEspaciosDesperdiciados(int bolsas)
-    {
-        int tempBolsas = bolsas;
-        int cajasGrandes;
-        int cajasMedianas;
-        int cajasPequenas = 0;
-
-        cajasGrandes = (tempBolsas - tempBolsas % 20) / 20;
-        tempBolsas -= cajasGrandes * 20;
-
-        cajasMedianas = (tempBolsas - tempBolsas % 10) / 10;
-        tempBolsas -= cajasMedianas * 10;
-
-        if (tempBolsas != 0)
-            cajasPequenas = (float) tempBolsas / 5 > 1 ? 2 : 1;
-
-        System.out.println("-----Menor número de espacios desaprovechados-----");
-        System.out.println(String.format("\n\tNúmero de cajas ordenadas: %d - $%d", bolsas, bolsas * 250));
-        System.out.println(String.format("\n%-25s %d\n%-25s %d\n%-25s %d\n%-25s %d\n\n\t\tSu costo total es: $%d\n",
-                "Cajas grandes: ",
-                cajasGrandes,
-                "Cajas medianas: ", cajasMedianas,
-                "Cajas pequeñas: ", cajasPequenas,
-                "Espacios remanentes: ",
-                cajasPequenas * 5 - tempBolsas, bolsas * 250 + cajasGrandes * 10 + cajasMedianas * 5 + cajasPequenas * 3));
-
-    }
-
+    /**
+     * Valida si el texto especificado concuerda con la expresión regular especificada.
+     *
+     * @param text El texto a validar.
+     * @param regex La expresión regular.
+     *
+     * @return <code>true</code> el texto concuerda con la expresión regular o <code>false</code> en caso contrario.
+     *
+     */
     private boolean validarEntrada(String text, String regex)
     {
         return text.matches(regex);

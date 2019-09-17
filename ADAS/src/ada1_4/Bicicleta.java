@@ -7,25 +7,26 @@ package ada1_4;
 public class Bicicleta
 {
 
-    private String identificacion;
+    private static int identificacion = 0;
+    private int identificacionBicicleta;
     private String nombre;
     private String telefono;
 
-    public Bicicleta(String identificacion, String nombre, String telefono)
+    public Bicicleta(String nombre, String telefono)
     {
-        this.identificacion = identificacion;
         this.nombre = nombre;
         this.telefono = telefono;
+        identificacionBicicleta = ++identificacion;
     }
 
-    public String getIdentificacion()
+    public int getIdentificacion()
     {
-        return identificacion;
+        return identificacionBicicleta;
     }
 
-    public void setIdentificacion(String identificacion)
+    public void setIdentificacion(int identificacionBicicleta)
     {
-        this.identificacion = identificacion;
+        this.identificacionBicicleta = identificacionBicicleta;
     }
 
     public String getNombre()
@@ -51,7 +52,7 @@ public class Bicicleta
     @Override
     public String toString()
     {
-        return String.format("Nombre del propietario: %s\nIdentificación: %s\nTeléfono: %s\n", getNombre(), getIdentificacion(), getTelefono());
+        return String.format("\nNombre del propietario: %s\nIdentificación: %s\nTeléfono: %s\n", getNombre(), getIdentificacion(), getTelefono());
     }
 
 }

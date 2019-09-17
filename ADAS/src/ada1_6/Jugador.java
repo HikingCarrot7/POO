@@ -3,8 +3,9 @@ package ada1_6;
 import java.util.Scanner;
 
 /**
+ * Clase Jugador.
  *
- * @author HikingCarrot7
+ * @author Ricardo Nicolás Canul Ibarra.
  */
 public class Jugador
 {
@@ -32,7 +33,7 @@ public class Jugador
             System.out.println("Cantidad de dinero para jugar (en dólares): ");
             String dinero = IN.nextLine();
 
-            dineroValido = validarEntrada(dinero, "([0-9]+)*(0*.(25|5|75)0*)*"); // Se valida que sea correcta la cantidad de dinero que se inserta.
+            dineroValido = validarEntrada(dinero, "([0-9]+)*(0*.(25|5|75)0*)*"); // Se valida que sea correcta la cantidad de dinero que se inserta por medio de una expresión regular.
 
             if (dineroValido)
                 dineroJugador = Double.parseDouble(dinero);
