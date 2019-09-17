@@ -9,11 +9,11 @@ import java.util.Scanner;
 public class VentaCafe
 {
 
-    private final Scanner in;
+    private final Scanner IN;
 
     public VentaCafe()
     {
-        in = new Scanner(System.in);
+        IN = new Scanner(System.in);
     }
 
     public void venderCafe()
@@ -28,7 +28,7 @@ public class VentaCafe
             bolsasValidas = false;
 
             System.out.println("Inserte las bolsas de café que desea comprar: ");
-            bolsas = in.nextLine();
+            bolsas = IN.nextLine();
 
             if (validarEntrada(bolsas, "^[0-9]+$"))
                 if (Integer.parseInt(bolsas) % 2 == 0)
@@ -41,12 +41,12 @@ public class VentaCafe
 
         } while (!bolsasValidas);
 
-        menorNumeroCajas(Integer.parseInt(bolsas));
-        menorNumeroEspaciosDesperdiciados(Integer.parseInt(bolsas));
+        calcularMenorNumeroCajas(Integer.parseInt(bolsas));
+        calcularMenorNumeroEspaciosDesperdiciados(Integer.parseInt(bolsas));
 
     }
 
-    private void menorNumeroCajas(int bolsas)
+    private void calcularMenorNumeroCajas(int bolsas)
     {
         int nCajasGrandes = bolsas % 20 == 0 ? bolsas / 20 : bolsas / 20 + 1;
 
@@ -59,7 +59,7 @@ public class VentaCafe
 
     }
 
-    private void menorNumeroEspaciosDesperdiciados(int bolsas)
+    private void calcularMenorNumeroEspaciosDesperdiciados(int bolsas)
     {
         int tempBolsas = bolsas;
         int cajasGrandes;
