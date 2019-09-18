@@ -66,7 +66,7 @@ public class Jugador
             if (monedasPorApostar.equals("0")) //Si se presiona el "0" el juego termina.
                 break;
 
-            monedasValidas = validarEntrada(monedasPorApostar, "^[0-4]+$"); //Validamos por medio de una expresión regular si la cantidad de monedas por apuesta es correcta.
+            monedasValidas = validarEntrada(monedasPorApostar, "^[0-4]$"); //Validamos por medio de una expresión regular si la cantidad de monedas por apuesta es correcta.
 
             if (monedasValidas)
             {
