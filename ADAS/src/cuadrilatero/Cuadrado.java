@@ -2,7 +2,7 @@ package cuadrilatero;
 
 /**
  *
- * @author Nicolás
+ * @author Mohammed
  */
 public class Cuadrado extends Cuadrilatero
 {
@@ -12,22 +12,9 @@ public class Cuadrado extends Cuadrilatero
         super(punto1, punto2, punto3, punto4);
     }
 
-    @Override
-    public double obtenerArea()
-    {
-        return obtenerBase() * obtenerAltura();
-    }
-
-    @Override
-    public double obtenerBase()
+    public double obtenerLongitudLado()
     {
         return Punto.distanciaEntreDosPuntos(punto3, punto4);
-    }
-
-    @Override
-    public double obtenerAltura()
-    {
-        return Punto.distanciaEntreDosPuntos(punto2, punto4);
     }
 
 }

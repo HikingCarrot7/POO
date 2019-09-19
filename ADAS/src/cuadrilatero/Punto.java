@@ -2,7 +2,7 @@ package cuadrilatero;
 
 /**
  *
- * @author Nicolás
+ * @author Mohammed
  */
 public class Punto
 {

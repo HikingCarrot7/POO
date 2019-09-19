@@ -2,7 +2,7 @@ package cuadrilatero;
 
 /**
  *
- * @author Nicolás
+ * @author Mohammed
  */
 public abstract class Cuadrilatero
 {
@@ -58,10 +58,11 @@ public abstract class Cuadrilatero
         this.punto4 = punto4;
     }
 
-    public abstract double obtenerArea();
+    public double obtenerArea()
+    {
+        return (punto3.getX() * punto4.getY() + punto4.getX() * punto2.getY() + punto2.getX() * punto1.getY() + punto1.getX() * punto3.getY()
+                - (punto3.getX() * punto1.getY() + punto1.getX() * punto2.getY() + punto2.getX() * punto4.getY() + punto4.getX() * punto3.getY())) / 2;
 
-    public abstract double obtenerBase();
-
-    public abstract double obtenerAltura();
+    }
 
 }
