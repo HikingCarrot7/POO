@@ -10,7 +10,7 @@ public class Gato extends Mascota
     @Override
     public String hablar()
     {
-        return "Los gatos hacen miauu";
+        return "Miauu";
     }
 
 }

@@ -10,7 +10,7 @@ public class Vaca extends Mascota
     @Override
     public String hablar()
     {
-        return "Las vacas hacen muuu";
+        return "Muuu";
     }
 
 }
