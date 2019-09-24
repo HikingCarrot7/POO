@@ -9,11 +9,6 @@ public abstract class Mascota
 
     protected String nombre;
 
-    protected String habla()
-    {
-        return "La mayoría de las mascotas hacen ruido";
-    }
-
     protected String getNombre()
     {
         return nombre;
@@ -23,5 +18,7 @@ public abstract class Mascota
     {
         this.nombre = nombre;
     }
+
+    protected abstract String hablar();
 
 }

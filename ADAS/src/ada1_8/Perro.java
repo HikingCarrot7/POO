@@ -8,7 +8,7 @@ public class Perro extends Mascota
 {
 
     @Override
-    public String habla()
+    public String hablar()
     {
         return "Los perros hacen guau";
     }

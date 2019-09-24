@@ -13,11 +13,11 @@ public class PruebaMascotas
 
         miGato.establecerNombre("Rooky");
         System.out.println(miGato.getNombre());
-        System.out.println(miGato.habla());
+        System.out.println(miGato.hablar());
 
-        System.out.println(new Perro().habla());
+        System.out.println(new Perro().hablar());
 
-        System.out.println(new Vaca().habla());
+        System.out.println(new Vaca().hablar());
 
     }
 
