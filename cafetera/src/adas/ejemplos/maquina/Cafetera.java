@@ -53,7 +53,6 @@ public class Cafetera
             else
             {
                 System.out.println("Disculpe, la cafetera se quedó sin dinero o  está descompuesta");
-
                 break;
             }
 

@@ -1,9 +1,10 @@
 package com.sw.view;
 
-import com.sw.controller.DataUpdater;
+import com.sw.controller.AddEntity;
 import com.sw.model.Alumno;
 import com.sw.model.Maestro;
 import java.util.ArrayList;
+import javax.swing.JTextField;
 
 /**
  *
@@ -13,23 +14,22 @@ public class AgregarAlumno extends javax.swing.JFrame
 {
 
     private final MaestrosGUI maestrosGui;
-    private final DataUpdater dataUpdater;
     private final Alumno alumno;
     private final ArrayList<Maestro> maestros;
+    private final AddEntity addEntity;
     private final int indexCurrentMaestro;
-    private boolean alumnoNuevo;
 
     public AgregarAlumno(ArrayList<Maestro> maestros, int indexCurrentMaestro, MaestrosGUI maestrosGui, Alumno alumno)
     {
         initComponents();
-
-        dataUpdater = new DataUpdater();
 
         this.maestrosGui = maestrosGui;
         this.maestros = maestros;
         this.alumno = alumno;
         this.indexCurrentMaestro = indexCurrentMaestro;
 
+        addEntity = maestrosGui.getAddEntity();
+        addEntity.actualizarCamposRelleno(this);
     }
 
     /**
@@ -54,6 +54,7 @@ public class AgregarAlumno extends javax.swing.JFrame
         registrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -221,16 +222,7 @@ public class AgregarAlumno extends javax.swing.JFrame
     private void registrarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_registrarActionPerformed
     {//GEN-HEADEREND:event_registrarActionPerformed
 
-        alumno.setMatricula(matricula.getText());
-        alumno.setNombre(nombre.getText());
-        alumno.setEdad(Integer.parseInt(edad.getText()));
-        alumno.setLicenciatura(licenciatura.getText());
-        alumno.setCalificacion(Double.parseDouble(calificacion.getText()));
-
-        if (alumnoNuevo)
-            maestros.get(indexCurrentMaestro).anadirEntidad(alumno);
-
-        dataUpdater.updateTableAlumnos(maestrosGui.getjTable1(), maestros, indexCurrentMaestro);
+        addEntity.anadirAlumno(this);
 
         dispose();
 
@@ -286,22 +278,49 @@ public class AgregarAlumno extends javax.swing.JFrame
         // TODO add your handling code here:
     }//GEN-LAST:event_calificacionFocusLost
 
-    private void actualizarCamposRelleno()
+    public int getIndexCurrentMaestro()
     {
-        alumnoNuevo = true;
+        return indexCurrentMaestro;
+    }
 
-        if (alumno.getEdad() != 0)
-        {
-            matricula.setText(alumno.getMatricula());
-            nombre.setText(alumno.getNombre());
-            edad.setText(alumno.getEdad() + "");
-            licenciatura.setText(alumno.getLicenciatura());
-            calificacion.setText(alumno.getCalificacion() + "");
+    public JTextField getCalificacion()
+    {
+        return calificacion;
+    }
 
-            alumnoNuevo = false;
+    public JTextField getEdad()
+    {
+        return edad;
+    }
 
-        }
+    public JTextField getLicenciatura()
+    {
+        return licenciatura;
+    }
 
+    public JTextField getMatricula()
+    {
+        return matricula;
+    }
+
+    public JTextField getNombre()
+    {
+        return nombre;
+    }
+
+    public ArrayList<Maestro> getMaestros()
+    {
+        return maestros;
+    }
+
+    public Alumno getAlumno()
+    {
+        return alumno;
+    }
+
+    public MaestrosGUI getMaestrosGui()
+    {
+        return maestrosGui;
     }
 
     public static void iniciarAgregarAlumno(ArrayList<Maestro> maestros, int indexCurrentMaestro, MaestrosGUI maestrosGui, Alumno alumno)
@@ -336,7 +355,6 @@ public class AgregarAlumno extends javax.swing.JFrame
 
             agregarAlumno.setVisible(true);
             agregarAlumno.setLocationRelativeTo(null);
-            agregarAlumno.actualizarCamposRelleno();
 
         });
     }

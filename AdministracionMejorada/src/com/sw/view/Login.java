@@ -1,16 +1,16 @@
 package com.sw.view;
 
-import com.sw.controller.DataManager;
-import com.sw.controller.DataUpdater;
-import com.sw.interfaces.InicioSesion;
+import com.sw.controller.DataPersistenceManager;
+import com.sw.controller.DataSorterManager;
+import com.sw.controller.DataTableUpdater;
+import com.sw.controller.LoginManager;
+import com.sw.controller.TextFieldsManager;
 import com.sw.model.Administrador;
 import com.sw.model.Maestro;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 /**
  *
@@ -19,26 +19,29 @@ import javax.swing.event.DocumentListener;
 public class Login extends javax.swing.JFrame
 {
 
-    private int indexCurrentMaestro;
-    private final DataManager dataManager;
-    private final DataUpdater dataUpdater;
-    private final TextFieldManager userTextFieldManager, passwordTextFieldManager;
+    private final DataPersistenceManager dataPersistenceManager;
+    private final DataTableUpdater dataTableUpdater;
+    private final DataSorterManager dataSorterManager;
+    private final TextFieldsManager userTextFieldManager, passwordTextFieldManager;
+    private final LoginManager loginManager;
     private final ArrayList<Maestro> maestros;
     private final ArrayList<Administrador> administradores;
 
     public Login()
     {
-        dataManager = new DataManager();
-        dataUpdater = new DataUpdater();
-        maestros = dataManager.getMaestros();
+        dataPersistenceManager = new DataPersistenceManager();
+        dataTableUpdater = new DataTableUpdater();
+        dataSorterManager = new DataSorterManager();
+        loginManager = new LoginManager(this);
+        maestros = dataPersistenceManager.getMaestros();
         administradores = new ArrayList<>();
 
         administradores.add(new Administrador("18004567", "Eusebio Ajas", 21, 90000, "eusebio.fca", "12345678"));
 
         initComponents();
 
-        userTextFieldManager = new TextFieldManager("", usuario, uservalido);
-        passwordTextFieldManager = new TextFieldManager("", contrasena, contravalida);
+        userTextFieldManager = new TextFieldsManager("", usuario, uservalido);
+        passwordTextFieldManager = new TextFieldsManager("", contrasena, contravalida);
 
         usuario.getDocument().addDocumentListener(userTextFieldManager);
         contrasena.getDocument().addDocumentListener(passwordTextFieldManager);
@@ -66,6 +69,7 @@ public class Login extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Iniciar sesión como administrador");
+        setResizable(false);
 
         jLabel2.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
         jLabel2.setText("Iniciar sesión");
@@ -216,8 +220,7 @@ public class Login extends javax.swing.JFrame
     private void contrasenaFocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_contrasenaFocusLost
     {//GEN-HEADEREND:event_contrasenaFocusLost
 
-        if (!contrasena.getText().trim().equals(""))
-            contravalida.setText(validarFormatoTexto(contrasena.getText(), "^[a-zA-Z0-9._-]{8,}$") ? "" : "Contraseña inválida");
+        loginManager.passwordFieldManager();
 
     }//GEN-LAST:event_contrasenaFocusLost
 
@@ -242,20 +245,7 @@ public class Login extends javax.swing.JFrame
     private void loginActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_loginActionPerformed
     {//GEN-HEADEREND:event_loginActionPerformed
 
-        if (!soyunmaestro.isEnabled() && validarLogin(maestros, usuario.getText().trim(), contrasena.getText().trim()))
-        {
-            MaestrosGUI.IniciarMaestrosGUI(indexCurrentMaestro, maestros, this);
-
-            setVisible(false);
-
-        } else if (validarLogin(administradores, usuario.getText().trim(), contrasena.getText().trim()))
-        {
-            AdministradoresGUI.IniciarAdministradoresGui(maestros, dataManager, dataUpdater, this);
-
-            setVisible(false);
-
-        } else
-            JOptionPane.showMessageDialog(this, "Los datos no son válidos", "Datos inválidos", JOptionPane.ERROR_MESSAGE);
+        loginManager.gestionarLogin();
 
     }//GEN-LAST:event_loginActionPerformed
 
@@ -269,14 +259,17 @@ public class Login extends javax.swing.JFrame
     private void usuarioFocusLost(java.awt.event.FocusEvent evt)//GEN-FIRST:event_usuarioFocusLost
     {//GEN-HEADEREND:event_usuarioFocusLost
 
-        if (!usuario.getText().trim().equals(""))
-            uservalido.setText(validarFormatoTexto(usuario.getText(), "^([á-úa-zA-Z._-]( ?)){9,}$") ? "" : "Usuario inválido");
+        loginManager.userFieldManager();
 
     }//GEN-LAST:event_usuarioFocusLost
 
-    private boolean validarFormatoTexto(String texto, String regex)
+    public void reiniciarLogin()
     {
-        return texto.matches(regex);
+        dataPersistenceManager.writeMaestros(maestros);
+
+        setVisible(true);
+        getUsuario().setText("");
+        getContrasena().setText("");
     }
 
     public JTextField getContrasena()
@@ -289,9 +282,54 @@ public class Login extends javax.swing.JFrame
         return usuario;
     }
 
-    public int getIndexCurrentMaestro()
+    public JButton getSoyunadministrador()
     {
-        return indexCurrentMaestro;
+        return soyunadministrador;
+    }
+
+    public JButton getSoyunmaestro()
+    {
+        return soyunmaestro;
+    }
+
+    public DataPersistenceManager getDataPersistenceManager()
+    {
+        return dataPersistenceManager;
+    }
+
+    public DataTableUpdater getDataTableUpdater()
+    {
+        return dataTableUpdater;
+    }
+
+    public DataSorterManager getDataSorterManager()
+    {
+        return dataSorterManager;
+    }
+
+    public JLabel getContravalida()
+    {
+        return contravalida;
+    }
+
+    public JLabel getUservalido()
+    {
+        return uservalido;
+    }
+
+    public ArrayList<Maestro> getMaestros()
+    {
+        return maestros;
+    }
+
+    public ArrayList<Administrador> getAdministradores()
+    {
+        return administradores;
+    }
+
+    public LoginManager getLoginManager()
+    {
+        return loginManager;
     }
 
     public static void IniciarLogin()
@@ -299,7 +337,7 @@ public class Login extends javax.swing.JFrame
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try
         {
@@ -309,19 +347,13 @@ public class Login extends javax.swing.JFrame
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
-        } catch (ClassNotFoundException ex)
-        {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex)
-        {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex)
-        {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex)
         {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -333,66 +365,6 @@ public class Login extends javax.swing.JFrame
             login.setLocationRelativeTo(null);
 
         });
-    }
-
-    private <T extends InicioSesion> boolean validarLogin(ArrayList<T> autoridades, String user, String password)
-    {
-
-        for (int i = 0; i < autoridades.size(); i++)
-            if (autoridades.get(i).getUsuario().equals(user) && autoridades.get(i).getPassword().equals(password))
-            {
-                indexCurrentMaestro = i;
-                return true;
-
-            }
-
-        return false;
-
-    }
-
-    private class TextFieldManager implements DocumentListener
-    {
-
-        private String text;
-        private final JTextField jtextfield;
-        private final JLabel jlabel;
-
-        private TextFieldManager(String text, JTextField jtextfield, JLabel jlabel)
-        {
-            this.text = text;
-            this.jtextfield = jtextfield;
-            this.jlabel = jlabel;
-        }
-
-        @Override
-        public void insertUpdate(DocumentEvent e)
-        {
-            text += jtextfield.getText();
-
-            jlabel.setText("");
-
-        }
-
-        @Override
-        public void removeUpdate(DocumentEvent e)
-        {
-            text += jtextfield.getText();
-
-            jlabel.setText("");
-
-        }
-
-        @Override
-        public void changedUpdate(DocumentEvent e)
-        {
-
-        }
-
-        public String getText()
-        {
-            return text;
-        }
-
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

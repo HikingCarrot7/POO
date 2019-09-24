@@ -1,5 +1,8 @@
 package ada1_4;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
  * @author HikingCarrot7
@@ -7,19 +10,39 @@ package ada1_4;
 public class PruebaBicicleta
 {
 
-    private final Bicicleta[] bicicletas =
+    private final Scanner in;
+    private final ArrayList<Bicicleta> registrados;
+
+    public PruebaBicicleta()
     {
-        new Bicicleta("UERTW", "Nicolás Canul", "9991676253"),
-        new Bicicleta("SDFDF", "Javier Chim", "9991679867"),
-        new Bicicleta("IRTRW", "Emmanuel Chable", "9991645333")
+        in = new Scanner(System.in);
+        registrados = new ArrayList<>();
 
-    };
+    }
 
-    private void registrarBicicleta()
+    public void registrarBicicleta()
     {
+        for (int i = 0; i < 3; i++)
+        {
 
-        for (Bicicleta bicicleta : bicicletas)
-            System.out.println(bicicleta.mostrarDatos());
+            System.out.println("\nInserte su nombre:");
+            String nombre = in.nextLine();
+
+            System.out.println("\nInserte su número de teléfono:");
+            String telefono = in.nextLine();
+
+            registrados.add(new Bicicleta(nombre, telefono));
+
+        }
+
+        imprimirRegistrados();
+
+    }
+
+    public void imprimirRegistrados()
+    {
+        for (Bicicleta registro : registrados)
+            System.out.println(registro);
 
     }
 

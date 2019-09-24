@@ -1,7 +1,6 @@
 package com.sw.view;
 
-import com.sw.controller.DataManager;
-import com.sw.controller.DataUpdater;
+import com.sw.controller.AddEntity;
 import com.sw.model.Maestro;
 import java.util.ArrayList;
 import javax.swing.JTable;
@@ -13,22 +12,20 @@ import javax.swing.JTable;
 public class AdministradoresGUI extends javax.swing.JFrame
 {
 
-    private final DataManager dataManager;
-    private final DataUpdater dataUpdater;
     private final Login login;
+    private final AddEntity addEntity;
     private final ArrayList<Maestro> maestros;
 
-    public AdministradoresGUI(ArrayList<Maestro> maestros, DataManager dataManager, DataUpdater dataUpdater, Login login)
+    public AdministradoresGUI(ArrayList<Maestro> maestros, Login login, AddEntity addEntity)
     {
         initComponents();
 
-        this.dataManager = dataManager;
-        this.dataUpdater = dataUpdater;
         this.maestros = maestros;
         this.login = login;
+        this.addEntity = addEntity;
 
         if (maestros.size() > 0)
-            dataUpdater.updateTableMaestros(jTable1, maestros);
+            login.getDataTableUpdater().updateTableMaestros(tablaAdministradores, maestros);
 
     }
 
@@ -41,14 +38,16 @@ public class AdministradoresGUI extends javax.swing.JFrame
     {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaAdministradores = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        ordenarMaestros = new javax.swing.JComboBox();
         agregarMaestro = new javax.swing.JButton();
         remover = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         cerrarSesion = new javax.swing.JButton();
+        modificarMaestro = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registrar maestros");
@@ -61,7 +60,8 @@ public class AdministradoresGUI extends javax.swing.JFrame
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaAdministradores.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        tablaAdministradores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
                 {null, null, null, null, null, null},
@@ -106,7 +106,8 @@ public class AdministradoresGUI extends javax.swing.JFrame
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        tablaAdministradores.setToolTipText("Registros de maestros");
+        jScrollPane1.setViewportView(tablaAdministradores);
 
         jLabel1.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
         jLabel1.setText("Maestros registrados:");
@@ -114,10 +115,19 @@ public class AdministradoresGUI extends javax.swing.JFrame
         jLabel2.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
         jLabel2.setText("Bienvenido:");
 
-        jComboBox1.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ordenar por:", "NA", "NA", "NA" }));
+        ordenarMaestros.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        ordenarMaestros.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Especialidad", "Nombre", "Sueldo" }));
+        ordenarMaestros.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                ordenarMaestrosActionPerformed(evt);
+            }
+        });
 
+        agregarMaestro.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
         agregarMaestro.setText("Agregar maestro");
+        agregarMaestro.setToolTipText("");
         agregarMaestro.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -126,7 +136,9 @@ public class AdministradoresGUI extends javax.swing.JFrame
             }
         });
 
+        remover.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
         remover.setText("Remover maestro");
+        remover.setToolTipText("");
         remover.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -134,6 +146,9 @@ public class AdministradoresGUI extends javax.swing.JFrame
                 removerActionPerformed(evt);
             }
         });
+
+        jLabel3.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
+        jLabel3.setText(" ");
 
         cerrarSesion.setText("Cerrar sesión");
         cerrarSesion.addActionListener(new java.awt.event.ActionListener()
@@ -144,50 +159,78 @@ public class AdministradoresGUI extends javax.swing.JFrame
             }
         });
 
+        modificarMaestro.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        modificarMaestro.setText("Modificar maestro");
+        modificarMaestro.setToolTipText("Modificar los datos de un maestro");
+        modificarMaestro.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                modificarMaestroActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        jLabel4.setText("Ordenar por:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(8, 8, 8)
+                                .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(remover, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(agregarMaestro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ordenarMaestros, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(remover, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(agregarMaestro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(modificarMaestro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addContainerGap()
                         .addComponent(agregarMaestro)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(remover)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(modificarMaestro)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ordenarMaestros, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -201,17 +244,17 @@ public class AdministradoresGUI extends javax.swing.JFrame
     private void agregarMaestroActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_agregarMaestroActionPerformed
     {//GEN-HEADEREND:event_agregarMaestroActionPerformed
 
-        AgregarMaestro.iniciarAgregarMaestro(maestros, dataUpdater, this);
+        AgregarMaestro.iniciarAgregarMaestro(maestros, this, new Maestro());
 
     }//GEN-LAST:event_agregarMaestroActionPerformed
 
     private void removerActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_removerActionPerformed
     {//GEN-HEADEREND:event_removerActionPerformed
 
-        if (jTable1.getSelectedRow() >= 0 && jTable1.getSelectedRow() < maestros.size())
+        if (validarPosicionSeleccionado())
         {
-            maestros.remove(jTable1.getSelectedRow());
-            dataUpdater.updateTableMaestros(jTable1, maestros);
+            maestros.remove(tablaAdministradores.getSelectedRow());
+            login.getDataTableUpdater().updateTableMaestros(tablaAdministradores, maestros);
 
         }
 
@@ -219,38 +262,55 @@ public class AdministradoresGUI extends javax.swing.JFrame
 
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
     {//GEN-HEADEREND:event_formWindowClosing
-        actualizarMaestros();
+        login.reiniciarLogin();
 
-        login.setVisible(true);
     }//GEN-LAST:event_formWindowClosing
 
     private void cerrarSesionActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cerrarSesionActionPerformed
     {//GEN-HEADEREND:event_cerrarSesionActionPerformed
-        actualizarMaestros();
-
         dispose();
 
-        login.getUsuario().setText("");
-        login.getContrasena().setText("");
-        login.setVisible(true);
+        login.reiniciarLogin();
+
     }//GEN-LAST:event_cerrarSesionActionPerformed
 
-    public JTable getjTable1()
+    private void modificarMaestroActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_modificarMaestroActionPerformed
+    {//GEN-HEADEREND:event_modificarMaestroActionPerformed
+
+        if (validarPosicionSeleccionado())
+            AgregarMaestro.iniciarAgregarMaestro(maestros, this, (Maestro) maestros.get(tablaAdministradores.getSelectedRow()));
+
+    }//GEN-LAST:event_modificarMaestroActionPerformed
+
+    private void ordenarMaestrosActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ordenarMaestrosActionPerformed
+    {//GEN-HEADEREND:event_ordenarMaestrosActionPerformed
+
+        login.getDataSorterManager().ordenarMaestros(maestros, (String) ordenarMaestros.getSelectedItem());
+        login.getDataTableUpdater().updateTableMaestros(tablaAdministradores, maestros);
+
+    }//GEN-LAST:event_ordenarMaestrosActionPerformed
+
+    private boolean validarPosicionSeleccionado()
     {
-        return jTable1;
+        return tablaAdministradores.getSelectedRow() >= 0 && tablaAdministradores.getSelectedRow() < maestros.size();
     }
 
-    private void actualizarMaestros()
+    public JTable getTablaAdministradores()
     {
-        dataManager.writeMaestros(maestros);
+        return tablaAdministradores;
     }
 
-    public static void IniciarAdministradoresGui(ArrayList<Maestro> maestros, DataManager dataManager, DataUpdater dataUpdater, Login login)
+    public AddEntity getAddEntity()
+    {
+        return addEntity;
+    }
+
+    public static void IniciarAdministradoresGui(ArrayList<Maestro> maestros, Login login, AddEntity addEntity)
     {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try
         {
@@ -260,26 +320,21 @@ public class AdministradoresGUI extends javax.swing.JFrame
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
-        } catch (ClassNotFoundException ex)
-        {
-            java.util.logging.Logger.getLogger(AdministradoresGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex)
-        {
-            java.util.logging.Logger.getLogger(AdministradoresGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex)
-        {
-            java.util.logging.Logger.getLogger(AdministradoresGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex)
         {
             java.util.logging.Logger.getLogger(AdministradoresGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
 
+        //</editor-fold>
+        //</editor-fold>
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() ->
         {
-            AdministradoresGUI administradoresgui = new AdministradoresGUI(maestros, dataManager, dataUpdater, login);
+            AdministradoresGUI administradoresgui = new AdministradoresGUI(maestros, login, addEntity);
 
             administradoresgui.setVisible(true);
             administradoresgui.setLocationRelativeTo(null);
@@ -290,13 +345,15 @@ public class AdministradoresGUI extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregarMaestro;
     private javax.swing.JButton cerrarSesion;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton modificarMaestro;
+    private javax.swing.JComboBox ordenarMaestros;
     private javax.swing.JButton remover;
+    private javax.swing.JTable tablaAdministradores;
     // End of variables declaration//GEN-END:variables
 
 }

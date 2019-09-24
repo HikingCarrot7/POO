@@ -13,7 +13,7 @@ public abstract class Autoridad extends Persona implements InicioSesion, Seriali
 
     private static final long serialVersionUID = -2987264484371790143L;
 
-    private final String usuario, password;
+    private String usuario, password;
     private double sueldo;
 
     public Autoridad(String matricula, String nombre, int edad, double sueldo, String usuario, String password)
@@ -41,10 +41,20 @@ public abstract class Autoridad extends Persona implements InicioSesion, Seriali
         return usuario;
     }
 
+    public void setUsario(String usuario)
+    {
+        this.usuario = usuario;
+    }
+
     @Override
     public String getPassword()
     {
         return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 
     public abstract void anadirEntidad(Persona persona);

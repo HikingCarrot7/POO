@@ -98,8 +98,16 @@ public class Factura
     {
         String lineSeparator = System.getProperty("line.separator");
 
-        return String.format("%17$s%17$s%-25s%d%17$s%17$s%-25s%d%17$s%-25s%s%17$s%-25s%d%17$s%-25s$%,.2f%17$s%-25s%s%17$s%-25s%tc%17$s%17$s\t%-10s$%,.2f%17$s", "Factura: ", numFactura, "Número de producto: ", nPieza, "Descripción: ", descripcion, "Cantidad: ", cantidadDePiezas,
-                "Precio por pieza: ", precio, "Vendedor: ", empleado, "Fecha de la venta: ", fecha, "Importe total: ", obtenerImporteTotal(), lineSeparator);
+        return String.format("%17$s%17$s%-25s%d%17$s%17$s%-25s%d%17$s%-25s%s%17$s%-25s%d%17$s%-25s$%,.2f%17$s%-25s%s%17$s%-25s%tc%17$s%17$s\t%-10s$%,.2f%17$s",
+                "Factura: ", numFactura,
+                "Número de producto: ", nPieza,
+                "Descripción: ", descripcion,
+                "Cantidad: ", cantidadDePiezas,
+                "Precio por pieza: ", precio,
+                "Vendedor: ", empleado,
+                "Fecha de la venta: ", fecha,
+                "Importe total: ", obtenerImporteTotal(), lineSeparator);
+
     }
 
 }
