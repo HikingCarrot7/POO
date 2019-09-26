@@ -57,10 +57,10 @@ public class ConversionManager
     public int fromAnyBaseToDec(String anyBase, int base)
     {
         char[] numbers = anyBase.toCharArray();
-        int valor = 0, aux = 0;
+        int valor = 0, exp = 0;
 
         for (int i = numbers.length - 1; i >= 0; i--)
-            valor += Math.pow(base, aux++) * (Character.isDigit(numbers[i]) ? Integer.parseInt(String.valueOf(numbers[i])) : ((int) numbers[i]) - 55);
+            valor += Math.pow(base, exp++) * (Character.isDigit(numbers[i]) ? Integer.parseInt(String.valueOf(numbers[i])) : ((int) numbers[i]) - 55);
 
         return valor;
 

@@ -1,7 +1,6 @@
 package com.sw.view;
 
 import com.sw.controller.AddEntity;
-import com.sw.controller.DataTableUpdater;
 import com.sw.model.Alumno;
 import com.sw.model.Maestro;
 import java.util.ArrayList;
@@ -16,7 +15,6 @@ public class MaestrosGUI extends javax.swing.JFrame
 
     private final int indexCurrentMaestro;
     private final ArrayList<Maestro> maestros;
-    private final DataTableUpdater dataTableUpdater;
     private final Login login;
     private final AddEntity addEntity;
 
@@ -24,15 +22,16 @@ public class MaestrosGUI extends javax.swing.JFrame
     {
         initComponents();
 
-        dataTableUpdater = new DataTableUpdater();
         this.login = login;
         this.addEntity = addEntity;
 
         if (maestros.get(indexCurrentMaestro).obtenerEntidades().size() > 0)
-            dataTableUpdater.updateTableAlumnos(tablaMaestros, maestros, indexCurrentMaestro);
+            login.getDataTableUpdater().updateTableAlumnos(tablaMaestros, maestros, indexCurrentMaestro);
 
         this.indexCurrentMaestro = indexCurrentMaestro;
         this.maestros = maestros;
+
+        nombreMaestro.setText(maestros.get(indexCurrentMaestro).getNombre());
 
     }
 
@@ -48,14 +47,16 @@ public class MaestrosGUI extends javax.swing.JFrame
         tablaMaestros = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        ordenar = new javax.swing.JComboBox();
         agregarAlumno = new javax.swing.JButton();
         removerAlumno = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        nombreMaestro = new javax.swing.JLabel();
         cerrarSesion = new javax.swing.JButton();
         modificarAlumno = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter()
         {
             public void windowClosing(java.awt.event.WindowEvent evt)
@@ -114,13 +115,21 @@ public class MaestrosGUI extends javax.swing.JFrame
         jScrollPane1.setViewportView(tablaMaestros);
 
         jLabel1.setFont(new java.awt.Font("Consolas", 0, 24)); // NOI18N
-        jLabel1.setText("Sus alumnos:");
+        jLabel1.setText("Alumnos registrados:");
 
         jLabel2.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
         jLabel2.setText("Bienvenido:");
 
-        jComboBox1.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ordenar por:", "NA", "NA", "NA" }));
+        ordenar.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        ordenar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Licenciatura", "Nombre", "Calificación" }));
+        ordenar.setToolTipText("Ordena a tus alumnos");
+        ordenar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                ordenarActionPerformed(evt);
+            }
+        });
 
         agregarAlumno.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
         agregarAlumno.setText("Agregar alumno");
@@ -142,6 +151,9 @@ public class MaestrosGUI extends javax.swing.JFrame
             }
         });
 
+        nombreMaestro.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
+        nombreMaestro.setText(" ");
+
         cerrarSesion.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
         cerrarSesion.setText("Cerrar sesión");
         cerrarSesion.addActionListener(new java.awt.event.ActionListener()
@@ -162,6 +174,9 @@ public class MaestrosGUI extends javax.swing.JFrame
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        jLabel4.setText("Ordenar por:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -169,25 +184,27 @@ public class MaestrosGUI extends javax.swing.JFrame
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 834, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 836, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
+                                .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 263, Short.MAX_VALUE)
+                                .addComponent(nombreMaestro, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(removerAlumno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(agregarAlumno, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(modificarAlumno, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ordenar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -196,20 +213,22 @@ public class MaestrosGUI extends javax.swing.JFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(11, 11, 11))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nombreMaestro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ordenar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addGap(8, 8, 8))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(agregarAlumno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(removerAlumno)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(modificarAlumno)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(modificarAlumno)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -241,7 +260,7 @@ public class MaestrosGUI extends javax.swing.JFrame
         if (validarPosicionSeleccionado())
         {
             maestros.get(indexCurrentMaestro).obtenerEntidades().remove(tablaMaestros.getSelectedRow());
-            dataTableUpdater.updateTableAlumnos(tablaMaestros, maestros, indexCurrentMaestro);
+            login.getDataTableUpdater().updateTableAlumnos(tablaMaestros, maestros, indexCurrentMaestro);
 
         }
 
@@ -250,6 +269,7 @@ public class MaestrosGUI extends javax.swing.JFrame
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
     {//GEN-HEADEREND:event_formWindowClosing
         login.reiniciarLogin();
+
     }//GEN-LAST:event_formWindowClosing
 
     private void modificarAlumnoActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_modificarAlumnoActionPerformed
@@ -259,6 +279,13 @@ public class MaestrosGUI extends javax.swing.JFrame
             AgregarAlumno.iniciarAgregarAlumno(maestros, indexCurrentMaestro, this, (Alumno) maestros.get(indexCurrentMaestro).obtenerEntidades().get(tablaMaestros.getSelectedRow()));
 
     }//GEN-LAST:event_modificarAlumnoActionPerformed
+
+    private void ordenarActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_ordenarActionPerformed
+    {//GEN-HEADEREND:event_ordenarActionPerformed
+        login.getDataSorterManager().ordenarAlumnos(maestros, indexCurrentMaestro, (String) ordenar.getSelectedItem());
+        login.getDataTableUpdater().updateTableAlumnos(tablaMaestros, maestros, indexCurrentMaestro);
+
+    }//GEN-LAST:event_ordenarActionPerformed
 
     private boolean validarPosicionSeleccionado()
     {
@@ -319,12 +346,13 @@ public class MaestrosGUI extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregarAlumno;
     private javax.swing.JButton cerrarSesion;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton modificarAlumno;
+    private javax.swing.JLabel nombreMaestro;
+    private javax.swing.JComboBox ordenar;
     private javax.swing.JButton removerAlumno;
     private javax.swing.JTable tablaMaestros;
     // End of variables declaration//GEN-END:variables

@@ -60,7 +60,7 @@ public class AddEntity
     {
         Maestro maestro = agregarMaestro.getMaestro();
 
-        maestro.setMatricula(agregarMaestro.getNombre().getText());
+        maestro.setMatricula(agregarMaestro.getMatricula().getText());
         maestro.setNombre(agregarMaestro.getNombre().getText());
         maestro.setEdad(Integer.parseInt(agregarMaestro.getEdad().getText()));
         maestro.setSueldo(Double.parseDouble(agregarMaestro.getSueldoBase().getText()));

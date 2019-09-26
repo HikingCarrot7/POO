@@ -12,7 +12,7 @@ public class Administrador extends Autoridad implements Serializable
 
     private static final long serialVersionUID = -2728562641800399588L;
 
-    private final ArrayList<Maestro> misMaestros;
+    private ArrayList<Maestro> misMaestros;
 
     public Administrador(String matricula, String nombre, int edad, double sueldo, String usuario, String password)
     {
@@ -44,6 +44,11 @@ public class Administrador extends Autoridad implements Serializable
     public ArrayList<? extends Persona> obtenerEntidades()
     {
         return misMaestros;
+    }
+
+    public void setEntidades(ArrayList<Maestro> misMaestros)
+    {
+        this.misMaestros = misMaestros;
     }
 
 }

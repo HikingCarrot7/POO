@@ -48,4 +48,10 @@ public class Alumno extends Persona implements Serializable
         this.calificacion = calificacion;
     }
 
+    @Override
+    public String toString()
+    {
+        return getLicenciatura();
+    }
+
 }
