@@ -45,16 +45,34 @@ public class Registro
                 seguirRegistrandoEstudiantes = false;
 
             else
-                System.out.println("\nNúmero inválido!");
+                System.out.println("\nNúmero inválido.");
 
         } while (seguirRegistrandoEstudiantes);
 
-        if (estudiantes.size() > 0)
-            mostrarAlumnosRegistrados();
+        resumenRegistroEstudiantes();
 
-        else
+    }
+
+    public void resumenRegistroEstudiantes()
+    {
+        String entrada;
+
+        if (estudiantes.size() > 0)
         {
-            System.out.println("No hay estudiantes registrados.\n¿Desea registrar alguno? (Sí o no)");
+            mostrarEstudiantesRegistrados();
+
+            System.out.println("\nPresione \"1\" para despachar a los estudiantes\nPresione \"2\" para cambiar el saldo de la tarjeta de algún estudiante");
+            entrada = IN.nextLine();
+
+            if (validarEntrada(entrada, "1"))
+                new Cafeteria(this).despacharAlumno();
+
+            else if (validarEntrada(entrada, "2"))
+                actualizarTarjetaEstudiante();
+
+        } else
+        {
+            System.out.println("\nNo hay estudiantes registrados.\n¿Desea registrar alguno? (Sí o No)");
             entrada = IN.nextLine();
 
             if (validarEntrada(entrada, "Si|si|Sí|sí|SI|SÍ|sÍ|sI|s|S"))
@@ -64,7 +82,12 @@ public class Registro
 
     }
 
-    public void mostrarAlumnosRegistrados()
+    public void actualizarTarjetaEstudiante()
+    {
+
+    }
+
+    public void mostrarEstudiantesRegistrados()
     {
 
         System.out.println("\n\n\tAlumnos registrados:\n");
@@ -72,8 +95,6 @@ public class Registro
 
         for (int i = 0; i < estudiantes.size(); i++)
             System.out.printf("%-20d$%d\n", i + 1, estudiantes.get(i).getTarjetaComida().getSaldoTarjeta());
-
-        new Cafeteria(estudiantes).venderAlimentos();
 
     }
 
