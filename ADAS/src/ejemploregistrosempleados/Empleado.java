@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 /**
  *
- * @author Mahammed
+ * @author Ricardo Nicolás Canul Ibarra
  */
 public final class Empleado
 {

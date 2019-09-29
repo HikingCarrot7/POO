@@ -1,6 +1,7 @@
 package ejer1_11;
 
 /**
+ * Comidas disponibles en la cafetería.
  *
  * @author Mohammed
  */
@@ -25,19 +26,34 @@ public enum Comida
 
     private int precio;
 
+    /**
+     * Inicializa el precio de los alimentos.
+     *
+     * @param precio El precio de los alimentos.
+     */
     private Comida(int precio)
     {
         this.precio = precio;
     }
 
+    /**
+     * Retorna el precio para este alimento.
+     *
+     * @return El precio de este alimento.
+     */
     public int getPrecio()
     {
         return precio;
     }
 
+    /**
+     * Establece el precio para este alimento.
+     *
+     * @param precio El nuevo precio para este alimento.
+     */
     public void setPrecio(int precio)
     {
-        this.precio = precio;
+        this.precio = precio < 0 ? 0 : precio;
     }
 
 }
