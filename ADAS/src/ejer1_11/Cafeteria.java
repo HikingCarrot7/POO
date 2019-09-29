@@ -42,7 +42,7 @@ public class Cafeteria
 
             if (registro.validarEntrada(entrada, "^[1-" + registro.getEstudiantes().size() + "]$")) // Se valida que la entrada este entre el rango de estudiantes registrados.
             {
-                imprimirListaAlimentos();
+                imprimirListaAlimentos(); // Se imprime la lista de alimentos.
                 indexEstudianteActual = Integer.parseInt(entrada);
                 entradaValida = true;
 
@@ -76,7 +76,7 @@ public class Cafeteria
                 break;
 
             if (registro.validarEntrada(entrada, "^[1-9]+$")
-                    && Integer.parseInt(entrada) <= 15 // Validamos que la entrada sea válida y que el estudiante tenga los suficientes puntos para hacer la compra.
+                    && Integer.parseInt(entrada) <= Comida.values().length // Validamos que la entrada sea válida y que el estudiante tenga los suficientes puntos para hacer la compra.
                     && Comida.values()[Integer.parseInt(entrada) - 1].getPrecio() <= estudianteActual.getTarjetaComida().getSaldoTarjeta())
             {
                 Comida comida = Comida.values()[Integer.parseInt(entrada) - 1];
