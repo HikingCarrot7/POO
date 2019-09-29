@@ -37,7 +37,7 @@ public class Cafeteria
         {
             entradaValida = false;
 
-            System.out.println("\nRealizar compras para el estudiante (" + registro.getEstudiantes().size() + ")");
+            System.out.println("\nRealizar compras para el estudiante (1 - " + registro.getEstudiantes().size() + ")");
             entrada = IN.nextLine();
 
             if (registro.validarEntrada(entrada, "^[1-" + registro.getEstudiantes().size() + "]$")) // Se valida que la entrada este entre el rango de estudiantes registrados.
