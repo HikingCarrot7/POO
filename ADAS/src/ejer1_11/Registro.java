@@ -61,19 +61,32 @@ public class Registro
         {
             mostrarEstudiantesRegistrados();
 
-            System.out.println("\nPresione \"1\" para despachar a los estudiantes\nPresione \"2\" para cambiar el saldo de la tarjeta de algún estudiante");
-            entrada = IN.nextLine();
+            do
+            {
 
-            if (validarEntrada(entrada, "1"))
-                new Cafeteria(this).despacharAlumno();
+                System.out.println("\nPresione \"1\" para despachar a los estudiantes"
+                        + "\nPresione \"2\" para cambiar el saldo de la tarjeta de algún estudiante"
+                        + "\nPresione \"3\" para añadir a más estudiantes");
+                entrada = IN.nextLine();
 
-            else if (validarEntrada(entrada, "2"))
-                actualizarTarjetaEstudiante();
+                if (validarEntrada(entrada, "1"))
+                    new Cafeteria(this).despacharAlumno();
 
-        } else if (confirmacion("\nNo hay estudiantes registrados.\n¿Desea registrar alguno? (Sí o No)"))
+                else if (validarEntrada(entrada, "2"))
+                    actualizarTarjetaEstudiante();
+
+                else if (validarEntrada(entrada, "3"))
+                    registrarEstudiantes();
+
+                else
+                    System.out.println("\nOpción inválida");
+
+            } while (true);
+
+        } else if (confirmacion("\nNo hay estudiantes registrados.\n\n¿Desea registrar alguno? (Sí o No)"))
             registrarEstudiantes();
         else
-            System.out.println("\nClosed.");
+            System.out.println("\nBUILD SUCCESSFUL.\n");
 
     }
 
@@ -90,30 +103,30 @@ public class Registro
             System.out.println("\n¿A cuál estudiante desea añadirle puntos su tarjeta de comida? (1 - " + estudiantes.size() + ")");
             indexEstudiante = IN.nextLine();
 
-            if (validarEntrada(indexEstudiante, "^[1- " + estudiantes.size() + "]$"))
+            if (validarEntrada(indexEstudiante, "^[1-" + estudiantes.size() + "]$"))
             {
-                boolean cantidadValida;
+                boolean cantidadInvalida;
 
                 do
                 {
-                    cantidadValida = false;
+                    cantidadInvalida = true;
 
                     System.out.printf("\nInserte los puntos a añadir para el estudiante %s:", indexEstudiante);
                     entrada = IN.nextLine();
 
-                    if (validarEntrada(entrada, "^[0-9]$"))
+                    if (validarEntrada(entrada, "^[0-9]+$"))
                     {
-                        Estudiante estudiante = estudiantes.get(Integer.parseInt(indexEstudiante));
+                        Estudiante estudiante = estudiantes.get(Integer.parseInt(indexEstudiante) - 1);
                         estudiante.getTarjetaComida().setSaldoTarjeta(estudiante.getTarjetaComida().getSaldoTarjeta() + Integer.parseInt(entrada));
 
                         System.out.println("\nSaldo actualizado correctamente");
 
-                        cantidadValida = true;
+                        cantidadInvalida = false;
 
                     } else
                         System.out.println("\nCantidad inválida");
 
-                } while (cantidadValida);
+                } while (cantidadInvalida);
 
                 continuar = confirmacion("\n¿Actualizar tarjeta a otro alumno? (Si o No)");
 
@@ -121,7 +134,6 @@ public class Registro
 
         } while (continuar);
 
-        mostrarEstudiantesRegistrados();
         accionesSobreEstudiantesRegistrados();
 
     }

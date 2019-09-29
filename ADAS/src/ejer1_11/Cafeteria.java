@@ -88,10 +88,12 @@ public class Cafeteria
 
         if (registro.confirmacion("\n¿Habrá otra compra? (Sí o No)"))
         {
+
             registro.mostrarEstudiantesRegistrados();
             despacharAlumno();
 
-        }
+        } else
+            registro.accionesSobreEstudiantesRegistrados();
 
     }
 
