@@ -184,7 +184,7 @@ public class Registro
      *
      * @param text La pregunta a mostrar.
      *
-     * @return <code>true</code> si el usuario afirma o <code>false<\code> en caso contrario.
+     * @return <code>true</code> si el usuario afirma o <code>false</code> en caso contrario.
      */
     public boolean confirmacion(String text)
     {
