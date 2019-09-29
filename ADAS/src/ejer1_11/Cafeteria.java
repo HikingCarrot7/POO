@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Mohammed
+ * @author Ricardo Nicolás Canul Ibarra.
  */
 public class Cafeteria
 {

@@ -3,7 +3,7 @@ package ejer1_11;
 /**
  * Comidas disponibles en la cafetería.
  *
- * @author Mohammed
+ * @author Ricardo Nicolás Canul Ibarra.
  */
 public enum Comida
 {
