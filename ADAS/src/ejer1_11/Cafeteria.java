@@ -73,10 +73,7 @@ public class Cafeteria
                 System.out.printf("\nHa comprado: %s ($%d)", comida, comida.getPrecio());
                 estudianteActual.getTarjetaComida().setSaldoTarjeta(estudianteActual.getTarjetaComida().getSaldoTarjeta() - comida.getPrecio());
 
-                System.out.println("\n¿Deseas realizar otra compra? (Sí o No)");
-                entrada = IN.nextLine();
-
-                if (registro.validarEntrada(entrada, "Si|si|Sí|sí|SI|SÍ|sÍ|sI|s|S"))
+                if (registro.confirmacion("\n¿Deseas realizar otra compra? (Sí o No)"))
                     seguirComprando = true;
                 else
                     System.out.printf("\nTe quedaste con un saldo de: $%d", estudianteActual.getTarjetaComida().getSaldoTarjeta());
@@ -89,10 +86,7 @@ public class Cafeteria
 
         } while (seguirComprando);
 
-        System.out.println("\n¿Habrá otra compra?");
-        entrada = IN.nextLine();
-
-        if (registro.validarEntrada(entrada, "Si|si|Sí|sí|SI|SÍ|sÍ|sI|s|S"))
+        if (registro.confirmacion("\n¿Habrá otra compra? (Sí o No)"))
         {
             registro.mostrarEstudiantesRegistrados();
             despacharAlumno();

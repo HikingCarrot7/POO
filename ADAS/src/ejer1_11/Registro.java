@@ -49,11 +49,11 @@ public class Registro
 
         } while (seguirRegistrandoEstudiantes);
 
-        resumenRegistroEstudiantes();
+        accionesSobreEstudiantesRegistrados();
 
     }
 
-    public void resumenRegistroEstudiantes()
+    public void accionesSobreEstudiantesRegistrados()
     {
         String entrada;
 
@@ -70,20 +70,59 @@ public class Registro
             else if (validarEntrada(entrada, "2"))
                 actualizarTarjetaEstudiante();
 
-        } else
-        {
-            System.out.println("\nNo hay estudiantes registrados.\n¿Desea registrar alguno? (Sí o No)");
-            entrada = IN.nextLine();
-
-            if (validarEntrada(entrada, "Si|si|Sí|sí|SI|SÍ|sÍ|sI|s|S"))
-                registrarEstudiantes();
-
-        }
+        } else if (confirmacion("\nNo hay estudiantes registrados.\n¿Desea registrar alguno? (Sí o No)"))
+            registrarEstudiantes();
+        else
+            System.out.println("\nClosed.");
 
     }
 
     public void actualizarTarjetaEstudiante()
     {
+        String entrada;
+        String indexEstudiante;
+        boolean continuar;
+
+        do
+        {
+            continuar = false;
+
+            System.out.println("\n¿A cuál estudiante desea añadirle puntos su tarjeta de comida? (1 - " + estudiantes.size() + ")");
+            indexEstudiante = IN.nextLine();
+
+            if (validarEntrada(indexEstudiante, "^[1- " + estudiantes.size() + "]$"))
+            {
+                boolean cantidadValida;
+
+                do
+                {
+                    cantidadValida = false;
+
+                    System.out.printf("\nInserte los puntos a añadir para el estudiante %s:", indexEstudiante);
+                    entrada = IN.nextLine();
+
+                    if (validarEntrada(entrada, "^[0-9]$"))
+                    {
+                        Estudiante estudiante = estudiantes.get(Integer.parseInt(indexEstudiante));
+                        estudiante.getTarjetaComida().setSaldoTarjeta(estudiante.getTarjetaComida().getSaldoTarjeta() + Integer.parseInt(entrada));
+
+                        System.out.println("\nSaldo actualizado correctamente");
+
+                        cantidadValida = true;
+
+                    } else
+                        System.out.println("\nCantidad inválida");
+
+                } while (cantidadValida);
+
+                continuar = confirmacion("\n¿Actualizar tarjeta a otro alumno? (Si o No)");
+
+            }
+
+        } while (continuar);
+
+        mostrarEstudiantesRegistrados();
+        accionesSobreEstudiantesRegistrados();
 
     }
 
@@ -101,6 +140,17 @@ public class Registro
     public ArrayList<Estudiante> getEstudiantes()
     {
         return estudiantes;
+    }
+
+    public boolean confirmacion(String text)
+    {
+        String entrada;
+
+        System.out.println(text);
+        entrada = IN.nextLine();
+
+        return validarEntrada(entrada, "Si|si|Sí|sí|SI|SÍ|sÍ|sI|s|S");
+
     }
 
     public boolean validarEntrada(String text, String regex)
