@@ -42,7 +42,7 @@ public final class JuegoFermi
             if (!encontrado)
                 numerosAleatorios[indexNumerosAleatorios++] = numAleatorio;
 
-        } while (indexNumerosAleatorios < 3);
+        } while (indexNumerosAleatorios < numerosAleatorios.length);
 
         for (int i = 0; i < numerosAleatorios.length; i++)
             System.out.printf("%d ", numerosAleatorios[i]);
@@ -51,6 +51,9 @@ public final class JuegoFermi
 
     public String[] obtenerPistasNumerosEntrada(int[] numerosEntrada)
     {
+
+        for (int i = 0; i < pistas.length; i++)
+            pistas[i] = null;
 
         for (int i = 0; i < numerosEntrada.length; i++)
             for (int j = 0; j < numerosAleatorios.length; j++)
