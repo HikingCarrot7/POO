@@ -126,7 +126,7 @@ public class Registro
                     System.out.printf("\nInserte los puntos a añadir para el estudiante %s:", indexEstudiante);
                     entrada = IN.nextLine();
 
-                    if (validarEntrada(entrada, "^[0-9]+|(0|-1|-2|-3|-4|-5|-6|-7|-8|-9)+$")) // Se valida cantidad a añadir.
+                    if (validarEntrada(entrada, "^-?[0-9]+$")) // Se valida cantidad a añadir.
                     {
                         Estudiante estudiante = estudiantes.get(Integer.parseInt(indexEstudiante) - 1);
                         estudiante.getTarjetaComida().setSaldoTarjeta(estudiante.getTarjetaComida().getSaldoTarjeta() + Integer.parseInt(entrada)); // Se actualiza el saldo del estudiante.
