@@ -11,13 +11,14 @@ public final class JuegoFermi
 
     private final Random RAND;
     private String[] pistas;
-    private int[] numerosAleatorios;
+    private int[] numerosAleatorios =
+    {
+        -1, -1, -1
+    };
 
     public JuegoFermi()
     {
-        numerosAleatorios = new int[3];
         pistas = new String[3];
-
         RAND = new Random();
 
         generarNumerosAleatorios();
@@ -54,10 +55,10 @@ public final class JuegoFermi
         for (int i = 0; i < numerosEntrada.length; i++)
             for (int j = 0; j < numerosAleatorios.length; j++)
                 if (i == j && numerosEntrada[i] == numerosAleatorios[j])
-                    pistas[j] = "Fermi";
+                    pistas[i] = "Fermi";
 
                 else if (numerosEntrada[i] == numerosAleatorios[j])
-                    pistas[j] = "Pico";
+                    pistas[i] = "Pico";
 
         for (int i = 0; i < pistas.length; i++)
             if (pistas[i] == null)
@@ -69,8 +70,8 @@ public final class JuegoFermi
 
     public boolean jugadorGana()
     {
-        for (int i = 0; i < pistas.length; i++)
-            if (!pistas[i].equals("Fermi"))
+        for (String pista : pistas)
+            if (!pista.equals("Fermi"))
                 return false;
 
         return true;

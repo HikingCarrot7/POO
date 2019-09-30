@@ -41,11 +41,11 @@ public class IniciaJuegoFermi
                 numerosUsuario[i] = IN.nextInt();
             }
 
-            System.out.printf("\nNúmeros digitados:\n\n\t\t%d - %d - %d", numerosUsuario[0], numerosUsuario[1], numerosUsuario[2]);
+            System.out.printf("\nSus números:%6d  %5d  %5d", numerosUsuario[0], numerosUsuario[1], numerosUsuario[2]);
 
             pistas = fermi.obtenerPistasNumerosEntrada(numerosUsuario);
 
-            System.out.printf("\n\nPistas:\n\n\t%s - %s - %s", pistas[0], pistas[1], pistas[2]);
+            System.out.printf("\nPistas:%11s  %5s  %5s\n", pistas[0], pistas[1], pistas[2]);
 
             jugadas++;
 
