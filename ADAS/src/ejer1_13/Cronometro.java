@@ -8,7 +8,7 @@ public class Cronometro implements Runnable
 {
 
     private long tiempo;
-    private boolean enTiempo;
+    private boolean enTiempo, mostrarMensaje;
     private SesionClase sesionClase;
 
     public Cronometro(SesionClase sesionClase)
@@ -20,6 +20,7 @@ public class Cronometro implements Runnable
     {
         this.tiempo = tiempo;
         enTiempo = true;
+        mostrarMensaje = true;
 
         new Thread(this).start();
 
@@ -33,7 +34,8 @@ public class Cronometro implements Runnable
 
             Thread.sleep(tiempo);
 
-            sesionClase.seAcaboElTiempo();
+            if (mostrarMensaje)
+                sesionClase.seAcaboElTiempo();
 
             enTiempo = false;
 
@@ -42,6 +44,16 @@ public class Cronometro implements Runnable
             System.out.println(ex.getMessage());
         }
 
+    }
+
+    public boolean isMostrarMensaje()
+    {
+        return mostrarMensaje;
+    }
+
+    public void setMostrarMensaje(boolean mostrarMensaje)
+    {
+        this.mostrarMensaje = mostrarMensaje;
     }
 
     public boolean enTiempo()

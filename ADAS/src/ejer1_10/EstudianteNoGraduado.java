@@ -7,6 +7,16 @@ package ejer1_10;
 public class EstudianteNoGraduado extends Estudiante
 {
 
+    public EstudianteNoGraduado(String nombre)
+    {
+        super(nombre);
+    }
+
+    public EstudianteNoGraduado()
+    {
+        super("Sin nombre");
+    }
+
     @Override
     public void calculaCalificacionCurso()
     {

@@ -53,6 +53,9 @@ public class SesionClase
 
             contabilizarRespuesta(checarRespuesta(respuesta, respuestaUsuario), cronometro.enTiempo());
 
+            if (cronometro.enTiempo())
+                cronometro.setMostrarMensaje(false);
+
         }
 
         imprimirResultados();
@@ -109,7 +112,7 @@ public class SesionClase
 
     public void pedirTiempo()
     {
-        System.out.println("Inserte el tiempo en segundos para responder las preguntas: ");
+        System.out.println("Inserte el tiempo en segundos para responder cada pregunta: ");
         tiempo = IN.nextInt();
 
     }

@@ -14,12 +14,11 @@ public abstract class Estudiante
     protected String nombre;
     protected String calificacionCurso;
 
-    public Estudiante()
+    public Estudiante(String nombre)
     {
-        nombre = "Sin nombre";
+        this.nombre = nombre;
         examen = new int[NUM_DE_EXAMENES];
         edad = 25;
-
     }
 
     public String obtenCalificacionCurso()
