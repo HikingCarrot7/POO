@@ -36,7 +36,7 @@ public class SesionClase
             System.out.printf("Pregunta: %d\n\n¿Estás listo? (Presiona cualquier tecla)", i + 1);
             IN.nextLine();
 
-            Cronometro cronometro = new Cronometro(this);
+            Temporizador cronometro = new Temporizador(this);
 
             cronometro.iniciarTemporizador(tiempo * 1000);
 
@@ -82,16 +82,16 @@ public class SesionClase
         switch (tipoDeFracciones)
         {
             case Suma:
-                return fraccion1.suma(fraccion2);
+                return fraccion1.suma(fraccion2).simplifica();
 
             case Resta:
-                return fraccion1.resta(fraccion2);
+                return fraccion1.resta(fraccion2).simplifica();
 
             case Multiplicacion:
-                return fraccion1.multiplica(fraccion2);
+                return fraccion1.multiplica(fraccion2).simplifica();
 
             case Division:
-                return fraccion1.divide(fraccion2);
+                return fraccion1.divide(fraccion2).simplifica();
 
             default:
                 return null;

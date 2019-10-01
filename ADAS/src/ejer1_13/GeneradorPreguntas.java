@@ -37,7 +37,7 @@ public final class GeneradorPreguntas
     public void generarPreguntas(Fraccion[] fracciones)
     {
         for (int i = 0; i < fracciones.length; i++)
-            fracciones[i] = new Fraccion(1 + RAND.nextInt(25), 1 + RAND.nextInt(25)).simplifica();
+            fracciones[i] = new Fraccion(1 + RAND.nextInt(10), 1 + RAND.nextInt(10)).simplifica();
     }
 
     public Fraccion[] getFracciones1()
