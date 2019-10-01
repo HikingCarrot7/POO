@@ -13,7 +13,6 @@ public class SesionClase
     private long tiempo;
     private final Scanner IN;
     private ArrayList<Respuesta> respuestas;
-    private Cronometro cronometro;
     private GeneradorPreguntas generadorPreguntas;
 
     public SesionClase()
@@ -21,7 +20,6 @@ public class SesionClase
         IN = new Scanner(System.in);
         respuestas = new ArrayList<>();
         generadorPreguntas = new GeneradorPreguntas();
-        cronometro = new Cronometro(this);
 
     }
 
@@ -38,7 +36,9 @@ public class SesionClase
             System.out.printf("Pregunta: %d\n\n¿Estás listo? (Presiona cualquier tecla)", i + 1);
             IN.nextLine();
 
-            iniciarCronometro();
+            Cronometro cronometro = new Cronometro(this);
+
+            cronometro.iniciarTemporizador(tiempo * 1000);
 
             operacion = obtenerTipoOperacionPregunta(tipoDeFracciones[i]);
 
@@ -154,11 +154,6 @@ public class SesionClase
     public void seAcaboElTiempo()
     {
         System.out.println("\n\n¡Se acabó el tiempo límite!\nRespuesta retrasada.\n\n");
-    }
-
-    public void iniciarCronometro()
-    {
-        cronometro.iniciarTemporizador(tiempo * 1000);
     }
 
     public String obtenerTipoOperacionPregunta(TiposDeFraccion tipoDeFracciones)
