@@ -4,14 +4,14 @@ package ejer1_13;
  *
  * @author Mohammed
  */
-public class Cronometro implements Runnable
+public class Temporizador implements Runnable
 {
 
     private long tiempo;
     private boolean enTiempo, mostrarMensaje;
     private SesionClase sesionClase;
 
-    public Cronometro(SesionClase sesionClase)
+    public Temporizador(SesionClase sesionClase)
     {
         this.sesionClase = sesionClase;
     }

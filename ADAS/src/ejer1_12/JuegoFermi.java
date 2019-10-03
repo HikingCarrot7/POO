@@ -53,7 +53,7 @@ public final class JuegoFermi
     {
 
         for (int i = 0; i < pistas.length; i++)
-            pistas[i] = null;
+            pistas[i] = "Nano";
 
         for (int i = 0; i < numerosEntrada.length; i++)
             for (int j = 0; j < numerosAleatorios.length; j++)
@@ -62,10 +62,6 @@ public final class JuegoFermi
 
                 else if (numerosEntrada[i] == numerosAleatorios[j])
                     pistas[i] = "Pico";
-
-        for (int i = 0; i < pistas.length; i++)
-            if (pistas[i] == null)
-                pistas[i] = "Nano";
 
         return pistas;
 
