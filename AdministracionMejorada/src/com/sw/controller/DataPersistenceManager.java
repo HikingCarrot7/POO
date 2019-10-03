@@ -77,10 +77,9 @@ public final class DataPersistenceManager
 
     public ArrayList<Maestro> getMaestros()
     {
-        if (maestros != null)
-            return maestros;
 
-        return new ArrayList<>();
+        return maestros != null ? maestros : new ArrayList<>();
+
     }
 
 }
