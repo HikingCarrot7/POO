@@ -22,26 +22,6 @@ public final class Cine
 
     }
 
-    public String getPelicula()
-    {
-        return pelicula;
-    }
-
-    public void setPelicula(String pelicula)
-    {
-        this.pelicula = pelicula;
-    }
-
-    public double getPrecioPelicula()
-    {
-        return precioPelicula;
-    }
-
-    public void setPrecioPelicula(double precioPelicula)
-    {
-        this.precioPelicula = precioPelicula;
-    }
-
     private void iniciarAsientos()
     {
         char letra = 'A';
@@ -89,6 +69,26 @@ public final class Cine
 
         return true;
 
+    }
+
+    public String getPelicula()
+    {
+        return pelicula;
+    }
+
+    public void setPelicula(String pelicula)
+    {
+        this.pelicula = pelicula;
+    }
+
+    public double getPrecioPelicula()
+    {
+        return precioPelicula;
+    }
+
+    public void setPrecioPelicula(double precioPelicula)
+    {
+        this.precioPelicula = precioPelicula;
     }
 
 }
