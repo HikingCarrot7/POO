@@ -43,10 +43,8 @@ public final class Rectangulo
 
         double p = 0;
 
-        p += Punto.distanciaEntreDosPuntos(p1, p2);
-        p += Punto.distanciaEntreDosPuntos(p2, p4);
-        p += Punto.distanciaEntreDosPuntos(p4, p3);
-        p += Punto.distanciaEntreDosPuntos(p3, p1);
+        p += Punto.distanciaEntreDosPuntos(p1, p2) * 2;
+        p += Punto.distanciaEntreDosPuntos(p2, p4) * 2;
 
         return p;
 
@@ -76,17 +74,7 @@ public final class Rectangulo
 
     public boolean esCuadrado()
     {
-
-        double distancia = Punto.distanciaEntreDosPuntos(p1, p2);
-
-        if (distancia != Punto.distanciaEntreDosPuntos(p2, p4))
-            return false;
-
-        if (distancia != Punto.distanciaEntreDosPuntos(p3, p4))
-            return false;
-
-        return distancia == Punto.distanciaEntreDosPuntos(p1, p3);
-
+        return Punto.distanciaEntreDosPuntos(p1, p2) == Punto.distanciaEntreDosPuntos(p2, p4);
     }
 
 }
