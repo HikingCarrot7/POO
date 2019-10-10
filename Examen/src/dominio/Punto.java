@@ -2,7 +2,7 @@ package dominio;
 
 /**
  *
- * @author HikingCarrot7
+ * @author Ricardo Nicolás Canul Ibarra
  */
 public class Punto
 {
