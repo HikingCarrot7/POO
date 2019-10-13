@@ -14,6 +14,7 @@ public class Banco
     {
         numberOfCustomers = 0;
         clientes = new Cliente[20];
+
     }
 
     public void addCustomer(String nombre, String apellido, double balance)
