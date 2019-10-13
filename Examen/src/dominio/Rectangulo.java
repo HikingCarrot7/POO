@@ -48,6 +48,7 @@ public final class Rectangulo
     public void noEsRectangulo()
     {
         if (Punto.distanciaEntreDosPuntos(p2, p4) != Punto.distanciaEntreDosPuntos(p1, p3)
+                || Punto.distanciaEntreDosPuntos(p1, p2) != Punto.distanciaEntreDosPuntos(p3, p4)
                 || Punto.distanciaEntreDosPuntos(p1, p4) != Punto.distanciaEntreDosPuntos(p2, p3)
                 || p1 == p3 || p2 == p4 || esRombo())
         {
