@@ -1,0 +1,49 @@
+Discos:
+
+Título                        Duración (minutos)                 Precio
+
+"Disco 1"                     76                                 $1,390.12
+
+"Disco 2"                     84                                 $708.22
+
+"Disco 3"                     81                                 $1,111.04
+
+"Disco 4"                     95                                 $945.73
+
+"Disco 5"                     71                                 $706.05
+
+"Disco 6"                     12                                 $1,311.58
+
+"Disco 7"                     36                                 $981.05
+
+"Disco 8"                     16                                 $569.98
+
+"Disco 9"                     1                                  $1,489.78
+
+"Disco 10"                    93                                 $1,489.49
+
+
+Libros:
+
+Título                        Año de publicación                 Número de páginas        Precio
+
+"Libro 1"                     jueves, octubre 30, 2031           90                       $1,091.64
+
+"Libro 2"                     lunes, diciembre 27, 1982          72                       $1,216.03
+
+"Libro 3"                     viernes, junio 11, 1999            144                      $1,365.35
+
+"Libro 4"                     viernes, diciembre 13, 2041        141                      $430.30
+
+"Libro 5"                     domingo, febrero 06, 2033          148                      $1,155.96
+
+"Libro 6"                     martes, abril 27, 1993             139                      $1,249.11
+
+"Libro 7"                     lunes, mayo 04, 2037               88                       $1,312.76
+
+"Libro 8"                     martes, julio 07, 2043             139                      $899.11
+
+"Libro 9"                     domingo, septiembre 06, 2026       50                       $780.09
+
+"Libro 10"                    martes, marzo 18, 2003             57                       $1,014.55
+
