@@ -25,7 +25,8 @@ public class PruebaDistribuidora
 
         for (int i = 0; i < 10; i++)
         {
-            distribuidora.addDisco("Disco " + (i + 1), 500 + Math.random() * 1000, (int) (Math.random() * 100));
+            distribuidora.addDisco("Disco " + (i + 1), 500 + Math.random() * 1000, 20 + (int) (Math.random() * 100));
+
             distribuidora.addLibro("Libro " + (i + 1), 400 + Math.random() * 1000,
                     new GregorianCalendar((int) (1950 + Math.random() * 100), (int) (1 + Math.random() * 11), (int) (1 + Math.random() * 30)),
                     50 + (int) (Math.random() * 100));

@@ -47,6 +47,8 @@ public class DAO
             out.format("%s", registro);
         }
 
+        System.out.println(registro);
+
     }
 
 }

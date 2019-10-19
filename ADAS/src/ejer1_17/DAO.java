@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
 
 /**
  *
- * @author Mohammed
+ * @author Ricardo Nicolás Canul Ibarra
  */
 public class DAO
 {

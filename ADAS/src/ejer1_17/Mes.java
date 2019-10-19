@@ -2,7 +2,7 @@ package ejer1_17;
 
 /**
  *
- * @author Mohammed
+ * @author Ricardo Nicolás Canul Ibarra
  */
 public class Mes
 {

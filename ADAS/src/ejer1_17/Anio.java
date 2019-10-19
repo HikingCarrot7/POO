@@ -2,12 +2,16 @@ package ejer1_17;
 
 /**
  *
- * @author Mohammed
+ * @author Ricardo Nicolás Canul Ibarra
  */
 public class Anio
 {
 
     private Mes[] meses;
+    private String[] nombreMeses =
+    {
+        "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+    };
     private int[] diasMeses =
     {
         31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
@@ -47,6 +51,7 @@ public class Anio
     {
         if (index - 1 >= 0 && index - 1 <= 12)
             meses[index].setTempDias(tempDiasMes);
+
     }
 
     public int[] getDiasMeses()
@@ -57,6 +62,11 @@ public class Anio
     public Mes[] getMeses()
     {
         return meses;
+    }
+
+    public String[] getNombreMeses()
+    {
+        return nombreMeses;
     }
 
     public void setMeses(Mes[] meses)
