@@ -35,7 +35,7 @@ public final class JuegoFermi
             numAleatorio = RAND.nextInt(10);
             encontrado = false;
 
-            for (int i = 0; i < numerosAleatorios.length; i++)
+            for (int i = 0; i < numerosAleatorios.length && !encontrado; i++)
                 if (numAleatorio == numerosAleatorios[i])
                     encontrado = true;
 
