@@ -278,6 +278,7 @@ public class RegistrarEmpleados
         {
             out.format("%s", empleado);
         }
+
     }
 
     public static void main(String[] args)
