@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Distribuidora">
+  <ClassDiagramComponents>
+    <Class name="DAO" package="dominio" visibility="public" xPosition="37.0" yPosition="454.0">
+      <Fields>
+        <Field name="ruta" type="String" visibility="private" isFinal="true"/>
+        <Field name="file" type="File" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="escribirRegistro" returnType="void" visibility="public">
+          <Argument type="Disco[]" name="discos"/>
+          <Argument type="Libro[]" name="libros"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Disco" package="dominio" visibility="public" xPosition="810.0" yPosition="106.0">
+      <Fields>
+        <Field name="duracionMin" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="titulo"/>
+          <Argument type="double" name="precio"/>
+          <Argument type="int" name="duracionMin"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getDuracionMin" returnType="int" visibility="public"/>
+        <Method name="setDuracionMin" returnType="void" visibility="public">
+          <Argument type="int" name="duracionMin"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Distribuidora" package="dominio" visibility="public" xPosition="221.0" yPosition="76.0">
+      <Fields>
+        <Field name="discos" type="Disco[]" visibility="private"/>
+        <Field name="libros" type="Libro[]" visibility="private"/>
+        <Field name="indexDiscos" type="int" visibility="private"/>
+        <Field name="indexLibros" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="addDisco" returnType="void" visibility="public">
+          <Argument type="Disco" name="disco"/>
+        </Method>
+        <Method name="addDisco" returnType="void" visibility="public">
+          <Argument type="String" name="titulo"/>
+          <Argument type="double" name="precio"/>
+          <Argument type="int" name="duracionMin"/>
+        </Method>
+        <Method name="addLibro" returnType="void" visibility="public">
+          <Argument type="Libro" name="libro"/>
+        </Method>
+        <Method name="addLibro" returnType="void" visibility="public">
+          <Argument type="String" name="titulo"/>
+          <Argument type="double" name="precio"/>
+          <Argument type="GregorianCalendar" name="anioPublicacion"/>
+          <Argument type="int" name="nPaginas"/>
+        </Method>
+        <Method name="getDiscos" returnType="Disco[]" visibility="public"/>
+        <Method name="getLibros" returnType="Libro[]" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Libro" package="dominio" visibility="public" xPosition="456.0" yPosition="454.0">
+      <Fields>
+        <Field name="anioPublicacion" type="GregorianCalendar" visibility="private"/>
+        <Field name="nPaginas" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="titulo"/>
+          <Argument type="double" name="precio"/>
+          <Argument type="GregorianCalendar" name="anioPublicacion"/>
+          <Argument type="int" name="nPaginas"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getAnioPublicacion" returnType="GregorianCalendar" visibility="public"/>
+        <Method name="setAnioPublicacion" returnType="void" visibility="public">
+          <Argument type="GregorianCalendar" name="anioPublicacion"/>
+        </Method>
+        <Method name="getnPaginas" returnType="int" visibility="public"/>
+        <Method name="setnPaginas" returnType="void" visibility="public">
+          <Argument type="int" name="nPaginas"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Publicacion" package="dominio" visibility="public" isAbstract="true" xPosition="1006.0" yPosition="346.0">
+      <Fields>
+        <Field name="titulo" type="String" visibility="private"/>
+        <Field name="precio" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="titulo"/>
+          <Argument type="double" name="precio"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getTitulo" returnType="String" visibility="public"/>
+        <Method name="setTitulo" returnType="void" visibility="public">
+          <Argument type="String" name="titulo"/>
+        </Method>
+        <Method name="getPrecio" returnType="double" visibility="public"/>
+        <Method name="setPrecio" returnType="void" visibility="public">
+          <Argument type="double" name="precio"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="PruebaDistribuidora" package="test" visibility="public" xPosition="221.0" yPosition="675.0">
+      <Fields>
+        <Field name="distribuidora" type="Distribuidora" visibility="private"/>
+        <Field name="dao" type="DAO" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="rellenarPublicaciones" returnType="void" visibility="public"/>
+        <Method name="generarRegistro" returnType="void" visibility="public"/>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="dominio.Libro" target="dominio.Publicacion"/>
+    <UseRelation source="dominio.Distribuidora" target="dominio.Libro" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="distribuidora" source="test.PruebaDistribuidora" target="dominio.Distribuidora" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="dominio.Distribuidora" target="dominio.Disco" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="dao" source="test.PruebaDistribuidora" target="dominio.DAO" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="dominio.DAO" target="dominio.Libro" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="dominio.Disco" target="dominio.Publicacion"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

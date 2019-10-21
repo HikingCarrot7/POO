@@ -1,6 +1,6 @@
 package ejer1_16;
 
-import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -9,10 +9,10 @@ import java.util.Date;
 public class Libro extends Publicacion
 {
 
-    private Date anioPublicacion;
+    private GregorianCalendar anioPublicacion;
     private int nPaginas;
 
-    public Libro(String titulo, double precio, Date anioPublicacion, int nPaginas)
+    public Libro(String titulo, double precio, GregorianCalendar anioPublicacion, int nPaginas)
     {
         super(titulo, precio);
 
@@ -21,12 +21,12 @@ public class Libro extends Publicacion
 
     }
 
-    public Date getAnioPublicacion()
+    public GregorianCalendar getAnioPublicacion()
     {
         return anioPublicacion;
     }
 
-    public void setAnioPublicacion(Date anioPublicacion)
+    public void setAnioPublicacion(GregorianCalendar anioPublicacion)
     {
         this.anioPublicacion = anioPublicacion;
     }
@@ -39,6 +39,20 @@ public class Libro extends Publicacion
     public void setnPaginas(int nPaginas)
     {
         this.nPaginas = nPaginas;
+    }
+
+    @Override
+    public String toString()
+    {
+        String lineSeparator = System.getProperty("line.separator");
+
+        return String.format("%-30s%-35s%-25d%s%s",
+                "\"" + getTitulo() + "\"",
+                String.format("%1$tA, %1$tB %1$td, %1$tY", anioPublicacion),
+                getnPaginas(),
+                String.format("$%,.2f", getPrecio()),
+                lineSeparator);
+
     }
 
 }

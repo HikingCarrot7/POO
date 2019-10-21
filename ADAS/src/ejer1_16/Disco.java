@@ -27,4 +27,17 @@ public class Disco extends Publicacion
         this.duracionMin = duracionMin;
     }
 
+    @Override
+    public String toString()
+    {
+        String lineSeparator = System.getProperty("line.separator");
+
+        return String.format("%-30s%-35d%s%s",
+                "\"" + getTitulo() + "\"",
+                getDuracionMin(),
+                String.format("$%,.2f", getPrecio()),
+                lineSeparator);
+
+    }
+
 }

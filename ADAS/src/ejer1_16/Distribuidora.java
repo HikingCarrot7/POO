@@ -1,6 +1,6 @@
 package ejer1_16;
 
-import java.util.Date;
+import java.util.GregorianCalendar;
 
 /**
  *
@@ -48,7 +48,7 @@ public class Distribuidora
 
     }
 
-    public void addLibro(String titulo, double precio, Date anioPublicacion, int nPaginas)
+    public void addLibro(String titulo, double precio, GregorianCalendar anioPublicacion, int nPaginas)
     {
         if (indexLibros < 10)
             libros[indexLibros++] = new Libro(titulo, precio, anioPublicacion, nPaginas);
