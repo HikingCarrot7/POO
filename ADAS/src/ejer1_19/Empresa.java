@@ -11,6 +11,16 @@ public class Empresa
     private Espectaculo[] espectaculos;
     private Agenda[] espectaculosAgendados;
 
+    public void agragarShow()
+    {
+
+    }
+
+    public void detenerShow()
+    {
+
+    }
+
     public void reporteEspectaculo()
     {
 
