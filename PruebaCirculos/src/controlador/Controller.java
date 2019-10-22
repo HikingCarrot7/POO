@@ -7,6 +7,7 @@ package controlador;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.canvas.Canvas;
@@ -32,7 +33,11 @@ public class Controller implements Initializable
     @Override
     public void initialize(URL url, ResourceBundle rb)
     {
-        new Draw(getCanvas()).draw();
+        Platform.runLater(() ->
+        {
+            new Draw(getCanvas()).draw();
+        });
+
     }
 
     public Canvas getCanvas()
