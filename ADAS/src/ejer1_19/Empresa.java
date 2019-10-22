@@ -7,6 +7,7 @@ package ejer1_19;
 public class Empresa
 {
 
+    private String nombreEmpresa;
     private Espectaculo[] espectaculos;
     private Agenda[] espectaculosAgendados;
 
