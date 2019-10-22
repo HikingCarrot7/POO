@@ -7,9 +7,10 @@ package ejer1_18;
 public interface Cazador
 {
 
-    public void Observar();
+    public void observar();
 
+    public void perseguir();
 
-public void 
+    public void matar();
 
 }
