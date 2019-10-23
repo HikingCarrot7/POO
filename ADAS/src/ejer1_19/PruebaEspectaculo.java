@@ -23,7 +23,12 @@ public class PruebaEspectaculo
 
     public static void main(String[] args)
     {
-        new PruebaEspectaculo().rellenarAgenda();
+        PruebaEspectaculo pruebaEspectaculo = new PruebaEspectaculo();
+
+        pruebaEspectaculo.rellenarAgenda();
+
+        pruebaEspectaculo.levantarReporte();
+
     }
 
     public void rellenarAgenda()
@@ -32,13 +37,16 @@ public class PruebaEspectaculo
         for (int i = 0; i < 20; i++)
             empresa.agregarNuevoEspectaculoAgendado(new Agenda(generarFecha(), empresa.getEspectaculos().get(RAND.nextInt(6))));
 
-        empresa.reporteEspectaculo();
+    }
 
+    public void levantarReporte()
+    {
+        empresa.reporteEspectaculo();
     }
 
     private GregorianCalendar generarFecha()
     {
-        return new GregorianCalendar(2000 + RAND.nextInt(20), RAND.nextInt(11), RAND.nextInt(31));
+        return new GregorianCalendar(2000 + RAND.nextInt(20), RAND.nextInt(11), RAND.nextInt(32));
     }
 
 }
