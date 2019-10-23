@@ -8,6 +8,7 @@ public class ShowCompleto extends Espectaculo
 {
 
     public static final double PRECIO = 900;
+    public static final double COSTOCANCELACION = 200;
 
     public ShowCompleto(String nombrePersonajePrincipal, int numPersonasRequeridos)
     {
@@ -16,7 +17,7 @@ public class ShowCompleto extends Espectaculo
 
     public void cancelarShow()
     {
-
+        System.out.println("Show cancelado.");
     }
 
 }
