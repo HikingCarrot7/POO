@@ -35,7 +35,8 @@ public class PruebaEspectaculo
     {
 
         for (int i = 0; i < 20; i++)
-            empresa.agregarNuevoEspectaculoAgendado(new Agenda(generarFecha(), empresa.getEspectaculos().get(RAND.nextInt(6))));
+            empresa.agregarNuevoEspectaculoAgendado(new Agenda(generarFecha(),
+                    empresa.getEspectaculos().get(RAND.nextInt(empresa.getEspectaculos().size()))));
 
     }
 
