@@ -1,17 +1,15 @@
 package ejer1_20;
 
-import ejer1_15.*;
-
 /**
  *
  * @author HikingCarrot7
  */
-public class Cuenta
+public class Account
 {
 
-    private double balance;
+    protected double balance;
 
-    public Cuenta(double balance)
+    public Account(double balance)
     {
         this.balance = balance;
     }

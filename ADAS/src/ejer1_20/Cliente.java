@@ -9,7 +9,7 @@ import ejer1_15.*;
 public class Cliente
 {
 
-    private Cuenta cuenta;
+    private Account cuenta;
     private String nombre;
     private String apellido;
 
@@ -18,16 +18,16 @@ public class Cliente
         this.nombre = nombre;
         this.apellido = apellido;
 
-        cuenta = new Cuenta(balance);
+        cuenta = new Account(balance);
 
     }
 
-    public Cuenta getCuenta()
+    public Account getCuenta()
     {
         return cuenta;
     }
 
-    public void setCuenta(Cuenta cuenta)
+    public void setCuenta(Account cuenta)
     {
         this.cuenta = cuenta;
     }
