@@ -13,7 +13,7 @@ public class Bank
     public Bank()
     {
         numberOfCustomers = 0;
-        clientes = new Customer[20];
+        clientes = new Customer[10];
 
     }
 
@@ -33,6 +33,11 @@ public class Bank
     public Customer getCustomer(int indexCustomer)
     {
         return clientes[indexCustomer];
+    }
+
+    public Customer[] getClientes()
+    {
+        return clientes;
     }
 
     @Override

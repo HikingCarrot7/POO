@@ -37,7 +37,7 @@ public class PruebaBanco
         double porDepositar, porRetirar;
         boolean tipoCuenta;
 
-        for (int i = 0; i < 20; i++)
+        for (int i = 0; i < banco.getClientes().length; i++)
         {
 
             tipoCuenta = rand.nextInt(2) == 0;
@@ -49,22 +49,28 @@ public class PruebaBanco
             Customer customer = banco.getCustomer(i);
 
             porDepositar = Math.random() * 1000;
-            porRetirar = Math.random() * 1000;
 
             System.out.println(customer);
 
-            System.out.println(String.format("%-20s%-15s%-15s : withdraw $%,.2f",
-                    customer.getCuenta() instanceof CheckingAccount ? "CheckingAccount" : "SavingsAccount",
-                    customer.getNombre(),
-                    customer.getApellido(), porRetirar));
-
-            try
+            for (int j = 0; j < 3; j++)
             {
-                customer.getCuenta().withdraw(porRetirar);
 
-            } catch (OverdraftException ex)
-            {
-                System.out.println(ex.getMessage());
+                porRetirar = Math.random() * 1000;
+
+                System.out.println(String.format("%-20s%-15s%-15s : withdraw $%,.2f",
+                        customer.getCuenta() instanceof CheckingAccount ? "CheckingAccount" : "SavingsAccount",
+                        customer.getNombre(),
+                        customer.getApellido(), porRetirar));
+
+                try
+                {
+                    customer.getCuenta().withdraw(porRetirar);
+
+                } catch (OverdraftException ex)
+                {
+                    System.out.println(ex.getMessage());
+                }
+
             }
 
             System.out.println(String.format("%-20s%-15s%-15s : deposit $%,.2f",
@@ -72,7 +78,7 @@ public class PruebaBanco
                     customer.getNombre(),
                     customer.getApellido(), porDepositar));
 
-            banco.getCustomer(i).getCuenta().deposit(porDepositar);
+            customer.getCuenta().deposit(porDepositar);
 
             System.out.println(String.format("%-20s%-15s%-15s has a "
                     + (customer.getCuenta() instanceof CheckingAccount ? "checking" : "savings") + " balance of $%,.2f", "Customer",
