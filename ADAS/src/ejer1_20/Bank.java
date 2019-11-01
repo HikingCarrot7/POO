@@ -1,27 +1,25 @@
 package ejer1_20;
 
-import ejer1_15.*;
-
 /**
  *
  * @author HikingCarrot7
  */
-public class Banco
+public class Bank
 {
 
     private int numberOfCustomers;
-    private Cliente[] clientes;
+    private Customer[] clientes;
 
-    public Banco()
+    public Bank()
     {
         numberOfCustomers = 0;
-        clientes = new Cliente[20];
+        clientes = new Customer[20];
 
     }
 
-    public void addCustomer(String nombre, String apellido, double balance)
+    public void addCustomer(Account account, String nombre, String apellido)
     {
-        clientes[getNumOfCustomers()] = new Cliente(nombre, apellido, balance);
+        clientes[getNumOfCustomers()] = new Customer(account, nombre, apellido);
 
         numberOfCustomers++;
 
@@ -32,7 +30,7 @@ public class Banco
         return numberOfCustomers;
     }
 
-    public Cliente getCustomer(int indexCustomer)
+    public Customer getCustomer(int indexCustomer)
     {
         return clientes[indexCustomer];
     }
@@ -42,7 +40,7 @@ public class Banco
     {
         String resumen = "";
 
-        resumen += "\n\t<<Clientes registrados en este banco>>\n\n";
+        resumen += "\n\t\t\t\t\t<<Clientes registrados en este banco>>\n\n";
 
         for (int i = 0; i < clientes.length; i++)
             resumen += String.format("%02d.- %s\n", i + 1, clientes[i]);

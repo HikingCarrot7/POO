@@ -14,29 +14,20 @@ public class Account
         this.balance = balance;
     }
 
-    public boolean deposit(double balance)
+    public void deposit(double balance)
     {
         if (balance >= 0)
-        {
             setBalance(getBalance() + balance);
-
-            return true;
-
-        } else
-            return false;
 
     }
 
-    public boolean withdraw(double dineroRetirar)
+    public void withdraw(double dineroRetirar) throws OverdraftException
     {
         if (getBalance() >= dineroRetirar)
-        {
             setBalance(getBalance() - dineroRetirar);
 
-            return true;
-
-        } else
-            return false;
+        else
+            throw new OverdraftException("Insufficient funds. Deficit: ", dineroRetirar - getBalance());
 
     }
 

@@ -9,11 +9,10 @@ import java.util.Random;
 public class PruebaBanco
 {
 
-    private final Random RAND;
-    private Banco banco;
+    private Bank banco;
     private String[] nombres =
     {
-        "Nicolás", "Edwin", "Javier", "Carlos", "Juan", "Emmnuel", "Oscar"
+        "Nicolás", "Edwin", "Javier", "Carlos", "Juan", "Emmanuel", "Oscar"
     };
 
     public String[] apellidos =
@@ -23,8 +22,7 @@ public class PruebaBanco
 
     public PruebaBanco()
     {
-        RAND = new Random();
-        banco = new Banco();
+        banco = new Bank();
 
     }
 
@@ -35,28 +33,54 @@ public class PruebaBanco
 
     public void gestionarClientes()
     {
+        Random rand = new Random();
         double porDepositar, porRetirar;
-        boolean statusDeposito, statusRetiro;
+        boolean tipoCuenta;
 
         for (int i = 0; i < 20; i++)
         {
-            banco.addCustomer(nombres[RAND.nextInt(nombres.length)], apellidos[RAND.nextInt(apellidos.length)], Math.random() * 1000);
 
-            porDepositar = Math.random() * 10000;
-            porRetirar = Math.random() * 10000;
+            tipoCuenta = rand.nextInt(2) == 0;
 
-            System.out.printf("%-40s(Saldo actual: $%,.2f)", String.format("\nCliente %02d", i + 1), banco.getCustomer(i).getCuenta().getBalance());
+            banco.addCustomer(tipoCuenta ? new CheckingAccount(400, 200) : new SavingsAccount(400, 0.03),
+                    nombres[rand.nextInt(nombres.length)],
+                    apellidos[rand.nextInt(apellidos.length)]);
 
-            statusDeposito = banco.getCustomer(i).getCuenta().deposit(porDepositar);
+            Customer customer = banco.getCustomer(i);
 
-            System.out.printf("%-40s(Saldo actual: $%,.2f)", String.format("\nSe ha depositado $%,.2f", porDepositar), banco.getCustomer(i).getCuenta().getBalance());
+            porDepositar = Math.random() * 1000;
+            porRetirar = Math.random() * 1000;
 
-            statusRetiro = banco.getCustomer(i).getCuenta().withdraw(porRetirar);
+            System.out.println(customer);
 
-            System.out.printf("%-40s(Saldo actual: $%,.2f)\nSTATUS:\n", String.format("\nSe ha tratado de retirar $%,.2f", porRetirar), banco.getCustomer(i).getCuenta().getBalance());
+            System.out.println(String.format("%-20s%-15s%-15s : withdraw $%,.2f",
+                    customer.getCuenta() instanceof CheckingAccount ? "CheckingAccount" : "SavingsAccount",
+                    customer.getNombre(),
+                    customer.getApellido(), porRetirar));
 
-            System.out.println(statusDeposito ? "Dinero depositado correctamente." : "El dinero no se pude depositar.");
-            System.out.println(statusRetiro ? "Dinero retirado correctamente." : "El dinero no se pudo retirar.");
+            try
+            {
+                customer.getCuenta().withdraw(porRetirar);
+
+            } catch (OverdraftException ex)
+            {
+                System.out.println(ex.getMessage());
+            }
+
+            System.out.println(String.format("%-20s%-15s%-15s : deposit $%,.2f",
+                    customer.getCuenta() instanceof CheckingAccount ? "CheckingAccount" : "SavingsAccount",
+                    customer.getNombre(),
+                    customer.getApellido(), porDepositar));
+
+            banco.getCustomer(i).getCuenta().deposit(porDepositar);
+
+            System.out.println(String.format("%-20s%-15s%-15s has a "
+                    + (customer.getCuenta() instanceof CheckingAccount ? "checking" : "savings") + " balance of $%,.2f", "Customer",
+                    customer.getNombre(),
+                    customer.getApellido(),
+                    customer.getCuenta().getBalance()));
+
+            System.out.println("\t\t\t\t-----------------------");
 
         }
 

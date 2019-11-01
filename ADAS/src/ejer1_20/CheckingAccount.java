@@ -26,23 +26,19 @@ public class CheckingAccount extends Account
     }
 
     @Override
-    public boolean withdraw(double dineroRetirar)
+    public void withdraw(double amount) throws OverdraftException
     {
-        if (getBalance() >= dineroRetirar)
-        {
+        if (getBalance() + getOverdraftAmount() >= amount)
 
-            if (getBalance() < dineroRetirar)
+            if (getBalance() < amount)
             {
-                overdraftAmount -= dineroRetirar - balance;
-                balance = 0;
+                overdraftAmount -= amount - getBalance();
+                setBalance(0);
 
             } else
-                balance -= dineroRetirar;
-
-            return true;
-
-        } else
-            return false;
+                setBalance(getBalance() - amount);
+        else
+            throw new OverdraftException("Insufficient funds for overdraft protection. Deficit: ", amount - (getBalance() + getOverdraftAmount()));
 
     }
 

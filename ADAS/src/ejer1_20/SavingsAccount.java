@@ -23,4 +23,9 @@ public class SavingsAccount extends Account
         balance += (balance * interestRate);
     }
 
+    public double getInterestRate()
+    {
+        return interestRate;
+    }
+
 }
