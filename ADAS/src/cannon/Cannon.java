@@ -16,6 +16,7 @@ public class Cannon implements Runnable
         this.anguloInicial = anguloInicial;
 
         new Thread(this).start();
+
     }
 
     @Override

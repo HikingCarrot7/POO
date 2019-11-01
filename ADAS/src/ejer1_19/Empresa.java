@@ -1,6 +1,8 @@
 package ejer1_19;
 
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,6 +26,7 @@ public class Empresa
         espectaculos.add(new ShowCompleto("Spider Man", 7));
         espectaculos.add(new ShowCompleto("La cenicienta", 9));
         espectaculos.add(new ShowCompleto("Batman", 11));
+        espectaculos.add(new ShowCompleto("El rey león", 12));
 
     }
 
