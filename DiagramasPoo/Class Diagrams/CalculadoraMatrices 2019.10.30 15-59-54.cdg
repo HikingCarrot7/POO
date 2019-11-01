@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="CalculadoraMatrices">
+  <ClassDiagramComponents>
+    <Class name="ActionButton" package="com.sw.controller" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="distribucion" type="MatrixLayout" visibility="private"/>
+        <Field name="buttonActionManager" type="ActionButtonManager" visibility="private"/>
+        <Field name="interfaz" type="InterfazPrincipal" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="MatrixLayout" name="distribucion"/>
+          <Argument type="ActionButtonManager" name="buttonActionManager"/>
+          <Argument type="InterfazPrincipal" name="interfaz"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="actionPerformed" returnType="void" visibility="public">
+          <Argument type="ActionEvent" name="e"/>
+        </Method>
+        <Method name="setDistribucion" returnType="void" visibility="public">
+          <Argument type="MatrixLayout" name="distribucion"/>
+        </Method>
+        <Method name="getDistribucion" returnType="MatrixLayout" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ActionButtonManager" package="com.sw.controller" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="accionBotonDefinir" returnType="void" visibility="public">
+          <Argument type="MatrixLayout" name="distribucion"/>
+          <Argument type="InterfazPrincipal" name="interfaz"/>
+        </Method>
+        <Method name="accionBotonCalcular" returnType="void" visibility="public">
+          <Argument type="MatrixLayout" name="distribuciones"/>
+          <Argument type="InterfazPrincipal" name="interfaz"/>
+        </Method>
+        <Method name="accionBotonSegundaMatriz" returnType="void" visibility="public">
+          <Argument type="ActionButton" name="actionButton"/>
+          <Argument type="InterfazPrincipal" name="interfaz"/>
+        </Method>
+        <Method name="accionBotonListo" returnType="void" visibility="public">
+          <Argument type="InterfazPrincipal" name="interfaz"/>
+        </Method>
+        <Method name="accionBotonLimpiarTodosCampos" returnType="void" visibility="public">
+          <Argument type="ActionButton" name="actionButton"/>
+        </Method>
+        <Method name="accionLimpiarUnCampo" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DAO" package="com.sw.controller" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="file" type="File" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="ruta"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="writeFile" returnType="void" visibility="public">
+          <Argument type="MatrixDesign" name="matriz"/>
+        </Method>
+        <Method name="readFile" returnType="MatrixDesign" visibility="public"/>
+        <Method name="getLadoMatriz" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="DataManager" package="com.sw.controller" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="matriz" type="MatrixDesign" visibility="private"/>
+        <Field name="calculosMatriz" type="Matriz" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="actualizarCampo" returnType="void" visibility="public">
+          <Argument type="MatrixDesign" name="matriz"/>
+          <Argument type="double[][]" name="matrizRellenar"/>
+        </Method>
+        <Method name="getMatrizCampo" returnType="double[][]" visibility="public">
+          <Argument type="MatrixDesign" name="matriz"/>
+        </Method>
+        <Method name="copiarMatrices" returnType="void" visibility="public">
+          <Argument type="MatrixDesign" name="matriz1"/>
+          <Argument type="MatrixDesign" name="matriz2"/>
+        </Method>
+        <Method name="rellenarTodosLosCampos" returnType="void" visibility="public">
+          <Argument type="MatrixDesign[]" name="matrices"/>
+          <Argument type="double" name="escalar"/>
+          <Argument type="boolean" name="segundaMatrizValida"/>
+        </Method>
+        <Method name="matrizRellenadaCorrectamente" returnType="boolean" visibility="public">
+          <Argument type="MatrixDesign" name="matriz"/>
+        </Method>
+        <Method name="getLongitudCampo" returnType="int" visibility="public">
+          <Argument type="MatrixDesign" name="matriz"/>
+        </Method>
+        <Method name="guardarMatrizEntrada" returnType="void" visibility="public">
+          <Argument type="MatrixLayout" name="distribucion"/>
+        </Method>
+        <Method name="reestablecerCampos" returnType="void" visibility="public">
+          <Argument type="MatrixLayout" name="distribucion"/>
+        </Method>
+        <Method name="limpiarCampos" returnType="void" visibility="public">
+          <Argument type="MatrixDesign[]" name="matrices"/>
+        </Method>
+        <Method name="limpiarUnCampo" returnType="void" visibility="public">
+          <Argument type="MatrixDesign" name="matriz"/>
+        </Method>
+        <Method name="recortarMatriz" returnType="void" visibility="public">
+          <Argument type="MatrixDesign" name="matriz"/>
+          <Argument type="int" name="columna"/>
+        </Method>
+        <Method name="segundaMatrizValida" returnType="boolean" visibility="public"/>
+        <Method name="getDoubleValido" returnType="String" visibility="public"/>
+        <Method name="entradaValida" returnType="boolean" visibility="public">
+          <Argument type="String" name="text"/>
+          <Argument type="String" name="regex"/>
+        </Method>
+        <Method name="getCalculosMatriz" returnType="Matriz" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="LayoutManagerAdapter" package="com.sw.controller" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="addLayoutComponent" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="Component" name="comp"/>
+        </Method>
+        <Method name="removeLayoutComponent" returnType="void" visibility="public">
+          <Argument type="Component" name="comp"/>
+        </Method>
+        <Method name="preferredLayoutSize" returnType="Dimension" visibility="public">
+          <Argument type="Container" name="parent"/>
+        </Method>
+        <Method name="minimumLayoutSize" returnType="Dimension" visibility="public">
+          <Argument type="Container" name="parent"/>
+        </Method>
+        <Method name="layoutContainer" returnType="void" visibility="public">
+          <Argument type="Container" name="parent"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Main" package="com.sw.main" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Matriz" package="com.sw.model" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="sumaOtraMatriz" returnType="double[][]" visibility="public">
+          <Argument type="double[][]" name="matrizA"/>
+          <Argument type="double[][]" name="matrizB"/>
+        </Method>
+        <Method name="inversa" returnType="double[][]" visibility="public">
+          <Argument type="double[][]" name="matriz"/>
+        </Method>
+        <Method name="determinante" returnType="double" visibility="public">
+          <Argument type="int" name="i"/>
+          <Argument type="double[][]" name="matriz"/>
+        </Method>
+        <Method name="adjunta" returnType="double[][]" visibility="public">
+          <Argument type="double[][]" name="matriz"/>
+        </Method>
+        <Method name="transpuesta" returnType="double[][]" visibility="public">
+          <Argument type="double[][]" name="matriz"/>
+        </Method>
+        <Method name="multiplicarPorEscalar" returnType="double[][]" visibility="public">
+          <Argument type="double" name="escalar"/>
+          <Argument type="double[][]" name="matriz"/>
+        </Method>
+        <Method name="productoMatrices" returnType="double[][]" visibility="public">
+          <Argument type="double" name="matrizA"/>
+          <Argument type="double" name="matrizB"/>
+        </Method>
+        <Method name="subMatriz" returnType="double[][]" visibility="public">
+          <Argument type="int" name="fila"/>
+          <Argument type="int" name="columna"/>
+          <Argument type="double[][]" name="matriz"/>
+        </Method>
+        <Method name="rellenarMatriz" returnType="double[][]" visibility="public">
+          <Argument type="int" name="i"/>
+        </Method>
+        <Method name="imprimirMatriz" returnType="void" visibility="public">
+          <Argument type="double[][]" name="matriz"/>
+        </Method>
+        <Method name="sumaMatrices" returnType="double[][]" visibility="public">
+          <Argument type="double[][]" name="Matriz1"/>
+          <Argument type="double[][]" name="Matriz2"/>
+        </Method>
+        <Method name="multiplicacionMatrizporEscalar" returnType="double[][]" visibility="public">
+          <Argument type="double[][]" name="Matriz1"/>
+          <Argument type="double" name="C"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="InterfazPrincipal" package="com.sw.view" visibility="public" isFinal="true" xPosition="2120.0" yPosition="20.0">
+      <Fields>
+        <Field name="actionButton" type="ActionButton" visibility="private" isStatic="true"/>
+        <Field name="panelEntrada" type="JPanel" visibility="private"/>
+        <Field name="definir" type="JButton" visibility="private"/>
+        <Field name="info" type="JLabel" visibility="private"/>
+        <Field name="entradaLadoMatrices" type="JTextField" visibility="private"/>
+        <Field name="distribucion" type="MatrixLayout" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="setUpWindow" returnType="void" visibility="public"/>
+        <Method name="initComponents" returnType="void" visibility="private"/>
+        <Method name="addComponents" returnType="void" visibility="private"/>
+        <Method name="buttonsActionPerformed" returnType="void" visibility="public"/>
+        <Method name="getEntradaLadoMatrices" returnType="JTextField" visibility="public"/>
+        <Method name="getActionButton" returnType="ActionButton" visibility="public" isStatic="true"/>
+        <Method name="getDeterminante" returnType="JLabel" visibility="public"/>
+        <Method name="getEscalar" returnType="JTextField" visibility="public"/>
+        <Method name="getSegundaMatriz" returnType="JButton" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="InterfazSegundaMatriz" package="com.sw.view" visibility="public" isFinal="true" xPosition="20.0" yPosition="420.0">
+      <Fields>
+        <Field name="matrizGuardada" type="MatrixDesign" visibility="private" isStatic="true"/>
+        <Field name="frame" type="JFrame" visibility="private" isStatic="true"/>
+        <Field name="valida" type="boolean" visibility="private" isStatic="true"/>
+        <Field name="interfaz" type="InterfazPrincipal" visibility="private"/>
+        <Field name="info" type="JLabel" visibility="private"/>
+        <Field name="listo" type="JButton" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="ladoMatriz"/>
+          <Argument type="InterfazPrincipal" name="interfaz"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="void" visibility="public">
+          <Argument type="int" name="ladoMatriz"/>
+        </Method>
+        <Method name="addComponents" returnType="void" visibility="public"/>
+        <Method name="buttonActionPerformed" returnType="void" visibility="public"/>
+        <Method name="isValida" returnType="boolean" visibility="public" isStatic="true"/>
+        <Method name="setValida" returnType="void" visibility="public" isStatic="true">
+          <Argument type="boolean" name="valida"/>
+        </Method>
+        <Method name="getMatrizGuardada" returnType="MatrixDesign" visibility="public" isStatic="true"/>
+        <Method name="getMatriz" returnType="MatrixDesign" visibility="public" isStatic="true"/>
+        <Method name="setUpWindow" returnType="void" visibility="public" isStatic="true">
+          <Argument type="int" name="ladoMatriz"/>
+          <Argument type="InterfazPrincipal" name="interfaz"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="MatrixDesign" package="com.sw.view" visibility="public" isFinal="true" xPosition="320.0" yPosition="420.0">
+      <Fields>
+        <Field name="ladoMatriz" type="int" visibility="private"/>
+        <Field name="entradasMatriz" type="JTextField[][]" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="ladoMatriz"/>
+          <Argument type="String" name="title"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="ladoMatriz"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot;Generated Code&quot;&gt;//GEN-BEGIN:initComponents
+void" visibility="private"/>
+        <Method name="anadirEntradasMatriz" returnType="void" visibility="private"/>
+        <Method name="getEntradasMatriz" returnType="JTextField[][]" visibility="public"/>
+        <Method name="getLadoMatriz" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="MatrixLayout" package="com.sw.view" visibility="public" isFinal="true" xPosition="620.0" yPosition="420.0">
+      <Fields>
+        <Field name="matrices" type="MatrixDesign[]" visibility="private"/>
+        <Field name="tituloMatrices" type="String[]" visibility="private"/>
+        <Field name="ladoMatrices" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="ladoMatrices"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="initComponents" returnType="void" visibility="private"/>
+        <Method name="addComponents" returnType="void" visibility="private"/>
+        <Method name="getMatrices" returnType="MatrixDesign[]" visibility="public"/>
+        <Method name="getLadoMatrices" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <UseRelation source="com.sw.controller.DAO" target="com.sw.view.MatrixDesign" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.sw.controller.ActionButtonManager" target="com.sw.view.InterfazPrincipal" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.sw.controller.ActionButtonManager" target="com.sw.view.MatrixLayout" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.sw.controller.DataManager" target="com.sw.view.MatrixDesign" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="actionButton" source="com.sw.view.InterfazPrincipal" target="com.sw.controller.ActionButton" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.sw.view.MatrixLayout" target="com.sw.view.MatrixDesign" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.sw.controller.DataManager" target="com.sw.view.MatrixLayout" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.sw.controller.ActionButtonManager" target="com.sw.controller.ActionButton" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="calculosMatriz" source="com.sw.controller.DataManager" target="com.sw.model.Matriz" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.sw.view.InterfazSegundaMatriz" target="com.sw.view.InterfazPrincipal" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="buttonActionManager" source="com.sw.controller.ActionButton" target="com.sw.controller.ActionButtonManager" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="interfaz" source="com.sw.view.InterfazSegundaMatriz" target="com.sw.view.InterfazPrincipal" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.sw.controller.DataManager" target="com.sw.model.Matriz" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="matrizGuardada" source="com.sw.view.InterfazSegundaMatriz" target="com.sw.view.MatrixDesign" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="matriz" source="com.sw.controller.DataManager" target="com.sw.view.MatrixDesign" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="distribucion" source="com.sw.view.InterfazPrincipal" target="com.sw.view.MatrixLayout" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.sw.view.InterfazPrincipal" target="com.sw.controller.ActionButton" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.sw.controller.ActionButton" target="com.sw.view.MatrixLayout" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.sw.view.InterfazSegundaMatriz" target="com.sw.view.MatrixDesign" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="interfaz" source="com.sw.controller.ActionButton" target="com.sw.view.InterfazPrincipal" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="distribucion" source="com.sw.controller.ActionButton" target="com.sw.view.MatrixLayout" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
