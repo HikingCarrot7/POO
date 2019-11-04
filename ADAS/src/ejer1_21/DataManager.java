@@ -17,7 +17,7 @@ public class DataManager
             resultado.setText(String.format("%s", new Circulo().perimetro(Double.parseDouble(entradaRadio.getText()))));
 
         else
-            JOptionPane.showMessageDialog(null, "La entrada no es válida", "Entrada no válida", JOptionPane.OK_OPTION);
+            mostrarError();
 
     }
 
@@ -27,7 +27,7 @@ public class DataManager
             resultado.setText(String.format("%s", new Circulo().area(Double.parseDouble(entradaRadio.getText()))));
 
         else
-            JOptionPane.showMessageDialog(null, "La entrada no es válida", "Entrada no válida", JOptionPane.OK_OPTION);
+            mostrarError();
 
     }
 
@@ -37,13 +37,18 @@ public class DataManager
             resultado.setText(String.format("%s", new Circulo().volumen(Double.parseDouble(entradaRadio.getText()))));
 
         else
-            JOptionPane.showMessageDialog(null, "La entrada no es válida", "Entrada no válida", JOptionPane.OK_OPTION);
+            mostrarError();
 
     }
 
     public void salir()
     {
         System.exit(1);
+    }
+
+    private void mostrarError()
+    {
+        JOptionPane.showMessageDialog(null, "La entrada no es válida", "Entrada no válida", JOptionPane.OK_OPTION);
     }
 
     public boolean validarEntrada(String text, String regex)
