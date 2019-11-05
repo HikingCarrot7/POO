@@ -33,14 +33,14 @@ public class DAO
         registro += String.format("%-30s%-35s%s%s%4$s", "Título", "Duración (minutos)", "Precio", lineSeparator);
 
         for (Disco disco : discos)
-            registro += String.format("%s%s", disco, lineSeparator);
+            registro += String.format("%s", disco);
 
         registro += String.format("%2$s%s%s%2$s", "Libros:", lineSeparator);
 
         registro += String.format("%-30s%-35s%-25s%s%s%5$s", "Título", "Año de publicación", "Número de páginas", "Precio", lineSeparator);
 
         for (Libro libro : libros)
-            registro += String.format("%s%s", libro, lineSeparator);
+            registro += String.format("%s", libro);
 
         try (Formatter out = new Formatter(new FileWriter(new File(ruta))))
         {

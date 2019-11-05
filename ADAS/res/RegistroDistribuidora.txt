@@ -2,48 +2,28 @@ Discos:
 
 Título                        Duración (minutos)                 Precio
 
-"Disco 1"                     54                                 $1,036.53
-
-"Disco 2"                     68                                 $998.59
-
-"Disco 3"                     102                                $563.85
-
-"Disco 4"                     108                                $1,022.29
-
-"Disco 5"                     20                                 $1,491.80
-
-"Disco 6"                     48                                 $1,223.35
-
-"Disco 7"                     68                                 $1,128.53
-
-"Disco 8"                     85                                 $1,325.26
-
-"Disco 9"                     25                                 $771.31
-
-"Disco 10"                    60                                 $1,296.10
-
+"Disco 1"                     59                                 $1,197.40
+"Disco 2"                     38                                 $1,205.64
+"Disco 3"                     55                                 $578.14
+"Disco 4"                     108                                $1,059.00
+"Disco 5"                     109                                $838.06
+"Disco 6"                     61                                 $1,302.43
+"Disco 7"                     35                                 $1,425.29
+"Disco 8"                     99                                 $955.32
+"Disco 9"                     89                                 $1,236.28
+"Disco 10"                    24                                 $929.87
 
 Libros:
 
 Título                        Año de publicación                 Número de páginas        Precio
 
-"Libro 1"                     miércoles, diciembre 20, 2034      77                       $1,246.75
-
-"Libro 2"                     miércoles, marzo 01, 1967          66                       $1,015.99
-
-"Libro 3"                     lunes, octubre 17, 1960            56                       $965.86
-
-"Libro 4"                     lunes, marzo 22, 2004              105                      $812.38
-
-"Libro 5"                     martes, octubre 29, 2002           56                       $881.27
-
-"Libro 6"                     sábado, marzo 05, 1955             78                       $793.93
-
-"Libro 7"                     viernes, octubre 05, 2012          104                      $1,286.76
-
-"Libro 8"                     jueves, marzo 12, 1970             109                      $1,139.16
-
-"Libro 9"                     jueves, noviembre 08, 1951         107                      $616.55
-
-"Libro 10"                    viernes, junio 12, 2020            123                      $1,298.37
-
+"Libro 1"                     martes, diciembre 05, 1972         133                      $959.91
+"Libro 2"                     martes, mayo 03, 2011              136                      $755.95
+"Libro 3"                     miércoles, noviembre 30, 2022      131                      $525.99
+"Libro 4"                     miércoles, octubre 10, 1990        128                      $1,318.32
+"Libro 5"                     viernes, agosto 20, 2004           138                      $1,261.55
+"Libro 6"                     lunes, diciembre 01, 1958          142                      $557.34
+"Libro 7"                     domingo, agosto 27, 1972           93                       $1,119.28
+"Libro 8"                     viernes, junio 13, 1952            70                       $510.77
+"Libro 9"                     domingo, noviembre 29, 1970        52                       $1,111.40
+"Libro 10"                    martes, noviembre 18, 1997         91                       $1,257.72

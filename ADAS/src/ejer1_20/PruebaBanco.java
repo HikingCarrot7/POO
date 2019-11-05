@@ -55,7 +55,7 @@ public class PruebaBanco
             for (int j = 0; j < 3; j++)
             {
 
-                porRetirar = Math.random() * 1000;
+                porRetirar = Math.random() * 500;
 
                 System.out.println(String.format("%-20s%-15s%-15s : withdraw $%,.2f",
                         customer.getCuenta() instanceof CheckingAccount ? "CheckingAccount" : "SavingsAccount",
@@ -69,6 +69,9 @@ public class PruebaBanco
                 } catch (OverdraftException ex)
                 {
                     System.out.println(ex.getMessage());
+
+                    break;
+
                 }
 
             }
