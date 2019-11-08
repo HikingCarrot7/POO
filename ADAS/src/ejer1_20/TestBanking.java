@@ -6,7 +6,7 @@ import java.util.Random;
  *
  * @author Mohammed
  */
-public class PruebaBanco
+public class TestBanking
 {
 
     private Bank banco;
@@ -20,7 +20,7 @@ public class PruebaBanco
         "Canul", "Ibarra", "Ajas", "Santos", "López", "Moreno", "Chable"
     };
 
-    public PruebaBanco()
+    public TestBanking()
     {
         banco = new Bank();
 
@@ -28,7 +28,7 @@ public class PruebaBanco
 
     public static void main(String[] args)
     {
-        new PruebaBanco().gestionarClientes();
+        new TestBanking().gestionarClientes();
     }
 
     public void gestionarClientes()
