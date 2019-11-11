@@ -23,7 +23,6 @@ public class PruebaBanco
     public PruebaBanco()
     {
         banco = new Bank();
-
     }
 
     public static void main(String[] args)
