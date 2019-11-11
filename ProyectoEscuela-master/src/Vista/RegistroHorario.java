@@ -7,8 +7,9 @@ package Vista;
 
 import Clases.*;
 import Login.Usuario;
-import javax.swing.JOptionPane;
+import java.awt.HeadlessException;
 import java.sql.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -202,7 +203,9 @@ public class RegistroHorario extends javax.swing.JFrame
             VRegistroRH = new Registros(Mod);
             VRegistroRH.setVisible(true);
             this.dispose();
+
         }
+
     }//GEN-LAST:event_BtRegresarRHMouseClicked
 
     private void BtRegistrarRHActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtRegistrarRHActionPerformed
@@ -240,10 +243,9 @@ public class RegistroHorario extends javax.swing.JFrame
             IngreHoraSalidaRH.setText("");
             IngreMinutoSalidaRH.setText("");
 
-        } catch (Exception Ex)
+        } catch (HeadlessException | SQLException Ex)
         {
             JOptionPane.showMessageDialog(null, "Error " + Ex);
-
         }
 
     }//GEN-LAST:event_BtRegistrarRHActionPerformed
@@ -256,7 +258,7 @@ public class RegistroHorario extends javax.swing.JFrame
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try
         {
@@ -266,29 +268,22 @@ public class RegistroHorario extends javax.swing.JFrame
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
-        } catch (ClassNotFoundException ex)
-        {
-            java.util.logging.Logger.getLogger(RegistroHorario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex)
-        {
-            java.util.logging.Logger.getLogger(RegistroHorario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex)
-        {
-            java.util.logging.Logger.getLogger(RegistroHorario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex)
+
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex)
         {
             java.util.logging.Logger.getLogger(RegistroHorario.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
 
+        //</editor-fold>
+        //</editor-fold>
+
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
+        java.awt.EventQueue.invokeLater(() ->
         {
-            public void run()
-            {
-                new RegistroHorario().setVisible(true);
-            }
+            new RegistroHorario().setVisible(true);
+
         });
     }
 

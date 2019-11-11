@@ -73,6 +73,7 @@ public class ConsultasAlumnos extends javax.swing.JFrame
             modeloTabla.setValueAt(foto, i, 7);
             modeloTabla.setValueAt(mensualidad, i, 8);
             modeloTabla.setValueAt(inscripcion, i, 9);
+
         }
 
     }
@@ -157,12 +158,10 @@ public class ConsultasAlumnos extends javax.swing.JFrame
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
+        java.awt.EventQueue.invokeLater(() ->
         {
-            public void run()
-            {
-                new ConsultasAlumnos().setVisible(true);
-            }
+            new ConsultasAlumnos().setVisible(true);
+
         });
     }
 
