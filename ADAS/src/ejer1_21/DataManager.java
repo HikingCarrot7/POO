@@ -1,5 +1,7 @@
 package ejer1_21;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -7,14 +9,22 @@ import javax.swing.JTextField;
  *
  * @author HikingCarrot7
  */
-public class DataManager
+public class DataManager implements ActionListener
 {
+
+    public DataManager(VistaPrincipal vista)
+    {
+        vista.getArea().addActionListener(this);
+        vista.getPerimetro().addActionListener(this);
+        vista.getVolumen().addActionListener(this);
+
+    }
 
     public void mostrarPerimetro(JTextField entradaRadio, JTextField resultado)
     {
 
         if (validarEntrada(entradaRadio.getText(), "^[0-9]+(.?[0-9]+)?$"))
-            resultado.setText(String.format("%s", new Circulo().perimetro(Double.parseDouble(entradaRadio.getText()))));
+            resultado.setText(String.format("%s", new Circulo().getPerimetro(Double.parseDouble(entradaRadio.getText()))));
 
         else
             mostrarError();
@@ -24,7 +34,7 @@ public class DataManager
     public void mostrarArea(JTextField entradaRadio, JTextField resultado)
     {
         if (validarEntrada(entradaRadio.getText(), "^[0-9]+(.?[0-9]+)?$"))
-            resultado.setText(String.format("%s", new Circulo().area(Double.parseDouble(entradaRadio.getText()))));
+            resultado.setText(String.format("%s", new Circulo().getArea(Double.parseDouble(entradaRadio.getText()))));
 
         else
             mostrarError();
@@ -34,7 +44,7 @@ public class DataManager
     public void mostrarVolumen(JTextField entradaRadio, JTextField resultado)
     {
         if (validarEntrada(entradaRadio.getText(), "^[0-9]+(.?[0-9]+)?$"))
-            resultado.setText(String.format("%s", new Circulo().volumen(Double.parseDouble(entradaRadio.getText()))));
+            resultado.setText(String.format("%s", new Circulo().getVolumen(Double.parseDouble(entradaRadio.getText()))));
 
         else
             mostrarError();
@@ -54,6 +64,19 @@ public class DataManager
     public boolean validarEntrada(String text, String regex)
     {
         return text.matches(regex);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+        System.out.println(e.getActionCommand());
+
+        switch (e.getActionCommand())
+        {
+            case "Área":
+                System.out.println("Hola");
+
+        }
     }
 
 }

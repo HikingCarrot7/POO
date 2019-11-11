@@ -127,33 +127,21 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Per&#xed;metro"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="perimetroActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="area">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xc1;rea"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="areaActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="volumen">
       <Properties>
         <Property name="text" type="java.lang.String" value="Volumen"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="volumenActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="salir">
       <Properties>
         <Property name="text" type="java.lang.String" value="Salir"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="salirActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>

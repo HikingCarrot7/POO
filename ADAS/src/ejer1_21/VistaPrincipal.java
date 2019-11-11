@@ -5,6 +5,8 @@
  */
 package ejer1_21;
 
+import javax.swing.JButton;
+
 /**
  *
  * @author A15001169
@@ -18,6 +20,9 @@ public class VistaPrincipal extends javax.swing.JFrame
     public VistaPrincipal()
     {
         initComponents();
+
+        new DataManager(this);
+
     }
 
     /**
@@ -50,40 +55,12 @@ public class VistaPrincipal extends javax.swing.JFrame
         jLabel1.setText("Radio:");
 
         perimetro.setText("Perímetro");
-        perimetro.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                perimetroActionPerformed(evt);
-            }
-        });
 
         area.setText("Área");
-        area.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                areaActionPerformed(evt);
-            }
-        });
 
         volumen.setText("Volumen");
-        volumen.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                volumenActionPerformed(evt);
-            }
-        });
 
         salir.setText("Salir");
-        salir.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                salirActionPerformed(evt);
-            }
-        });
 
         jLabel3.setBackground(new java.awt.Color(255, 51, 51));
         jLabel3.setFont(new java.awt.Font("Vladimir Script", 0, 24)); // NOI18N
@@ -158,25 +135,20 @@ public class VistaPrincipal extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void areaActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_areaActionPerformed
-    {//GEN-HEADEREND:event_areaActionPerformed
-        new DataManager().mostrarArea(entradaRadio, resultado);
-    }//GEN-LAST:event_areaActionPerformed
+    public JButton getArea()
+    {
+        return area;
+    }
 
-    private void perimetroActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_perimetroActionPerformed
-    {//GEN-HEADEREND:event_perimetroActionPerformed
-        new DataManager().mostrarPerimetro(entradaRadio, resultado);
-    }//GEN-LAST:event_perimetroActionPerformed
+    public JButton getPerimetro()
+    {
+        return perimetro;
+    }
 
-    private void volumenActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_volumenActionPerformed
-    {//GEN-HEADEREND:event_volumenActionPerformed
-        new DataManager().mostrarVolumen(entradaRadio, resultado);
-    }//GEN-LAST:event_volumenActionPerformed
-
-    private void salirActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_salirActionPerformed
-    {//GEN-HEADEREND:event_salirActionPerformed
-        new DataManager().salir();
-    }//GEN-LAST:event_salirActionPerformed
+    public JButton getVolumen()
+    {
+        return volumen;
+    }
 
     /**
      * @param args the command line arguments
