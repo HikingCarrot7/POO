@@ -23,6 +23,7 @@ public class DataTableUpdater
             table.setValueAt(String.format("$%,.2f", maestros.get(i).getSueldo()), i, 3);
             table.setValueAt(maestros.get(i).getUsuario(), i, 4);
             table.setValueAt(maestros.get(i).getPassword(), i, 5);
+
         }
 
     }

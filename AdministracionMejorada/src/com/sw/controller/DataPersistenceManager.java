@@ -53,7 +53,6 @@ public final class DataPersistenceManager
         } catch (IOException | ClassNotFoundException ex)
         {
             System.out.println(ex.getMessage());
-
         }
 
     }
@@ -62,10 +61,10 @@ public final class DataPersistenceManager
     {
         try
         {
+
             try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file)))
             {
                 out.writeObject(maestros);
-
             }
 
         } catch (IOException ex)
@@ -77,9 +76,7 @@ public final class DataPersistenceManager
 
     public ArrayList<Maestro> getMaestros()
     {
-
         return maestros != null ? maestros : new ArrayList<>();
-
     }
 
 }
