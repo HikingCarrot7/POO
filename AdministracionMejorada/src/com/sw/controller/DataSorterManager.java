@@ -15,6 +15,7 @@ public class DataSorterManager
 
     public void ordenarAlumnos(ArrayList<Maestro> maestros, int indexCurrentMaestro, String ordenarPor)
     {
+
         Comparator<Alumno> orden = null;
 
         switch (ordenarPor)
