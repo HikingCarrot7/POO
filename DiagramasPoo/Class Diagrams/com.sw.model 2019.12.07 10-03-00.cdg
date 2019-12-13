@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="com.sw.model">
+  <ClassDiagramComponents>
+    <Class name="Cliente" package="com.sw.model" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="clave" type="int" visibility="private" isStatic="true"/>
+        <Field name="nServicios" type="int" visibility="private"/>
+        <Field name="claveCliente" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="correo"/>
+          <Argument type="String" name="telefono"/>
+          <Argument type="String" name="direccion"/>
+          <Argument type="int" name="nServicios"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="correo"/>
+          <Argument type="String" name="telefono"/>
+          <Argument type="String" name="direccion"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="Persona" name="cliente"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="aumentarNServicios" returnType="void" visibility="public"/>
+        <Method name="getnServicios" returnType="int" visibility="public"/>
+        <Method name="setnServicios" returnType="void" visibility="public">
+          <Argument type="int" name="nServicios"/>
+        </Method>
+        <Method name="getClaveCliente" returnType="int" visibility="public"/>
+        <Method name="setClaveCliente" returnType="void" visibility="public">
+          <Argument type="int" name="claveCliente"/>
+        </Method>
+        <Method name="getClaves" returnType="int" visibility="public" isStatic="true"/>
+        <Method name="setClave" returnType="void" visibility="public" isStatic="true">
+          <Argument type="int" name="clave"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Historial" package="com.sw.model" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="cliente" type="Cliente" visibility="private"/>
+        <Field name="prendas" type="ArrayList&lt;Prenda&gt;" visibility="private"/>
+        <Field name="fecha" type="Calendar" visibility="private"/>
+        <Field name="ticket" type="Ticket" visibility="private"/>
+        <Field name="totalKg" type="double" visibility="private"/>
+        <Field name="precioTotal" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Cliente" name="cliente"/>
+          <Argument type="ArrayList&lt;Prenda&gt;" name="prendas"/>
+          <Argument type="Calendar" name="fecha"/>
+          <Argument type="Ticket" name="ticket"/>
+          <Argument type="double" name="totalKg"/>
+          <Argument type="double" name="precioTotal"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getCliente" returnType="Cliente" visibility="public"/>
+        <Method name="setCliente" returnType="void" visibility="public">
+          <Argument type="Cliente" name="cliente"/>
+        </Method>
+        <Method name="getPrendas" returnType="ArrayList&lt;Prenda&gt;" visibility="public"/>
+        <Method name="setPrendas" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Prenda&gt;" name="prendas"/>
+        </Method>
+        <Method name="getFecha" returnType="Calendar" visibility="public"/>
+        <Method name="setFecha" returnType="void" visibility="public">
+          <Argument type="GregorianCalendar" name="fecha"/>
+        </Method>
+        <Method name="getTicket" returnType="Ticket" visibility="public"/>
+        <Method name="setTicket" returnType="void" visibility="public">
+          <Argument type="Ticket" name="ticket"/>
+        </Method>
+        <Method name="getTotalKg" returnType="double" visibility="public"/>
+        <Method name="setTotalKg" returnType="void" visibility="public">
+          <Argument type="double" name="totalKg"/>
+        </Method>
+        <Method name="getPrecioTotal" returnType="double" visibility="public"/>
+        <Method name="setPrecioTotal" returnType="void" visibility="public">
+          <Argument type="double" name="precioTotal"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Persona" package="com.sw.model" visibility="public" isAbstract="true" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="nombre" type="String" visibility="protected"/>
+        <Field name="correo" type="String" visibility="protected"/>
+        <Field name="telefono" type="String" visibility="protected"/>
+        <Field name="direccion" type="String" visibility="protected"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+          <Argument type="String" name="correo"/>
+          <Argument type="String" name="telefono"/>
+          <Argument type="String" name="direccion"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNombre" returnType="String" visibility="public"/>
+        <Method name="setNombre" returnType="void" visibility="public">
+          <Argument type="String" name="nombre"/>
+        </Method>
+        <Method name="getCorreo" returnType="String" visibility="public"/>
+        <Method name="setCorreo" returnType="void" visibility="public">
+          <Argument type="String" name="correo"/>
+        </Method>
+        <Method name="getTelefono" returnType="String" visibility="public"/>
+        <Method name="setTelefono" returnType="void" visibility="public">
+          <Argument type="String" name="telefono"/>
+        </Method>
+        <Method name="getDireccion" returnType="String" visibility="public"/>
+        <Method name="setDireccion" returnType="void" visibility="public">
+          <Argument type="String" name="direccion"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Prenda" package="com.sw.model" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="descripcion" type="String" visibility="private"/>
+        <Field name="tipo" type="String" visibility="private"/>
+        <Field name="cantidad" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="descripcion"/>
+          <Argument type="String" name="tipo"/>
+          <Argument type="int" name="cantidad"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="String" name="tipo"/>
+          <Argument type="int" name="cantidad"/>
+        </Constructor>
+        <Constructor visibility="public">
+          <Argument type="int" name="cantidad"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getDescripcion" returnType="String" visibility="public"/>
+        <Method name="setDescripcion" returnType="void" visibility="public">
+          <Argument type="String" name="descripcion"/>
+        </Method>
+        <Method name="getCantidad" returnType="int" visibility="public"/>
+        <Method name="setCantidad" returnType="void" visibility="public">
+          <Argument type="int" name="cantidad"/>
+        </Method>
+        <Method name="getTipo" returnType="String" visibility="public"/>
+        <Method name="setTipo" returnType="void" visibility="public">
+          <Argument type="String" name="tipo"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Servicio" package="com.sw.model" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="numeroTickets" type="int" visibility="private" isStatic="true"/>
+        <Field name="cliente" type="Cliente" visibility="private"/>
+        <Field name="fecha" type="Calendar" visibility="private"/>
+        <Field name="prendas" type="ArrayList&lt;Prenda&gt;" visibility="private"/>
+        <Field name="tiempoEstimado" type="Timer" visibility="private"/>
+        <Field name="ticketGenerado" type="boolean" visibility="private"/>
+        <Field name="totalKg" type="double" visibility="private"/>
+        <Field name="costoKg" type="double" visibility="private"/>
+        <Field name="numeroTicket" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="Cliente" name="cliente"/>
+          <Argument type="Calendar" name="fecha"/>
+          <Argument type="Timer" name="tiempoEstimado"/>
+          <Argument type="ArrayList&lt;Prenda&gt;" name="prendas"/>
+          <Argument type="double" name="totalKg"/>
+          <Argument type="double" name="costoKg"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getTicket" returnType="Ticket" visibility="public"/>
+        <Method name="getTotalPrendas" returnType="int" visibility="public"/>
+        <Method name="getNumeroTickets" returnType="int" visibility="public" isStatic="true"/>
+        <Method name="setNumeroTickets" returnType="void" visibility="public" isStatic="true">
+          <Argument type="int" name="numeroTickets"/>
+        </Method>
+        <Method name="getCliente" returnType="Cliente" visibility="public"/>
+        <Method name="setCliente" returnType="void" visibility="public">
+          <Argument type="Cliente" name="cliente"/>
+        </Method>
+        <Method name="getFecha" returnType="Calendar" visibility="public"/>
+        <Method name="setFecha" returnType="void" visibility="public">
+          <Argument type="Calendar" name="fecha"/>
+        </Method>
+        <Method name="getPrendas" returnType="ArrayList&lt;Prenda&gt;" visibility="public"/>
+        <Method name="setPrendas" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Prenda&gt;" name="prendas"/>
+        </Method>
+        <Method name="getTiempoEstimado" returnType="Timer" visibility="public"/>
+        <Method name="setTiempoEstimado" returnType="void" visibility="public">
+          <Argument type="Timer" name="tiempoEstimado"/>
+        </Method>
+        <Method name="isTicketGenerado" returnType="boolean" visibility="public"/>
+        <Method name="setTicketGenerado" returnType="void" visibility="public">
+          <Argument type="boolean" name="ticketGenerado"/>
+        </Method>
+        <Method name="getTotalKg" returnType="double" visibility="public"/>
+        <Method name="setTotalKg" returnType="void" visibility="public">
+          <Argument type="double" name="totalKg"/>
+        </Method>
+        <Method name="getPrecioTotal" returnType="double" visibility="public"/>
+        <Method name="getCostoKg" returnType="double" visibility="public"/>
+        <Method name="setCostoKg" returnType="void" visibility="public">
+          <Argument type="double" name="costoKg"/>
+        </Method>
+        <Method name="getNumeroTicket" returnType="int" visibility="public"/>
+        <Method name="setNumeroTicket" returnType="void" visibility="public">
+          <Argument type="int" name="numeroTicket"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Ticket" package="com.sw.model" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="serialVersionUID" type="long" visibility="private" isStatic="true" isFinal="true"/>
+        <Field name="nombreCliente" type="String" visibility="private"/>
+        <Field name="nombreNegocio" type="String" visibility="private"/>
+        <Field name="direccionNegocio" type="String" visibility="private"/>
+        <Field name="prendas" type="ArrayList&lt;Prenda&gt;" visibility="private"/>
+        <Field name="fecha" type="Calendar" visibility="private"/>
+        <Field name="numeroTicket" type="int" visibility="private"/>
+        <Field name="totalPrendas" type="int" visibility="private"/>
+        <Field name="precioTotal" type="double" visibility="private"/>
+        <Field name="totalKg" type="double" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="numeroTicket"/>
+          <Argument type="Calendar" name="fecha"/>
+          <Argument type="String" name="nombreCliente"/>
+          <Argument type="ArrayList&lt;Prenda&gt;" name="prendas"/>
+          <Argument type="int" name="totalPrendas"/>
+          <Argument type="double" name="precioTotal"/>
+          <Argument type="double" name="totalKg"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNumeroTicket" returnType="int" visibility="public"/>
+        <Method name="setNumeroTicket" returnType="void" visibility="public">
+          <Argument type="int" name="numeroTicket"/>
+        </Method>
+        <Method name="getFecha" returnType="Calendar" visibility="public"/>
+        <Method name="setFecha" returnType="void" visibility="public">
+          <Argument type="Calendar" name="fecha"/>
+        </Method>
+        <Method name="getNombreCliente" returnType="String" visibility="public"/>
+        <Method name="setNombreCliente" returnType="void" visibility="public">
+          <Argument type="String" name="nombreCliente"/>
+        </Method>
+        <Method name="getNombreNegocio" returnType="String" visibility="public"/>
+        <Method name="setNombreNegocio" returnType="void" visibility="public">
+          <Argument type="String" name="nombreNegocio"/>
+        </Method>
+        <Method name="getDireccionNegocio" returnType="String" visibility="public"/>
+        <Method name="setDireccionNegocio" returnType="void" visibility="public">
+          <Argument type="String" name="direccionNegocio"/>
+        </Method>
+        <Method name="getPrendas" returnType="ArrayList&lt;Prenda&gt;" visibility="public"/>
+        <Method name="setPrendas" returnType="void" visibility="public">
+          <Argument type="ArrayList&lt;Prenda&gt;" name="prendas"/>
+        </Method>
+        <Method name="getTotalPrendas" returnType="int" visibility="public"/>
+        <Method name="setTotalPrendas" returnType="void" visibility="public">
+          <Argument type="int" name="totalPiezas"/>
+        </Method>
+        <Method name="getPrecioTotal" returnType="double" visibility="public"/>
+        <Method name="setTotalPrecio" returnType="void" visibility="public">
+          <Argument type="double" name="totalPrecio"/>
+        </Method>
+        <Method name="getTotalKg" returnType="double" visibility="public"/>
+        <Method name="setTotalKg" returnType="void" visibility="public">
+          <Argument type="double" name="totalKg"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="com.sw.model.Cliente" target="com.sw.model.Persona"/>
+    <HasRelation name="prendas" source="com.sw.model.Ticket" target="com.sw.model.Prenda" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Prenda&gt;"/>
+    <UseRelation source="com.sw.model.Historial" target="com.sw.model.Prenda" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="prendas" source="com.sw.model.Servicio" target="com.sw.model.Prenda" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Prenda&gt;"/>
+    <UseRelation source="com.sw.model.Servicio" target="com.sw.model.Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.sw.model.Servicio" target="com.sw.model.Prenda" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.sw.model.Historial" target="com.sw.model.Ticket" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.sw.model.Ticket" target="com.sw.model.Prenda" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="prendas" source="com.sw.model.Historial" target="com.sw.model.Prenda" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Prenda&gt;"/>
+    <HasRelation name="ticket" source="com.sw.model.Historial" target="com.sw.model.Ticket" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.sw.model.Servicio" target="com.sw.model.Ticket" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cliente" source="com.sw.model.Servicio" target="com.sw.model.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="cliente" source="com.sw.model.Historial" target="com.sw.model.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="com.sw.model.Historial" target="com.sw.model.Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
