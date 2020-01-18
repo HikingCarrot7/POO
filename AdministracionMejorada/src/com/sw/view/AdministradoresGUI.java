@@ -1,6 +1,6 @@
 package com.sw.view;
 
-import com.sw.controller.AddEntity;
+import com.sw.controller.EntityManager;
 import com.sw.model.Maestro;
 import java.util.ArrayList;
 import javax.swing.JTable;
@@ -13,10 +13,10 @@ public class AdministradoresGUI extends javax.swing.JFrame
 {
 
     private final Login login;
-    private final AddEntity addEntity;
+    private final EntityManager addEntity;
     private final ArrayList<Maestro> maestros;
 
-    public AdministradoresGUI(ArrayList<Maestro> maestros, Login login, AddEntity addEntity)
+    public AdministradoresGUI(ArrayList<Maestro> maestros, Login login, EntityManager addEntity)
     {
         initComponents();
 
@@ -300,12 +300,12 @@ public class AdministradoresGUI extends javax.swing.JFrame
         return tablaAdministradores;
     }
 
-    public AddEntity getAddEntity()
+    public EntityManager getAddEntity()
     {
         return addEntity;
     }
 
-    public static void IniciarAdministradoresGui(ArrayList<Maestro> maestros, Login login, AddEntity addEntity)
+    public static void IniciarAdministradoresGui(ArrayList<Maestro> maestros, Login login, EntityManager addEntity)
     {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

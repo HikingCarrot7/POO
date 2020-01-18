@@ -15,13 +15,13 @@ public class LoginManager
 {
 
     private final Login login;
-    private final AddEntity addEntity;
+    private final EntityManager addEntity;
     private int indexCurrentMaestro;
 
     public LoginManager(Login login)
     {
         this.login = login;
-        addEntity = new AddEntity(login.getDataTableUpdater());
+        addEntity = new EntityManager(login.getDataTableUpdater());
     }
 
     public void gestionarLogin()

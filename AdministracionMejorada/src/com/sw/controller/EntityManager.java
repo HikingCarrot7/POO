@@ -9,13 +9,13 @@ import com.sw.view.AgregarMaestro;
  *
  * @author Mohammed
  */
-public class AddEntity
+public class EntityManager
 {
 
     private final DataTableUpdater dataTableUpdater;
     private boolean alumnoNuevo, maestroNuevo;
 
-    public AddEntity(DataTableUpdater dataTableUpdater)
+    public EntityManager(DataTableUpdater dataTableUpdater)
     {
         this.dataTableUpdater = dataTableUpdater;
     }

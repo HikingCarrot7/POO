@@ -4,7 +4,7 @@ import com.sw.model.Alumno;
 import com.sw.model.Maestro;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Iterator;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -21,32 +21,22 @@ public class DataSorterManager
         switch (ordenarPor)
         {
             case "Licenciatura":
-
                 orden = Comparator.comparing(Alumno::getLicenciatura);
-
                 break;
 
             case "Nombre":
-
                 orden = Comparator.comparing(Alumno::getNombre);
-
                 break;
 
             case "Calificación":
-
                 orden = Comparator.comparing(Alumno::getCalificacion).reversed();
-
                 break;
 
         }
 
         ArrayList<Alumno> alumnos = (ArrayList<Alumno>) maestros.get(indexCurrentMaestro).obtenerEntidades();
-        ArrayList<Alumno> alumnosOrdenados = new ArrayList<>();
-
-        for (Iterator<Alumno> misAlumnos = alumnos.stream().sorted(orden).iterator(); misAlumnos.hasNext();)
-            alumnosOrdenados.add(misAlumnos.next());
-
-        maestros.get(indexCurrentMaestro).setEntidades(alumnosOrdenados);
+        alumnos = (ArrayList<Alumno>) alumnos.stream().sorted(orden).collect(Collectors.toList());
+        maestros.get(indexCurrentMaestro).setEntidades(alumnos);
 
     }
 
@@ -57,29 +47,22 @@ public class DataSorterManager
         switch (ordenarPor)
         {
             case "Especialidad":
-
                 orden = Comparator.comparing(Maestro::getEspecialidad);
-
                 break;
 
             case "Nombre":
-
                 orden = Comparator.comparing(Maestro::getNombre);
-
                 break;
 
             case "Sueldo":
-
                 orden = Comparator.comparing(Maestro::getSueldo).reversed();
-
                 break;
 
         }
 
-        ArrayList<Maestro> maestrosOrdenados = new ArrayList<>();
-
-        for (Iterator<Maestro> maestro = maestros.stream().sorted(orden).iterator(); maestro.hasNext();)
-            maestrosOrdenados.add(maestro.next());
+        ArrayList<Maestro> maestrosOrdenados = (ArrayList<Maestro>) maestros.stream()
+                .sorted(orden)
+                .collect(Collectors.toList());
 
         maestros.clear();
         maestros.addAll(maestrosOrdenados);

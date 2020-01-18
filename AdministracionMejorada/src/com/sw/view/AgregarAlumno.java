@@ -1,6 +1,6 @@
 package com.sw.view;
 
-import com.sw.controller.AddEntity;
+import com.sw.controller.EntityManager;
 import com.sw.model.Alumno;
 import com.sw.model.Maestro;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class AgregarAlumno extends javax.swing.JFrame
     private final MaestrosGUI maestrosGui;
     private final Alumno alumno;
     private final ArrayList<Maestro> maestros;
-    private final AddEntity addEntity;
+    private final EntityManager addEntity;
     private final int indexCurrentMaestro;
 
     public AgregarAlumno(ArrayList<Maestro> maestros, int indexCurrentMaestro, MaestrosGUI maestrosGui, Alumno alumno)

@@ -1,6 +1,6 @@
 package com.sw.view;
 
-import com.sw.controller.AddEntity;
+import com.sw.controller.EntityManager;
 import com.sw.model.Maestro;
 import java.util.ArrayList;
 import javax.swing.JTextField;
@@ -13,7 +13,7 @@ public class AgregarMaestro extends javax.swing.JFrame
 {
 
     private final AdministradoresGUI administradoresGui;
-    private final AddEntity addEntity;
+    private final EntityManager addEntity;
     private final Maestro maestro;
     private final ArrayList<Maestro> maestros;
 
