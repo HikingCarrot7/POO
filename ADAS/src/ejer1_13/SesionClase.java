@@ -1,5 +1,8 @@
 package ejer1_13;
 
+import static java.lang.System.exit;
+import static java.lang.System.in;
+import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,7 +20,7 @@ public class SesionClase
 
     public SesionClase()
     {
-        IN = new Scanner(System.in);
+        IN = new Scanner(in);
         respuestas = new ArrayList<>();
         generadorPreguntas = new GeneradorPreguntas();
 
@@ -33,7 +36,7 @@ public class SesionClase
         for (int i = 0; i < generadorPreguntas.getFracciones1().length; i++)
         {
             IN.nextLine();
-            System.out.printf("Pregunta: %d\n\n¿Estás listo? (Presiona cualquier tecla)", i + 1);
+            out.printf("Pregunta: %d\n\n¿Estás listo? (Presiona cualquier tecla)", i + 1);
             IN.nextLine();
 
             Temporizador cronometro = new Temporizador(this);
@@ -42,12 +45,12 @@ public class SesionClase
 
             operacion = obtenerTipoOperacionPregunta(tipoDeFracciones[i]);
 
-            System.out.println("\n¿Cuál es el resultado?");
-            System.out.printf("\n\n(%s)  %s  (%s) = ?\n\n", generadorPreguntas.getFracciones1()[i], operacion, generadorPreguntas.getFracciones2()[i]);
+            out.println("\n¿Cuál es el resultado?");
+            out.printf("\n\n(%s)  %s  (%s) = ?\n\n", generadorPreguntas.getFracciones1()[i], operacion, generadorPreguntas.getFracciones2()[i]);
 
             Fraccion respuesta = resolverFraccion(generadorPreguntas.getFracciones1()[i], generadorPreguntas.getFracciones2()[i], tipoDeFracciones[i]);
 
-            System.out.printf("\n\nRespuesta: %s\n\n", respuesta);
+            out.printf("\n\nRespuesta: %s\n\n", respuesta);
 
             Fraccion respuestaUsuario = pedirRespuesta();
 
@@ -66,10 +69,10 @@ public class SesionClase
     {
         int numerador, denominador;
 
-        System.out.println("\nNumerador: ");
+        out.println("\nNumerador: ");
         numerador = IN.nextInt();
 
-        System.out.println("\nDenominador: ");
+        out.println("\nDenominador: ");
         denominador = IN.nextInt();
 
         return new Fraccion(numerador, denominador).simplifica();
@@ -112,7 +115,7 @@ public class SesionClase
 
     public void pedirTiempo()
     {
-        System.out.println("Inserte el tiempo en segundos para responder cada pregunta: ");
+        out.println("Inserte el tiempo en segundos para responder cada pregunta: ");
         tiempo = IN.nextInt();
 
     }
@@ -143,17 +146,17 @@ public class SesionClase
             } else
                 incorrectasFueraLimite++;
 
-        System.out.printf("\n\n\t\t\tBajo el tiempo límite\tSobre el tiempo límite");
-        System.out.printf("\nRespuestas correctas:%24d%24d\nRespuestas incorrectas:%22d%24d", correctasSobreLimite, correctasFueraLimite, incorrectasSobreLimite, incorrectasFueraLimite);
-        System.out.printf("\nPuntos totales: %d\n\n", puntosTotales);
+        out.printf("\n\n\t\t\tBajo el tiempo límite\tSobre el tiempo límite");
+        out.printf("\nRespuestas correctas:%24d%24d\nRespuestas incorrectas:%22d%24d", correctasSobreLimite, correctasFueraLimite, incorrectasSobreLimite, incorrectasFueraLimite);
+        out.printf("\nPuntos totales: %d\n\n", puntosTotales);
 
-        System.exit(1);
+        exit(1);
 
     }
 
     public void seAcaboElTiempo()
     {
-        System.out.println("\n\n¡Se acabó el tiempo límite!\nRespuesta retrasada.\n\n");
+        out.println("\n\n¡Se acabó el tiempo límite!\nRespuesta retrasada.\n\n");
     }
 
     public String obtenerTipoOperacionPregunta(TiposDeFraccion tipoDeFracciones)

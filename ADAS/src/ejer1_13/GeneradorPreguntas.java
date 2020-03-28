@@ -1,5 +1,6 @@
 package ejer1_13;
 
+import static ejer1_13.TiposDeFraccion.values;
 import java.util.Random;
 
 /**
@@ -30,7 +31,7 @@ public final class GeneradorPreguntas
     public void generarTipoFracciones()
     {
         for (int i = 0; i < tipoDeFracciones.length; i++)
-            tipoDeFracciones[i] = TiposDeFraccion.values()[RAND.nextInt(4)];
+            tipoDeFracciones[i] = values()[RAND.nextInt(4)];
 
     }
 

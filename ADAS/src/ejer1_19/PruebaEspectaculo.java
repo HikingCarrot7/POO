@@ -10,34 +10,27 @@ import java.util.Random;
 public class PruebaEspectaculo
 {
 
-    private Empresa empresa;
+    private final Empresa empresa;
     private final Random RAND;
 
     public PruebaEspectaculo()
     {
         empresa = new Empresa();
-
         RAND = new Random();
-
     }
 
     public static void main(String[] args)
     {
         PruebaEspectaculo pruebaEspectaculo = new PruebaEspectaculo();
-
         pruebaEspectaculo.rellenarAgenda();
-
         pruebaEspectaculo.levantarReporte();
-
     }
 
     public void rellenarAgenda()
     {
-
         for (int i = 0; i < 20; i++)
             empresa.agregarNuevoEspectaculoAgendado(new Agenda(generarFecha(),
                     empresa.getEspectaculos().get(RAND.nextInt(empresa.getEspectaculos().size()))));
-
     }
 
     public void levantarReporte()

@@ -1,5 +1,6 @@
 package ejer1_19;
 
+import static java.lang.String.format;
 import java.util.Calendar;
 
 /**
@@ -42,9 +43,9 @@ public class Agenda
     @Override
     public String toString()
     {
-        return String.format("%-30s%-35s$%,.2f",
+        return format("%-30s%-35s$%,.2f",
                 getEspectaculo().nombrePersonajePrincipal,
-                String.format("%1$tA, %1$tB %1$td, %1$tY", fecha),
+                format("%1$tA, %1$tB %1$td, %1$tY", fecha),
                 getEspectaculo() instanceof ShowBasico ? ShowBasico.PRECIO : ShowCompleto.PRECIO);
 
     }

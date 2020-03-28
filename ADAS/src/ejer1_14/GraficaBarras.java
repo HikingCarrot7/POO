@@ -2,6 +2,9 @@ package ejer1_14;
 
 import galapagos.Turtle;
 import java.awt.Color;
+import static java.awt.Color.black;
+import static java.lang.System.in;
+import static java.lang.System.out;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -16,7 +19,7 @@ public class GraficaBarras
 
     public GraficaBarras()
     {
-        IN = new Scanner(System.in);
+        IN = new Scanner(in);
     }
 
     public static void main(String[] args)
@@ -33,7 +36,7 @@ public class GraficaBarras
 
         for (int i = 0; i < valores.length; i++)
         {
-            System.out.printf("\nDigite el valor de la barra %d\n", i + 1);
+            out.printf("\nDigite el valor de la barra %d\n", i + 1);
             valores[i] = IN.nextInt();
 
         }
@@ -53,7 +56,7 @@ public class GraficaBarras
 
             if (i == 0)
             {
-                miTurtle.penColor(Color.black);
+                miTurtle.penColor(black);
                 miTurtle.speed(1000);
                 miTurtle.turn(180);
                 miTurtle.move(200);
@@ -72,7 +75,7 @@ public class GraficaBarras
 
         }
 
-        miTurtle.penColor(Color.black);
+        miTurtle.penColor(black);
         miTurtle.turn(180);
         miTurtle.move(200);
 

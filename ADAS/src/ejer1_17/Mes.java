@@ -1,5 +1,7 @@
 package ejer1_17;
 
+import static java.lang.String.format;
+
 /**
  *
  * @author Ricardo Nicolás Canul Ibarra
@@ -22,7 +24,6 @@ public class Mes
             sumaTotal += tempDia;
 
         return sumaTotal / tempDias.length;
-
     }
 
     public double getMaximaTempMes()
@@ -34,7 +35,6 @@ public class Mes
                 tempMax = tempDia;
 
         return tempMax;
-
     }
 
     public double getMinimaTempMes()
@@ -46,7 +46,6 @@ public class Mes
                 tempMin = tempDia;
 
         return tempMin;
-
     }
 
     public double[] getTempDias()
@@ -65,10 +64,9 @@ public class Mes
         String temps = "";
 
         for (double temp : tempDias)
-            temps += String.format("%,.1f,", temp);
+            temps += format("%,.1f,", temp);
 
         return temps;
-
     }
 
 }

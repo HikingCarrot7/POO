@@ -1,5 +1,8 @@
 package ejer1_21;
 
+import static java.lang.Math.PI;
+import static java.lang.Math.pow;
+
 /**
  *
  * @author HikingCarrot7
@@ -9,17 +12,17 @@ public class Circulo
 
     public double getArea(double radio)
     {
-        return Math.PI * radio * radio;
+        return PI * radio * radio;
     }
 
     public double getPerimetro(double radio)
     {
-        return Math.PI * radio * 2;
+        return PI * radio * 2;
     }
 
     public double getVolumen(double radio)
     {
-        return (4 / 3) * Math.PI * Math.pow(radio, 3);
+        return (4 / 3) * PI * pow(radio, 3);
     }
 
 }

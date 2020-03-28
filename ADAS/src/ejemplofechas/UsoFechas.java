@@ -1,5 +1,7 @@
 package ejemplofechas;
 
+import static ejemplofechas.Fecha.ordenarFechas;
+import static java.lang.System.out;
 import java.util.Random;
 
 /**
@@ -14,21 +16,21 @@ public class UsoFechas
         Random rand = new Random();
         Fecha[] fechas = new Fecha[10];
 
-        System.out.println("Fechas: ");
+        out.println("Fechas: ");
 
         for (int i = 0; i < 10; i++)
         {
             fechas[i] = new Fecha(5 + rand.nextInt(20), 1 + rand.nextInt(12), 2000 + rand.nextInt(30));
 
-            System.out.println(fechas[i]);
+            out.println(fechas[i]);
         }
 
-        System.out.println("\nFechas ordenadas:");
+        out.println("\nFechas ordenadas:");
 
-        fechas = Fecha.ordenarFechas(fechas);
+        fechas = ordenarFechas(fechas);
 
         for (int i = 0; i < 10; i++)
-            System.out.println(fechas[i]);
+            out.println(fechas[i]);
 
     }
 

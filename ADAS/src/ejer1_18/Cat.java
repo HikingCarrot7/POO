@@ -1,5 +1,7 @@
 package ejer1_18;
 
+import static java.lang.System.out;
+
 /**
  *
  * @author HikingCarrot7
@@ -25,7 +27,7 @@ public class Cat extends Animal implements Pet
     @Override
     public void walk()
     {
-        System.out.println("Estoy caminando con mis " + getLegs() + "patas");
+        out.println("Estoy caminando con mis " + getLegs() + "patas");
     }
 
     @Override
@@ -43,7 +45,7 @@ public class Cat extends Animal implements Pet
     @Override
     public void play()
     {
-        System.out.println("Estoy jugando con estambre.");
+        out.println("Estoy jugando con estambre.");
     }
 
 }

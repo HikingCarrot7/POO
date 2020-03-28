@@ -1,6 +1,9 @@
 package ejer1_17;
 
 import java.io.IOException;
+import static java.lang.Math.random;
+import static java.lang.String.format;
+import static java.lang.System.out;
 
 /**
  *
@@ -34,7 +37,7 @@ public final class GestorDatos
             tempsMes = new double[anio.getDiasMeses()[i]];
 
             for (int j = 0; j < tempsMes.length; j++)
-                tempsMes[j] = Math.random() * 100 - 50;
+                tempsMes[j] = random() * 100 - 50;
 
             anio.getMeses()[i].setTempDias(tempsMes);
 
@@ -47,28 +50,28 @@ public final class GestorDatos
     public void mediaTemperaturasMensuales()
     {
 
-        System.out.println("\n<------Media de las temperaturas mensuales.------>\n");
+        out.println("\n<------Media de las temperaturas mensuales.------>\n");
 
-        System.out.println(String.format("%-15s%s", "Mes", "Media de la temperatura"));
+        out.println(format("%-15s%s", "Mes", "Media de la temperatura"));
 
         for (int i = 0; i < anio.getMeses().length; i++)
-            System.out.println(String.format("%-15s%,.2f", anio.getNombreMeses()[i], anio.getMeses()[i].getMediaTemperaturaMes()));
+            out.println(format("%-15s%,.2f", anio.getNombreMeses()[i], anio.getMeses()[i].getMediaTemperaturaMes()));
 
     }
 
     public void mediaTemperaturaAnual()
     {
-        System.out.println("\n<------Media de la temperatura anual.------>\n");
+        out.println("\n<------Media de la temperatura anual.------>\n");
 
-        System.out.println(String.format("%-15s%,.2f", "Media anual:", anio.getMediaAnual()));
+        out.println(format("%-15s%,.2f", "Media anual:", anio.getMediaAnual()));
 
     }
 
     public void temperaturaMaxYMinMes(int mes)
     {
-        System.out.println("\n<------Temperatura máxima y mínima del mes de " + anio.getNombreMeses()[mes - 1].toLowerCase() + ".------>\n");
+        out.println("\n<------Temperatura máxima y mínima del mes de " + anio.getNombreMeses()[mes - 1].toLowerCase() + ".------>\n");
 
-        System.out.println(String.format("%-25s%,.2f\n%-25s%,.2f",
+        out.println(format("%-25s%,.2f\n%-25s%,.2f",
                 "Temperatura máxima:", anio.getMaxTempMes(mes),
                 "Temperatura mínima:", anio.getMinTempMes(mes)));
 

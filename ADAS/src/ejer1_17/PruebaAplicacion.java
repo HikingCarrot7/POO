@@ -1,6 +1,7 @@
 package ejer1_17;
 
 import java.io.IOException;
+import static java.lang.System.out;
 
 /**
  *
@@ -19,7 +20,7 @@ public class PruebaAplicacion
 
             menu.leerEntrada();
 
-            System.out.println("\n\n");
+            out.println("\n\n");
 
         }
 

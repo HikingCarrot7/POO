@@ -1,5 +1,7 @@
 package cuadrilatero;
 
+import static cuadrilatero.Punto.distanciaEntreDosPuntos;
+
 /**
  *
  * @author Mohammed
@@ -14,12 +16,12 @@ public class Trapecio extends Cuadrilatero
 
     public double obtenerBaseMenor()
     {
-        return Punto.distanciaEntreDosPuntos(punto1, punto2);
+        return distanciaEntreDosPuntos(punto1, punto2);
     }
 
     public double obtenerBaseMayor()
     {
-        return Punto.distanciaEntreDosPuntos(punto3, punto4);
+        return distanciaEntreDosPuntos(punto3, punto4);
     }
 
 }

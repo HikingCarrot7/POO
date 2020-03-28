@@ -17,7 +17,7 @@ public class EmpleoTiempoCompleto extends Empleo
 
     public static void setSalario(double salario)
     {
-        EmpleoTiempoCompleto.salario = salario;
+        salario = salario;
     }
 
 }

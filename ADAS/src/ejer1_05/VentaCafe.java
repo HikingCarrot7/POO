@@ -1,5 +1,9 @@
 package ejer1_05;
 
+import static java.lang.Integer.parseInt;
+import static java.lang.Integer.parseInt;
+import static java.lang.System.in;
+import static java.lang.System.out;
 import java.util.Scanner;
 
 /**
@@ -20,7 +24,7 @@ public class VentaCafe
 
     public VentaCafe()
     {
-        IN = new Scanner(System.in);
+        IN = new Scanner(in);
         ventaCafe = new DespachoCajas();
 
     }
@@ -38,18 +42,18 @@ public class VentaCafe
 
             bolsasValidas = false;
 
-            System.out.println("Inserte las bolsas de café que desea comprar: "); // Pedimos las bolsas.
+            out.println("Inserte las bolsas de café que desea comprar: "); // Pedimos las bolsas.
             bolsas = IN.nextLine();
 
             if (validarEntrada(bolsas, "^[0-9]+$")) // Validamos por medio de una expresión regular si el número de bolsas insertado es correcto. (Aún no conocemos las excepciones).
                 bolsasValidas = true;
             else
-                System.out.println("\nCantidad inválida\n");
+                out.println("\nCantidad inválida\n");
 
         } while (!bolsasValidas);
 
-        ventaCafe.calcularMenorNumeroCajas(Integer.parseInt(bolsas)); // Calculamos el menor número de cajas para el empaquetado.
-        ventaCafe.calcularMenorNumeroEspaciosDesperdiciados(Integer.parseInt(bolsas)); // Calculamos el menor número de espacios desperdiciados.
+        ventaCafe.calcularMenorNumeroCajas(parseInt(bolsas)); // Calculamos el menor número de cajas para el empaquetado.
+        ventaCafe.calcularMenorNumeroEspaciosDesperdiciados(parseInt(bolsas)); // Calculamos el menor número de espacios desperdiciados.
 
     }
 

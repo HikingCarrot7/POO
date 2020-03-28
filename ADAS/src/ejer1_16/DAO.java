@@ -3,6 +3,9 @@ package ejer1_16;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import static java.lang.String.format;
+import static java.lang.System.getProperty;
+import static java.lang.System.out;
 import java.util.Formatter;
 
 /**
@@ -27,27 +30,27 @@ public class DAO
     public void escribirRegistro(Disco[] discos, Libro[] libros) throws IOException
     {
 
-        String lineSeparator = System.getProperty("line.separator");
-        String registro = String.format("%s%s%2$s", "Discos:", lineSeparator);
+        String lineSeparator = getProperty("line.separator");
+        String registro = format("%s%s%2$s", "Discos:", lineSeparator);
 
-        registro += String.format("%-30s%-35s%s%s%4$s", "Título", "Duración (minutos)", "Precio", lineSeparator);
+        registro += format("%-30s%-35s%s%s%4$s", "Título", "Duración (minutos)", "Precio", lineSeparator);
 
         for (Disco disco : discos)
-            registro += String.format("%s", disco);
+            registro += format("%s", disco);
 
-        registro += String.format("%2$s%s%s%2$s", "Libros:", lineSeparator);
+        registro += format("%2$s%s%s%2$s", "Libros:", lineSeparator);
 
-        registro += String.format("%-30s%-35s%-25s%s%s%5$s", "Título", "Año de publicación", "Número de páginas", "Precio", lineSeparator);
+        registro += format("%-30s%-35s%-25s%s%s%5$s", "Título", "Año de publicación", "Número de páginas", "Precio", lineSeparator);
 
         for (Libro libro : libros)
-            registro += String.format("%s", libro);
+            registro += format("%s", libro);
 
         try (Formatter out = new Formatter(new FileWriter(new File(ruta))))
         {
             out.format("%s", registro);
         }
 
-        System.out.println(registro);
+        out.println(registro);
 
     }
 

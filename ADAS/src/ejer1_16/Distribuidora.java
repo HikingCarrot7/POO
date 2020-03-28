@@ -1,5 +1,6 @@
 package ejer1_16;
 
+import static java.lang.System.out;
 import java.util.GregorianCalendar;
 
 /**
@@ -26,7 +27,7 @@ public class Distribuidora
         if (indexDiscos < 10)
             discos[indexDiscos++] = disco;
         else
-            System.out.println("\nLímite de discos alcanzado.");
+            out.println("\nLímite de discos alcanzado.");
 
     }
 
@@ -35,7 +36,7 @@ public class Distribuidora
         if (indexDiscos < 10)
             discos[indexDiscos++] = new Disco(titulo, precio, duracionMin);
         else
-            System.out.println("\nLímite de discos alcanzado.");
+            out.println("\nLímite de discos alcanzado.");
 
     }
 
@@ -44,7 +45,7 @@ public class Distribuidora
         if (indexLibros < 10)
             libros[indexLibros++] = libro;
         else
-            System.out.println("\nLímite de libros alcanzado.");
+            out.println("\nLímite de libros alcanzado.");
 
     }
 
@@ -53,7 +54,7 @@ public class Distribuidora
         if (indexLibros < 10)
             libros[indexLibros++] = new Libro(titulo, precio, anioPublicacion, nPaginas);
         else
-            System.out.println("\nLímite de libros alcanzado.");
+            out.println("\nLímite de libros alcanzado.");
 
     }
 

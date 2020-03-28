@@ -1,5 +1,6 @@
 package ejer1_12;
 
+import static java.lang.System.out;
 import java.util.Random;
 
 /**
@@ -45,7 +46,7 @@ public final class JuegoFermi
         } while (indexNumerosAleatorios < numerosAleatorios.length);
 
         for (int i = 0; i < numerosAleatorios.length; i++)
-            System.out.printf("%d ", numerosAleatorios[i]);
+            out.printf("%d ", numerosAleatorios[i]);
 
     }
 

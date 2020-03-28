@@ -1,5 +1,11 @@
 package ejer1_11;
 
+import static java.lang.Integer.parseInt;
+import static java.lang.Integer.parseInt;
+import static java.lang.Integer.parseInt;
+import static java.lang.String.format;
+import static java.lang.System.in;
+import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,7 +25,7 @@ public class Registro
     public Registro()
     {
         estudiantes = new ArrayList<>();
-        IN = new Scanner(System.in);
+        IN = new Scanner(in);
 
     }
 
@@ -36,7 +42,7 @@ public class Registro
         {
             seguirRegistrandoEstudiantes = true;
 
-            System.out.println("\nInserte el saldo de la tarjeta de comida para este estudiante."
+            out.println("\nInserte el saldo de la tarjeta de comida para este estudiante."
                     + "\n(presione \"enter\" para cancelar o \"0\" si no desea insertarle saldo).");
             entrada = IN.nextLine();
 
@@ -45,14 +51,14 @@ public class Registro
 
             else if (validarEntrada(entrada, "[0-9]+")) // Se valida la entrada.
             {
-                estudiantes.add(new Estudiante(new TarjetaComida(Integer.parseInt(entrada))));
-                System.out.println("\nSaldo registrado correctamente.");
+                estudiantes.add(new Estudiante(new TarjetaComida(parseInt(entrada))));
+                out.println("\nSaldo registrado correctamente.");
 
             } else if (validarEntrada(entrada, "")) // Si se presiona "enter" la operación termina.
                 seguirRegistrandoEstudiantes = false;
 
             else
-                System.out.println("\nNúmero inválido.");
+                out.println("\nNúmero inválido.");
 
         } while (seguirRegistrandoEstudiantes);
 
@@ -74,7 +80,7 @@ public class Registro
             do
             {
 
-                System.out.println("\nPresione \"1\" para despachar a los estudiantes"
+                out.println("\nPresione \"1\" para despachar a los estudiantes"
                         + "\nPresione \"2\" para cambiar el saldo de la tarjeta de algún estudiante"
                         + "\nPresione \"3\" para añadir a más estudiantes"); // Opciones disponibles.
                 entrada = IN.nextLine();
@@ -89,14 +95,14 @@ public class Registro
                     registrarEstudiantes();
 
                 else
-                    System.out.println("\nOpción inválida");
+                    out.println("\nOpción inválida");
 
             } while (true);
 
         } else if (confirmacion("\nNo hay estudiantes registrados.\n\n¿Desea registrar alguno? (Sí o No)"))
             registrarEstudiantes();
         else
-            System.out.println("\nBUILD STOPPED.\n"); // El proceso termina.
+            out.println("\nBUILD STOPPED.\n"); // El proceso termina.
 
     }
 
@@ -112,7 +118,7 @@ public class Registro
         do
         {
 
-            System.out.println("\n¿A cuál estudiante desea añadirle puntos a su tarjeta de comida? (1 - " + estudiantes.size() + ")");
+            out.println("\n¿A cuál estudiante desea añadirle puntos a su tarjeta de comida? (1 - " + estudiantes.size() + ")");
             indexEstudiante = IN.nextLine();
 
             if (validarEntrada(indexEstudiante, "^[1-" + estudiantes.size() + "]$")) // Se valida que la entrada este dentro del rango.
@@ -123,20 +129,20 @@ public class Registro
                 {
                     cantidadInvalida = true;
 
-                    System.out.printf("\nInserte los puntos a añadir para el estudiante %s:", indexEstudiante);
+                    out.printf("\nInserte los puntos a añadir para el estudiante %s:", indexEstudiante);
                     entrada = IN.nextLine();
 
                     if (validarEntrada(entrada, "^-?[0-9]+$")) // Se valida cantidad a añadir.
                     {
-                        Estudiante estudiante = estudiantes.get(Integer.parseInt(indexEstudiante) - 1);
-                        estudiante.getTarjetaComida().setSaldoTarjeta(estudiante.getTarjetaComida().getSaldoTarjeta() + Integer.parseInt(entrada)); // Se actualiza el saldo del estudiante.
+                        Estudiante estudiante = estudiantes.get(parseInt(indexEstudiante) - 1);
+                        estudiante.getTarjetaComida().setSaldoTarjeta(estudiante.getTarjetaComida().getSaldoTarjeta() + parseInt(entrada)); // Se actualiza el saldo del estudiante.
 
-                        System.out.println("\nSaldo actualizado correctamente");
+                        out.println("\nSaldo actualizado correctamente");
 
                         cantidadInvalida = false;
 
                     } else
-                        System.out.println("\nCantidad inválida");
+                        out.println("\nCantidad inválida");
 
                 } while (cantidadInvalida);
 
@@ -144,7 +150,7 @@ public class Registro
 
             } else
             {
-                System.out.println("\nCantidad inválida");
+                out.println("\nCantidad inválida");
 
                 continuar = true;
             }
@@ -161,11 +167,11 @@ public class Registro
     public void mostrarEstudiantesRegistrados()
     {
 
-        System.out.println("\n\n\tAlumnos registrados:\n");
-        System.out.println(String.format("%-20s%s", "Estudiante", "Saldo en su tarjeta"));
+        out.println("\n\n\tAlumnos registrados:\n");
+        out.println(format("%-20s%s", "Estudiante", "Saldo en su tarjeta"));
 
         for (int i = 0; i < estudiantes.size(); i++)
-            System.out.printf("%-20d$%d\n", i + 1, estudiantes.get(i).getTarjetaComida().getSaldoTarjeta());
+            out.printf("%-20d$%d\n", i + 1, estudiantes.get(i).getTarjetaComida().getSaldoTarjeta());
 
     }
 
@@ -190,7 +196,7 @@ public class Registro
     {
         String entrada;
 
-        System.out.println(text);
+        out.println(text);
         entrada = IN.nextLine();
 
         return validarEntrada(entrada, "Si|si|Sí|sí|SI|SÍ|sÍ|sI|s|S");

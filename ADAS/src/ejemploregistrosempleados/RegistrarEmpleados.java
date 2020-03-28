@@ -3,8 +3,13 @@ package ejemploregistrosempleados;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.Calendar;
+import static java.util.Calendar.DAY_OF_MONTH;
+import static java.util.Calendar.MONTH;
+import static java.util.Calendar.YEAR;
+import static java.util.Calendar.getInstance;
 import java.util.Formatter;
 import java.util.GregorianCalendar;
 import java.util.InputMismatchException;
@@ -38,16 +43,16 @@ public class RegistrarEmpleados
 
         do
         {
-            System.out.println("\nIngrese la clave del empleado: ");
+            out.println("\nIngrese la clave del empleado: ");
             String clave = in.nextLine();
 
-            System.out.println("\nIngrese el nombre del empleado: ");
+            out.println("\nIngrese el nombre del empleado: ");
             String nombre = in.nextLine();
 
-            System.out.println("\nIngrese el apellido paterno del empleado: ");
+            out.println("\nIngrese el apellido paterno del empleado: ");
             String apellidoPaterno = in.nextLine();
 
-            System.out.println("\nIngrese el apellido materno del empleado: ");
+            out.println("\nIngrese el apellido materno del empleado: ");
             String apellidoMaterno = in.nextLine();
 
             Calendar fechaNacimiento = pedirFecha("Fecha de nacimiento");
@@ -64,12 +69,12 @@ public class RegistrarEmpleados
 
             writeEmpleados(empleado);
 
-            System.out.println("\n¿Desea agragar a más empleados? (Sí o No)");
+            out.println("\n¿Desea agragar a más empleados? (Sí o No)");
             terminar = in.nextLine();
 
         } while (!terminar.trim().toLowerCase().equals("no"));
 
-        misEmpleados.stream().forEach(System.out::println);
+        misEmpleados.stream().forEach(out::println);
 
     }
 
@@ -79,7 +84,7 @@ public class RegistrarEmpleados
         int dia = 0, mes = 0, anio = 0;
         boolean datosValidos;
 
-        System.out.println("\n---------" + text + "---------");
+        out.println("\n---------" + text + "---------");
 
         do
         {
@@ -87,19 +92,19 @@ public class RegistrarEmpleados
 
             try
             {
-                System.out.println("\nInserte el día: ");
+                out.println("\nInserte el día: ");
                 dia = in.nextInt();
 
                 if (!validarEntrada(dia + "", "^[0-3]?[0-9]$"))
                     throw new InputMismatchException();
 
-                System.out.println("\nInserte el mes: ");
+                out.println("\nInserte el mes: ");
                 mes = in.nextInt();
 
                 if (!validarEntrada(mes + "", "^[0-1]?[0-9]$"))
                     throw new InputMismatchException();
 
-                System.out.println("\nInserte el año: ");
+                out.println("\nInserte el año: ");
                 anio = in.nextInt();
 
                 if (!validarEntrada(anio + "", "^[1-2][0-9][0-9][0-9]$"))
@@ -107,7 +112,7 @@ public class RegistrarEmpleados
 
             } catch (InputMismatchException e)
             {
-                System.out.println("\nDato inválido, vuelve a insertar la fecha.");
+                out.println("\nDato inválido, vuelve a insertar la fecha.");
 
                 in.nextLine();
                 datosValidos = false;
@@ -132,12 +137,12 @@ public class RegistrarEmpleados
         do
         {
 
-            System.out.println("\nDepartamento: ");
+            out.println("\nDepartamento: ");
             departamento = in.nextLine();
 
             valido = validarEntrada(departamento, "CO|AL|FI|RH");
             if (!valido)
-                System.out.println("\nEntrada no válida, inténtelo de nuevo.");
+                out.println("\nEntrada no válida, inténtelo de nuevo.");
 
         } while (!valido);
 
@@ -151,7 +156,7 @@ public class RegistrarEmpleados
         boolean valido;
         int horaInicio, minutosInicio, horaSalida, minutosSalida;
 
-        System.out.println("\n---------Horario de lunes a viernes---------");
+        out.println("\n---------Horario de lunes a viernes---------");
 
         do
         {
@@ -159,25 +164,25 @@ public class RegistrarEmpleados
 
             try
             {
-                System.out.println("\nHora de inicio: (En formato 24 horas)");
+                out.println("\nHora de inicio: (En formato 24 horas)");
                 horaInicio = in.nextInt();
 
                 if (horaInicio < 0 || horaInicio > 23)
                     throw new InputMismatchException();
 
-                System.out.println("\nMinutos de inicio: ");
+                out.println("\nMinutos de inicio: ");
                 minutosInicio = in.nextInt();
 
                 if (minutosInicio < 0 || minutosInicio > 59)
                     throw new InputMismatchException();
 
-                System.out.println("\nHora de salida: (En formato 24 horas)");
+                out.println("\nHora de salida: (En formato 24 horas)");
                 horaSalida = in.nextInt();
 
                 if (horaSalida < 0 || horaSalida > 23)
                     throw new InputMismatchException();
 
-                System.out.println("\nMinutos de salida: ");
+                out.println("\nMinutos de salida: ");
                 minutosSalida = in.nextInt();
 
                 if (minutosSalida < 0 || minutosSalida > 59)
@@ -185,7 +190,7 @@ public class RegistrarEmpleados
 
                 in.nextLine();
 
-                System.out.println("\n¿Desea guardar otro horario? \"No\" para cancelar");
+                out.println("\n¿Desea guardar otro horario? \"No\" para cancelar");
                 String respuesta = in.nextLine();
 
                 if (respuesta.trim().toLowerCase().equals("no"))
@@ -197,7 +202,7 @@ public class RegistrarEmpleados
                 {
                     do
                     {
-                        System.out.println("\n¿Cuál horario desea guardar? (S - sábado, D - domingo)");
+                        out.println("\n¿Cuál horario desea guardar? (S - sábado, D - domingo)");
                         siguiente = in.nextLine();
 
                     } while (!validarEntrada(siguiente, "S|D|s|d"));
@@ -208,7 +213,7 @@ public class RegistrarEmpleados
 
             } catch (InputMismatchException e)
             {
-                System.out.println("\nDatos incorrectos, insértelos de nuevo");
+                out.println("\nDatos incorrectos, insértelos de nuevo");
 
                 valido = false;
             }
@@ -221,10 +226,10 @@ public class RegistrarEmpleados
 
     public boolean isFechaValida(GregorianCalendar fecha)
     {
-        int dia = fecha.get(Calendar.DAY_OF_MONTH), mes = fecha.get(Calendar.MONTH), anio = fecha.get(Calendar.YEAR);
-        int diasMaxFebrero = fecha.isLeapYear(fecha.get(Calendar.YEAR)) ? 29 : 28;
+        int dia = fecha.get(DAY_OF_MONTH), mes = fecha.get(MONTH), anio = fecha.get(YEAR);
+        int diasMaxFebrero = fecha.isLeapYear(fecha.get(YEAR)) ? 29 : 28;
 
-        if (anio <= 1900 || anio > Calendar.getInstance().get(Calendar.YEAR))
+        if (anio <= 1900 || anio > getInstance().get(YEAR))
             return false;
 
         if (mes > 11 || mes < 0)
@@ -289,7 +294,7 @@ public class RegistrarEmpleados
 
         } catch (IOException ex)
         {
-            System.out.println(ex.getMessage());
+            out.println(ex.getMessage());
         }
     }
 

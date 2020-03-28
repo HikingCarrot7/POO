@@ -12,17 +12,13 @@ public class CheckingAccount extends Account
     public CheckingAccount(double balance, double overdraftamount)
     {
         super(balance);
-
         this.overdraftAmount = overdraftamount;
-
     }
 
     public CheckingAccount(double balance)
     {
         super(balance);
-
         overdraftAmount = 0;
-
     }
 
     @Override
@@ -37,9 +33,9 @@ public class CheckingAccount extends Account
 
             } else
                 setBalance(getBalance() - amount);
+
         else
             throw new OverdraftException("Insufficient funds for overdraft protection. Deficit: ", amount - (getBalance() + getOverdraftAmount()));
-
     }
 
     public double getOverdraftAmount()

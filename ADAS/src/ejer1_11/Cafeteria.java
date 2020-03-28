@@ -1,5 +1,12 @@
 package ejer1_11;
 
+import static ejer1_11.Comida.values;
+import static java.lang.Integer.parseInt;
+import static java.lang.Integer.parseInt;
+import static java.lang.Integer.parseInt;
+import static java.lang.Integer.parseInt;
+import static java.lang.System.in;
+import static java.lang.System.out;
 import java.util.Scanner;
 
 /**
@@ -22,7 +29,7 @@ public class Cafeteria
     {
         this.registro = registro;
 
-        IN = new Scanner(System.in);
+        IN = new Scanner(in);
     }
 
     /**
@@ -37,17 +44,17 @@ public class Cafeteria
         {
             entradaValida = false;
 
-            System.out.println("\nRealizar compras para el estudiante (1 - " + registro.getEstudiantes().size() + ")");
+            out.println("\nRealizar compras para el estudiante (1 - " + registro.getEstudiantes().size() + ")");
             entrada = IN.nextLine();
 
             if (registro.validarEntrada(entrada, "^[1-" + registro.getEstudiantes().size() + "]$")) // Se valida que la entrada este entre el rango de estudiantes registrados.
             {
                 imprimirListaAlimentos(); // Se imprime la lista de alimentos.
-                indexEstudianteActual = Integer.parseInt(entrada);
+                indexEstudianteActual = parseInt(entrada);
                 entradaValida = true;
 
             } else
-                System.out.println("\nEntrada inválida.");
+                out.println("\nEntrada inválida.");
 
         } while (!entradaValida);
 
@@ -68,30 +75,30 @@ public class Cafeteria
         {
             seguirComprando = false;
 
-            System.out.printf("\nTu saldo actual es: $%d", estudianteActual.getTarjetaComida().getSaldoTarjeta()); // Saldo del estudiante actual.
-            System.out.println("\nInserte el alimento que desea comprar (1 - " + Comida.values().length + "), presione \"enter\" para cancelar");
+            out.printf("\nTu saldo actual es: $%d", estudianteActual.getTarjetaComida().getSaldoTarjeta()); // Saldo del estudiante actual.
+            out.println("\nInserte el alimento que desea comprar (1 - " + values().length + "), presione \"enter\" para cancelar");
             entrada = IN.nextLine();
 
             if (registro.validarEntrada(entrada, "")) // Si se presiona "enter" la operación se cancela.
                 break;
 
             if (registro.validarEntrada(entrada, "^[1-9]+$")
-                    && Integer.parseInt(entrada) <= Comida.values().length // Validamos que la entrada sea válida y que el estudiante tenga los suficientes puntos para hacer la compra.
-                    && Comida.values()[Integer.parseInt(entrada) - 1].getPrecio() <= estudianteActual.getTarjetaComida().getSaldoTarjeta())
+                    && parseInt(entrada) <= values().length // Validamos que la entrada sea válida y que el estudiante tenga los suficientes puntos para hacer la compra.
+                    && values()[parseInt(entrada) - 1].getPrecio() <= estudianteActual.getTarjetaComida().getSaldoTarjeta())
             {
-                Comida comida = Comida.values()[Integer.parseInt(entrada) - 1];
+                Comida comida = values()[parseInt(entrada) - 1];
 
-                System.out.printf("\nHa comprado: %s ($%d)", comida, comida.getPrecio()); // Comida que compró
+                out.printf("\nHa comprado: %s ($%d)", comida, comida.getPrecio()); // Comida que compró
                 estudianteActual.getTarjetaComida().setSaldoTarjeta(estudianteActual.getTarjetaComida().getSaldoTarjeta() - comida.getPrecio());
 
                 if (registro.confirmacion("\n¿Deseas realizar otra compra? (Sí o No)"))
                     seguirComprando = true;
                 else
-                    System.out.printf("\nTe quedaste con un saldo de: $%d", estudianteActual.getTarjetaComida().getSaldoTarjeta()); // Saldo restante.
+                    out.printf("\nTe quedaste con un saldo de: $%d", estudianteActual.getTarjetaComida().getSaldoTarjeta()); // Saldo restante.
 
             } else
             {
-                System.out.println("\nCantidad inválida o no tienes saldo suficiente.");
+                out.println("\nCantidad inválida o no tienes saldo suficiente.");
                 seguirComprando = true;
             }
 
@@ -113,10 +120,10 @@ public class Cafeteria
      */
     public void imprimirListaAlimentos()
     {
-        System.out.printf("\n%-20s%s\n", "<<Alimento>>", "<<Precio>>");
+        out.printf("\n%-20s%s\n", "<<Alimento>>", "<<Precio>>");
 
-        for (int i = 0; i < Comida.values().length; i++)
-            System.out.printf("%02d.- %-15s$%d\n", i + 1, Comida.values()[i], Comida.values()[i].getPrecio());
+        for (int i = 0; i < values().length; i++)
+            out.printf("%02d.- %-15s$%d\n", i + 1, values()[i], values()[i].getPrecio());
 
     }
 

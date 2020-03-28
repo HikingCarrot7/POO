@@ -1,5 +1,8 @@
 package ejer1_05;
 
+import static java.lang.String.format;
+import static java.lang.System.out;
+
 /**
  * Clase DespachoCajas.
  *
@@ -33,9 +36,9 @@ public class DespachoCajas
         //En caso contrario sería bolsas / 20 + 1 cajas grandes.
         int nCajasGrandes = bolsas % cajaGrande.getCAPACIDAD() == 0 ? bolsas / cajaGrande.getCAPACIDAD() : bolsas / cajaGrande.getCAPACIDAD() + 1;
 
-        System.out.println("---------------Menor número de cajas---------------");
-        System.out.println(String.format("\n\tNúmero de bolsas ordenadas: %d - $%d", bolsas, bolsas * PRECIOBOLSAS));
-        System.out.println(String.format("\nCajas grandes necesarias: %-10dEspacios remanentes: %d\n\n\t\tSu costo total es: $%,.2f\n",
+        out.println("---------------Menor número de cajas---------------");
+        out.println(format("\n\tNúmero de bolsas ordenadas: %d - $%d", bolsas, bolsas * PRECIOBOLSAS));
+        out.println(format("\nCajas grandes necesarias: %-10dEspacios remanentes: %d\n\n\t\tSu costo total es: $%,.2f\n",
                 nCajasGrandes, // Total de cajas grandes.
                 cajaGrande.getCAPACIDAD() * nCajasGrandes - bolsas, // El número de espacios remanentes se calcula multiplicando el número de cajas grandes necesarias por su capacidad y restándole el número de bolsas.
                 bolsas * PRECIOBOLSAS + nCajasGrandes * cajaGrande.getPRECIO())); // Precio total.
@@ -69,9 +72,9 @@ public class DespachoCajas
         if (tempBolsas != 0)
             totalCajasPequenas = (float) tempBolsas / 5 > 1 ? 2 : 1;
 
-        System.out.println("-----Menor número de espacios desaprovechados-----");
-        System.out.println(String.format("\n\tNúmero de cajas ordenadas: %d - $%d", bolsas, bolsas * PRECIOBOLSAS));
-        System.out.println(String.format("\n%-25s %d\n%-25s %d\n%-25s %d\n%-25s %d\n\n\t\tSu costo total es: $%,.2f\n",
+        out.println("-----Menor número de espacios desaprovechados-----");
+        out.println(format("\n\tNúmero de cajas ordenadas: %d - $%d", bolsas, bolsas * PRECIOBOLSAS));
+        out.println(format("\n%-25s %d\n%-25s %d\n%-25s %d\n%-25s %d\n\n\t\tSu costo total es: $%,.2f\n",
                 "Cajas grandes: ", totalCajasGrandes, // Número de cajas grandes totales.
                 "Cajas medianas: ", totalCajasMedianas, // Número de cajas medianas totales.
                 "Cajas pequeñas: ", totalCajasPequenas, // Número de cajas pequeñas totales.

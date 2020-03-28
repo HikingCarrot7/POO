@@ -1,5 +1,13 @@
 package cannon;
 
+import static java.lang.Math.PI;
+import static java.lang.Math.cos;
+import static java.lang.Math.pow;
+import static java.lang.Math.sin;
+import static java.lang.String.format;
+import static java.lang.System.out;
+import static java.lang.Thread.sleep;
+
 /**
  *
  * @author Mohammed
@@ -28,18 +36,18 @@ public class Cannon implements Runnable
 
             try
             {
-                Thread.sleep(1000);
+                sleep(1000);
 
                 if (valorY(tiempo) < 0)
                     break;
 
-                System.out.println(String.format("\nTiempo: %d segundo(s)\n%s", tiempo, posicionEnXTiempo(valorX(tiempo), valorY(tiempo))));
+                out.println(format("\nTiempo: %d segundo(s)\n%s", tiempo, posicionEnXTiempo(valorX(tiempo), valorY(tiempo))));
 
                 tiempo++;
 
             } catch (InterruptedException ex)
             {
-                System.out.println(ex.getMessage());
+                out.println(ex.getMessage());
             }
 
     }
@@ -51,12 +59,12 @@ public class Cannon implements Runnable
 
     private double valorX(int tiempo)
     {
-        return velInicial * Math.cos(gradosToRadians(anguloInicial)) * tiempo;
+        return velInicial * cos(gradosToRadians(anguloInicial)) * tiempo;
     }
 
     private double valorY(int tiempo)
     {
-        return (velInicial * Math.sin(gradosToRadians(anguloInicial))) * tiempo - (GRAVEDAD * Math.pow(tiempo, 2) / 2);
+        return (velInicial * sin(gradosToRadians(anguloInicial))) * tiempo - (GRAVEDAD * pow(tiempo, 2) / 2);
     }
 
     /**
@@ -67,7 +75,7 @@ public class Cannon implements Runnable
      */
     private double gradosToRadians(double grados)
     {
-        return grados * Math.PI / 180;
+        return grados * PI / 180;
     }
 
     private class Punto
@@ -109,7 +117,7 @@ public class Cannon implements Runnable
         @Override
         public String toString()
         {
-            return String.format("Valor de X: %,.2f, valor de Y: %,.2f", getX(), getY());
+            return format("Valor de X: %,.2f, valor de Y: %,.2f", getX(), getY());
         }
 
     }

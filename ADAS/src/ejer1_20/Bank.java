@@ -1,5 +1,7 @@
 package ejer1_20;
 
+import static java.lang.String.format;
+
 /**
  *
  * @author HikingCarrot7
@@ -48,7 +50,7 @@ public class Bank
         resumen += "\n\t\t\t\t\t<<Clientes registrados en este banco>>\n\n";
 
         for (int i = 0; i < clientes.length; i++)
-            resumen += String.format("%02d.- %s\n", i + 1, clientes[i]);
+            resumen += format("%02d.- %s\n", i + 1, clientes[i]);
 
         return resumen;
 

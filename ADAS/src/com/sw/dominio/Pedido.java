@@ -1,5 +1,7 @@
 package com.sw.dominio;
 
+import static com.sw.dominio.Bolsa.getPRECIO;
+
 /**
  *
  * @author HikingCarrot7
@@ -26,7 +28,7 @@ public class Pedido
 
     public double getPrecioBolsas()
     {
-        return this.cantidadBolsas * Bolsa.getPRECIO();
+        return this.cantidadBolsas * getPRECIO();
     }
 
     public int obtenerCajasMinimasGrandes()

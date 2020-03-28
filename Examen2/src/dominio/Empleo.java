@@ -7,6 +7,6 @@ package dominio;
 public abstract class Empleo
 {
 
-    public abstract double getSalario();
+    protected abstract double getSalario();
 
 }

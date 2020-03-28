@@ -1,6 +1,7 @@
 package ejer1_08;
 
 import galapagos.Turtle;
+import static galapagos.Turtle.NO_DEFAULT_WINDOW;
 import galapagos.TurtleDrawingWindow;
 
 /**
@@ -18,7 +19,7 @@ public class Galapagos
     public void dibujarNombre()
     {
         TurtleDrawingWindow playground = new TurtleDrawingWindow();
-        Turtle miTurtle = new Turtle(Turtle.NO_DEFAULT_WINDOW);
+        Turtle miTurtle = new Turtle(NO_DEFAULT_WINDOW);
 
         playground.setVisible(true);
 

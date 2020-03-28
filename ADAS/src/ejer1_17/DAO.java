@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import static java.lang.Double.parseDouble;
+import static java.lang.String.format;
+import static java.lang.System.getProperty;
 import java.util.Formatter;
 import java.util.Scanner;
 import java.util.StringTokenizer;
@@ -50,7 +53,7 @@ public class DAO
                 double[] tempsMes = new double[temps.countTokens()];
 
                 while (temps.hasMoreTokens())
-                    tempsMes[i++] = Double.parseDouble(temps.nextToken());
+                    tempsMes[i++] = parseDouble(temps.nextToken());
 
                 meses[indexMeses++].setTempDias(tempsMes);
 
@@ -64,13 +67,13 @@ public class DAO
 
     public void escribirTemperaturas(Mes[] meses) throws IOException
     {
-        String lineSeparator = System.getProperty("line.separator");
+        String lineSeparator = getProperty("line.separator");
         String todasTemps = "";
 
         try (Formatter out = new Formatter(new FileWriter(file, false)))
         {
             for (Mes mes : meses)
-                todasTemps += String.format("%s%s", mes, lineSeparator);
+                todasTemps += format("%s%s", mes, lineSeparator);
 
             out.format("%s", todasTemps);
 

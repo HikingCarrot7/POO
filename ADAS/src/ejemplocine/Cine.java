@@ -1,5 +1,7 @@
 package ejemplocine;
 
+import static java.lang.System.out;
+
 /**
  *
  * @author Mohammed
@@ -14,12 +16,9 @@ public final class Cine
     public Cine(String pelicula, double precioPelicula)
     {
         asientos = new Asiento[5][10];
-
         this.pelicula = pelicula;
         this.precioPelicula = precioPelicula;
-
         iniciarAsientos();
-
     }
 
     private void iniciarAsientos()
@@ -33,7 +32,6 @@ public final class Cine
 
             letra = 'A';
         }
-
     }
 
     public void imprimirCine()
@@ -41,18 +39,16 @@ public final class Cine
         for (Asiento[] I : asientos)
         {
             for (Asiento asiento : I)
-                System.out.print(asiento);
+                out.print(asiento);
 
-            System.out.println("");
+            out.println("");
         }
-
     }
 
     public void ocuparAsiento(Cliente cliente, char columna, int fila)
     {
-        asientos[fila][((int) columna) - 65].setOcupado(true);
-        asientos[fila][((int) columna) - 65].setCliente(cliente);
-
+        asientos[fila][columna - 65].setOcupado(true);
+        asientos[fila][columna - 65].setCliente(cliente);
     }
 
     public Asiento[][] obtenerAsientos()
@@ -68,7 +64,6 @@ public final class Cine
                     return false;
 
         return true;
-
     }
 
     public String getPelicula()

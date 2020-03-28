@@ -1,5 +1,9 @@
 package ejer1_13;
 
+import static java.lang.String.format;
+import static java.lang.System.err;
+import static java.lang.System.exit;
+
 /**
  *
  * @author Mohammed
@@ -118,8 +122,8 @@ public final class Fraccion
     {
         if (denominador == 0)
         {
-            System.err.println("Error, el denominador no puede ser 0");
-            System.exit(1);
+            err.println("Error, el denominador no puede ser 0");
+            exit(1);
         }
 
         this.denominador = denominador;
@@ -128,7 +132,7 @@ public final class Fraccion
     @Override
     public String toString()
     {
-        return String.format("%d / %d", getNumerador(), getDenominador());
+        return format("%d / %d", getNumerador(), getDenominador());
     }
 
 }

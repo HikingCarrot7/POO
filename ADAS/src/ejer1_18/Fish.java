@@ -1,5 +1,7 @@
 package ejer1_18;
 
+import static java.lang.System.out;
+
 /**
  *
  * @author HikingCarrot7
@@ -20,7 +22,7 @@ public class Fish extends Animal implements Pet
     @Override
     public void walk()
     {
-        System.out.println("Estoy nadando");
+        out.println("Estoy nadando");
     }
 
     @Override
@@ -38,7 +40,7 @@ public class Fish extends Animal implements Pet
     @Override
     public void play()
     {
-        System.out.println("Estoy jugando con una pelotas");
+        out.println("Estoy jugando con una pelotas");
     }
 
 }

@@ -1,5 +1,7 @@
 package ejer1_18;
 
+import static java.lang.System.out;
+
 /**
  *
  * @author HikingCarrot7
@@ -15,7 +17,7 @@ public class Spider extends Animal
     @Override
     public void walk()
     {
-        System.out.println("Esoty caminando con mis " + getLegs() + "patas.");
+        out.println("Esoty caminando con mis " + getLegs() + "patas.");
     }
 
 }

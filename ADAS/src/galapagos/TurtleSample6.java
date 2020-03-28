@@ -1,6 +1,8 @@
 package galapagos;
 
+import static galapagos.Turtle.NO_DEFAULT_WINDOW;
 import java.awt.Color;
+import static java.awt.Color.red;
 
 /**
  * This sample program shows how to create the drawing window explicitly and adding a turtle to it. If you want to use a default drawing window, you don't have to create the drawing window explicitly as shown here. If you want to change the properties such as the different origin point or grid spacing, you need to create the drawing window explicitly.
@@ -19,8 +21,8 @@ public class TurtleSample6
 
         int size, turn;
 
-        t = new Turtle(Turtle.NO_DEFAULT_WINDOW);
-        t.penColor(Color.red);
+        t = new Turtle(NO_DEFAULT_WINDOW);
+        t.penColor(red);
 
         win.add(t);
         win.setVisible(true);

@@ -1,5 +1,7 @@
 package ejer1_12;
 
+import static java.lang.System.in;
+import static java.lang.System.out;
 import java.util.Scanner;
 
 /**
@@ -16,7 +18,7 @@ public class IniciaJuegoFermi
 
     public IniciaJuegoFermi()
     {
-        IN = new Scanner(System.in);
+        IN = new Scanner(in);
         numerosUsuario = new int[3];
         fermi = new JuegoFermi();
     }
@@ -37,15 +39,15 @@ public class IniciaJuegoFermi
         {
             for (int i = 0; i < 3; i++)
             {
-                System.out.println("\nDigite el número: " + (i + 1));
+                out.println("\nDigite el número: " + (i + 1));
                 numerosUsuario[i] = IN.nextInt();
             }
 
-            System.out.printf("\nSus números:%6d  %5d  %5d", numerosUsuario[0], numerosUsuario[1], numerosUsuario[2]);
+            out.printf("\nSus números:%6d  %5d  %5d", numerosUsuario[0], numerosUsuario[1], numerosUsuario[2]);
 
             pistas = fermi.obtenerPistasNumerosEntrada(numerosUsuario);
 
-            System.out.printf("\nPistas:%11s  %5s  %5s\n", pistas[0], pistas[1], pistas[2]);
+            out.printf("\nPistas:%11s  %5s  %5s\n", pistas[0], pistas[1], pistas[2]);
 
             jugadas++;
 
@@ -53,7 +55,7 @@ public class IniciaJuegoFermi
 
         }
 
-        System.out.printf("\n\nGanaste con %d jugadas\n", jugadas);
+        out.printf("\n\nGanaste con %d jugadas\n", jugadas);
 
     }
 

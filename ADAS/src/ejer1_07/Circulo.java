@@ -1,5 +1,7 @@
 package ejer1_07;
 
+import static java.lang.Math.PI;
+
 /**
  *
  * @author Ricardo Nicolás Canul Ibarra
@@ -31,7 +33,7 @@ public class Circulo
      */
     public double getArea()
     {
-        return Math.PI * radio * radio;
+        return PI * radio * radio;
     }
 
     /**
@@ -41,7 +43,7 @@ public class Circulo
      */
     public double getPerimetro()
     {
-        return Math.PI * radio * 2;
+        return PI * radio * 2;
     }
 
     /**

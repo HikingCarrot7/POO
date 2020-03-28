@@ -1,5 +1,7 @@
 package ejer1_04;
 
+import static java.lang.String.format;
+
 /**
  *
  * @author HikingCarrot7
@@ -52,7 +54,7 @@ public class Bicicleta
     @Override
     public String toString()
     {
-        return String.format("\nNombre del propietario: %s\nIdentificación: %s\nTeléfono: %s\n", getNombre(), getIdentificacion(), getTelefono());
+        return format("\nNombre del propietario: %s\nIdentificación: %s\nTeléfono: %s\n", getNombre(), getIdentificacion(), getTelefono());
     }
 
 }

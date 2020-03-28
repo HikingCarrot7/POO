@@ -1,5 +1,7 @@
 package cuadrilatero;
 
+import static cuadrilatero.Punto.distanciaEntreDosPuntos;
+
 /**
  *
  * @author Mohammed
@@ -14,7 +16,7 @@ public class Cuadrado extends Cuadrilatero
 
     public double obtenerLongitudLado()
     {
-        return Punto.distanciaEntreDosPuntos(punto3, punto4);
+        return distanciaEntreDosPuntos(punto3, punto4);
     }
 
 }

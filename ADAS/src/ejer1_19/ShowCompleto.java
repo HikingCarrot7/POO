@@ -1,5 +1,7 @@
 package ejer1_19;
 
+import static java.lang.System.out;
+
 /**
  *
  * @author HikingCarrot7
@@ -17,7 +19,7 @@ public class ShowCompleto extends Espectaculo
 
     public void cancelarShow()
     {
-        System.out.println("Show cancelado.");
+        out.println("Show cancelado.");
     }
 
 }

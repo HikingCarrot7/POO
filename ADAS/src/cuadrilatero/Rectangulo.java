@@ -1,5 +1,7 @@
 package cuadrilatero;
 
+import static cuadrilatero.Punto.distanciaEntreDosPuntos;
+
 /**
  *
  * @author Mohammed
@@ -14,12 +16,12 @@ public class Rectangulo extends Cuadrilatero
 
     public double obtenerBase()
     {
-        return Punto.distanciaEntreDosPuntos(punto3, punto4);
+        return distanciaEntreDosPuntos(punto3, punto4);
     }
 
     public double obtenerAltura()
     {
-        return Punto.distanciaEntreDosPuntos(punto4, punto2);
+        return distanciaEntreDosPuntos(punto4, punto2);
     }
 
 }

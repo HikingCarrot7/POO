@@ -1,5 +1,7 @@
 package ejer1_02;
 
+import static java.lang.String.format;
+
 /**
  * Se crean fechas con los parámetros especificados en el constructor.
  *
@@ -52,7 +54,7 @@ public class Fecha
      */
     public String mostrarFechaNumero()
     {
-        return String.format("%d/%d/%d", dia, mes, anio);
+        return format("%d/%d/%d", dia, mes, anio);
     }
 
     /**
@@ -65,7 +67,7 @@ public class Fecha
      */
     public String mostrarFechaTexto()
     {
-        return String.format("%d de %s de %d", dia, meses[mes - 1].toLowerCase(), anio);
+        return format("%d de %s de %d", dia, meses[mes - 1].toLowerCase(), anio);
     }
 
 }

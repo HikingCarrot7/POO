@@ -1,5 +1,7 @@
 package cuadrilatero;
 
+import static cuadrilatero.Punto.distanciaEntreDosPuntos;
+
 /**
  *
  * @author Mohammed
@@ -14,12 +16,12 @@ public class Romboide extends Cuadrilatero
 
     public double obtenerLadoMenor()
     {
-        return Punto.distanciaEntreDosPuntos(punto1, punto4);
+        return distanciaEntreDosPuntos(punto1, punto4);
     }
 
     public double obtenerLadoMayor()
     {
-        return Punto.distanciaEntreDosPuntos(punto3, punto2);
+        return distanciaEntreDosPuntos(punto3, punto2);
     }
 
 }

@@ -1,5 +1,8 @@
 package ejer1_10;
 
+import static java.lang.String.format;
+import static java.lang.System.out;
+
 /**
  *
  * @author Mohammed
@@ -18,7 +21,7 @@ public class MainEstudiante
 
         estudiante1.calculaCalificacionCurso();
 
-        System.out.println(String.format("%-15s terminó el curso con la nota: %s.", estudiante1.obtenNombre(), estudiante1.obtenCalificacionCurso()));
+        out.println(format("%-15s terminó el curso con la nota: %s.", estudiante1.obtenNombre(), estudiante1.obtenCalificacionCurso()));
 
         EstudianteNoGraduado estudiante2 = new EstudianteNoGraduado();
 
@@ -30,7 +33,7 @@ public class MainEstudiante
 
         estudiante2.calculaCalificacionCurso();
 
-        System.out.println(String.format("%-15s terminó el curso con la nota: %s.", estudiante2.obtenNombre(), estudiante2.obtenCalificacionCurso()));
+        out.println(format("%-15s terminó el curso con la nota: %s.", estudiante2.obtenNombre(), estudiante2.obtenCalificacionCurso()));
 
     }
 

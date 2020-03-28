@@ -1,5 +1,7 @@
 package ejemploregistrosempleados;
 
+import static java.lang.String.format;
+
 /**
  *
  * @author Mohammed
@@ -82,7 +84,7 @@ public class Horario
         @Override
         public String toString()
         {
-            return String.format("Inicio: %02d : %02d   Termina %02d : %02d", getHorasInicio(), getMinutosInicio(), getHorasTermina(), getMinutosTermina());
+            return format("Inicio: %02d : %02d   Termina %02d : %02d", getHorasInicio(), getMinutosInicio(), getHorasTermina(), getMinutosTermina());
         }
 
     }

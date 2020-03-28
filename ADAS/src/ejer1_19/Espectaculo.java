@@ -1,5 +1,7 @@
 package ejer1_19;
 
+import static java.lang.System.out;
+
 /**
  *
  * @author HikingCarrot7
@@ -23,19 +25,19 @@ public abstract class Espectaculo implements Show
     @Override
     public void regalarPremios()
     {
-        System.out.println("Se están regalando premios con temática de: " + getNombrePersonajePrincipal());
+        out.println("Se están regalando premios con temática de: " + getNombrePersonajePrincipal());
     }
 
     @Override
     public void presentarCoreografia()
     {
-        System.out.println("Se está presentando una coreografía con temática de:" + getNombrePersonajePrincipal());
+        out.println("Se está presentando una coreografía con temática de:" + getNombrePersonajePrincipal());
     }
 
     @Override
     public void terminarConcuso()
     {
-        System.out.println("Se ha terminado el concurso.");
+        out.println("Se ha terminado el concurso.");
     }
 
     public String getNombrePersonajePrincipal()

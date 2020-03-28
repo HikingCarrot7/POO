@@ -1,5 +1,8 @@
 package ejer1_16;
 
+import static java.lang.String.format;
+import static java.lang.System.getProperty;
+
 /**
  *
  * @author HikingCarrot7
@@ -30,12 +33,12 @@ public class Disco extends Publicacion
     @Override
     public String toString()
     {
-        String lineSeparator = System.getProperty("line.separator");
+        String lineSeparator = getProperty("line.separator");
 
-        return String.format("%-30s%-35d%s%s",
+        return format("%-30s%-35d%s%s",
                 "\"" + getTitulo() + "\"",
                 getDuracionMin(),
-                String.format("$%,.2f", getPrecio()),
+                format("$%,.2f", getPrecio()),
                 lineSeparator);
 
     }

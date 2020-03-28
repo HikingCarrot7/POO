@@ -1,5 +1,9 @@
 package cuadrilatero;
 
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+import static java.lang.String.format;
+
 /**
  *
  * @author Mohammed
@@ -43,12 +47,12 @@ public class Punto
     @Override
     public String toString()
     {
-        return String.format("X: %d, Y: %d", getX(), getY());
+        return format("X: %d, Y: %d", getX(), getY());
     }
 
     public static double distanciaEntreDosPuntos(Punto punto1, Punto punto2)
     {
-        return Math.sqrt(Math.pow(punto2.getX() - punto1.getX(), 2) + Math.pow(punto2.getY() - punto1.getY(), 2));
+        return sqrt(pow(punto2.getX() - punto1.getX(), 2) + pow(punto2.getY() - punto1.getY(), 2));
     }
 
 }

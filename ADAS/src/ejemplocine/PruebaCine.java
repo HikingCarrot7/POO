@@ -1,5 +1,7 @@
 package ejemplocine;
 
+import static java.lang.String.format;
+import static java.lang.System.out;
 import java.util.Random;
 
 /**
@@ -35,29 +37,26 @@ public class PruebaCine
 
     public void gestionarCine()
     {
-        System.out.printf("La película que se está reproduciendo es: %-10s Precio: $%,.2f\n\n", cine.getPelicula(), cine.getPrecioPelicula());
+        out.printf("La película que se está reproduciendo es: %-10s Precio: $%,.2f\n\n", cine.getPelicula(), cine.getPrecioPelicula());
 
         while (!cine.cineLleno())
         {
-            Cliente cliente = new Cliente(String.format("%s %s", nombres[rand.nextInt(nombres.length)], apellidos[rand.nextInt(apellidos.length)]), rand.nextDouble() * 100 + 10);
+            Cliente cliente = new Cliente(format("%s %s", nombres[rand.nextInt(nombres.length)], apellidos[rand.nextInt(apellidos.length)]), rand.nextDouble() * 100 + 10);
 
             int columna = rand.nextInt(10), fila = rand.nextInt(5);
 
             if (cliente.getSaldo() < cine.getPrecioPelicula())
-                System.out.printf("El cliente %-18s trató de entrar con: $%,.2f\n", cliente.getNombre(), cliente.getSaldo());
+                out.printf("El cliente %-18s trató de entrar con: $%,.2f\n", cliente.getNombre(), cliente.getSaldo());
 
             else if (cine.obtenerAsientos()[fila][columna].isOcupado())
-                System.out.printf("El cliente %-18s trató de entrar a un asiento ocupado con: $%,.2f\n", cliente.getNombre(), cliente.getSaldo());
+                out.printf("El cliente %-18s trató de entrar a un asiento ocupado con: $%,.2f\n", cliente.getNombre(), cliente.getSaldo());
 
             else
                 cine.ocuparAsiento(cliente, (char) (columna + 65), fila);
-
         }
 
-        System.out.println("");
-
+        out.println("");
         cine.imprimirCine();
-
     }
 
     public static void main(String[] args)

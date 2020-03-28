@@ -1,5 +1,7 @@
 package ejer1_06;
 
+import static java.lang.String.format;
+import static java.lang.System.out;
 import java.util.Random;
 
 /**
@@ -69,7 +71,7 @@ public class TragaMonedas
         imprimirTablero(ranura1, ranura2, ranura3);
 
         // Resumen de la jugada.
-        System.out.println(String.format("\n%-15s%d moneda(s)\n%-15s%d moneda(s)", "Ganas:", nMonedasApuesta * monedasGanadas, "Restantes:", getNMonedasRestantes()));
+        out.println(format("\n%-15s%d moneda(s)\n%-15s%d moneda(s)", "Ganas:", nMonedasApuesta * monedasGanadas, "Restantes:", getNMonedasRestantes()));
 
     }
 
@@ -87,12 +89,12 @@ public class TragaMonedas
         for (int i = 0; i < 52; i++)
             text += "-";
 
-        text += String.format("\n\t| %-15s| %-15s| %-15s|\n\t", ranura1, ranura2, ranura3);
+        text += format("\n\t| %-15s| %-15s| %-15s|\n\t", ranura1, ranura2, ranura3);
 
         for (int i = 0; i < 52; i++)
             text += "-";
 
-        System.out.println(text);
+        out.println(text);
 
     }
 
@@ -137,10 +139,10 @@ public class TragaMonedas
         int aux = getNMonedasRestantes() - nMonedasInicial; // Si el al hacer esta resta el número queda negativo, entonces el jugador perdió dinero.
         int gananciasMonedas = aux < 0 ? aux * -1 : aux;
 
-        System.out.println(String.format("\n%-25s%d moneda(s)\n%s",
+        out.println(format("\n%-25s%d moneda(s)\n%s",
                 "Quedaron por jugar:",
                 getNMonedasRestantes(),
-                String.format("%-25s%d moneda(s) ($%,.2f dólares)", aux < 0 ? "El jugador perdió:" : "El jugador ganó:", gananciasMonedas, convertirMonedasADinero(gananciasMonedas))));
+                format("%-25s%d moneda(s) ($%,.2f dólares)", aux < 0 ? "El jugador perdió:" : "El jugador ganó:", gananciasMonedas, convertirMonedasADinero(gananciasMonedas))));
 
     }
 

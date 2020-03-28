@@ -2,7 +2,13 @@ package ejer1_21;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.lang.Double.parseDouble;
+import static java.lang.String.format;
+import static java.lang.System.exit;
+import static java.lang.System.out;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.OK_OPTION;
+import static javax.swing.JOptionPane.showMessageDialog;
 import javax.swing.JTextField;
 
 /**
@@ -24,7 +30,7 @@ public class DataManager implements ActionListener
     {
 
         if (validarEntrada(entradaRadio.getText(), "^[0-9]+(.?[0-9]+)?$"))
-            resultado.setText(String.format("%s", new Circulo().getPerimetro(Double.parseDouble(entradaRadio.getText()))));
+            resultado.setText(format("%s", new Circulo().getPerimetro(parseDouble(entradaRadio.getText()))));
 
         else
             mostrarError();
@@ -34,7 +40,7 @@ public class DataManager implements ActionListener
     public void mostrarArea(JTextField entradaRadio, JTextField resultado)
     {
         if (validarEntrada(entradaRadio.getText(), "^[0-9]+(.?[0-9]+)?$"))
-            resultado.setText(String.format("%s", new Circulo().getArea(Double.parseDouble(entradaRadio.getText()))));
+            resultado.setText(format("%s", new Circulo().getArea(parseDouble(entradaRadio.getText()))));
 
         else
             mostrarError();
@@ -44,7 +50,7 @@ public class DataManager implements ActionListener
     public void mostrarVolumen(JTextField entradaRadio, JTextField resultado)
     {
         if (validarEntrada(entradaRadio.getText(), "^[0-9]+(.?[0-9]+)?$"))
-            resultado.setText(String.format("%s", new Circulo().getVolumen(Double.parseDouble(entradaRadio.getText()))));
+            resultado.setText(format("%s", new Circulo().getVolumen(parseDouble(entradaRadio.getText()))));
 
         else
             mostrarError();
@@ -53,12 +59,12 @@ public class DataManager implements ActionListener
 
     public void salir()
     {
-        System.exit(1);
+        exit(1);
     }
 
     private void mostrarError()
     {
-        JOptionPane.showMessageDialog(null, "La entrada no es válida", "Entrada no válida", JOptionPane.OK_OPTION);
+        showMessageDialog(null, "La entrada no es válida", "Entrada no válida", OK_OPTION);
     }
 
     public boolean validarEntrada(String text, String regex)
@@ -69,12 +75,12 @@ public class DataManager implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        System.out.println(e.getActionCommand());
+        out.println(e.getActionCommand());
 
         switch (e.getActionCommand())
         {
             case "Área":
-                System.out.println("Hola");
+                out.println("Hola");
 
         }
     }

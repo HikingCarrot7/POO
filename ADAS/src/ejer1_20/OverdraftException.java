@@ -1,5 +1,7 @@
 package ejer1_20;
 
+import static java.lang.String.format;
+
 /**
  *
  * @author Mohammed
@@ -11,7 +13,7 @@ public class OverdraftException extends Exception
 
     public OverdraftException(String message, double deficit)
     {
-        super(String.format("\n->%s$%,.2f\n", message, deficit));
+        super(format("\n->%s$%,.2f\n", message, deficit));
     }
 
     public OverdraftException()

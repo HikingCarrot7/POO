@@ -1,8 +1,7 @@
 package ejer1_19;
 
+import static java.lang.System.out;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -12,8 +11,8 @@ public class Empresa
 {
 
     public static final String NOMBREEMPRESA = "Patito";
-    private ArrayList<Espectaculo> espectaculos;
-    private ArrayList<Agenda> espectaculosAgendados;
+    private final ArrayList<Espectaculo> espectaculos;
+    private final ArrayList<Agenda> espectaculosAgendados;
 
     public Empresa()
     {
@@ -46,26 +45,20 @@ public class Empresa
             ((ShowCompleto) espectaculos.get(indexShow)).cancelarShow();
 
         else
-            System.out.println("No se pueden cancelar los shows básicos");
-
+            out.println("No se pueden cancelar los shows básicos");
     }
 
     public void reporteEspectaculo()
     {
-
         if (!espectaculosAgendados.isEmpty())
         {
-
             espectaculosAgendados.sort((Agenda agenda1, Agenda agenda2) ->
             {
                 return agenda1.getFecha().compareTo(agenda2.getFecha());
-
             });
 
             imprimirEspectaculo("Shows básicos.\n", "showbasico");
-
             imprimirEspectaculo("Shows completos.\n", "showcompleto");
-
         }
 
     }
@@ -73,28 +66,24 @@ public class Empresa
     private void imprimirEspectaculo(String tipoEspectaculo, String clave)
     {
         int indexTemp = 0;
-
-        System.out.println(tipoEspectaculo);
-
-        System.out.printf("%-35s%-35s%s\n\n", "Título", "Fecha", "Precio");
+        out.println(tipoEspectaculo);
+        out.printf("%-35s%-35s%s\n\n", "Título", "Fecha", "Precio");
 
         for (int i = 0; i < espectaculosAgendados.size(); i++)
         {
-
             Agenda agenda = espectaculosAgendados.get(i);
 
             if (clave.equals("showbasico"))
             {
                 if (agenda.getEspectaculo() instanceof ShowBasico)
-                    System.out.printf("%02d.- %s\n", ++indexTemp, agenda);
+                    out.printf("%02d.- %s\n", ++indexTemp, agenda);
 
             } else if (agenda.getEspectaculo() instanceof ShowCompleto)
-                System.out.printf("%02d.- %s\n", ++indexTemp, agenda);
+                out.printf("%02d.- %s\n", ++indexTemp, agenda);
 
         }
 
-        System.out.println("\n");
-
+        out.println("\n");
     }
 
     public ArrayList<Espectaculo> getEspectaculos()

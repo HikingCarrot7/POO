@@ -20,7 +20,6 @@ public abstract class Empleado
         this.nombre = nombre;
         this.fecha = fecha;
         this.empleo = empleo;
-
     }
 
     public int getClave()

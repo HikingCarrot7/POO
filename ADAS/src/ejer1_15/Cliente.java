@@ -1,5 +1,7 @@
 package ejer1_15;
 
+import static java.lang.String.format;
+
 /**
  *
  * @author HikingCarrot7
@@ -53,7 +55,7 @@ public class Cliente
     @Override
     public String toString()
     {
-        return String.format("%-15s%-15s tiene un saldo de $%,.2f", getNombre(), getApellido(), getCuenta().getBalance());
+        return format("%-15s%-15s tiene un saldo de $%,.2f", getNombre(), getApellido(), getCuenta().getBalance());
     }
 
 }

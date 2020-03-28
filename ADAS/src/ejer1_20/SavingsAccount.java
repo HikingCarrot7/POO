@@ -7,20 +7,17 @@ package ejer1_20;
 public class SavingsAccount extends Account
 {
 
-    private double interestRate;
+    private final double interestRate;
 
     public SavingsAccount(double balance, double interestRate)
     {
         super(balance);
-
         this.interestRate = interestRate;
-
     }
 
     public void interestGenerate()
     {
-
-        balance += (balance * interestRate);
+        setBalance(getBalance() + (getBalance() * interestRate));
     }
 
     public double getInterestRate()

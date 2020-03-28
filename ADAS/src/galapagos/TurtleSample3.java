@@ -1,5 +1,7 @@
 package galapagos;
 
+import static galapagos.Turtle.NO_DEFAULT_WINDOW;
+
 /**
  * This sample program shows how to use a TurtleDrawingWindow explicitly. If TurtleDrawingWindow is not used, then a Turtle will create one internally. If you want to set the parameters such as moving the location of logical origin point to places other than the center of window, changing the window scale (zoom in or zoom out view), etc. Also, you must use a TurtleDrawingWindow if you want use multiple Turtle objects on a single window.
  *
@@ -24,7 +26,7 @@ public class TurtleSample3
         //add a turtle to the drawing window you create within
         //your program. Sample code for exercise 4.16 on page
         //190 is therefore wrong. Sorry.
-        myTurtle = new Turtle(Turtle.NO_DEFAULT_WINDOW);
+        myTurtle = new Turtle(NO_DEFAULT_WINDOW);
 
         //You must connect the turtle to a TurtleDrawingWindow
         //by 'adding' it to the window.

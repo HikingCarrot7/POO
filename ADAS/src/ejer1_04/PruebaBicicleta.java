@@ -1,5 +1,6 @@
 package ejer1_04;
 
+import static java.lang.System.out;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,33 +18,28 @@ public class PruebaBicicleta
     {
         in = new Scanner(System.in);
         registrados = new ArrayList<>();
-
     }
 
     public void registrarBicicleta()
     {
         for (int i = 0; i < 3; i++)
         {
-
-            System.out.println("\nInserte su nombre:");
+            out.println("\nInserte su nombre:");
             String nombre = in.nextLine();
 
-            System.out.println("\nInserte su número de teléfono:");
+            out.println("\nInserte su número de teléfono:");
             String telefono = in.nextLine();
 
             registrados.add(new Bicicleta(nombre, telefono));
-
         }
 
         imprimirRegistrados();
-
     }
 
     public void imprimirRegistrados()
     {
         for (Bicicleta registro : registrados)
-            System.out.println(registro);
-
+            out.println(registro);
     }
 
     public static void main(String[] args)

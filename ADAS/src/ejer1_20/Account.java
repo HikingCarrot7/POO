@@ -7,7 +7,7 @@ package ejer1_20;
 public class Account
 {
 
-    protected double balance;
+    private double balance;
 
     public Account(double balance)
     {
@@ -18,7 +18,6 @@ public class Account
     {
         if (balance >= 0)
             setBalance(getBalance() + balance);
-
     }
 
     public void withdraw(double dineroRetirar) throws OverdraftException
@@ -28,7 +27,6 @@ public class Account
 
         else
             throw new OverdraftException("Insufficient funds. Deficit: ", dineroRetirar - getBalance());
-
     }
 
     public double getBalance()

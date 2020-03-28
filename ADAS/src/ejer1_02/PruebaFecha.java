@@ -1,5 +1,7 @@
 package ejer1_02;
 
+import static java.lang.System.out;
+
 /**
  *
  * @author Mohammed
@@ -16,7 +18,7 @@ public class PruebaFecha
     public static void main(String[] args)
     {
         //Imprimimos en pantalla la representación String para esta fecha.
-        System.out.println(new Fecha(6, 1, 2000).mostrarFechaTexto());
+        out.println(new Fecha(6, 1, 2000).mostrarFechaTexto());
 
     }//Fin de main.
 

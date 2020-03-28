@@ -1,6 +1,9 @@
 package galapagos;
 
+import static galapagos.Turtle.NO_DEFAULT_WINDOW;
 import java.awt.Color;
+import static java.awt.Color.BLUE;
+import static java.awt.Color.YELLOW;
 
 /**
  * This sample program shows how to use a TurtleDrawingWindow explicitly with two turtles.
@@ -20,8 +23,8 @@ public class TurtleSample4
         playground.setVisible(true);
 
         //Create two turtles and add them to the playground
-        betsy = new Turtle(Turtle.NO_DEFAULT_WINDOW);
-        emily = new Turtle(Turtle.NO_DEFAULT_WINDOW);
+        betsy = new Turtle(NO_DEFAULT_WINDOW);
+        emily = new Turtle(NO_DEFAULT_WINDOW);
 
         playground.add(betsy);
         playground.add(emily);
@@ -34,8 +37,8 @@ public class TurtleSample4
         //   emily.bodyColor( Color.yellow );
 
         //Set pen colors
-        betsy.penColor(Color.BLUE);
-        emily.penColor(Color.YELLOW);
+        betsy.penColor(BLUE);
+        emily.penColor(YELLOW);
 
         //Now draw a square
         size = 100;           //logical units

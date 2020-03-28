@@ -1,5 +1,7 @@
 package ejemplofechas;
 
+import static java.lang.String.format;
+
 /**
  *
  * @author Mohammed
@@ -24,7 +26,7 @@ public class Fecha
     @Override
     public String toString()
     {
-        return String.format("%d-%d-%d", anio, mes, dia);
+        return format("%d-%d-%d", anio, mes, dia);
     }
 
     public static Fecha[] ordenarFechas(Fecha[] fechas)

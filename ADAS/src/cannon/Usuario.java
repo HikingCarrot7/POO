@@ -1,5 +1,7 @@
 package cannon;
 
+import static java.lang.System.in;
+import static java.lang.System.out;
 import java.util.Scanner;
 
 /**
@@ -13,15 +15,15 @@ public class Usuario
 
     public Usuario()
     {
-        IN = new Scanner(System.in);
+        IN = new Scanner(in);
     }
 
     public void pedirDatos()
     {
-        System.out.println("Inserte el ángulo inicial: ");
+        out.println("Inserte el ángulo inicial: ");
         double anguloInicial = IN.nextDouble();
 
-        System.out.println("\nInserte la velocidad inicial: ");
+        out.println("\nInserte la velocidad inicial: ");
         double velocidadInicial = IN.nextDouble();
 
         new Cannon(velocidadInicial, anguloInicial);

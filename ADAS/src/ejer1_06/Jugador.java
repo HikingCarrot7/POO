@@ -1,5 +1,9 @@
 package ejer1_06;
 
+import static java.lang.Double.parseDouble;
+import static java.lang.Integer.parseInt;
+import static java.lang.System.in;
+import static java.lang.System.out;
 import java.util.Scanner;
 
 /**
@@ -15,7 +19,7 @@ public class Jugador
 
     public Jugador(TragaMonedas tragaMonedas)
     {
-        IN = new Scanner(System.in);
+        IN = new Scanner(in);
         this.tragaMonedas = tragaMonedas;
     }
 
@@ -30,15 +34,15 @@ public class Jugador
 
         do
         {
-            System.out.println("Cantidad de dinero para jugar (en dólares): ");
+            out.println("Cantidad de dinero para jugar (en dólares): ");
             String dinero = IN.nextLine();
 
             dineroValido = validarEntrada(dinero, "([0-9]+)*(0*.(25|5|75)0*)?"); // Se valida que sea correcta la cantidad de dinero que se inserta por medio de una expresión regular.
 
             if (dineroValido)
-                dineroJugador = Double.parseDouble(dinero);
+                dineroJugador = parseDouble(dinero);
             else
-                System.out.println("\nDinero inválido!");
+                out.println("\nDinero inválido!");
 
         } while (!dineroValido);
 
@@ -56,11 +60,11 @@ public class Jugador
         boolean monedasValidas;
         String monedasPorApostar;
 
-        System.out.print("\nMonedas totales para jugar: " + tragaMonedas.getNMonedasRestantes()); //Monedas totales del jugador.
+        out.print("\nMonedas totales para jugar: " + tragaMonedas.getNMonedasRestantes()); //Monedas totales del jugador.
 
         do
         {
-            System.out.println("\nMonedas a apostar (presione \"0\" para salir): ");
+            out.println("\nMonedas a apostar (presione \"0\" para salir): ");
             monedasPorApostar = IN.nextLine();
 
             if (monedasPorApostar.equals("0")) //Si se presiona el "0" el juego termina.
@@ -70,7 +74,7 @@ public class Jugador
 
             if (monedasValidas)
             {
-                int monedasApostadas = Integer.parseInt(monedasPorApostar);
+                int monedasApostadas = parseInt(monedasPorApostar);
 
                 tragaMonedas.setNMonedasApuesta(monedasApostadas); // Se establecen las monedas para esta apuesta.
 
@@ -81,15 +85,15 @@ public class Jugador
                     tragaMonedas.ejecutarJuego(); // Se ejecuta la jugada.
 
                 } else
-                    System.out.println("\nMonedas insuficientes para hacer apuesta, inténtelo de nuevo");
+                    out.println("\nMonedas insuficientes para hacer apuesta, inténtelo de nuevo");
 
             } else
-                System.out.println("\nMonedas inválidas, sólo puede insertar entre 1 - 4 monedas por apuesta");
+                out.println("\nMonedas inválidas, sólo puede insertar entre 1 - 4 monedas por apuesta");
 
         } while (tragaMonedas.getNMonedasRestantes() != 0 && !tragaMonedas.sinDinero()); // Se repite hasta que se acabe el saldo del jugador o la máquina se quede sin dinero.
 
         if (tragaMonedas.sinDinero())
-            System.out.println("\nLo sentimos, la máquina se quedó sin dinero!");
+            out.println("\nLo sentimos, la máquina se quedó sin dinero!");
 
         tragaMonedas.calcularGanancia(); // Se calculan las ganancias.
 

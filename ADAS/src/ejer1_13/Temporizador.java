@@ -1,5 +1,8 @@
 package ejer1_13;
 
+import static java.lang.System.out;
+import static java.lang.Thread.sleep;
+
 /**
  *
  * @author Mohammed
@@ -32,7 +35,7 @@ public class Temporizador implements Runnable
         try
         {
 
-            Thread.sleep(tiempo);
+            sleep(tiempo);
 
             if (mostrarMensaje)
                 sesionClase.seAcaboElTiempo();
@@ -41,7 +44,7 @@ public class Temporizador implements Runnable
 
         } catch (InterruptedException ex)
         {
-            System.out.println(ex.getMessage());
+            out.println(ex.getMessage());
         }
 
     }

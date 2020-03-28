@@ -14,7 +14,6 @@ public class EmpleoTiempoParcial extends Empleo
     {
         this.horasTrabajadasSemana = horasTrabajadasSemana;
         this.salarioHoraTrabajo = salarioHoraTrabajo;
-
     }
 
     public int getHorasTrabajadasSemana()

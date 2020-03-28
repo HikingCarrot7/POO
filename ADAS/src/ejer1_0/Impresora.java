@@ -1,5 +1,7 @@
 package ejer1_0;
 
+import static java.lang.System.out;
+
 /**
  * Esta clase hace una pequeña analogía de una impresora que nos muestra en consola un mensaje que le pasamos como parámetro.
  *
@@ -19,6 +21,6 @@ public class Impresora
      */
     public void imprimir(String mensaje)
     {
-        System.out.println(mensaje);
+        out.println(mensaje);
     }
 }

@@ -1,5 +1,8 @@
 package ejer1_15;
 
+import static java.lang.Math.random;
+import static java.lang.String.format;
+import static java.lang.System.out;
 import java.util.Random;
 
 /**
@@ -40,27 +43,27 @@ public class PruebaBanco
 
         for (int i = 0; i < 20; i++)
         {
-            banco.addCustomer(nombres[RAND.nextInt(nombres.length)], apellidos[RAND.nextInt(apellidos.length)], Math.random() * 1000);
+            banco.addCustomer(nombres[RAND.nextInt(nombres.length)], apellidos[RAND.nextInt(apellidos.length)], random() * 1000);
 
-            porDepositar = Math.random() * 10000;
-            porRetirar = Math.random() * 10000;
+            porDepositar = random() * 10000;
+            porRetirar = random() * 10000;
 
-            System.out.printf("%-40s(Saldo actual: $%,.2f)", String.format("\nCliente %02d", i + 1), banco.getCustomer(i).getCuenta().getBalance());
+            out.printf("%-40s(Saldo actual: $%,.2f)", format("\nCliente %02d", i + 1), banco.getCustomer(i).getCuenta().getBalance());
 
             statusDeposito = banco.getCustomer(i).getCuenta().deposit(porDepositar);
 
-            System.out.printf("%-40s(Saldo actual: $%,.2f)", String.format("\nSe ha depositado $%,.2f", porDepositar), banco.getCustomer(i).getCuenta().getBalance());
+            out.printf("%-40s(Saldo actual: $%,.2f)", format("\nSe ha depositado $%,.2f", porDepositar), banco.getCustomer(i).getCuenta().getBalance());
 
             statusRetiro = banco.getCustomer(i).getCuenta().withdraw(porRetirar);
 
-            System.out.printf("%-40s(Saldo actual: $%,.2f)\nSTATUS:\n", String.format("\nSe ha tratado de retirar $%,.2f", porRetirar), banco.getCustomer(i).getCuenta().getBalance());
+            out.printf("%-40s(Saldo actual: $%,.2f)\nSTATUS:\n", format("\nSe ha tratado de retirar $%,.2f", porRetirar), banco.getCustomer(i).getCuenta().getBalance());
 
-            System.out.println(statusDeposito ? "Dinero depositado correctamente." : "El dinero no se pude depositar.");
-            System.out.println(statusRetiro ? "Dinero retirado correctamente." : "El dinero no se pudo retirar.");
+            out.println(statusDeposito ? "Dinero depositado correctamente." : "El dinero no se pude depositar.");
+            out.println(statusRetiro ? "Dinero retirado correctamente." : "El dinero no se pudo retirar.");
 
         }
 
-        System.out.println(banco);
+        out.println(banco);
 
     }
 

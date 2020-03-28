@@ -1,5 +1,7 @@
 package ejer1_09;
 
+import static java.lang.System.out;
+
 /**
  *
  * @author HikingCarrot7
@@ -11,14 +13,16 @@ public class PruebaMascotas
     {
         Gato miGato = new Gato();
 
+        for (int i = 0; i < 10; i++)
+            out.println("Hola");
+
         miGato.establecerNombre("Rooky");
-        System.out.println(miGato.getNombre());
-        System.out.println(miGato.hablar());
+        out.println(miGato.getNombre());
+        out.println(miGato.hablar());
 
-        System.out.println(new Perro().hablar());
+        out.println(new Perro().hablar());
 
-        System.out.println(new Vaca().hablar());
-
+        out.println(new Vaca().hablar());
     }
 
 }

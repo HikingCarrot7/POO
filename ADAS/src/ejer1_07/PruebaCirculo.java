@@ -1,5 +1,8 @@
 package ejer1_07;
 
+import static java.lang.Double.parseDouble;
+import static java.lang.System.in;
+import static java.lang.System.out;
 import java.util.Scanner;
 
 /**
@@ -13,7 +16,7 @@ public class PruebaCirculo
 
     public PruebaCirculo()
     {
-        IN = new Scanner(System.in);
+        IN = new Scanner(in);
     }
 
     public static void main(String[] args)
@@ -29,10 +32,9 @@ public class PruebaCirculo
         double radioPrimerCirculo = pedirDato("Inserte el radio del primer círculo: ");
         double radioSegundoCirculo = pedirDato("Inserte el radio del segundo círculo: ");
 
-        System.out.printf("\nLa diferencia de áreas es: %,.2f u%c\n",
+        out.printf("\nLa diferencia de áreas es: %,.2f u%c\n",
                 new Circulo(radioMayor(radioPrimerCirculo, radioSegundoCirculo)).getArea()
                 - new Circulo(radioMenor(radioPrimerCirculo, radioSegundoCirculo)).getArea(), (char) 178);
-
     }
 
     /**
@@ -51,16 +53,16 @@ public class PruebaCirculo
         {
             cantidadValida = false;
 
-            System.out.println(datoAPedir);
+            out.println(datoAPedir);
             String entrada = IN.nextLine();
 
             if (validarEntrada(entrada, "^[0-9]*(.[0-9]*)?$"))
             {
-                radioCirculo = Double.parseDouble(entrada);
+                radioCirculo = parseDouble(entrada);
                 cantidadValida = true;
 
             } else
-                System.out.println("\n¡Valor inválido!\n");
+                out.println("\n¡Valor inválido!\n");
 
         } while (!cantidadValida);
 

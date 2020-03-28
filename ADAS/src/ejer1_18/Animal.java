@@ -1,5 +1,7 @@
 package ejer1_18;
 
+import static java.lang.System.out;
+
 /**
  *
  * @author HikingCarrot7
@@ -18,7 +20,7 @@ public abstract class Animal
 
     public void eat()
     {
-        System.out.println("Estoy comiendo");
+        out.println("Estoy comiendo");
 
     }
 

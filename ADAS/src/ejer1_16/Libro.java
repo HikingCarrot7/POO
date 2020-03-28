@@ -1,5 +1,7 @@
 package ejer1_16;
 
+import static java.lang.String.format;
+import static java.lang.System.getProperty;
 import java.util.GregorianCalendar;
 
 /**
@@ -44,13 +46,13 @@ public class Libro extends Publicacion
     @Override
     public String toString()
     {
-        String lineSeparator = System.getProperty("line.separator");
+        String lineSeparator = getProperty("line.separator");
 
-        return String.format("%-30s%-35s%-25d%s%s",
+        return format("%-30s%-35s%-25d%s%s",
                 "\"" + getTitulo() + "\"",
-                String.format("%1$tA, %1$tB %1$td, %1$tY", anioPublicacion),
+                format("%1$tA, %1$tB %1$td, %1$tY", anioPublicacion),
                 getnPaginas(),
-                String.format("$%,.2f", getPrecio()),
+                format("$%,.2f", getPrecio()),
                 lineSeparator);
 
     }

@@ -1,5 +1,7 @@
 package ejemplocine;
 
+import static java.lang.String.format;
+
 /**
  *
  * @author Mohammed
@@ -39,7 +41,7 @@ public class Cliente
     @Override
     public String toString()
     {
-        return String.format("%s", getNombre());
+        return format("%s", getNombre());
     }
 
 }

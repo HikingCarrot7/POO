@@ -1,5 +1,7 @@
 package ejemplocine;
 
+import static java.lang.String.format;
+
 /**
  *
  * @author Mohammed
@@ -7,8 +9,8 @@ package ejemplocine;
 public class Asiento
 {
 
-    private boolean ocupado;
     private Cliente cliente;
+    private boolean ocupado;
     private char posicionLetra;
     private int posicionFila;
 
@@ -63,7 +65,7 @@ public class Asiento
     @Override
     public String toString()
     {
-        return String.format("[%c : %d] %-17s $%-10.2f", posicionLetra, posicionFila, cliente.getNombre(), cliente.getSaldo());
+        return format("[%c : %d] %-17s $%-10.2f", posicionLetra, posicionFila, cliente.getNombre(), cliente.getSaldo());
     }
 
 }

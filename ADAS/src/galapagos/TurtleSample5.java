@@ -1,7 +1,11 @@
 package galapagos;
 
+import static galapagos.Turtle.NO_DEFAULT_WINDOW;
 import java.awt.Color;
+import static java.awt.Color.magenta;
+import static java.lang.Integer.parseInt;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showInputDialog;
 
 /**
  * This sample program shows how to use a TurtleDrawingWindow.
@@ -20,16 +24,15 @@ public class TurtleSample5
 
         playground = new TurtleDrawingWindow();
 
-        myTurtle = new Turtle(Turtle.NO_DEFAULT_WINDOW);
-        myTurtle.bodyColor(Color.magenta);
+        myTurtle = new Turtle(NO_DEFAULT_WINDOW);
+        myTurtle.bodyColor(magenta);
 
         playground.add(myTurtle);
 
         playground.setVisible(true);
 
         //Get input
-        size = Integer.parseInt(
-                JOptionPane.showInputDialog("Enter the size of a square:"));
+        size = parseInt(showInputDialog("Enter the size of a square:"));
 
         turn = 90;
 

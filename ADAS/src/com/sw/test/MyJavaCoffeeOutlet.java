@@ -4,6 +4,7 @@ import com.sw.dominio.CajaGrande;
 import com.sw.dominio.CajaMediana;
 import com.sw.dominio.CajaPequena;
 import com.sw.dominio.Pedido;
+import static java.lang.System.out;
 
 /**
  *
@@ -20,9 +21,9 @@ public class MyJavaCoffeeOutlet
 
         Pedido pedido = new Pedido(56);
 
-        System.out.println(pedido.obtenerPrecioMinimoCajas());
+        out.println(pedido.obtenerPrecioMinimoCajas());
 
-        System.out.println(pedido.obtenerPrecioMinimoEspacio());
+        out.println(pedido.obtenerPrecioMinimoEspacio());
 
     }
 

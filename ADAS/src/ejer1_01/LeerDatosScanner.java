@@ -1,5 +1,6 @@
 package ejer1_01;
 
+import static java.lang.System.out;
 import java.util.Scanner;
 
 /**
@@ -21,10 +22,10 @@ public class LeerDatosScanner
         Scanner in = new Scanner(System.in);
 
         //Pedimos un String al usuario.
-        System.out.println("Escribe tu nombre:");
+        out.println("Escribe tu nombre:");
 
         //Imprimimos en pantalla una frase con el String que se insertó por el usuario anteriormente.
-        System.out.printf("\nHola %s, bienvenido a la programación en Java!\n", in.nextLine());
+        out.printf("\nHola %s, bienvenido a la programación en Java!\n", in.nextLine());
 
     }//Fin del main.
 
