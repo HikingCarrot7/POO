@@ -23,4 +23,5 @@ public class Impresora
     {
         out.println(mensaje);
     }
+
 }

@@ -7,7 +7,7 @@ package com.sw.model;
  * @author Emmanuel Chable Collí.
  * @author Eusebio Ajas Santos.
  */
-public class ConversionManager
+public class Conversor
 {
 
     /**
@@ -85,7 +85,6 @@ public class ConversionManager
             textReversed += String.valueOf(text.charAt(i));
 
         return textReversed;
-
     }
 
 }

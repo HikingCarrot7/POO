@@ -1,6 +1,6 @@
 package com.sw.controller;
 
-import com.sw.model.ConversionManager;
+import com.sw.model.Conversor;
 import com.sw.view.Interfaz;
 import javax.swing.JLabel;
 
@@ -14,12 +14,12 @@ public class DataManager
 {
 
     private final Interfaz interfaz;
-    private final ConversionManager conversionManager;
+    private final Conversor conversionManager;
 
     public DataManager(Interfaz interfaz)
     {
         this.interfaz = interfaz;
-        conversionManager = new ConversionManager();
+        conversionManager = new Conversor();
 
     }
 

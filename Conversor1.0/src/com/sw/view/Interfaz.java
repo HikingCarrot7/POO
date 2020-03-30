@@ -21,9 +21,7 @@ public class Interfaz extends javax.swing.JFrame
     public Interfaz(ConversionBin conversionBin, ConversionDec conversionDec, ConversionHex conversionHex, ConversionOct conversionOct)
     {
         initComponents();
-
         gestorCalculos = new GestorCalculos(conversionBin, conversionDec, conversionHex, conversionOct);
-
     }
 
     /**
@@ -37,9 +35,9 @@ public class Interfaz extends javax.swing.JFrame
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        entradaOpcion = new javax.swing.JComboBox<String>();
+        entradaOpcion = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
-        salidaOpcion = new javax.swing.JComboBox<String>();
+        salidaOpcion = new javax.swing.JComboBox<>();
         entrada = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         salida = new javax.swing.JTextField();
@@ -60,6 +58,7 @@ public class Interfaz extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Conversor");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Consolas", 0, 36)); // NOI18N
         jLabel1.setText("Conversor");
@@ -68,14 +67,14 @@ public class Interfaz extends javax.swing.JFrame
         jLabel2.setText("De:");
 
         entradaOpcion.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        entradaOpcion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Decimal", "Binario", "Octal", "Hexadecimal" }));
+        entradaOpcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Decimal", "Binario", "Octal", "Hexadecimal" }));
         entradaOpcion.setToolTipText("Seleccione una opción");
 
         jLabel3.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         jLabel3.setText("A:");
 
         salidaOpcion.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        salidaOpcion.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Decimal", "Binario", "Octal", "Hexadecimal" }));
+        salidaOpcion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Decimal", "Binario", "Octal", "Hexadecimal" }));
         salidaOpcion.setSelectedIndex(1);
         salidaOpcion.setToolTipText("Seleccione una opción");
 
