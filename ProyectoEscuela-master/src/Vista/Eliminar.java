@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Vista;
 
 import Login.Usuario;
@@ -45,7 +40,8 @@ public class Eliminar extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
 
         BtEliminarAlumno = new javax.swing.JButton();
         BtEliminarMaestro = new javax.swing.JButton();
@@ -63,8 +59,10 @@ public class Eliminar extends javax.swing.JFrame
         BtEliminarAlumno.setContentAreaFilled(false);
         BtEliminarAlumno.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesProyecto/EliminarAlumnoP.png"))); // NOI18N
         BtEliminarAlumno.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesProyecto/EliminarAlumnoS.png"))); // NOI18N
-        BtEliminarAlumno.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        BtEliminarAlumno.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 BtEliminarAlumnoMouseClicked(evt);
             }
         });
@@ -76,8 +74,10 @@ public class Eliminar extends javax.swing.JFrame
         BtEliminarMaestro.setContentAreaFilled(false);
         BtEliminarMaestro.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesProyecto/EliminarMeaestroP.png"))); // NOI18N
         BtEliminarMaestro.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesProyecto/EliminarMeaestroS.png"))); // NOI18N
-        BtEliminarMaestro.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        BtEliminarMaestro.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 BtEliminarMaestroMouseClicked(evt);
             }
         });
@@ -97,8 +97,10 @@ public class Eliminar extends javax.swing.JFrame
         BtEliminarGrupo.setContentAreaFilled(false);
         BtEliminarGrupo.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesProyecto/EliminarGrupoP.png"))); // NOI18N
         BtEliminarGrupo.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesProyecto/EliminarGrupoS.png"))); // NOI18N
-        BtEliminarGrupo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        BtEliminarGrupo.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 BtEliminarGrupoMouseClicked(evt);
             }
         });
@@ -110,13 +112,17 @@ public class Eliminar extends javax.swing.JFrame
         BtRegresarEliminar.setContentAreaFilled(false);
         BtRegresarEliminar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesProyecto/Salir48P.png"))); // NOI18N
         BtRegresarEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/ImagenesProyecto/Salir48S.png"))); // NOI18N
-        BtRegresarEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        BtRegresarEliminar.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 BtRegresarEliminarMouseClicked(evt);
             }
         });
-        BtRegresarEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        BtRegresarEliminar.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 BtRegresarEliminarActionPerformed(evt);
             }
         });
@@ -223,7 +229,7 @@ public class Eliminar extends javax.swing.JFrame
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try
         {
@@ -250,12 +256,9 @@ public class Eliminar extends javax.swing.JFrame
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable()
+        java.awt.EventQueue.invokeLater(() ->
         {
-            public void run()
-            {
-                new Eliminar().setVisible(true);
-            }
+            new Eliminar().setVisible(true);
         });
     }
 

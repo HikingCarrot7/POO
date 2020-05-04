@@ -5,11 +5,6 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 /**
  *
  * @author a15216356
@@ -165,11 +160,6 @@ public class ViewProducto extends javax.swing.JFrame
         return jComboBoxCategoria;
     }
 
-    public void setjComboBoxCategoria(JComboBox jComboBoxCategoria)
-    {
-        this.jComboBoxCategoria = jComboBoxCategoria;
-    }
-
     public JTextField getjTextFieldNombre()
     {
         return jTextFieldNombre;
@@ -207,7 +197,7 @@ public class ViewProducto extends javax.swing.JFrame
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try
         {

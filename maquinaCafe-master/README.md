@@ -1,2 +1,0 @@
-# maquinaCafe
-proyecto construcción software
